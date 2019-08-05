@@ -1,7 +1,7 @@
 <view class="container">
     <view class='top_set'>
         <view class='text_left'>
-            <view class='text1'>任务</view>
+            <view class='text1'>务</view>
             <view class='text2'>已完成任务<text class="te_color">{{ already_num }}</text>/<text>{{ count }}</text>个</view>
         </view>
         <view class='set_right'>

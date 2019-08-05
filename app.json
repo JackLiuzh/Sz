@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "pages/today_task/today_task",
+    "pages/kao_videodetail/kao_videodetail",
+    "pages/kao_video/kao_video",
+    "pages/dati/dati",
+    "pages/first_comming/first_comming",
+    "pages/test/test",
+    "pages/frequency_set/frequency_set",
+    "pages/make_plan/make_plan",
+    "pages/message/message",
+    "pages/rili/rili",
+    "pages/add_task/add_task",
+    "pages/shoucangjia/shoucangjia",
+    "pages/tologin/tologin",
+    "pages/datika/datika",
+    "pages/material_qu/material_qu",
+    "pages/live/live"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "尚政公考",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#EA5959",
+    "borderStyle": "white",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "text": "打卡",
+        "pagePath": "pages/test/test",
+        "iconPath": "images/daka@2x.png",
+        "selectedIconPath": "images/daka@2x.png"
+      },
+      {
+        "text": "刷题",
+        "pagePath": "pages/test/test",
+        "iconPath": "images/daka@2x.png",
+        "selectedIconPath": "images/daka@2x.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/test/test",
+        "iconPath": "images/daka@2x.png",
+        "selectedIconPath": "images/daka@2x.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 20000,
+    "downloadFile": 20000
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
+}

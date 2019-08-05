@@ -1,0 +1,17 @@
+<view class="container">
+    <view class="list_box">
+        <view wx:for="{{messagelist}}" wx:key="this" class='box1'>
+            <view class='b_left'>
+                 <image style='width:70rpx;height:70rpx;' src="{{ item.avatar=='' ? '../../images/gui@2x.png' : item.avatar}}" ></image>
+                 <view class='te1'>
+                    <view class='te_name'>{{item.from_name}}</view>
+                    <view wx:if="{{ item.type==1 }}" class='te_co'><text>回复你：</text>{{item.content}}</view>
+                    <view wx:else class='te_co'><text></text>赞了你的回复</view>
+                 </view>
+            </view>
+            <view class='b_right'>
+                <text>{{ item.ctime }}</text>
+            </view>
+        </view>
+    </view>
+</view>

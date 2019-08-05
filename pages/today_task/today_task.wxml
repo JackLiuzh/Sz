@@ -1,0 +1,128 @@
+<view class="container">
+    <view class='top_set'>
+        <view class='text_left'>
+            <view class='text1'>今日任务</view>
+            <view class='text2'>已完成任务<text class="te_color">{{ already_num }}</text>/<text>{{ count }}</text>个</view>
+        </view>
+        <view class='set_right'>
+             <navigator url="../../pages/message/message">
+             <view class="box1">
+                 <image style="width:36rpx;height:36rpx;" src='../../images/xiaoxi@2x.png'></image>
+             </view>
+             </navigator>
+             <navigator url='../../pages/rili/rili'>
+             <view class="box1">
+                 <image style="width:36rpx;height:36rpx;" src='../../images/rili@2x.png'></image>
+             </view>
+             </navigator>
+             <view data-id="dd" bindtap='createNewImg' class="box1">
+                 <image style="width:36rpx;height:36rpx;" src='../../images/fenxiang@2x.png'></image>
+             </view>
+        </view>
+    </view>
+    <view wx:if="{{ zhibo_data.isshow }}" class='middle_zhibo'>
+        <view class="left_box">
+            <view class='m_top'>
+                <image style="width:24rpx;height:26rpx;" src='../../images/zhibo@2x.png'></image>
+                <text class='m_text1'>【直播】{{ zhibo_data.info.video_title}}</text>
+            </view>
+            <view class='m_bottom'>
+                <text class='m_text2'>{{zhibo_data.time}}</text>
+            </view>
+        </view>
+        <view bindtap='golive' class='right_box'>
+            <view class='but1'>进入直播</view>
+        </view>
+    </view>
+
+    <view wx:else class='tishixinxi'>坚持每天做任务，一个周期结束后可获取课程资料包呦</view>
+
+    <view class='bottom_content'>
+        <view wx:for="{{complete_list}}" wx:key="this" class="box1" >
+            <view class='b_top'>
+                <view  style='flex:1;' class="b_t_left" >
+                    <view class='te1' style="color:#AAAAAA">{{item.tname}}</view>
+                    <view class='te2' style="color:#AAAAAA">{{item.task_days}}天任务已结束, 重新添加任务可激活</view>
+                </view>
+            </view>
+            <view class='taskzhouqi' style="color:#AAAAAA;margin-top:10rpx;">任务周期：{{item.tastzhouqi}}</view>
+        </view>
+        <view wx:for="{{list}}" wx:key="this" class="box1" >
+            <view class='b_top'>
+                <view  style='flex:1;' class="b_t_left" data-user_task_id="{{ item.id }}"  data-task_name="{{ item.tname }}" data-type="{{item.type}}" catchtap='today_goto'>
+                    <view class='te1 {{item.already_total==item.today_tot ? "te_done" : " "}}'>{{item.tname}}</view>
+                    <view class='te2'>{{item.already_total}}/{{item.today_tot}}题</view>
+                </view>
+                <view  class='b_t_right'>
+                    <navigator  url="/pages/make_plan/make_plan?user_task_id={{item.id}}&name={{item.tname}}">
+                        <image style='width:30rpx;height:30rpx;' src="../../images/gengduo@2x.png"></image>
+                    </navigator>
+                </view>
+                <view wx:if="{{ item.already_total==item.today_tot }}" class='done_img'>
+                    <image style="width:100rpx;height:100rpx;" src='../../images/yiwancheng@2x.png'></image>
+                </view>
+            </view>
+            <view class='b_bom'>
+                 <view class="bar">
+                   <wxs module="m1">
+                       var ratetrans = function (al,tot) {
+                          console.log(al)
+                          console.log(tot)
+                          var numd =parseInt((al / tot)*100);
+                          return 'width:'+ numd + '%';
+                       }
+                       module.exports.ratetrans = ratetrans;
+                   </wxs>
+                   <view  class='bar_fu' style='{{m1.ratetrans(item.already_total,item.today_tot)}}'></view>
+                 </view>
+            </view>
+            <view class='taskzhouqi'>任务周期：{{item.tastzhouqi}}</view>
+        </view>
+    </view>
+    <view class='botom_but'>
+        <navigator hover-class="none" url="../../pages/add_task/add_task"><view class='but'><image style='width:53rpx;height:53rpx;' src='../../images/tianjia@2x.png'></image></view></navigator>
+    </view>
+    <!-- 海报开始 -->
+    <view class='imagePathBox' hidden="{{maskHidden == false}}">
+      <image src="{{imagePath}}" class='shengcheng'  style="" ></image>
+      <button class='guanbi' bindtap='closedaka' style="">关闭</button>
+      <button class='baocun' bindtap='baocun'>保存图片</button>
+    </view>
+    <view hidden="{{maskHidden == false}}" class="mask"></view> 
+    <view hidden="{{ maskHidden == false }}" class="canvas-box">
+        <canvas style='width:{{ width  }}px;height: {{isIPX? height+64:height + 64}}px;position:fixed;top:9999px;' canvas-id="mycanvas"/>
+    </view>
+    <!-- 海报结束 -->
+</view>
+<!-- <view class='kefu_but'>
+   <view class='b_img'>
+      <image style='width:149rpx;height:111rpx;' src='../../images/kefu@2x.png'></image>
+      <button class='kefu' open-type='contact' bindcontact="handleContact">ff</button>
+   </view>
+</view> -->
+
+<!-- 任务完成弹窗开始 -->
+<view class="bg_class" bindtap='hideview' catchtouchmove="ture" style='display:{{display}}'></view>
+<view class='show_class' bindtap='hideview' catchtouchmove="ture" style='display:{{display}}'>
+    <view class='lipin_line'></view>
+    <view class='textbox'>
+        <view class='te_tt'>恭喜你，{{accomplish_days}}天刷题任务已完成</view>
+        <view class='ke_fu'>点击客服,回复消息xxx可领取奖品呦</view>
+        <view class='but_but'>
+            <button bindtap='hideview' class='but_self' type="warn">我知道了</button>
+        </view>
+    </view>
+</view> 
+<view class='image_box' catchtouchmove="ture" style='display:{{display}}'>
+        <image style="width:600rpx;height:295rpx;" src="../../images/lipin@2x.png"></image>
+</view>
+<!-- 任务完成弹窗结束 -->
+
+<!-- 客服开始 -->
+<view class='kefu_but'>
+   <view class='b_img'>
+      <image style='width:149rpx;height:111rpx;' src='../../images/kefu@2x.png'></image>
+      <button class='kefu' open-type='contact' bindcontact="handleContact">ff</button>
+   </view>
+</view>
+<!-- 客服结束 -->

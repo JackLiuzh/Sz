@@ -1,0 +1,42 @@
+.list_box{
+   
+}
+.list_box .box1{
+  padding: 0 30rpx;
+  display: flex;
+  height: 140rpx;
+  background-color: #ffffff;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #DADADA;
+}
+.list_box .box1 .b_left{
+  font-size: 32rpx;
+  color: #303030;
+}
+.list_box .box1 .b_left .bl_name{
+  font-weight: bold;
+}
+.list_box .box1 .b_left .bl_introduce{
+  margin-top: 10rpx;
+  font-size:24rpx;
+  color: #AAAAAA;
+}
+.list_box .box1 .b_right {
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 46rpx;
+  color: #FFFFFF;
+}
+.list_box .box1 .b_right .br_but_cancel{
+   width: 108rpx;
+   height: 46rpx;
+   border-radius: 50rpx;
+   background-color: #D7D8D9;
+}
+.list_box .box1 .b_right .br_but_add{
+   width: 108rpx;
+   height: 46rpx;
+   border-radius: 50rpx;
+   background-color: #E65557;
+}

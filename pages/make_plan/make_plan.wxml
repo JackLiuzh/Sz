@@ -1,0 +1,65 @@
+<view class="container">
+   <view  class='tishixinxi'>调整任务设置第二天生效</view>
+   <view class="make_plan">
+       <view class='ti1'>制定目标</view>
+       <view class='list_box'>
+           <view bindtap='cycle' class='box1'>
+               <view class='b_l'> 
+                  <text>坚持周期</text>              
+               </view>
+               <view class='b_r'> 
+                  <text>{{info.days}}天</text>
+                  <image style='width:56rpx;height:56rpx;' src="../../images/xiayiye@2x.png"></image>          
+               </view>
+           </view>
+           <view bindtap='navto' class='box1'>
+               <view class='b_l'> 
+                  <text>打卡频率</text>              
+               </view>
+               <view class='b_r'> 
+                  <text>{{info.frequency_name}}</text>
+                  <image style='width:56rpx;height:56rpx;' src="../../images/xiayiye@2x.png"></image>          
+               </view>
+           </view>
+           <view wx:if="{{info.type !=3}}" bindtap='pushnum' class='box1'>
+               <view class='b_l'> 
+                  <text>推送数量</text>              
+               </view>
+               <view class='b_r'> 
+                  <text>{{info.num}}个</text>
+                  <image style='width:56rpx;height:56rpx;' src="../../images/xiayiye@2x.png"></image>          
+               </view>
+           </view>
+       </view>
+   </view>
+   <view  wx:if="{{info.type !=3}}" class='ti1'>推送范围</view>
+   <view  wx:if="{{info.type !=3}}" class="content">
+      <view  wx:for="{{ category }}" wx:key="this" wx:for-item="parentItem" wx:for-index="parentIndex" class="list_box">
+           <view class="list">
+               <view  class="list_name_box">
+                    <view catchtap="listTap" data-parentindex="{{parentIndex}}" class="name_box_left">
+                      <image wx:if="{{ parentItem.show }}" style="width:30rpx;height:30rpx;" src="../../images/shouqi@2x.png" mode="aspectFill"/>
+                      <image wx:else style="width:30rpx;height:30rpx;" src="../../images/zhankai@2x.png" mode="aspectFill"/>
+                      <text class="">{{ parentItem.catname }} <text style='color:#888888;font-weight:normal;font-size:26rpx;'>({{parentItem.tot}})</text></text>
+                    </view>
+                    <view bindtap='allaction' data-index="{{parentIndex}}" class="name_box_right">
+                        <image wx:if="{{ parentItem.ischecked==1 }}" style='width:40rpx;height:40rpx;' src='../../images/xuanzhong@2x.png'></image>
+                        <image wx:else style='width:40rpx;height:40rpx;' src='../../images/weixuanzhong@2x.png'></image>
+                    </view>
+               </view>
+               <view wx:if="{{ parentItem.show }}" wx:for="{{ parentItem.data }}" wx:key="this" class="list_item_box">
+                    <view class="list_item">
+                        <view class="list_item_name_box">
+                          <text>{{ item.catname }}  <text style='color:#888888;font-weight:normal;font-size:26rpx;'>({{item.tot}})</text></text>
+                        </view>
+                        <view bindtap='isxuanzhong' data-parentIndex="{{ parentIndex }}" data-index="{{ index }}" class="name_box_right">
+                            <image wx:if="{{item.ischecked==1}}" style='width:40rpx;height:40rpx;' src='../../images/xuanzhong@2x.png'></image>
+                            <image wx:else style='width:40rpx;height:40rpx;' src='../../images/weixuanzhong@2x.png'></image>
+                        </view>
+                    </view>
+               </view>
+           </view>
+      </view>
+
+   </view>
+</view>

@@ -1,0 +1,14 @@
+<view class="container">
+    <view class='list_box'>
+        <view wx:for="{{list}}" wx:key="this" class='box1'>
+           <view class='b_left'>
+              <view class='bl_name'>{{item.name}}</view>
+              <view class='bl_introduce'>{{item.introduce}}</view>
+           </view>
+           <view class='b_right'>
+               <view bindtap='cancel' data-taskid="{{item.id}}" data-user_task_id="{{item.user_task_id}}" wx:if="{{item.state==1}}" class='br_but_cancel'>取消</view>
+               <view bindtap='add' data-user_task_id="{{item.user_task_id}}" data-taskid="{{item.id}}" wx:if="{{item.state==0}}" class='br_but_add'>添加</view>
+           </view>
+        </view>
+    </view>
+</view>

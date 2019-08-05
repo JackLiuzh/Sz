@@ -1,0 +1,44 @@
+.container{
+   position: absolute;
+   width:100%;
+   height: 100%;
+   justify-content: space-around;
+   align-items: center;
+}
+.container .top .shang{
+   display: flex;
+   align-items: center;
+   font-weight: bold;
+   color: #333;
+   font-size: 50rpx;
+   font-weight: bold;
+  
+}
+.container .top .shang .title{
+  padding-left: 10rpx;
+}
+.container .top .day{
+   font-size: 70rpx;
+   color:#EA5959;
+   font-weight: bold;
+   line-height: 98rpx;
+   height: 98rpx;
+}
+.container .top .mei{
+  text-align: center;
+  margin-top:32rpx;
+}
+.container .top .mei text{
+   font-size: 40rpx;
+   color: #333;
+}
+.container .middle image{
+   width:400rpx;
+   height:319rpx;
+}
+.container .bottom{
+   width:80%;
+}
+.container .bottom button{
+  
+}

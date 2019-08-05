@@ -1,0 +1,33 @@
+    <view class='bottom_content'>
+        <view wx:for="{{list}}" wx:key="this" class="box1">
+            <view class='b_top'>
+                <view class="b_t_left" style='flex:1;' data-user_task_id="{{ item.id }}" data-task_name="{{ item.tname }}" data-currrenttime="{{currenttime}}"  data-type="{{item.type}}" catchtap='today_goto'>
+                    <view class='te1 {{item.already_total==item.today_tot ? "te_done" : " "}}'>{{item.tname}}</view>
+                    <view class='te2'>{{item.already_total}}/{{item.today_tot}}题</view>
+                </view>
+                <view style="display:none;" class='b_t_right'>
+                    <navigator  url="/pages/make_plan/make_plan?user_task_id={{item.user_task_id}}&name={{item.tname}}&currentime={{currentime}}">
+                        <image style='width:30rpx;height:30rpx;' src="../../images/gengduo@2x.png"></image>
+                    </navigator>
+                </view>
+                <view wx:if="{{ item.already_total==item.today_tot }}" class='done_img'>
+                    <image style="width:100rpx;height:100rpx;" src='../../images/yiwancheng@2x.png'></image>
+                </view>
+            </view>
+            <view class='b_bom'>
+                 <view class="bar">
+                   <wxs module="m1">
+                       var ratetrans = function (al,tot) {
+                          console.log(al)
+                          console.log(tot)
+                          var numd =parseInt((al / tot)*100);
+                          return 'width:'+ numd + '%';
+                       }
+                       module.exports.ratetrans = ratetrans;
+                   </wxs>
+                   <view  class='bar_fu' style='{{m1.ratetrans(item.already_total,item.today_tot)}}'></view>
+                 </view>
+            </view>
+        </view>
+    </view>
+ 

@@ -1,0 +1,32 @@
+.box1{
+  display: flex;
+  justify-content: space-between;
+  min-height: 142rpx;
+  background-color: #fff;
+  align-items: center;
+  padding:0rpx 30rpx;
+  border-top: 1rpx solid #DADADA;
+}
+.box1 .b_left{
+  display: flex;
+}
+.box1 .b_left .te1{
+  margin-left: 24rpx;
+}
+.box1 .b_left .te1 .te_name{
+  color: #666666;
+  font-size: 30rpx;
+}
+.box1 .b_left .te1 .te_co{
+  color: #303030;
+  font-size: 28rpx;
+  margin-top: 10rpx;
+}
+.box1 .b_left .te1 .te_co text{
+  color: #999999;
+  
+}
+.box1 .b_right{
+  color: #999999;
+  font-size: 24rpx;
+}

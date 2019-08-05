@@ -1,0 +1,94 @@
+<import src="../../components/wxParse/wxParse.wxml"/>
+<view class="container" >
+    <view class="box-swiper">
+        <swiper style="height: {{clientHeight?clientHeight+'px':'auto'}}"  class=''  current="{{currentTab}}"  duration="200" bindchange="swiperchange">
+            <view class="swiper-box">
+                <swiper-item wx:for="{{ list }}" wx:key="key" style="height: {{clientHeight?clientHeight+'px':'auto'}}" bindscrolltolower="scrollbot">
+                   <scroll-view scroll-y="true" style="height:{{clientHeight?clientHeight+'px':'auto'}}">
+                      <view class="box-top">
+                          <view class="top-type">
+                             <view class="type-nu">
+                                 <text class=".nu-red">{{ index+1 }}</text>
+                                 <text >/</text>
+                                 <text>{{ list.length }}</text>
+                             </view>
+                             <view class="type-qname">
+                                  <text>单选题</text>
+                             </view>
+                          </view>
+                          <view style="display:flex;">
+                                 <view wx:if="{{ currentpage=='cuoti' }}" data-current="{{ currentTab }}" data-id="{{ item.type_id_optionid }}" bindtap='delquestion' style="margin-right:50rpx;">
+                                     <image style="width:36rpx;height:36rpx;"  src="../../images/shanchu.png"/>
+                                </view>
+                                <view wx:if="{{ item.iscollect == 0 }}" data-type="1"  data-current="{{ currentTab }}" data-id="{{ item.id }}" bindtap='shoucangbut' class="top-image">
+                                  <image src="../../images/shoucang@2x.png"/>
+                                </view>
+                                <view wx:if="{{ item.iscollect == 1 }}" data-type="0" data-current="{{ currentTab }}" data-id="{{ item.id }}" bindtap='shoucangbut' class="top-image">
+                                    <image src="../../images/yishoucang@2x.png"/>
+                                </view>
+                          </view>
+                          
+                      </view>
+                      <view class="box-title">
+                          <view class="title-content">
+                              
+                               <template is="wxParse" data="{{wxParseData: replyTemArray[index] }}"/>
+                          </view>
+                          <view class="title-options">
+                              <view data-ability_id="{{ item.ability_id }}" data-xuanxiang="{{ 0 }}" data-answer="{{ item.answer }}" data-id="{{ item.id }}"  data-option="{{ item.a }}" data-xiang="a" bindtap="{{ item.xuanzhong ? '' : 'choosed' }}"  class="options-items"> 
+                                  <text style="vertical-align:top;" wx:if="{{ (item.xuanzhong == 'a') && (item.iscollect== 1) }}" class="items-zimu correctclass">A</text>
+                                  <text style="vertical-align:top;" wx:if="{{ (item.xuanzhong == 'a') && (item.iscollect== 0) }}" class="items-zimu cuowuclass">A</text>
+                                  <text style="vertical-align:top;" wx:if="{{ item.xuanzhong !='a' }}" class="items-zimu">A</text>
+                                  <rich-text  nodes="{{ item.a }}" style="display:inline-block;width:86%;line-height:64rpx;vertical-align:top;"></rich-text>
+                              </view>
+                              <view data-ability_id="{{ item.ability_id }}" data-xiang="b" data-xuanxiang="{{ 1 }}" data-answer="{{ item.answer }}" data-id="{{ item.id }}" data-option="{{ item.b }}" bindtap="{{ item.xuanzhong ? '' : 'choosed' }}" class="options-items">
+                                  <text style="vertical-align:top;" wx:if="{{ item.xuanzhong == 'b' && item.iscollect== 1 }}" class="items-zimu correctclass">B</text>
+                                  <text style="vertical-align:top;" wx:if="{{ item.xuanzhong == 'b' && item.iscollect== 0 }}" class="items-zimu cuowuclass">B</text>
+                                  <text style="vertical-align:top;" wx:if="{{ item.xuanzhong !='b' }}" class="items-zimu">B</text>
+                                  <rich-text  nodes="{{ item.b }}" style="display:inline-block;width:86%;line-height:64rpx;vertical-align:top;"></rich-text>
+                              </view>     
+                              <view data-ability_id="{{ item.ability_id }}" data-xiang="c" data-xuanxiang="{{ 2 }}" data-answer="{{ item.answer }}" data-id="{{ item.id }}" data-option="{{ item.c }}" bindtap="{{ item.xuanzhong ? '' : 'choosed' }}" class="options-items">
+                                  <text style="vertical-align:top;" wx:if="{{ item.xuanzhong == 'c' && item.iscollect==1 }}" class="items-zimu correctclass">C</text>
+                                  <text style="vertical-align:top;" wx:if="{{ item.xuanzhong == 'c' && item.iscollect==0 }}" class="items-zimu cuowuclass">C</text>
+                                  <text style="vertical-align:top;" wx:if="{{ item.xuanzhong !='c' }}" class="items-zimu">C</text>
+                                  <rich-text  nodes="{{ item.c }}" style="display:inline-block;width:86%;line-height:64rpx;vertical-align:top;"></rich-text>
+                              </view>
+                              <view data-ability_id="{{ item.ability_id }}" data-xiang="d" data-xuanxiang="{{ 3 }}" data-answer="{{ item.answer }}" data-id="{{ item.id }}" data-option="{{ item.d }}" bindtap="{{ item.xuanzhong ? '' : 'choosed' }}" class="options-items">
+                                  <text style="vertical-align:top;" wx:if="{{ (item.xuanzhong == 'd') && (item.iscollect== 1) }}" class="items-zimu  correctclass">D</text>
+                                  <text style="vertical-align:top;" wx:if="{{ item.xuanzhong == 'd' && item.iscollect==0 }}" class="items-zimu cuowuclass">D</text>
+                                  <text style="vertical-align:top;" wx:if="{{ item.xuanzhong !='d' }}" class="items-zimu">D</text>
+                                  <rich-text  nodes="{{ item.d }}" style="display:inline-block;width:86%;line-height:64rpx;vertical-align:top;"></rich-text>
+                              </view>
+                          </view>
+                      </view>
+                      <view class="box-line"></view>
+                      <view wx:if="{{ item.xuanzhong }}" class="box-answer">
+                           <view class="answer-only">
+                              <text>答案：</text>
+                              <text wx:if="{{ item.answer==0 }}" class="only-blue">A</text>
+                              <text wx:elif="{{ item.answer==1 }}" class="only-blue">B</text>
+                              <text wx:elif="{{ item.answer==2 }}" class="only-blue">C</text>
+                              <text wx:elif="{{ item.answer==3 }}" class="only-blue">D</text>
+                              <text wx:else class="only-blue">{{ item.answer }}</text>
+                           </view>
+                           <view class="answer-kaodian">
+                               <text class="an-title">考点</text>
+                               <rich-text class="an-content" nodes="{{ item.ability }}"></rich-text>
+                           </view>
+                           <view class="answer-kaodian">
+                               <text class="an-title">解析</text>
+                               <template is="wxParse" data="{{wxParseData: replyTemArrayNote[index] }}"/>
+                               
+                           </view>
+                           <view class="answer-kaodian">
+                               <text class="an-title">来源</text>
+                               <text class="an-content">{{ item.library }}</text>
+                           </view>
+                      </view>
+                </scroll-view>
+            </swiper-item>
+          
+          </view>
+        </swiper>
+    </view>
+</view>

@@ -1,0 +1,22 @@
+<view class="container">
+     <view class="head_text">
+        <view class='te1'>初来乍到，请选择你的任务</view>
+        <view class="te2">制定目标，早日成功上岸！</view>
+     </view>
+     <view class="option_list">
+         <view wx:for="{{ task }}" wx:key="{{ key }}" class="option_box">
+               <view class="text_box">
+                  <view class="text1">{{ item.name }}</view>
+                  <view class="text2">{{ item.introduce}}</view>
+               </view>
+               <view  class="button_box">
+                   <view bindtap="selectRep"  data-selectIndex="{{index}}" class="botton1" style='width:80rpx;height:80rpx;text-align:center;'>
+                       <image style='width:40rpx;height:40rpx;' src="{{item.sureid? hasSelect : noSelect}}"  ></image>
+                   </view> 
+               </view>
+         </view>
+     </view>
+     <view class="bottom_but">
+          <button bindtap='xcxSubmitTask' class='but1' disabled = "{{disabled}}" >立即进入</button>
+     </view>
+</view>

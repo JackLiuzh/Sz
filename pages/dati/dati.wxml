@@ -1,0 +1,190 @@
+<!-- <import src="../../components/wxParse/wxParse.wxml"/> -->
+<view class="container" >
+    <view class="box-swiper">
+        <swiper style="height: {{clientHeight?clientHeight+'px':'auto'}}"  current="{{currentTab}}"  duration="500" bindchange="swiperchangefinish" bindanimationfinish ="swiperchange" >
+            <view class="swiper-box">
+                <swiper-item wx:for="{{ questions }}" wx:key="this"  style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+                   <scroll-view scroll-y="true" style="height:{{clientHeight?clientHeight+'px':'auto'}}">
+                      <view class="box-top">
+                          <view class="top-type">
+                             <view class="type-qname">
+                                  <text>{{ item.categorypid_name }}</text>
+                             </view>
+                          </view>
+                          <view class="top-type">
+                             <view class="type-nu">
+                                 <text class=".nu-red">{{ currentTab + 1 }}</text>
+                                 <text >/</text>
+                                 <text>{{ total_nums }}</text>
+                             </view>
+                             <view bindtap='godatika' class="datika">
+                                  答题卡
+                             </view>
+                          </view>
+                      </view>
+                      <view class="box-title">
+                          <view class="title-content">
+                              <!-- <template is="wxParse" data="{{wxParseData: replyTemArray[index] }}"/> -->
+                              <rich-text nodes="{{ item.title }}" class='rich-text'></rich-text>
+                          </view>
+                          <view class='cai_material_class' wx:if="{{item.material}}">
+                               <view wx:for="{{item.material}}" wx:key="this" wx:for-index="cai_index" wx:for-item="cai_item" class='cai_box1'>
+                                    <rich-text nodes="{{ cai_item.content }}" class='rich-text'></rich-text>
+                               </view>
+                          </view>
+                          <view class="title-options">
+                              <view data-xuanxiang="A" data-pindex="{{index}}" class="options-items" bindtap="{{item.isdo ? '' : 'choosed'}}">
+                                  <text wx:if="{{item.a_an == 1}}" class="items-zimu correctclass">A</text>
+                                  <text wx:if="{{item.a_an == 0}}" class="items-zimu cuowuclass">A</text>
+                                  <text wx:if="{{ (item.a_an == 2) }}" class="items-zimu">A</text> 
+                                  <rich-text nodes="{{ item.a }}" class='rich-text'></rich-text>
+                              </view>
+                              <view data-xuanxiang="B" data-pindex="{{index}}"  bindtap="{{item.isdo ? '' : 'choosed'}}" class="options-items">
+                                  <text wx:if="{{item.b_an == 1}}" class="items-zimu correctclass">B</text>
+                                  <text wx:if="{{item.b_an == 0}}" class="items-zimu cuowuclass">B</text>
+                                  <text wx:if="{{ (item.b_an == 2) }}" class="items-zimu">B</text> 
+                                  <rich-text nodes="{{ item.b }}" class='rich-text'  ></rich-text>
+                              </view>     
+                              <view data-xuanxiang="C" data-pindex="{{index}}" bindtap="{{item.isdo ? '' : 'choosed'}}" class="options-items">
+                                  <text wx:if="{{item.c_an == 1}}" class="items-zimu correctclass">C</text>
+                                  <text wx:if="{{item.c_an == 0}}" class="items-zimu cuowuclass">C</text>
+                                  <text wx:if="{{ (item.c_an == 2) }}" class="items-zimu">C</text>
+                                  <rich-text nodes="{{ item.c }}" class='rich-text' ></rich-text>
+                              </view>
+                              <view data-xuanxiang="D" data-pindex="{{index}}" bindtap="{{item.isdo ? '' : 'choosed'}}" class="options-items">
+                                  <text wx:if="{{item.d_an == 1}}" class="items-zimu correctclass">D</text>
+                                  <text wx:if="{{item.d_an == 0}}" class="items-zimu cuowuclass">D</text>
+                                  <text wx:if="{{ (item.d_an == 2) }}" class="items-zimu">D</text>
+                                  <rich-text nodes="{{ item.d }}" class='rich-text' ></rich-text>
+                              </view>
+                          </view>
+                      </view>
+                      <view wx:if="{{item.isdo || item.user_answer }}" class="box-line"></view>
+                      <view wx:if="{{item.isdo || item.user_answer}}" class="box-answer">
+                           <view class="answer-only">
+                              <view class='an-box1'>
+                                  <view class="box1-top">答题</view>
+                                  <view wx:if="{{item.iswrong ==1}}" class='box1-botg'>正确</view>
+                                  <view wx:if="{{item.iswrong==0}}" class='box1-botgr'>错误</view>
+                              </view>
+                              <view class='an-box1'>
+                                  <view class="box1-top">答题用时</view>
+                                  <view class='box1-other'>{{item.duration}}<text>s</text></view>
+                              </view>
+                              <view class='an-box1'>
+                                  <view class="box1-top">平台均用时</view>
+                                  <view class='box1-other'>{{ item.average_duration }}<text>s</text></view>
+                              </view>
+                              <view class='an-box1'>
+                                  <view class="box1-top">正确率</view>
+                                  <view class='box1-other'>{{ item.rote }}</view>
+                              </view>
+                           </view>
+                           <view class="answer-kaodian">
+                                <view class='kao-top'>
+                                    <view class='top-l'>
+                                        <text class='l-icon'></text>
+                                        <text class='l-text'>试题解析</text>
+                                    </view>
+                                    <view class='top-r'>
+                                        <image style="width:56rpx;height:56rpx;"   data-index="{{ index }}" data-show="0"  hidden='{{item.isnoteshow == true}}' bindtap="noteshow"  src="../../images/shou@2x.png"></image>
+                                        <image style="width:56rpx;height:56rpx;  transform:rotate(180deg); " src="../../images/shou@2x.png"  data-index="{{ index }}" data-show="1" bindtap="noteshow" hidden='{{item.isnoteshow == false}}'></image>
+                                    </view>
+                                </view>
+                                <view class='kao-bot' hidden='{{ item.isnoteshow }}'>
+                                    <!-- <template is="wxParse" data="{{wxParseData: replyTemArrayNote[index] }}"/> -->
+                                    <rich-text nodes="{{ item.note }}"  class='rich-text'></rich-text>
+                                </view>
+                           </view>
+                           <view class="answer-kaodian">
+                                <view class='kao-top'>
+                                    <view class='top-l'>
+                                        <text class='l-icon'></text>
+                                        <text class='l-text'>试题考点</text>
+                                    </view>
+                                    <view class='top-r'>
+                                         <image style="width:56rpx;height:56rpx;"   data-index="{{ index }}" data-show="0"  hidden='{{item.iskaoshow == true}}' bindtap="kaoshow"  src="../../images/shou@2x.png"></image>
+                                        <image style="width:56rpx;height:56rpx;  transform:rotate(180deg); " src="../../images/shou@2x.png"  data-index="{{ index }}" data-show="1" bindtap="kaoshow" hidden='{{item.iskaoshow == false}}'></image>
+                                    </view>
+                                </view>
+                                <view class='kao-bot' style="margin-bottom:25rpx;">
+                                    <view hidden='{{ item.iskaoshow }}'>
+                                      <view style='display:flex;'>
+                                          <view wx:for="{{ item.kaodian }}" wx:key="key" wx:for-index="kindex" wx:for-item="pitem" style="margin-right:2rpx;" class='bot-label'>{{pitem.name}}</view>
+                                      </view>
+                                    </view>
+                                    <view wx:if="{{ item.video_url }}" class='bot-video'>
+                                        <!-- <image style='width:690rpx;' src="../../images/test.png"></image> -->
+                                        <video id="{{index + 'video'}}" style="width:100%;"  src="http://soupu.oss-cn-shanghai.aliyuncs.com/videos/%E7%AD%89%E4%BD%A0%E7%AD%89%E4%BA%86%E9%82%A3%E4%B9%88%E4%B9%85.mp4" bindtap='play'></video>
+                                    </view>
+                                </view>
+                           </view>
+                      </view>
+                      <view wx:if="{{item.isdo || item.user_answer}}" class='bot-line'></view>
+                      <view wx:if="{{ item.comment_data && (item.isdo || item.user_answer) }}" class="box-comment ">
+                            <view class='kao-top'>
+                                <view class='top-l'>
+                                    <text class='l-icon'></text>
+                                    <text class='l-text'>全部点评</text>
+                                </view>
+                            </view>
+                            <view class='comment-content'>
+                                <view wx:for="{{ item.comment_data }}" wx:key="key" wx:for-index="commentindex" wx:for-item="commentitem" class='con-con-box1'>
+                                    <view class='con-l'>
+                                        <image wx:if="{{commentitem.avatar}}"  class='conl-img' src="{{commentitem.avatar}}"></image>
+                                        <image wx:else  class='conl-img' src="../../images/test.png"></image>
+                                    </view>
+                                    <view class='con-r'>
+                                        <view class='conr-name'>{{ commentitem.from_name }}</view>
+                                        <view class='conr-con'>{{ commentitem.content }}</view>
+                                        <view class='conr-bot'>
+                                            <text class='conrb-t'>{{ commentitem.ctime }}</text>
+                                            <view class='conrn-img'>
+                                                <image  data-comment_id="{{ commentitem.id }}" data-index="{{ index }}" bindtap='replay_fun' class='conrni-i'  src="../../images/pinglun@2x.png"></image>
+                                                <image wx:if="{{commentitem.user_thumbs_up == 0}}" data-index="{{index}}" data-cindex="{{commentindex}}" data-comment_id="{{ commentitem.id }}" bindtap='thume_fun' class='conrni-id' style='width:36rpx;height:36rpx;' src="../../images/zan@2x.png"></image>
+                                                <image wx:else data-index="{{index}}" data-cindex="{{commentindex}}" data-comment_id="{{ commentitem.id }}" bindtap='thumeconcer_fun' class='conrni-id' style='width:36rpx;height:36rpx;' src="../../images/zanliang@2x.png"></image>
+                                                <text class='conrn-i-nu'>{{ commentitem.count_thumbs_up }}</text>
+                                            </view>                                            
+                                        </view>
+                                        <view class='reply-box'>
+                                                <view wx:for="{{ commentitem.reply_data }}" wx:key="this" wx:for-index="replyindex" wx:for-item="replyitem" class='reb-box1'>
+                                                    <text class='rebb-name'>{{ replyitem.from_name }}:</text>
+                                                    <text class='rebb-con'>{{ replyitem.reply_msg }}</text>
+                                                </view>
+                                                <view style="display:none;" class='reb-more'>查看全部40条回复>></view>
+                                        </view>
+                                    </view>
+                                </view>      
+                            </view>
+                      </view>
+                      <view wx:else style='height:120rpx;'></view>
+                      <!-- 评论盒子 -->
+                      <view class="cf-bg" catchtap="cemojiCfBg"  style="display:{{cfBg ? 'block' : 'none'}}"></view>
+                      <view wx:if="{{item.isdo}}"  class='comment-fixed'>
+                           <view class='cf-box'>
+                              <view style='display:none;' class='emoji' catchtap='emojiShowHide'>
+                                 <image style="width:60rpx;height:60rpx;" src='../../images/biaoqing@2x.png'></image>
+                              </view>
+                              <text class='cf-content' data-qindex="{{ index }}" wx:if= "{{isshowtext == false && content !=''}}" bindtap='onshowtexarear' >{{ content }}</text>
+                              <text class='cf-content' data-qindex="{{ index }}" wx:if= "{{isshowtext == false && content ==''}}" bindtap='onshowtexarear' >我也说两句...</text>
+                              <textarea   class='cf-content' data-qindex="{{ index }}" wx:if = "{{ isshowtext == true }}" auto-focus= "{{item.isfocus}}"  fixed='true' bindfocus='textAreaFocus'  bindblur='textAreaBlur' cursor-spacing="20" value="{{ content }}" placeholder='我也说两句...'/>
+                              <text class='cf-send touch-active' data-qindex="{{ index }}" data-questionid="{{  item.id }}" bindtap='send'>发送</text>
+                           </view>
+                           <view  class="emoji-box {{ isShow ?  'emoji-move-in' : 'emoji-move-out'}} {{isLoad ? 'no-emoji-move' : ''}}" >
+                                <scroll-view  scroll-y="true" bindscroll="emojiScroll" style="height:400rpx;">
+                                     <block wx:for="{{ emojis }}" wx:for-item="e" wx:key='this'>
+                                         <view class='emoji-cell' >
+                                             <!-- <image class='cell-image' catchtap='emojiChoose' src="http://soupu.oss-cn-shanghai.aliyuncs.com/emoji/{{e.emoji}}.png" data-emoji="{{ e.char }}" data-oxf="{{ e.emoji }}"></image> -->
+                                         </view>
+                                     </block>
+                                </scroll-view>
+                           </view>
+                      </view>
+                      <!-- 评论盒子结束 -->
+                </scroll-view>
+            </swiper-item>
+          </view>
+        </swiper>
+    </view>
+</view>
+

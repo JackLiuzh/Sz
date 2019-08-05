@@ -1,0 +1,7 @@
+{
+  "usingComponents":{
+     "calendar":"/components/calendar/calendar",
+     "component-task":"/components/task/task"
+  },
+  "navigationBarTitleText": "打卡日历"
+}

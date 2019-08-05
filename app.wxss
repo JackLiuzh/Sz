@@ -1,0 +1,14 @@
+/**app.wxss**/
+
+@import "/components/wxParse/wxParse.wxss";
+@import "/components/wxParse/prettify.wxss";
+page {
+  width:100%;
+  min-height:100%;
+  background-color: #F3F4F5;
+  font-family: -apple-system-font, 'Helvetica Neue', Helvetica, 'Microsoft YaHei', sans-serif;
+}
+.container {
+   display: flex;
+   flex-direction: column;
+}

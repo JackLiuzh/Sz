@@ -1,0 +1,134 @@
+/* pages/dati/dati.wxss */
+page{
+  background-color:white;
+}
+.container{
+  
+}
+.box-top {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   height: 68rpx;
+   background-color: #F3F4F5;
+   padding:0 29rpx;
+}
+.box-top .top-type{
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+}
+.box-top .top-type .type-nu {
+   display: flex;
+   align-items: center;
+   font-size:24rpx;
+   margin-right:14rpx;
+}
+.box-top .top-type .type-nu .nu-red{
+  color:#EA5959;
+}
+.box-top .top-type .type-qname {
+    font-size:24rpx;
+}
+
+.box-top .top-image{
+
+}
+.box-top .top-image image{
+    width:36rpx;
+    height:36rpx;
+}
+
+.box-swiper{
+   display: flex;
+   flex-direction: column;
+   
+   background-color:#fff;
+}
+.box-swiper .swiper-box{
+  display: flex;
+  flex-direction: column;
+}
+.box-swiper .swiper-box .box-title{
+  display: flex;
+  flex-direction: column;
+  padding:0 29rpx;
+}
+.box-swiper .swiper-box .box-title .title-content{
+  padding:26rpx 0;
+  font-size: 32rpx;
+  color:#333333;
+  line-height:51rpx;
+}
+.box-swiper .swiper-box .box-title .title-options{
+  display: flex;
+  flex-direction: column;
+}
+.box-swiper .swiper-box .box-title .title-options .options-items{
+  font-size:32rpx;
+  color:#333;
+  display: line-block;
+  line-height: 96rpx;
+}
+.box-swiper .swiper-box .box-title .title-options .options-items .items-zimu{
+  color:#4D7DFE;
+  display: inline-block;
+  text-align: center;
+  width:56rpx;
+  height:56rpx;
+  line-height:56rpx;
+  border:1rpx solid #4D7DFE;
+  border-radius:50%;
+  margin-right:30rpx;
+}
+.box-swiper .swiper-box .box-line{
+  height:16rpx;
+  background-color:#FAFAFA;
+} 
+.box-swiper .swiper-box .box-answer{
+  padding: 0 29rpx;
+}
+.box-swiper .swiper-box .box-answer .answer-only{
+  font-size: 32rpx;
+  color:#333;
+  height:83rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #EFEFEF;
+}
+.box-swiper .swiper-box .box-answer .answer-only .only-blue{
+  color:#16A085;
+  padding-top:8rpx;
+}
+.box-swiper .swiper-box .box-answer .answer-kaodian{
+  display: flex;
+  flex-direction: column;
+}
+.box-swiper .swiper-box .box-answer .answer-kaodian .an-title{
+  font-size: 32rpx;
+  width:90rpx;
+  height:48rpx;
+  background-color: #B3B3B3;
+  color:#FFFFFF;
+  line-height: 48rpx;
+  text-align: center;
+  border-radius: 6rpx;
+  margin-top:28rpx;
+}
+.box-swiper .swiper-box .box-answer .answer-kaodian .an-content{
+  font-size:32rpx;
+  line-height: 52rpx;
+  margin-top:16rpx;
+}
+.cuowuclass {
+   background:#FF7B77;
+   color:#FFFFFF;
+   border:none !important;
+ 
+}
+.correctclass {
+  background:#52CC87;
+  color:#FFFFFF;
+  border:none !important;
+}

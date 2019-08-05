@@ -1,0 +1,35 @@
+<view class="container">
+    <view class='co-box'>
+        <view class='tong'>
+           <text>共{{ total_nums }}题</text>
+           <text>做对：{{ correct_nums }}</text>
+           <text>做错：{{ error_nums }}</text>
+           <text>未做：{{ unzuo_nums }}</text>
+        </view>
+        <view class='ka'>
+           <!-- <view class='kab'>
+               <view class='kaboxright'>1</view>
+           </view>
+           <view class='kab'>
+               <view class='kaboxright'>1</view>
+           </view>
+           <view class='kab'>
+               <view class='kaboxright'>1</view>
+           </view>
+           <view class='kab'>
+               <view class='kaboxwrong'>1</view>
+           </view>
+           <view class='kab'>
+               <view class='kaboxright'>1</view>
+           </view>
+           <view class='kab'>
+               <view class='kaboxright'>1</view>
+           </view> -->
+           <view wx:for="{{ datika }}" wx:key="this"  class='kab'>
+               <view wx:if="{{item.iswrong == 2}}" class='kaboxno'>{{index + 1 }}</view>
+               <view wx:if="{{item.iswrong == 0}}" class='kaboxwrong'>{{index + 1}}</view>
+               <view wx:if="{{item.iswrong == 1}}" class='kaboxright'>{{index + 1}}</view>
+           </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,137 @@
+/* pages/daka/daka.wxss */
+.maintitle{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width:153rpx;
+  background-color: white;
+  height: 60rpx;
+  border-top-right-radius:30rpx;
+  border-bottom-right-radius:30rpx; 
+  align-items: center;
+}
+.maintitle image {
+  width: 26rpx;
+  height:26rpx;
+  margin-right:10rpx;
+}
+.maintitle text {
+  color:black;
+  font-size:26rpx;
+ }
+
+.content{
+  display: flex;
+  flex-direction: column;
+  margin:0 auto;
+  /* margin-top:30rpx; */
+  width:100%;
+  padding:36rpx 30rpx 36rpx 30rpx;
+  box-sizing:border-box;
+  background-color:#fff;
+  /* border-radius: 20rpx; */
+}
+.content .list_box {
+  width:100%;
+}
+.content .list_name_box {
+  display: flex;
+  justify-content: space-between;
+  line-height: 85rpx;
+  border-bottom:1rpx solid #EFEFEF;
+}
+.content .list_name_box .name_box_left{
+  display: flex;
+  align-items: center;
+}
+.content .list_name_box .name_box_left image{
+   width:30rpx;
+   height:30rpx;
+   margin-right:20rpx;
+}
+.content .list_name_box .name_box_left text {
+   font-size: 32rpx;
+   font-weight: bold;
+}
+.content .list_name_box .name_box_right text {
+  font-size:24rpx;
+}
+.content .list_name_box .name_box_right text.redcolor{
+  color: #EA5959;
+}
+
+.content .list_item_box .list_item {
+  line-height: 85rpx;
+  border-bottom: 1rpx solid #EFEFEF;
+}
+
+.content .list_item_box .list_item_name_box{
+  display: flex;
+  align-items: center;
+  padding-left: 47rpx;
+}
+
+.content .list_item_box .list_item_name_box .bred{
+   width:16rpx;
+   height:16rpx;
+   background-color: #EA5959;
+   border-radius: 50%;
+   margin-right:27rpx;
+   margin-left:9rpx;
+}
+.content .list_item_box .list_item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.content .list_item_box .list_item_name_box text{
+  font-size: 32rpx;
+}
+.content .list_item_box .name_box_right text{
+   font-size: 24rpx;
+}
+.content .list_item_box .name_box_right text.redcolor{
+   color:#EA5959;
+}
+.make_plan{
+
+}
+.ti1{
+  height: 91rpx;
+  display: flex;
+  padding-left:30rpx; 
+  align-items: center;
+  color: #303030;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.make_plan .list_box{
+  
+}
+.make_plan .list_box .box1{
+  display: flex;
+  justify-content: space-between;
+  height: 100rpx;
+  background-color: #fff;
+  align-items: center;
+  padding: 0 30rpx;
+}
+.make_plan .list_box .box1 .b_l text{
+  color: #303030;
+  font-size: 32rpx;
+}
+.make_plan .list_box .box1 .b_r{
+  display: flex;
+  align-items: center;
+  color: #888888;
+  font-size: 30rpx;
+}
+.tishixinxi {
+  height: 73rpx;
+  background-color: #FFFCE6;
+  color: #303030;
+  font-size: 24rpx;
+  line-height: 70rpx;
+  /* padding-left: 40rpx; */
+  text-align: center;
+}

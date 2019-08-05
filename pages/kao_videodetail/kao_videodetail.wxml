@@ -1,0 +1,42 @@
+
+<view class="container">
+    <view class='co_top'>
+       <video  style="width:100%;object-fit:fill;"  bindplay="playvideo"  src="{{ video_url }}" ></video>
+    </view>
+    <view class='co_con'>
+        <view class='kaotitle'>考点结构</view>
+        <view class='mulu'>
+            <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+                <view wx:for="{{list}}" wx:key="this" class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav">{{item.title}}</view>
+            </scroll-view>
+            <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
+            style="height:{{winHeight}}rpx">
+                <swiper-item wx:for="{{list}}" wx:key="this">
+                    <scroll-view scroll-y="true" class="scoll-h" >
+                        <block wx:for="{{item.data}}" wx:key="*this" wx:for-index="pindex" wx:for-item="pitem">
+                            <view class='mululist'>
+                                <view class='mulubox1'>
+                                    <view class='lb {{pitem.checked >0? "active":""}}'>
+                                        <view style="width:70rpx!important;box-sizing:border-box;">1.{{pindex}}</view>
+                                        <view  bindtap='getlink' style="padding-left:10rpx;">{{pitem.video_title}}</view>
+                                    </view>
+                                    <view wx:if="{{pitem.checked >0}}" class='rb'>
+                                        <image class='rb_img' src='../../images/yixueguo@2x.png'></image>
+                                        <text>已学过</text>
+                                    </view>
+                                </view>
+                            </view>
+                        </block>
+                    </scroll-view>
+                </swiper-item>
+            </swiper>
+        </view> 
+    </view>
+</view>
+
+<view class='kefu_but'>
+   <view class='b_img'>
+      <image style='width:149rpx;height:111rpx;' src='../../images/kefu@2x.png'></image>
+      <button class='kefu' open-type='contact' bindcontact="handleContact">ff</button>
+   </view>
+</view>

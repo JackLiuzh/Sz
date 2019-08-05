@@ -1,0 +1,89 @@
+.make_plan{
+
+}
+.ti1{
+  height: 91rpx;
+  display: flex;
+  padding-left:30rpx; 
+  align-items: center;
+  color: #303030;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.make_plan .list_box{
+  
+}
+.make_plan .list_box .box1{
+  display: flex;
+  justify-content: space-between;
+  height: 100rpx;
+  background-color: #fff;
+  align-items: center;
+  padding: 0 40rpx;
+}
+.make_plan .list_box .box1 .b_l text{
+  color: #303030;
+  font-size: 32rpx;
+}
+.make_plan .list_box .box1 .b_r{
+  display: flex;
+  align-items: center;
+  color: #888888;
+  font-size: 30rpx;
+}
+
+
+/* 自定义底部弹框 */
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+
+.commodity_attr_box {
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  padding-top: 20rpx;
+  height:800rpx;
+}
+
+.bot_box0{
+  display: flex;
+  justify-content: space-between;
+  height: 100rpx;
+  align-items: center;
+  padding: 0 30rpx;
+  font-size: 32rpx;
+}
+.bot_box0 .md_color{
+  font-weight: bold;
+  color: #303030;
+
+}
+.bot_box0 .mdr_color{
+  color: #E65557;
+}
+.bot_box1 {
+  display: flex;
+  justify-content: space-between;
+  height: 100rpx;
+  align-items: center;
+  padding: 0 30rpx;
+  border-bottom: 1rpx solid #DADADA;
+  font-size: 32rpx;
+  color: #303030;
+}
+
+

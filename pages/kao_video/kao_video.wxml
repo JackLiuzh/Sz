@@ -1,0 +1,14 @@
+<view class="container">
+   <view class='list'>
+       <view wx:for="{{ list }}" wx:key="this" class='box1'>
+       <navigator url='/pages/kao_videodetail/kao_videodetail?id={{item.id}}&main_id={{item.main_id}}&user_task_id={{item.user_task_id}}'>
+            <view class='text_title'>{{ item.video_title }}</view>
+            <view class='v_img'>
+                <image class='img'  src='{{ item.img_src }}'></image>
+                <text class='padtext'>{{item.guankan_total}}人次观看</text>
+                <text class='padtime'>{{item.duration}}</text>
+            </view>
+       </navigator>     
+       </view>
+   </view>
+</view>

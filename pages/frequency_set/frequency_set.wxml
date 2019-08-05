@@ -1,0 +1,32 @@
+<view class="container">
+    <view class="make_plan">
+       <view class='list_box'>
+           <view  wx:for="{{pinlvnum}}" wx:key="this" class='box1'  wx:if="{{index==0 || index ==1 || index ==2 || index==3}}"  bindtap='submit_but' data-index="{{index}}" data-days="{{ item.days }}">
+               <view class='b_l'> 
+                  <text>{{ item.name  }}</text>              
+               </view>
+               <view wx:if="{{item.isdefault}}" class='b_r'> 
+                  <image style='width:40rpx;height:28rpx;' src="../../images/gou@2x.png"></image>          
+               </view>
+           </view>
+       </view>
+   </view>
+</view>
+
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+    <view class='bot_box0'>
+        <view bindtap='hideModal'>取消</view>
+        <view class="md_color">自定义</view>
+        <view bindtap='custom' class='mdr_color'>确定</view>
+    </view>
+    <view wx:for="{{ pinlvnum.data }}" wx:key="{{this}}" class="bot_box1">
+        <view class='bl_box'>
+            {{ item.name }}
+        </view>
+        <view class='br_box'>
+             <image style='width:40rpx;height:40rpx;vertical-align:middle;' src="{{item.isdefault ? hasSelect : noSelect}}" bindtap="selectRep" data-selectIndex="{{index}}" ></image>
+        </view>
+    </view>
+</view>
+

@@ -1,0 +1,55 @@
+page{
+  background-color: #fff;
+}
+.head_text{
+  height: 253rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.head_text .te1{
+  font-weight: bold;
+  font-size: 40rpx;
+  color: #444444;
+}
+.head_text .te2{
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: #888888;
+}
+.option_list{
+  display: flex;
+  flex-direction: column;
+  margin: 0 40rpx;
+}
+.option_list .option_box{
+  display: flex;
+  height: 140rpx;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #DADADA;
+}
+.option_list .option_box .text_box{
+
+}
+.option_list .option_box .text_box .text1{
+   font-size: 32rpx;
+   color: #303030;
+   font-weight: bold;
+}
+.option_list .option_box .text_box .text2{
+  margin-top:10rpx;
+  font-size: 24rpx;
+  color: #AAAAAA;
+}
+
+.bottom_but .but1{
+  margin-top:119rpx; 
+  width:388rpx;
+  height: 88rpx;
+  border-radius: 50rpx;
+  background-color:  #E65557;
+  color: #FFFFFF;
+  line-height: 88rpx;
+}

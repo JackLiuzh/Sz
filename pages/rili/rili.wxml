@@ -1,0 +1,7 @@
+<view class="container">
+    <view class='top_set'>
+        <calendar selected="{{selected}}" bindselect="bindselect" is-open="{{ true }}" bindgetdate="bindgetdate" />
+    </view>
+    <component-task currenttime="{{ currenttime }}" list="{{ todaytask }}"></component-task>
+</view>
+

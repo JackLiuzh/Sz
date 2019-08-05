@@ -1,0 +1,195 @@
+<import src="../../components/wxParse/wxParse.wxml"/>
+<view class="container" >
+    <view class="box-swiper">
+        <swiper style="height: {{clientHeight?clientHeight+'px':'auto'}}"  class=''  current="{{currentTab}}"  duration="200" bindchange="swiperchange">
+            <view class="swiper-box">
+                <swiper-item style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+                   <scroll-view scroll-y="true" style="height:{{clientHeight?clientHeight+'px':'auto'}}">
+                      <view class="box-top">
+                          <view class="top-type">
+                             <view class="type-qname">
+                                  <text>常识判断-经济常识</text>
+                             </view>
+                          </view>
+                          <view class="top-type">
+                             <view class="type-nu">
+                                 <text class=".nu-red">1</text>
+                                 <text >/</text>
+                                 <text>{{ total_nums }}</text>
+                             </view>
+                             <view class="datika">
+                                  答题卡
+                             </view>
+                          </view>
+                      </view>
+                      <view class="box-title">
+                          <view class="title-content">
+                              <text>2012年北京市第十一次党代会提出，北京必须坚持首都城市功能定位，认真履行“四个服务"职责。下列选项中，不属于上述“四个服务"内容的是：</text>
+                              <!-- <template is="wxParse" data="{{wxParseData: replyTemArray[index] }}"/> -->
+                          </view>
+                          <view class="title-options">
+                              <view class="options-items"> 
+                                  <text  class="items-zimu">A</text>
+                                  <rich-text style="display:inline-block;width:86%;line-height:64rpx;vertical-align:top;">为国家的国际交往服务</rich-text>
+                              </view>
+                              <view  class="options-items">
+                                  <text style="vertical-align:top;"  class="items-zimu correctclass">B</text>
+                                  <rich-text style="display:inline-block;width:86%;line-height:64rpx;vertical-align:top;" >为国家教育、科技事业的发展服务</rich-text>
+                              </view>     
+                              <view class="options-items">
+                                  <text style="vertical-align:top;"  class="items-zimu cuowuclass">C</text>
+                                  <rich-text style="display:inline-block;width:86%;line-height:64rpx;vertical-align:top;">为经济又好友快发展服务</rich-text>
+                              </view>
+                              <view  class="options-items">
+                                  <text style="vertical-align:top;"  class="items-zimu">D</text>   
+                                  <rich-text style="display:inline-block;width:86%;line-height:64rpx;vertical-align:top;">为改善人民群众生活服务</rich-text>
+                              </view>
+                          </view>
+                      </view>
+                      <view class="box-line"></view>
+                      <view  class="box-answer">
+                           <view class="answer-only">
+                              <view class='an-box1'>
+                                  <view class="box1-top">答题</view>
+                                  <view class='box1-botg'>正确</view>
+                              </view>
+                              <view class='an-box1'>
+                                  <view class="box1-top">答题用时</view>
+                                  <view class='box1-other'>25<text>s</text></view>
+                              </view>
+                              <view class='an-box1'>
+                                  <view class="box1-top">平台均用时</view>
+                                  <view class='box1-other'>30<text>s</text></view>
+                              </view>
+                              <view class='an-box1'>
+                                  <view class="box1-top">正确率</view>
+                                  <view class='box1-other'>80%</view>
+                              </view>
+                           </view>
+                           <view class="answer-kaodian">
+                                <view class='kao-top'>
+                                    <view class='top-l'>
+                                        <text class='l-icon'></text>
+                                        <text class='l-text'>试题解析</text>
+                                    </view>
+                                    <view class='top-r'>
+                                         <image style="width:56rpx;height:56rpx;" src="../../images/shou@2x.png"></image>
+                                    </view>
+                                </view>
+                                <view class='kao-bot'>
+                                     <text>刘淇在北京市第十一次党代会上作报告时提出，北京作为13亿人口大国的首都，必须以更高标准履行好“四个服务"职责。首都各项工作必须更加有利于为中央党政军领导机关服务，为日益扩大的国际交往服务，为国家教育、科技、文化和卫生事业的发展服务，为市民的工作和生活服务。A、B、D正确，均属于“四个服务"的内容；C项错误，不属于“四个服务"的内容。故正确答案为C。</text>
+                                </view>
+                           </view>
+                           <view class="answer-kaodian">
+                                <view class='kao-top'>
+                                    <view class='top-l'>
+                                        <text class='l-icon'></text>
+                                        <text class='l-text'>试题考点</text>
+                                    </view>
+                                    <view class='top-r'>
+                                         <image style="width:56rpx;height:56rpx;" src="../../images/shou@2x.png"></image>
+                                    </view>
+                                </view>
+                                <view class='kao-bot'>
+                                    <view class='bot-label'>行政管理常识</view>
+                                    <view class='bot-video'>
+                                        <image style='width:690rpx;' src="../../images/test.png"></image>
+                                    </view>
+                                </view>
+                           </view>
+                      </view>
+                      <view class='bot-line'></view>
+                      <view class="box-comment ">
+                            <view class='kao-top'>
+                                <view class='top-l'>
+                                    <text class='l-icon'></text>
+                                    <text class='l-text'>全部点评</text>
+                                </view>
+                            </view>
+                            <view class='comment-content'>
+                                <view class='con-con-box1'>
+                                    <view class='con-l'>
+                                        <image  class='conl-img' src="../../images/test.png"></image>
+                                    </view>
+                                    <view class='con-r'>
+                                        <view class='conr-name'>
+                                            鬼大爷
+                                        </view>
+                                        <view class='conr-con'>
+                                            到了一个瓶颈，感觉分数怎么也上不去。
+                                        </view>
+                                        <view class='conr-bot'>
+                                            <text class='conrb-t'>2018-1-23 08：30</text>
+                                            <view class='conrn-img'>
+                                                <image class='conrni-i'  src="../../images/pinglun@2x.png"></image>
+                                                <image class='conrni-id' style='width:36rpx;height:36rpx;' src="../../images/zan@2x.png"></image>
+                                                <text class='conrn-i-nu'>32</text>
+                                            </view>
+                                        </view>
+                                    </view>
+                                </view>
+                                <view class='con-con-box1'>
+                                    <view class='con-l'>
+                                        <image  class='conl-img' src="../../images/test.png"></image>
+                                    </view>
+                                    <view class='con-r'>
+                                        <view class='conr-name'>
+                                            鬼大爷
+                                        </view>
+                                        <view class='conr-con'>
+                                            到了一个瓶颈，感觉分数怎么也上不去。
+                                        </view>
+                                        <view class='conr-bot'>
+                                            <text class='conrb-t'>2018-1-23 08：30</text>
+                                            <view class='conrn-img'>
+                                                <image class='conrni-i'  src="../../images/pinglun@2x.png"></image>
+                                                <image class='conrni-id' style='width:36rpx;height:36rpx;' src="../../images/zan@2x.png"></image>
+                                                <text class='conrn-i-nu'>32</text>
+                                            </view>                                            
+                                        </view>
+                                        <view class='reply-box'>
+                                                <view class='reb-box1'>
+                                                    <text class='rebb-name'>fann:</text>
+                                                    <text class='rebb-con'>加油！</text>
+                                                </view>
+                                                <view class='reb-box1'>
+                                                    <text class='rebb-name'>老叔老了:</text>
+                                                    <text class='rebb-con' >突然觉得公务员不适合老叔了， 老叔还是老老实实招工走去吧。</text>
+                                                </view>
+                                                <view class='reb-box1'>
+                                                    <text class='rebb-name'>fann:</text>
+                                                    <text class='rebb-con'>加油！</text>
+                                                </view>
+                                                <view class='reb-more'>查看全部40条回复>></view>
+                                        </view>
+                                    </view>
+                                </view>      
+                            </view>
+                      </view>
+                      <!-- 评论盒子 -->
+                      <view class="cf-bg" catchtap="cemojiCfBg"  style="display:{{cfBg ? 'block' : 'none'}}"></view>
+                      <view class='comment-fixed'>
+                           <view class='cf-box'>
+                              <view class='emoji' catchtap='emojiShowHide'>
+                                 <image style="width:60rpx;height:60rpx;" src='../../images/biaoqing@2x.png'></image>
+                              </view>
+                              <textarea class='cf-content' bindfocus='textAreaFocus' bindblur='textAreaBlur' maxlength="200" value="{{ content }}" placeholder='我也说两句...'></textarea>
+                              <text class='cf-send touch-active' bindtap='send'>发送</text>
+                           </view>
+                           <view  class="emoji-box {{ isShow ?  'emoji-move-in' : 'emoji-move-out'}}">
+                                <scroll-view  scroll-y="true" bindscroll="emojiScroll" style="height:400rpx;">
+                                     <block wx:for="{{ emojis }}" wx:for-item="e" wx:key='this'>
+                                         <view class='emoji-cell'>
+                                             <image class='cell-image' catchtap='emojiChoose' src="http://soupu.oss-cn-shanghai.aliyuncs.com/emoji/{{e.emoji}}.png" data-emoji="{{ e.char }}" data-oxf="{{ e.emoji }}"></image>
+                                         </view>
+                                     </block>
+                                </scroll-view>
+                           </view>
+                      </view>
+                      <!-- 评论盒子结束 -->
+                </scroll-view>
+            </swiper-item>
+          </view>
+        </swiper>
+    </view>
+</view>

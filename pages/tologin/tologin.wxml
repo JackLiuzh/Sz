@@ -1,0 +1,18 @@
+<view class="container">
+    <view class="top">
+      <view class="shang">
+        <text class="day">45</text>
+        <text class="title">天上岸复习计划</text>
+      </view>
+      <view class="mei">
+          <text>每天刷题打卡知识点</text>
+      </view>
+    </view>
+    <view class="middle">
+        <image src="../../images/bg.png"></image>
+    </view>
+    <view class="bottom">
+        <button type="warn" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">微信登录</button>
+    </view>
+</view>
+

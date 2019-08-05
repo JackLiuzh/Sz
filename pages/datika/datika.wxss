@@ -1,0 +1,64 @@
+page{
+  background-color: #FFFFFF;
+}
+.co-box{
+  /* padding: 0 30rpx; */
+  
+}
+.tong {
+  height: 80rpx;
+  display: flex;
+  justify-items: flex-start;
+  align-items: center;
+  font-size: 24rpx;
+  color: #616366;
+  background: #F3F4F5;
+  padding: 0 30rpx;
+}
+.tong text{
+   padding-right: 40rpx;
+}
+
+.ka{
+  display: flex;
+  flex-wrap: wrap;
+}
+.ka .kaboxright{
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  background-color: #1FBB94;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 70rpx;
+  margin-top: 50rpx;
+}
+.kab{
+  display: flex;
+  justify-content: center;
+  width: 20%;
+  overflow: hidden;
+}
+
+.ka .kaboxwrong{
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  background-color: #E34A4B;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 70rpx;
+  margin-top: 50rpx;
+}
+
+.ka .kaboxno {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  border: 1rpx solid #303233;
+  color: #303233;
+  text-align: center;
+  line-height: 70rpx;
+  margin-top: 50rpx;
+  box-sizing: border-box;
+}

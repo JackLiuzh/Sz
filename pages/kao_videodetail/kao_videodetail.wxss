@@ -1,0 +1,72 @@
+.tab-h{
+    height: 80rpx;width: 100%; box-sizing: border-box;overflow: hidden;line-height: 80rpx;background: #fff; font-size: 16px; white-space: nowrap; }
+.tab-item{margin:0 25rpx;display: inline-block;}
+.tab-item.active{color: #E65557;position: relative;}
+.tab-item.active:after{ content: "";display: block;height: 4rpx;width: 96%;background: #E65557;position: absolute; bottom: 0;left: 5rpx;border-radius: 16rpx;}
+.item-ans{ width: 100%;display: flex; flex-grow: row no-wrap;justify-content: space-between; padding: 30rpx;box-sizing: border-box; height: 180rpx;align-items: center;border-bottom: 1px solid #F2F2F2;}
+.avatar{width: 100rpx;height: 100rpx;position: relative;padding-right: 30rpx;}
+.avatar .img{width: 100%;height: 100%;}
+.avatar .doyen{width: 40rpx;height: 40rpx;position: absolute;bottom: -2px;right: 20rpx;}
+.expertInfo{font-size: 12px;flex-grow: 2;color: #B0B0B0;line-height: 1.5em;}
+.expertInfo .name{font-size: 16px;color:#000;margin-bottom: 6px;}
+.askBtn{ width: 120rpx;height: 60rpx;line-height: 60rpx;text-align: center;font-size: 14px; border-radius: 60rpx;border: 1px solid #E65557; color:#E65557;}
+.tab-content{margin-top: 20rpx;}
+.scoll-h{height: 100%;}
+
+.mulubox1{
+  padding: 40rpx 30rpx 0rpx 30rpx;
+  display: flex;
+  justify-content: space-between;
+  color: #333333;
+}
+
+.mulubox1 .active{
+  text-decoration:line-through;
+  color:#999999;
+}
+
+.lb{
+  font-size: 28rpx;
+  display: flex;
+  justify-content: flex-start;
+}
+.rb{
+  font-size: 22rpx;
+  color: #ccc;
+}
+.rb_img{
+  width:23rpx;
+  height:17rpx;
+  padding-right:10rpx;
+}
+.kaotitle{
+  font-size: 37rpx;
+  color: #333;
+  padding-left: 30rpx;
+  line-height: 75rpx;
+  background:#fff;
+
+}
+
+/* 客服 */
+.b_img {
+  position: relative;
+  width:149rpx;
+  height: 111rpx;
+  overflow: hidden;
+}
+.kefu_but {
+  width:149rpx;
+  height: 111rpx;
+  overflow: hidden;
+  position: fixed;
+  right: 0rpx;
+  bottom: 96rpx;
+}
+.kefu{
+   position: absolute;
+   top: 0;
+   right: 0;
+   width: 100%;
+   opacity: 0;
+}

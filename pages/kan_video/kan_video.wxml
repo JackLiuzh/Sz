@@ -1,0 +1,47 @@
+<view class="container">
+  <view class="video">shiping</view>
+   <view class="layout1">
+     <image class="image1" src="../../images/zhishidian@2x.png"></image>
+     <text class="zsd">知识点(2)</text>
+     <view class="shu1"></view>
+     <image class="image2" src="../../images/lianxiti@2x.png"></image>
+     <view class="lxt">练习题(3)</view>
+    </view>
+
+    <view class="layout2">
+
+      <view class="layout21">
+        <view class="shu2"></view>
+        <view class="pinglun">评论</view>
+      </view>
+
+      <view class="layout22">
+        <view class="touxiang"></view>
+        <view class="layout221">
+          <view class="name">鬼大爷</view>
+          <view class="plnr">哈哈哈哈哈哈</view>
+          <view class="layout2211">
+            <view class="riqi">今天 08:30</view>
+            <image class="plpl" src="../../images/pinglun@2x.png"></image>
+            <image class="zan" src="../../images/dianzan@2x.png"></image>
+            <view class="num">12</view>
+          </view>
+          <view class="plq"></view>
+          <view class="heng1"></view>
+        </view>
+      </view>
+  
+    </view>
+
+    <view class="layout3">
+
+      <view class="layout31">
+        <image class="smile" src="../../images/biaoqing@2x.png"></image>
+        <view class="plts">
+          <view class="text1">要下载APP才能评论哦~</view>
+        </view>
+      </view>
+      <view class="heng2"></view>
+
+    </view>
+</view>

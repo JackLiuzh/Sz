@@ -1,0 +1,46 @@
+<view class="container">
+  <view class="layout1">
+    <view class="tjdz">添加地址</view>
+    <view class="djtx">点击填写</view>
+    <image class="add" src="../../images/xiayiye@2x.png"></image>
+  </view>
+  <view class="layout2">
+    <view class="layout21">
+      <view class="layout211">
+        <text class="title">高效备考笔试必修课(2019版)</text>
+      </view>
+      <view class="layout212">
+        <text class="detail">224个课时+616个知识点+793个课后习题</text>
+      </view>
+    </view>
+    <view class="price">￥299</view>
+  </view>
+  <view class="layout3">
+    <view class="zfxz">
+      <text class="zf">选择支付方式</text>
+    </view>
+    <view class="layout31">
+      <image class="imgzfb" src="../../images/zhifubao@2x.png"></image>
+      <text class="zfb">支付宝</text>
+      <image class="xz" src="../../images/xuanzhong@2x.png"></image>
+    </view>
+    <view class="layout31">
+      <image class="imgwx" src="../../images/weixinzhifu@2x.png"></image>
+      <text class="wxzf">微信支付</text>
+      <image class="wxz" src="../../images/weixuanzhong@2x.png"></image>
+    </view>
+  </view>
+
+  <view class="layout4">
+    <view class="layout41">
+      <text class="hj">合计</text>
+      <text class="hjje">￥299</text>
+    </view>
+    <view class="qrk">
+      <text class="qr">确认支付</text>
+      </view>
+
+  </view>
+
+
+</view>

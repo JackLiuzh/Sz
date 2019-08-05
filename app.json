@@ -15,7 +15,11 @@
     "pages/tologin/tologin",
     "pages/datika/datika",
     "pages/material_qu/material_qu",
-    "pages/live/live"
+    "pages/live/live",
+    "pages/kan_video/kan_video",
+    "pages/course_buy/course_buy",
+    "pages/add_address/add_address",
+    "pages/my/my"
   ],
   "window": {
     "backgroundTextStyle": "light",

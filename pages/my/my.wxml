@@ -1,0 +1,50 @@
+<view class="container">
+  <view class="layout1">
+    <image class="touxiang" src=""></image>
+    <view class="name">日光时刻</view>
+  </view>
+
+  <view class="layout2">
+    <image class="img1" src="../../images/组 2050@2x.png"></image>
+    <view class="v1"><text class="num">我的手机号</text></view>
+    <view class="tj"><text class="phone">请填写手机号</text></view>
+    <image class="img" src="../../images/xiayiye@2x.png"></image>
+  </view>
+ 
+  <view class="layout2">
+    <image class="img1" src="../../images/组 2060@2x.png"></image>
+    <view class="v1"><text class="num">我的地址</text></view>
+    <picker class="add_addr" mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+    <view class="addr">
+    {{region[0]}},{{region[1]}},{{region[2]}}
+    </view>
+  </picker>
+    <image class="img" src="../../images/xiayiye@2x.png"></image>
+  </view>
+
+  <view class="layout3">
+    <image class="img1" src="../../images/组 4@2x.png"></image>
+    <view class="v1"><text class="num">手机APP下载</text></view>
+    <image class="img2" src="../../images/xiayiye@2x.png"></image>
+  </view>
+  <view class="layout4">
+    <image class="img1" src="../../images/组 4@2x.png"></image>
+    <view class="v1"><text class="num">问题反馈</text></view>
+    <image class="img2" src="../../images/xiayiye@2x.png"></image>
+  </view>
+  <view class="layout4">
+    <image class="img1" src="../../images/组 4@2x.png"></image>
+    <view class="v1"><text class="num">设置</text></view>
+    <image class="img2" src="../../images/xiayiye@2x.png"></image>
+  </view>
+
+  
+
+
+
+
+
+
+
+
+</view>

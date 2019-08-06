@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/course/course",
     "pages/today_task/today_task",
+    "pages/course/course",
     "pages/kao_videodetail/kao_videodetail",
     "pages/kao_video/kao_video",
     "pages/dati/dati",
@@ -36,21 +36,21 @@
     "backgroundColor": "#FFFFFF",
     "list": [
       {
-        "text": "打卡",
-        "pagePath": "pages/test/test",
-        "iconPath": "images/daka@2x.png",
-        "selectedIconPath": "images/daka@2x.png"
+        "text": "刷题",
+        "pagePath": "pages/today_task/today_task",
+        "iconPath": "images/tiku_normal@2x.png",
+        "selectedIconPath": "images/tiku_active@2x.png"
       },
       {
-        "text": "刷题",
-        "pagePath": "pages/test/test",
-        "iconPath": "images/daka@2x.png",
-        "selectedIconPath": "images/daka@2x.png"
+        "text": "课程",
+        "pagePath": "pages/course/course",
+        "iconPath": "images/kecheng@2x.png",
+        "selectedIconPath": "images/kecheng_active@2x.png"
       },
       {
         "text": "我的",
-        "pagePath": "pages/test/test",
-        "iconPath": "images/daka@2x.png",
+        "pagePath": "pages/my/my",
+        "iconPath": "images/wode_normal@2x.png",
         "selectedIconPath": "images/daka@2x.png"
       }
     ]

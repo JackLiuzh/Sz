@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/course/course",
     "pages/today_task/today_task",
     "pages/kao_videodetail/kao_videodetail",
     "pages/kao_video/kao_video",

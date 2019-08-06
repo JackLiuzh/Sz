@@ -39,7 +39,8 @@ Page({
                     app.wechat.setStorage("uid",d.data.uid).then(s=>{
                         wx.hideLoading()
                         if(d.data.isfirstlogin == 1){
-                          wx.redirectTo({ url: '../today_task/today_task' })
+                          // wx.redirectTo({ url: '../today_task/today_task' })
+                          wx.switchTab({ url: '../today_task/today_task' })
                         }else{
                           wx.redirectTo({ url: '../first_comming/first_comming'})
                         }

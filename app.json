@@ -1,6 +1,11 @@
 {
   "pages": [
+<<<<<<< Updated upstream
     "pages/course/course",
+=======
+    "pages/course_xiang/course_xiang",
+    "pages/zhibo/zhibo",
+>>>>>>> Stashed changes
     "pages/today_task/today_task",
     "pages/kao_videodetail/kao_videodetail",
     "pages/kao_video/kao_video",
@@ -17,6 +22,7 @@
     "pages/datika/datika",
     "pages/material_qu/material_qu",
     "pages/live/live"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,10 +1,13 @@
-// pages/kan_video/kan_video.js
+// pages/my_addr/my_addr.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    region: ['','' ,''],
+    // customItem: '全部'
+    
 
   },
 
@@ -12,7 +15,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
 
   },
 
@@ -65,18 +67,14 @@ Page({
 
   },
 
-  tip: function () {
-    var that = this
-    wx.showModal({
-      title: '提示',
-      content: '要下载APP才能评论哦~',
-      success: function (res) {
-        if (res.confirm) {
-          // console.log('弹框后点取消')
-        } else {
-          // console.log('弹框后点取消')
-        }
-      }
+bindRegionChange: function (e) {
+    // console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      region: e.detail.value
     })
-  }
+  },
+
+  
+
+
 })

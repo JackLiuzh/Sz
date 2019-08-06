@@ -19,7 +19,8 @@
     "pages/kan_video/kan_video",
     "pages/course_buy/course_buy",
     "pages/add_address/add_address",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/my_addr/my_addr"
   ],
   "window": {
     "backgroundTextStyle": "light",

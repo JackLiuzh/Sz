@@ -22,8 +22,8 @@
           <view class="plnr">哈哈哈哈哈哈</view>
           <view class="layout2211">
             <view class="riqi">今天 08:30</view>
-            <image class="plpl" src="../../images/pinglun@2x.png"></image>
-            <image class="zan" src="../../images/dianzan@2x.png"></image>
+            <image class="plpl" bindtap="tip" src="../../images/pinglun@2x.png"></image>
+            <image class="zan" bindtap="tip" src="../../images/dianzan@2x.png"></image>
             <view class="num">12</view>
           </view>
           <view class="plq"></view>

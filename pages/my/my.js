@@ -5,8 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    region: ['广东省', '广州市', '海珠区'],
-    customItem: '全部'
+    // region: ['广东省', '广州市', '海珠区'],
+    // customItem: '全部'
+    showModal: false
   },
 
  
@@ -67,10 +68,20 @@ Page({
 
   },
 
-  bindRegionChange: function (e) {
-    // console.log('picker发送选择改变，携带值为', e.detail.value)
+  submit: function () {
     this.setData({
-      region: e.detail.value
+      showModal: true
+    })
+  },
+
+  preventTouchMove: function () {
+
+  },
+
+
+  go: function () {
+    this.setData({
+      showModal: false
     })
   }
 })

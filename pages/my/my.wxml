@@ -4,21 +4,29 @@
     <view class="name">日光时刻</view>
   </view>
 
+  <view class="Tip">
+    <view class="tip">
+      <view class="dian"></view>
+      <text class="ts">您有一条新的订单，请在尚政公考APP中查看！</text>
+    </view>
+  </view>
+
   <view class="layout2">
     <image class="img1" src="../../images/组 2050@2x.png"></image>
     <view class="v1"><text class="num">我的手机号</text></view>
     <view class="tj"><text class="phone">请填写手机号</text></view>
-    <image class="img" src="../../images/xiayiye@2x.png"></image>
+    <image class="img" bindtap="submit" src="../../images/xiayiye@2x.png"></image>
   </view>
  
   <view class="layout2">
     <image class="img1" src="../../images/组 2060@2x.png"></image>
     <view class="v1"><text class="num">我的地址</text></view>
-    <picker class="add_addr" mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+    <view class="add_addr">陕西省 西安市 雁塔区 西影...</view>
+    <!-- <picker class="add_addr" mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
     <view class="addr">
     {{region[0]}},{{region[1]}},{{region[2]}}
     </view>
-  </picker>
+  </picker> -->
     <image class="img" src="../../images/xiayiye@2x.png"></image>
   </view>
 
@@ -28,23 +36,31 @@
     <image class="img2" src="../../images/xiayiye@2x.png"></image>
   </view>
   <view class="layout4">
-    <image class="img1" src="../../images/组 4@2x.png"></image>
+    <image class="img1" src="../../images/组 2110@2x.png"></image>
     <view class="v1"><text class="num">问题反馈</text></view>
     <image class="img2" src="../../images/xiayiye@2x.png"></image>
   </view>
   <view class="layout4">
-    <image class="img1" src="../../images/组 4@2x.png"></image>
+    <image class="img1" src="../../images/组 7@2x.png"></image>
     <view class="v1"><text class="num">设置</text></view>
     <image class="img2" src="../../images/xiayiye@2x.png"></image>
   </view>
 
+  <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+  <view class="modalDlg" wx:if="{{showModal}}">
+      <image class="close" bindtap="go" src="../../images/组 2065@2x.png"/>
+      <text class="bang">绑定手机号</text>
+      <input class="srcall" placeholder="请输入手机号"></input>
+      <view class="heng"></view>
+      <view class="yz">
+        <input class="sryzm" placeholder="请输入验证码"></input>
+        <text class="hqyzm">获取验证码</text>
+      </view>
+      <view class="heng"></view>
+      <view class="save" bindtap="go">
+    <text class="bc">保存</text>
+  </view>
+  </view>
   
-
-
-
-
-
-
-
 
 </view>

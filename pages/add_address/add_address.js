@@ -5,8 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    region: ['广东省', '广州市', '海珠区'],
-    customItem: '全部'
+    region: ['', '', ''],
+    // customItem: '全部'
   },
   
 

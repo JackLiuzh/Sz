@@ -71,3 +71,17 @@
          </view>
     </view>
 </view>
+<view class='fixbut'>
+    <view class='box_but'>
+        <view class='but_le'>
+             <view class='le_img'>
+                <image style='width:105rpx;height:40rpx;' src="/images/msj@2x.png"></image>
+             </view>
+             <view class='le_pri'><text>￥</text>299</view>
+             <view class='le_opri'>￥299</view>
+        </view>
+        <view class='but_ri'>
+            <view class='ri_now'>立即购买</view>
+        </view>
+    </view>
+</view>

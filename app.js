@@ -53,7 +53,8 @@ App({
     userInfo: null,
     testdata: '我是测试数据',
     uid:'',
-    isIPX: false
+    isIPX: false,
+    token:''
   },
   aData: {
      show: false,

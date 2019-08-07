@@ -171,3 +171,46 @@ text-align: center;
   padding-top: 12rpx;
   margin-left: 30rpx;
 }
+.fixbut{
+  position: fixed;
+  bottom: 0rpx;
+  height: 138rpx;
+  width: 100%;
+  background: white;
+  
+}
+.box_but{
+  padding: 0rpx 32rpx;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 24rpx;
+}
+.but_le{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.le_pri{
+font-size:48rpx;
+font-family:PingFang SC;
+font-weight:bold;
+line-height:66rpx;
+color:rgba(230,85,87,1);
+opacity:1;
+}
+.le_pri text{
+  font-size: 30rpx;
+}
+.le_opri{
+  font-size:28rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(153,153,153,1);
+opacity:1;
+text-decoration: line-through;
+padding-left:12rpx;
+}
+.le_img{
+  padding-top:13rpx;
+  padding-right:16rpx;
+}

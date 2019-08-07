@@ -41,6 +41,8 @@ Page({
                         if(d.data.isfirstlogin == 1){
                           // wx.redirectTo({ url: '../today_task/today_task' })
                           wx.switchTab({ url: '../today_task/today_task' })
+                          wx.setStorageSync("token", d.data.token)
+                          app.globalData.token = d.data.token
                         }else{
                           wx.redirectTo({ url: '../first_comming/first_comming'})
                         }

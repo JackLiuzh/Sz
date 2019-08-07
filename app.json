@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/course_xiang/course_xiang",
+    "pages/zhibo/zhibo",
     "pages/today_task/today_task",
     "pages/course/course",
     "pages/kao_videodetail/kao_videodetail",

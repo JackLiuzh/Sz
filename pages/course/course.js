@@ -5,7 +5,13 @@ Page({
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
     main_id: '',
-    user_task_id: 0
+    user_task_id: 0,
+    page:1,
+    perpage:20,
+    courselist:[],
+    categorylist:[],
+    livelist:[],
+    curcourselist:[] //当前显示的list
   },
   // 滚动切换标签样式
   switchTab: function (e) {
@@ -16,15 +22,26 @@ Page({
   },
   // 点击标题切换当前页时改变样式
   swichNav: function (e) {
+    var that = this
     var cur = e.target.dataset.current;
-    if (this.data.currentTaB == cur) { return false; }
+    var category_id = e.target.dataset.category_id
+    if (that.data.currentTaB == cur) { return false; }
     else {
-      this.setData({
+      that.setData({
         currentTab: cur
       })
     }
+    var dd = []
+    that.setData({ curcourselist:[] })
+    that.data.courselist.forEach(function(item,index){
+      if (item.category_id == category_id){
+        dd.push(item)
+      }
+    })
+    // console.log(dd)
+    that.setData({ curcourselist:dd})
+     
   },
-
   //判断当前滚动超过一屏时，设置tab标题滚动条。
   checkCor: function () {
     if (this.data.currentTab > 4) {
@@ -38,12 +55,15 @@ Page({
     }
   },
   onLoad: function (options) {
+    this.initcourslist()
+    this.initcategory()
+    this.initcourselive()
     var that = this;
-    this.setData({
-      user_task_id: options.user_task_id,
-      main_id: options.main_id
-    });
-    that.initdata(options.id)
+    // this.setData({
+    //   user_task_id: options.user_task_id,
+    //   main_id: options.main_id
+    // });
+    
     //  高度自适应
     wx.getSystemInfo({
       success: function (res) {
@@ -59,18 +79,69 @@ Page({
     });
   },
   footerTap: app.footerTap,
-  //初始化数据
-  initdata: function (id) {
+
+  //获取课程列表
+  initcourslist: function(){
+      var that = this
+      var token = wx.getStorageSync('token')
+      var params = {
+          token: token,
+          page: that.data.page,
+          perpage: that.data.perpage
+      }
+      app.sz.courseList(params).then( d=>{
+          if(d.data.status == 1){
+              // console.log(d.data.data)
+              // that.data.courselist = d.data.data
+              that.setData({courselist:d.data.data})
+              that.initcurcourselist()
+          }else{
+            console.log("获取课程列表错误")
+          }
+      })
+  },
+  //获取课程分类接口
+  initcategory: function(){
     var that = this
+    var token = wx.getStorageSync('token')
     var params = {
-      "id": 29334
+        token: token
     }
-    app.sz.xcxVideoDetail(params).then(d => {
-      if (d.data.status == 0) {
-        that.setData({ list: d.data.data, video_url: d.data.video_url })
-      } else {
-        console.log("接口错误")
+    app.sz.category(params).then(d=>{
+        if(d.data.status == 1){
+          // console.log(d.data)
+          that.setData({ categorylist: d.data.data })
+        }else {
+          console.log("分类接口错误")
+        }
+    })
+  },
+  //获取直播接口
+  initcourselive: function(){
+    var that = this
+    var token = wx.getStorageSync('token')
+    var params = {
+      token: token
+    }
+    app.sz.courseLive(params).then(d=>{
+        if(d.data.status == 1){
+          that.setData({ livelist: d.data.data})
+        }
+    })
+  },
+  //初始化curcourselist
+  initcurcourselist:function(){
+    var that = this
+    var category_id = 1
+    var d = []
+    that.data.courselist.forEach(function(ite,ind){
+      if (category_id == ite.category_id){
+          d.push(ite)
       }
     })
+    // console.log("zhe"+d)
+    that.setData({curcourselist:d})
+      
   }
+
 })

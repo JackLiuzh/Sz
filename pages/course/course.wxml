@@ -3,16 +3,15 @@
          <view class='co_top-l'>近期公开课直播</view>
          <view class='co_top-r'>全部公开课</view>
     </view>
-
     <view class="scroll_box"> 
         <scroll-view class="scroll-view_x" scroll-x style="width: auto;overflow:hidden;">
-           <view class="course_con" wx:for="{{10}}">
+           <view class="course_con" wx:for="{{livelist}}" wx:key="this">
               <view class='course_con-top' >
                   <image src="/images/test.png" mode="aspectFill" class="course_img"></image>
               </view>
-              <view class="course_title">2019国考联考前指导联 考前指导</view>
-              <view class="course_time">2月18日 20:00-21:00</view>
-              <view class="course_people"><text>256人已参与</text></view>
+              <view class="course_title">{{item.video_title}}</view>
+              <view class="course_time">{{item.dateTime}} {{item.time_period}}</view>
+              <view class="course_people"><text>{{item.buy_count}}人已参与</text></view>
             </view>
         </scroll-view>
     </view>
@@ -20,43 +19,42 @@
     <view class='co_con'>
         <view class='mulu'>
             <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
-                <view wx:for="{{list}}" wx:key="this" class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav">{{item.title}}</view>
+                <view wx:for="{{categorylist}}" wx:key="index" class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" data-category_id ="{{item.id}}" bindtap="swichNav">{{item.title}}</view>
             </scroll-view>
-            <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
+            <!-- <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
             style="height:{{winHeight}}rpx">
-                <swiper-item wx:for="{{list}}" wx:key="this">
-                    <scroll-view scroll-y="true" class="scoll-h" >
-                        <block wx:for="{{item.data}}" wx:key="*this" wx:for-index="pindex" wx:for-item="pitem">
-                            <view class="course_d" wx:for="{{10}}">
+                <swiper-item >
+                    <scroll-view scroll-y="true" class="scoll-h" > -->
+                        <block wx:for="{{curcourselist}}" wx:key="this">
+                            <view class="course_d">
                                 <view class='course_d-top'>
                                    <text class="course_d-lan">直播</text>
-                                    高效备考笔试必修课（2019版）
+                                    {{item.title}}
                                 </view>
                                 <view class='course_d-keshi'>224个课时+616个知识点+793个课后习题</view>
                                 <view class='teach-jiage'>
                                    <view class='teach'>
-                                     <view class='teach-ico' wx:for="{{4}}">
+                                     <view class='teach-ico' wx:for="{{item.teacherlist}}" wx:key="this" wx:for-key="pindex" wx:for-item="item1">
                                          <image src="/images/test.png" mode="aspectFill" class="teach-ico-img"></image>
-                                         <text class='course-name'>陈颖</text>
+                                         <text class='course-name'>{{item1.name}}</text>
                                      </view>
                                    </view>
                                    <view class='price'>
                                     <view class='right-jiage'>
-                                    <image src="/images/course-miaoshajia.png"  class="miaosha-img"></image>
-                                     ￥299
+                                    <image style='width:34rpx;height:34rpx;' src="{{item1.avatar}}"  class="miaosha-img"></image>
+                                     ￥{{item.price}}
                                      
                                     </view>
-                                    <view class='right-learn'>219人正在学习</view>
+                                    <view class='right-learn'>{{item.buy_count}}人正在学习</view>
                                    </view>
                                 </view>
                                 <!-- 已加入  -->
-                                
                                  <image src="/images/course-yijiaru.png"  class="yijia-img"></image>
                             </view>
                         </block>
-                    </scroll-view>
+                    <!-- </scroll-view>
                 </swiper-item>
-            </swiper>
+            </swiper> -->
         </view> 
     </view>
 </view>

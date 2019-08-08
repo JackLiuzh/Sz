@@ -1,4 +1,3 @@
-
 {
   "pages": [
     "pages/course/course",
@@ -66,5 +65,4 @@
   },
   "debug": true,
   "sitemapLocation": "sitemap.json"
-
 }

@@ -247,3 +247,8 @@ text-align: center;
 font-size: 28rpx;
 color: white;
 }
+.swiper_con{
+  padding: 30rpx;
+  background: white;
+  min-height: 600rpx;
+}

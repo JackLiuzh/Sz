@@ -23,32 +23,32 @@
             <swiper current="{{currentData}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange">
               <swiper-item>
                   <view class='swiper_con'>
-                        
+                       <rich-text nodes="{{info.jieshao}}"></rich-text>
                   </view>
               </swiper-item> 
               <swiper-item>
                   <view class='swiper_con'>
-                        <view class='item'>
+                        <view wx:for="{{info.info}}" wx:key="this" class='item'>
                             <view class='item_cell'>
-                                 <view class='cell_le'>第1章   申论总述<text class='dt'>(4课时)</text></view>
+                                 <view class='cell_le'>第{{index + 1}}章  {{item.title}}<text class='dt'>({{item.video_num}}课时)</text></view>
                                  <view class='cell_ri'>
                                      <image style='width:48rpx;height:48rpx;' src="/images/shou@2x.png"></image>
                                  </view>
                             </view>
                             <view class='subcell_box'>
-                                <view class='item_subcell'>
+                                <view wx:for="{{item.video_data}}" wx:key="this" wx:for-item="pitem" wx:for-index="pindex" class='item_subcell'>
                                   <view class='subcell_le'>
                                         <view class='text_le'>
                                             <image style='width:32rpx;height:32rpx;' src="/images/bofang.png"></image>
                                         </view>
                                         <view class='text_ri'>
-                                            <view class='ri_tit'>1.1 申论测评原理及大纲解析</view> 
+                                            <view class='ri_tit'>{{pitem.serial_number}} {{pitem.video_title}}</view> 
                                             <view class='ri_lab'>
-                                                <view class='lab_box'>20分钟</view>
-                                                <view class='lab_box'>5知识点</view>
-                                                <view class='lab_box'>15练习题</view>
+                                                <view class='lab_box'>{{pitem.duration}}分钟</view>
+                                                <view class='lab_box'>{{pitem.point_count}}知识点</view>
+                                                <view class='lab_box'>{{pitem.question_count}}练习题</view>
                                             </view>
-                                      </view>
+                                        </view>
                                   </view>
                                   <view class='subcell_ri'>
                                       <view class='ri_text'>
@@ -61,39 +61,7 @@
                               </view>
                             </view>
                        </view>
-                       <view class='item'>
-                            <view class='item_cell'>
-                                 <view class='cell_le'>第1章   申论总述<text class='dt'>(4课时)</text></view>
-                                 <view class='cell_ri'>
-                                     <image style='width:48rpx;height:48rpx;' src="/images/shou@2x.png"></image>
-                                 </view>
-                            </view>
-                            <view class='subcell_box'>
-                                <view class='item_subcell'>
-                                  <view class='subcell_le'>
-                                        <view class='text_le'>
-                                            <image style='width:32rpx;height:32rpx;' src="/images/bofang.png"></image>
-                                        </view>
-                                        <view class='text_ri'>
-                                            <view class='ri_tit'>1.1 申论测评原理及大纲解析</view> 
-                                            <view class='ri_lab'>
-                                                <view class='lab_box'>20分钟</view>
-                                                <view class='lab_box'>5知识点</view>
-                                                <view class='lab_box'>15练习题</view>
-                                            </view>
-                                      </view>
-                                  </view>
-                                  <view class='subcell_ri'>
-                                      <view class='ri_text'>
-                                          试听
-                                      </view>
-                                      <view class='ri_img'>
-                                         <!-- <image style='width:48rpx;height:48rpx;' src="/images/xiazai@2x.png"></image> -->
-                                      </view>
-                                  </view>
-                              </view>
-                            </view>
-                       </view> 
+                       
                   </view>
               </swiper-item>
             </swiper>

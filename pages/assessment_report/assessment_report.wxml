@@ -1,0 +1,47 @@
+<!--pages/assessment_report/assessment_report.wxml-->
+<view class='container'>
+   <view class="bgse">
+  
+        <view class='rate-title'>各模块正确率</view>
+        <view class='rate-num'>
+          题数<text class="heise" style="padding:0 46rpx 0 14rpx;">15</text>
+            做对<text class="lvse" style="padding:0 46rpx 0 14rpx;">5</text>
+            做错<text class="red" style="padding:0 46rpx 0 14rpx;">3</text>
+              未做<text class="heise" style="padding:0 0 0 14rpx;">7</text>
+        </view>
+        <!-- 雷达图 -->
+        <view class="leida"></view>
+        <view class="leida-info">
+            <text class="leida-red"></text>我的正确率<text class="leida-huang"></text>上岸参考正确率
+        </view>
+        <!-- 雷达图结束 -->
+        <view class="catgory">
+            <view class="catgory-in">
+              <text class="catgory-l">常识判断</text>
+              <view class="catgory-z">正确率<text class="catgory-number">80</text>%</view>
+              <text class="catgory-r">偏低，还需多看视频多刷题</text>
+            </view>
+            <view class="catgory-in">
+              <text class="catgory-l">语言理解与表达</text>
+              <view class="catgory-z">正确率<text class="catgory-number">80</text>%</view>
+              <text class="catgory-r">良好，稳住保持优秀</text>
+            </view>
+            <view class="catgory-in">
+              <text class="catgory-l">数量关系</text>
+              <view class="catgory-z">正确率<text class="catgory-number">80</text>%</view>
+              <text class="catgory-r">中等，多巩固做题技巧</text>
+            </view>
+            <view class="catgory-in">
+              <text class="catgory-l">常识判断</text>
+              <view class="catgory-z">正确率<text class="catgory-number">80</text>%</view>
+              <text class="catgory-r">中等偏下，加油还有提升空间</text>
+            </view>
+            <view class="catgory-in">
+              <text class="catgory-l">数量关系</text>
+              <view class="catgory-z">正确率<text class="catgory-number">80</text>%</view>
+              <text class="catgory-r">中等偏上，继续刷题提高</text>
+            </view>
+        </view>
+    </view>
+    <view class="backindex">返回首页</view>
+</view>

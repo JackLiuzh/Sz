@@ -1,0 +1,121 @@
+/* pages/assessment_report/assessment_report.wxss */
+page{
+  background-color:#F2F3F7;
+}
+.bgse{
+  background: #fff;
+  margin-bottom: 135rpx;
+}
+.rate-title{
+  font-size:34rpx;
+  font-weight:bold;
+  color:rgba(10,10,10,1);
+  opacity:1;
+  text-align: center;
+  margin-top: 30rpx;
+  height: 48rpx;
+
+}
+.rate-num{
+  text-align: center;
+  color: #888888;
+  font-size: 24rpx;
+  margin-top: 46rpx;
+}
+.heise{
+  color: #333333;
+  font-size: 54rpx;
+}
+.lvse{
+  color: #1FBB94;
+  font-size: 54rpx;
+}
+.red{
+  color: #E65557;
+  font-size: 54rpx;
+}
+.leida{
+  margin-top: 50rpx;
+  height: 505rpx;
+}
+.leida-info{
+  text-align: center;
+  color: #AAAAAA;
+  font-size: 22rpx;
+  margin: 54rpx 0 51rpx;
+}
+.leida-huang{
+  width: 18rpx;
+  height: 18rpx;
+  margin:0 8rpx 0 30rpx;
+  border-radius:2px;
+  background: #FCD356;
+  display: inline-block;
+}
+.leida-red{
+  width: 18rpx;
+  height: 18rpx;
+  margin:0 8rpx 0 0;
+  border-radius:2px;
+  background:#F76F58;
+  display: inline-block;
+}
+
+.catgory{
+  margin: 0 30rpx 57rpx;
+  border-top:1px dashed rgba(218,218,218,1);
+}
+.catgory-in{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  border-bottom:1px dashed rgba(218,218,218,1);
+  padding: 20rpx 0;
+}
+.catgory-l{
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  line-height:33rpx;
+  color:rgba(10,10,10,1);
+  opacity:1;
+  width: 208rpx;
+}
+.catgory-z{
+  width: 195rpx;
+  font-size:22rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(136,136,136,1);
+  opacity:1;
+}
+.catgory-number{
+  font-size:36rpx;
+font-family:DIN;
+font-weight:400;
+color:rgba(51,51,51,1);
+opacity:1;
+padding: 0 10rpx;
+}
+.catgory-r{
+  font-size:22rpx;
+font-family:PingFang SC;
+font-weight:400;
+line-height:30rpx;
+color:rgba(170,170,170,1);
+opacity:1;
+height:auto;
+}
+
+.backindex{
+  line-height: 105rpx;
+  text-align: center;
+  color: #fff;
+  font-weight:400;
+  font-size:32rpx;
+  font-family:PingFang SC;
+  background: #E65557;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

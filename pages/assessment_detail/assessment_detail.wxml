@@ -1,0 +1,69 @@
+<view class='container'>
+   <view class="bgse">
+      <view class='rate-title'>尝试判断正确率</view>
+      <view class="xuhao">
+          <view class="xuhao-li xu-lv">1</view>
+          <view class="xuhao-li xu-red">2</view>
+          <view class="xuhao-li">3</view>
+          <view class="xuhao-li xu-red">4</view>
+          <view class="xuhao-li xu-red">5</view>
+      </view>
+      <view class='rate-num'>
+            题数<text class="heise" style="padding:0 46rpx 0 14rpx;">15</text>
+            做对<text class="lvse" style="padding:0 46rpx 0 14rpx;">5</text>
+            做错<text class="red" style="padding:0 46rpx 0 14rpx;">3</text>
+            未做<text class="heise" style="padding:0 0 0 14rpx;">7</text>
+        </view> 
+       
+       <view class="nalv">
+              <view class="nalv-title">
+               我的正确率<text class="nalv-title-shuzi">50</text><text style="color:#E65557;font-size:26rpx;">%</text>
+              </view>
+               <view class="nalv-miao">中等，多巩固做题技巧</view>
+               <view class="nalv-zhu">
+                  <view class="nalv-huang">
+                    <view class="nalv-huang-bai" style="height:80%;">80%</view>
+                  </view>
+                  <view class="nalv-huang">
+                    <view class="nalv-red-bai" style="height:50%;">50%</view>
+                  </view>
+               </view>
+       </view>
+       <view class="leida-info">
+            <text class="leida-huang"></text>上岸参考正确率<text class="leida-red"></text>我的正确率
+        </view>
+
+   </view>
+
+   <view class='zhibo'>
+        <view class='zhibo-img'><image src="/images/ass_zhibo@2x.png" class="zhibo-img1"></image></view>
+        <view class="zhuanti-tearch">
+            <view class='zhuanti-time'>
+                <image src="/images/ass_time@2x.png" class='zhuanti-time-img'></image>
+                2018-06-03 2018-06-03
+            </view>
+            <view class="zhuanti-laoshi">
+                 <image src="/images/ass_tearch@2x.png" class="img-laoshi"></image>
+                 <image src="/images/test.png" class="avatar-laoshi"></image>
+                 <text class="avatar-name">韩磊</text>
+            </view>
+            <view class='gozhibo'>
+             前往直播间 <view class="sanjiao"></view>
+            </view>
+        </view>
+        <image src="/images/ass_zhuanti@2x.png" class="tit"></image>
+        <view class="neirong">
+            国考省考，五年考情，专题测带你将高频考点一网打尽。行测+申论，各科精品真题测试带你专项练习，各个击破。
+        </view>
+        <image src="/images/ass_zuoyong@2x.png" class="tit"></image>
+        <view class="neirong">
+           <view>专题课=免费的专题讲解直播课</view>
+数名行业金牌讲师每周一节免费直播课为你解析精品真题，带你了解最新的时政热点最高频的各科考点，有针对性的进行公考思维解读。
+        </view>
+   </view>
+   
+   <view class="bot">
+    <view class="bot-l">查看名师点评</view>
+    <view class="bot-r">查看解析</view>
+   </view>
+</view>

@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/course/course",
+    "pages/assessment_detail/assessment_detail",
+    "pages/assessment_report/assessment_report",
     "pages/course_xiang/course_xiang",
     "pages/zhibo/zhibo",
     "pages/today_task/today_task",

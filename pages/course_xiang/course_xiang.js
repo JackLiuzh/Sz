@@ -16,8 +16,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.count_down(this);
     this.initData()
+    
   },
 
   bindchange:function(e){
@@ -50,6 +50,7 @@ Page({
     app.sz.courseDetail(params).then(d=>{
          if(d.data.status ==1){
              that.setData({info: d.data.data})
+             that.count_down(this);
          }else{
             console.log("详情页数据接口错误")
          }
@@ -105,12 +106,13 @@ Page({
   },
 
   count_down: function(that){
-  
-      that.setData({
-        clock: that.date_format()
-      });
       var newTime = new Date().getTime()
-      var endTime = 1565395200000;
+      var endTime = that.data.info.discount_end_time * 1000;
+      that.setData({
+        clock: that.date_format(endTime)
+      });
+      
+     
       if (newTime - endTime > 0){
         that.setData({ clock: '已经截止' });
         return;
@@ -119,18 +121,14 @@ Page({
       setTimeout(function(){
          //total_micro_second -= 10;
          that.count_down(that)
-         console.log("hh")
+        //  console.log("hh")
       },1000)
   },
 
-  date_format:function(){
+  date_format: function (endTime){
     var that = this
-    
     var newTime = new Date().getTime()
-    var endTime = 1565395200000;
-
     var time = (endTime - newTime) /1000
-
     let day = parseInt(time / (60 * 60 * 24));
     let hou = parseInt(time % (60 * 60 * 24) / 3600);
     let min = parseInt(time % (60 * 60 * 24) % 3600 / 60);
@@ -143,7 +141,7 @@ Page({
       sec: that.fill_zero_prefix(sec)
     }
     // return hr + ":" + min + ":" + sec ;
-    console.log(obj)
+    // console.log(obj)
     return obj
   },
 

@@ -1,5 +1,6 @@
 // pages/course_xiang/course_xiang.js
 var total_micro_second = 10000 * 10000;
+const app = getApp()
 Page({
 
   /**
@@ -7,7 +8,8 @@ Page({
    */
   data: {
       clock:'',
-      currentData: 0
+      currentData: 0,
+      info:''
   },
 
   /**
@@ -15,6 +17,7 @@ Page({
    */
   onLoad: function (options) {
     this.count_down(this);
+    this.initData()
   },
 
   bindchange:function(e){
@@ -35,6 +38,23 @@ Page({
      }
   },
 
+
+  //初始化详情页数据
+  initData: function(){
+     var that = this
+     var token = wx.getStorageSync("token")
+     var params = {
+        token : token,
+        system_id: 14
+     }
+    app.sz.courseDetail(params).then(d=>{
+         if(d.data.status ==1){
+             that.setData({info: d.data.data})
+         }else{
+            console.log("详情页数据接口错误")
+         }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -85,35 +105,46 @@ Page({
   },
 
   count_down: function(that){
-
+  
       that.setData({
-        clock: that.date_format(total_micro_second)
+        clock: that.date_format()
       });
-      
-      if(total_micro_second <= 0){
-         that.setData({clock:'已经截止'});
-         return;
-      };
+      var newTime = new Date().getTime()
+      var endTime = 1565395200000;
+      if (newTime - endTime > 0){
+        that.setData({ clock: '已经截止' });
+        return;
+      }
       
       setTimeout(function(){
-         total_micro_second -= 10;
-         that.count_down(that);
-      },10)
+         //total_micro_second -= 10;
+         that.count_down(that)
+         console.log("hh")
+      },1000)
   },
 
-  date_format:function(micro_second){
+  date_format:function(){
     var that = this
-    var second = Math.floor(micro_second / 1000);
-    // 小时位
-    var hr = Math.floor(second / 3600);
-    // 分钟位
-    var min = that.fill_zero_prefix(Math.floor((second - hr * 3600) / 60));
-    // 秒位
-    var sec = that.fill_zero_prefix((second - hr * 3600 - min * 60));// equal to => var sec = second % 60;
-    // 毫秒位，保留2位
-    var micro_sec = that.fill_zero_prefix(Math.floor((micro_second % 1000) / 10));
     
-    return hr + ":" + min + ":" + sec ;
+    var newTime = new Date().getTime()
+    var endTime = 1565395200000;
+
+    var time = (endTime - newTime) /1000
+
+    let day = parseInt(time / (60 * 60 * 24));
+    let hou = parseInt(time % (60 * 60 * 24) / 3600);
+    let min = parseInt(time % (60 * 60 * 24) % 3600 / 60);
+    let sec = parseInt(time % (60 * 60 * 24) % 3600 % 60);
+    
+    var obj ={
+      day: that.fill_zero_prefix(day),
+      hou: that.fill_zero_prefix(hou),
+      min: that.fill_zero_prefix(min),
+      sec: that.fill_zero_prefix(sec)
+    }
+    // return hr + ":" + min + ":" + sec ;
+    console.log(obj)
+    return obj
   },
 
   fill_zero_prefix: function(num){

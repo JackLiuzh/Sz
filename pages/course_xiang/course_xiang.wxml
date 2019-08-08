@@ -1,24 +1,16 @@
 <view class="container">
     <view class='top'>
-        <view class='tit'>申论文章写作</view>
-        <view class='sub_tit'>文章写作干货放送</view>
+        <view class='tit'>{{info.title}}</view>
+        <view class='sub_tit'>{{info.subject}}</view>
         <view class='top_con'>
             <view class='con_img'>
-                <view class='img_box'>
-                    <image style='width:68rpx;height:68rpx;border-radius:50%;' src="/images/test.png"></image>
-                    <view class='box_text'>陈颖</view>
-                </view>
-                <view class='img_box'>
-                    <image style='width:68rpx;height:68rpx;border-radius:50%;' src="/images/test.png"></image>
-                    <view class='box_text'>陈颖</view>
-                </view>
-                <view class='img_box'>
-                    <image style='width:68rpx;height:68rpx;border-radius:50%;' src="/images/test.png"></image>
-                    <view class='box_text'>陈颖</view>
+                <view wx:for="{{info.teacherlist}}" wx:key="this" class='img_box'>
+                    <image style='width:68rpx;height:68rpx;border-radius:50%;' src="{{item.avatar}}"></image>
+                    <view class='box_text'>{{item.name}}</view>
                 </view>
             </view>
             <view class='con_text'>
-                 219人已购买
+                 {{info.buy_count}}人已购买
             </view>
         </view>
     </view>
@@ -29,9 +21,46 @@
          </view>
          <view class='main_con'>
             <swiper current="{{currentData}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange">
-              <swiper-item><view class='swiper_con'>介绍</view></swiper-item> 
               <swiper-item>
                   <view class='swiper_con'>
+                        
+                  </view>
+              </swiper-item> 
+              <swiper-item>
+                  <view class='swiper_con'>
+                        <view class='item'>
+                            <view class='item_cell'>
+                                 <view class='cell_le'>第1章   申论总述<text class='dt'>(4课时)</text></view>
+                                 <view class='cell_ri'>
+                                     <image style='width:48rpx;height:48rpx;' src="/images/shou@2x.png"></image>
+                                 </view>
+                            </view>
+                            <view class='subcell_box'>
+                                <view class='item_subcell'>
+                                  <view class='subcell_le'>
+                                        <view class='text_le'>
+                                            <image style='width:32rpx;height:32rpx;' src="/images/bofang.png"></image>
+                                        </view>
+                                        <view class='text_ri'>
+                                            <view class='ri_tit'>1.1 申论测评原理及大纲解析</view> 
+                                            <view class='ri_lab'>
+                                                <view class='lab_box'>20分钟</view>
+                                                <view class='lab_box'>5知识点</view>
+                                                <view class='lab_box'>15练习题</view>
+                                            </view>
+                                      </view>
+                                  </view>
+                                  <view class='subcell_ri'>
+                                      <view class='ri_text'>
+                                          试听
+                                      </view>
+                                      <view class='ri_img'>
+                                         <!-- <image style='width:48rpx;height:48rpx;' src="/images/xiazai@2x.png"></image> -->
+                                      </view>
+                                  </view>
+                              </view>
+                            </view>
+                       </view>
                        <view class='item'>
                             <view class='item_cell'>
                                  <view class='cell_le'>第1章   申论总述<text class='dt'>(4课时)</text></view>
@@ -71,14 +100,18 @@
          </view>
     </view>
 </view>
+<view class='timefixed'>距离结束还剩 <text style='margin-left:10rpx;margin-right:10rpx;' class='fang'>{{clock.day}}</text>天<text style='margin: 0 10rpx;' class='fang'>{{clock.hou}}</text>:<text style='margin: 0 10rpx;' class='fang' style='margin: 0 10rpx;'>{{clock.min}}</text>:<text style='margin: 0 10rpx;' class='fang'>{{clock.sec}}</text></view>
 <view class='fixbut'>
     <view class='box_but'>
-        <view class='but_le'>
+        <view wx:if="{{info.discount_price}}" class='but_le'>
              <view class='le_img'>
                 <image style='width:105rpx;height:40rpx;' src="/images/msj@2x.png"></image>
              </view>
-             <view class='le_pri'><text>￥</text>299</view>
-             <view class='le_opri'>￥299</view>
+             <view class='le_pri'><text>￥</text>{{info.discount_price}}</view>
+             <view class='le_opri'>￥{{info.price}}</view>
+        </view>
+        <view wx:else  class='but_le'>
+             <view style='padding-left:93rpx;' class='le_pri'><text>￥</text>{{info.price}}</view>
         </view>
         <view class='but_ri'>
             <view class='ri_now'>立即购买</view>

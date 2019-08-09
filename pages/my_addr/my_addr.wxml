@@ -20,4 +20,8 @@
 
     <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
 
+    <view class="save" bindtap="saveAddr"> 
+    <text class="bc">保存</text> 
+  </view> 
+
 </view>

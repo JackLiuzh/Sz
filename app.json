@@ -26,7 +26,11 @@
     "pages/course_buy/course_buy",
     "pages/add_address/add_address",
     "pages/my/my",
-    "pages/my_addr/my_addr"
+    "pages/my_addr/my_addr",
+    "pages/my_feedback/my_feedback",
+    "pages/download_app/download_app",
+    "pages/first_page/first_page",
+    "pages/my_set/my_set"
   ],
   "window": {
     "backgroundTextStyle": "light",

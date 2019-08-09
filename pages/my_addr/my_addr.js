@@ -1,4 +1,5 @@
 // pages/my_addr/my_addr.js
+const app = getApp()
 Page({
 
   /**
@@ -7,6 +8,12 @@ Page({
   data: {
     region: ['','' ,''],
     // customItem: '全部'
+    province_name: '',
+    city_name: '',
+    area_name: '',
+    addrinfo: '',
+    // uid: '', 
+    // token: '', 
     
 
   },
@@ -67,14 +74,55 @@ Page({
 
   },
 
-bindRegionChange: function (e) {
-    // console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
-      region: e.detail.value
-    })
-  },
+    bindRegionChange: function (e) {
+      // console.log('picker发送选择改变，携带值为', e.detail.value) 
+      this.setData({
+        region: e.detail.value 
+      
+      })
+      this.setData({
+        province_name: this.data.region[0],
+        city_name: this.data.region[1],
+        area_name: this.data.region[2]
+      })
+      console.log(this.data.province_name)
+      console.log(this.data.city_name)
+      console.log(this.data.area_name)
+      console.log(this.data.region)
+    },
 
-  
+    saveAddr: function () {
+      var uid = wx.getStorageSync('uid');
+      var token = wx.getStorageSync('token');
+      var params = {
+        "uid": uid,
+        "token": token,
+        "province_name": this.data.province_name,
+        "city_name": this.data.city_name,
+        "area_name": this.data.area_name,
+        "addrinfo": this.data.addrinfo
+      }
+      console.log(params)
+      app.sz.xcxMyAddr(params).then(d => {
+        if (d.data.status == 1) {
+          console.log("succeed")
+        } else {
+          console.log("接口错误")
+        }
+      })
+
+      wx.navigateBack({
+        delta: 1
+      })
+    },
+
+    input: function (e) {
+      this.setData({
+        addrinfo: e.detail.value
+      })
+      console.log(this.data.addrinfo)
+    }, 
+
 
 
 })

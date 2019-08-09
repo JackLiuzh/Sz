@@ -4,6 +4,32 @@ const URI = 'http://cs.szgk.cn/api.php'
 //const URI = 'http://sz.com/api.php'
 // const URI = 'https://www.szgk.cn/api.php'
 const fetch = require('./fetch')
+
+//我的地址
+function xcxMyAddr(params) {
+  return fetch.szfetch(URI, 'updateProvinceCity', params)
+}
+//我的_ 
+function xcxMy(params) {
+  return fetch.szfetch(URI, 'userInfo', params)
+}
+//我的_获取验证码 
+function xcxMyGetyzm(params) {
+  return fetch.szfetch(URI, 'loginSendSMS', params)
+}//我的_发送验证码 
+function xcxMySendyzm(params) {
+  return fetch.szfetch(URI, 'loginBindPhone', params)
+} 
+//反馈验证验证码
+function xcxfeedbackyzm(params) {
+  return fetch.szfetch(URI, 'SendCodeCheck', params)
+} 
+//反馈提交
+function xcxsuggest(params) {
+  return fetch.szfetch(URI, 'suggest', params)
+} 
+
+
 //微信登录
 function loginregister(params) {
   return fetch.szfetch(URI,"xcxlogin",params)
@@ -214,5 +240,5 @@ function courseDetail(params) {
   return fetch.szfetch(URI, 'xcxcourseDetail', params)
 }
 
-module.exports = { loginregister, xcxindex, xcxfirstLogin, xcxSubmitTask, xcxTodayTask, xcxUserTasklist, xcxAddUserTask, xcxDelUserTask, xcxUpdateTaskSet, xcxUpdateCycle, xcxUpdatePushNum, xcxUpdatePinlv, xcxCommentThumbsList, xcxEliminateCommentThumbs, xcxUpdateRange, xcxUpdateRangepost, xcxDakaTask, xcxRiliInfo, xcxgetTaskTi, xcxVideoDetail, xcxAnswerInsert, xcxAddComment, xcxAddThum, xcxAddVideoJilu, xcxgetTaskTiOne, courseList, courseLive, category, courseDetail}
+module.exports = { loginregister, xcxindex, xcxfirstLogin, xcxSubmitTask, xcxTodayTask, xcxUserTasklist, xcxAddUserTask, xcxDelUserTask, xcxUpdateTaskSet, xcxUpdateCycle, xcxUpdatePushNum, xcxUpdatePinlv, xcxCommentThumbsList, xcxEliminateCommentThumbs, xcxUpdateRange, xcxUpdateRangepost, xcxDakaTask, xcxRiliInfo, xcxgetTaskTi, xcxVideoDetail, xcxAnswerInsert, xcxAddComment, xcxAddThum, xcxAddVideoJilu, xcxgetTaskTiOne, courseList, courseLive, category, courseDetail, xcxMyAddr, xcxMy, xcxMyGetyzm, xcxMySendyzm, xcxfeedbackyzm, xcxsuggest}
 

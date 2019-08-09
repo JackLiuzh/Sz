@@ -1,0 +1,5 @@
+<view class="container"> 
+  <view class="layout" bindtap="out"> 
+    <text class="tc">退出登录</text> 
+  </view> 
+</view> 

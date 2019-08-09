@@ -44,8 +44,15 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/kan_video/kan_video",
-					"pathName": "pages/kan_video/kan_video",
+					"name": "pages/first_page/first_page",
+					"pathName": "pages/first_page/first_page",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/my",
+					"pathName": "pages/my/my",
 					"query": "",
 					"scene": null
 				}

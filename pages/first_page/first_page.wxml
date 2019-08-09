@@ -1,0 +1,100 @@
+<view class="container">
+
+  <view class="zhibo">
+
+    <view class="broadcasting">
+      <view class="shu1"></view>
+      <view class="shu2"></view>
+      <view class="shu3"></view>
+      <view class="zbz">直播中</view>
+    </view>
+
+    <view class="title">2019国考联考前指导联考前指导</view>
+
+    <view class="speak">
+      <image class="touxiang" src="../../images/biaoqing@2x.png"></image>
+      <text class="speaker">徐文静老师</text>
+      <view class="shu4"></view>
+      <text class="num">1111人</text>
+      <text class="joining">正在参与 </text>
+    </view>
+
+    <view class="enter_zb" bindtap="showModalZb">
+      <image class="play_zb" src='../../images/多边形 10@2x.png'></image>
+      <view class="enter">进入直播间</view>
+    </view>
+  </view>
+
+
+  <view class='wrap'>
+
+    <view class="to_zb">
+      <view class="dzb">待直播</view>
+      <view class='date-show'>
+        {{month}}月
+      </view>
+      <image class="img" src='../../images/xiayiye@2x.png' bindtap='nextMonth' mode='aspectFit'></image>
+    </view>
+
+    <view class='header'>
+      <view wx:for='{{date}}' >{{item}}</view>
+    </view>
+
+    <view class='date-box'>
+      <view wx:for='{{dateArr}}'  data-date='{{item.isToday}}'>            
+        <view class='date-head'>
+          <view>{{item}}</view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <!-- <view class="playback"> -->
+    <text class="playbacking">回放中</text>
+
+    <view class="list_pb">
+      <view class="content_pb">
+        <image class="img_bp" src="../../images/test.png"></image>
+        <view class="content_pb_brief">
+          <view class="brief_title">你必须了解的考场策略</view>
+          <view class="speak_pb">
+            <image class="touxiang_spk" src="../../images/biaoqing@2x.png"></image>
+            <text class="speaker_pb">徐文静老师</text>
+          </view>
+          <text class="join_pb">365人参与</text>
+        </view>
+        <view class="watch_pb" bindtap="showModalPb">看回放</view>
+      </view>
+    </view>
+  <!-- </view> -->
+
+  <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_zb}}"></view>
+  <view class="modalDlg" wx:if="{{showModal_zb}}">
+    <view class="modal">
+      <image class="close" bindtap="close_zb" src="../../images/组 2065@2x.png"/>
+      <image class="img_dlg"  src="../../images/组 2409@2x.png"/>
+      <text class="tishi">专题课视频有对应的<text class="jiacu">专题测试</text>呦~</text>
+    </view>
+    <view class="button">
+      <view class="test" bindtap="gotest">前去测试</view>
+      <view class="watch_zb" bindtap="gotest">执意看直播</view>
+    </view>
+  </view>
+  
+  <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_pb}}"></view>
+  <view class="modalDlg" wx:if="{{showModal_pb}}">
+    <view class="modal">
+      <image class="close" bindtap="close_pb" src="../../images/组 2065@2x.png"/>
+      <image class="img_dlg"  src="../../images/组 2409@2x.png"/>
+      <text class="tishi">专题课视频有对应的<text class="jiacu">专题测试</text>呦~</text>
+    </view>
+    <view class="button">
+      <view class="test" bindtap="gotest">前去测试</view>
+      <view class="watch_zb" bindtap="gotest">执意看回放</view>
+    </view>
+  </view>
+  
+
+</view>
+

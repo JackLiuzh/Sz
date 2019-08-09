@@ -83,7 +83,7 @@
   position: relative;
   justify-content: space-between;
   overflow:hidden;
-
+  padding-top:20rpx;
 }
 .bottom_content .box1 .b_top .b_t_left .te1{
   line-height: 50rpx;
@@ -96,7 +96,8 @@
 }
 .bottom_content .box1 .b_top .b_t_left .te2{
   font-size: 28rpx;
-  color: #888888;
+  color: #444444;
+  font-weight: 400;
   margin-top: 20rpx;
 }
 .bottom_content .box1 .b_top .done_img{
@@ -337,4 +338,32 @@ button[class="baocun"]::after{
   font-size:20rpx;
   color:#AAAAAA;
    padding-top: 20rpx;
+}
+
+.butask{
+  position: absolute;
+  right:79px;
+  top:0;
+  background:#E65557;
+  width: 62rpx;
+  height: 26rpx;
+  text-align: center;
+  color: #fff;
+  border-radius: 13rpx;
+  line-height: 26rpx;
+  font-size: 15rpx;
+}
+
+.zximg{
+  width:110%; 
+  margin-left:-52rpx;
+  margin-bottom:-20rpx;
+}
+
+.zbz{
+  width:143rpx;
+  position: absolute;
+  top:55rpx;
+  right:80rpx;
+  z-index: 10;
 }

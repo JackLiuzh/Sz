@@ -26,7 +26,13 @@ Page(filter.loginCheck({
     zhibo_data:'',//直播数据
     test: 0,
     display:'none',//是否显示任务结束后的恭喜弹窗
-    isIPX: app.globalData.isIPX
+    isIPX: app.globalData.isIPX,
+    project:{    //专项测评
+      "project_list":[],
+      "project_count":0,
+      "userproject_count":0,
+      "isover_project":1,
+    }
   },
 
   /**
@@ -61,7 +67,8 @@ Page(filter.loginCheck({
               lookvideos: d.data.data.lookvideos,
               daka_bg: d.data.data.poster.img_url,
               daka_text: d.data.data.poster.title,
-              zhibo_data: d.data.data.zhibo_data
+              zhibo_data: d.data.data.zhibo_data,
+              project: d.data.data.project,
             })
             wx.hideLoading()
          }else{

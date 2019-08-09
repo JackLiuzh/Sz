@@ -1,5 +1,5 @@
 <view class="container">
-    <view class='top_set'>
+    <view class='top_set' hidden="false">
         <view class='text_left'>
             <view class='text1'>今日任务</view>
             <view class='text2'>已完成任务<text class="te_color">{{ already_num }}</text>/<text>{{ count }}</text>个</view>
@@ -20,7 +20,7 @@
              </view>
         </view>
     </view>
-    <view wx:if="{{ zhibo_data.isshow }}" class='middle_zhibo'>
+    <view wx:if="{{ zhibo_data.isshow }}" class='middle_zhibo' hidden='false'>
         <view class="left_box">
             <view class='m_top'>
                 <image style="width:24rpx;height:26rpx;" src='../../images/zhibo@2x.png'></image>
@@ -35,8 +35,17 @@
         </view>
     </view>
 
-    <view wx:else class='tishixinxi'>坚持每天做任务，一个周期结束后可获取课程资料包呦</view>
-
+    <view wx:else class='tishixinxi' hidden="false">坚持每天做任务，一个周期结束后可获取课程资料包呦</view>
+    <!-- 专项测评列表 -->
+    <view class="ceping" wx:for="{{project.project_list}}" wx:key="this" style=" overflow: hidden;position: relative;">
+        <image   src='../../images/task_zhibozhong.png' wx:if="{{item.iflive== 1}}" mode="widthFix" class='zbz' ></image>
+        <image wx:if="{{ item.kemu_id== 1}}"  class='zximg'    src='../../images/panduan.png' mode="widthFix" ></image>
+        <image wx:if="{{ item.kemu_id== 2}}"    class='zximg'  src='../../images/shuliang.png'  mode="widthFix"  ></image>
+        <image wx:if="{{ item.kemu_id== 3}}"    class='zximg'  src='../../images/ziliao.png'  mode="widthFix"  ></image>
+        <image wx:if="{{ item.kemu_id== 4}}"   class='zximg'   src='../../images/yuyan.png'  mode="widthFix"  ></image>
+        <image wx:if="{{ item.kemu_id== 5}}"    class='zximg'  src='../../images/changshi.png'  mode="widthFix"  ></image>
+    </view>
+    <!-- 专项测评列表结束 -->
     <view class='bottom_content'>
         <view wx:for="{{complete_list}}" wx:key="this" class="box1" >
             <view class='b_top'>
@@ -53,7 +62,19 @@
                     <view class='te1 {{item.already_total==item.today_tot ? "te_done" : " "}}'>{{item.tname}}</view>
                     <view class='te2'>{{item.already_total}}/{{item.today_tot}}题</view>
                 </view>
-                <view  class='b_t_right'>
+                <!-- 补任务 分享 设置 3个小图标-->
+                <view  class='b_t_zhong' >
+                    <navigator url='../../pages/rili/rili' style="display:inline;">
+                         <image style="width:36rpx;height:36rpx;" src='../../images/task_rili.png'></image>
+                         <text class="butask" wx:if="{{ item.already_total < item.today_tot }}">补任务</text>
+                    </navigator>
+                    <image style="width:36rpx;height:36rpx;margin:0 71rpx;" src='../../images/task_fxiang.png' bindtap='createNewImg'></image>
+                    <navigator  url="/pages/make_plan/make_plan?user_task_id={{item.id}}&name={{item.tname}}" style="display:inline">
+                         <image style="width:36rpx;height:36rpx;" src='../../images/task_set.png'></image>
+                     </navigator>
+                </view>
+                <!-- 补任务 分享 设置 结束-->
+                <view  class='b_t_right' hidden='false'>
                     <navigator  url="/pages/make_plan/make_plan?user_task_id={{item.id}}&name={{item.tname}}">
                         <image style='width:30rpx;height:30rpx;' src="../../images/gengduo@2x.png"></image>
                     </navigator>
@@ -78,8 +99,24 @@
             </view>
             <view class='taskzhouqi'>任务周期：{{item.tastzhouqi}}</view>
         </view>
+        <!--专项刷题 begin -->
+        <view class="box1" wx:if="{{ project.isover_project  > 0 }}">
+            <view class='b_top' style="margin-bottom:20rpx;">
+                <view  style='flex:1;' class="b_t_left" >
+                    <view class='te1'>专项刷题</view>
+                    <view class='te2'>共{{project.project_count}}期，已完成{{project.userproject_count}}期</view>
+                </view>
+                <view  class='b_t_zhong' style="">
+                    <image style="width:36rpx;height:36rpx;" src='../../images/task_fxiang.png' bindtap='createNewImg'></image>
+                </view>
+            </view>
+             <view class='taskzhouqi'>每周一期专题测试，免费专题课同步讲解</view>
+        </view>
+        <!--专项刷题 end -->
     </view>
-    <view class='botom_but'>
+   
+    <!-- + -->
+    <view class='botom_but' hidden="false">
         <navigator hover-class="none" url="../../pages/add_task/add_task"><view class='but'><image style='width:53rpx;height:53rpx;' src='../../images/tianjia@2x.png'></image></view></navigator>
     </view>
     <!-- 海报开始 -->
@@ -119,7 +156,7 @@
 <!-- 任务完成弹窗结束 -->
 
 <!-- 客服开始 -->
-<view class='kefu_but'>
+<view class='kefu_but' hidden="false">
    <view class='b_img'>
       <image style='width:149rpx;height:111rpx;' src='../../images/kefu@2x.png'></image>
       <button class='kefu' open-type='contact' bindcontact="handleContact">ff</button>

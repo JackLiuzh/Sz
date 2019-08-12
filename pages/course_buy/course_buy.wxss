@@ -198,6 +198,8 @@ page {
   height:166rpx;
   background:rgba(252,252,252,1);
   opacity:1;
+  position: fixed;
+  bottom: 0;
 }
 .layout41{
   display:flex;

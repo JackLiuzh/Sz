@@ -1,30 +1,32 @@
 <view class="container">
-  <view class="{{name_phone == ''? 'layout1':'TipHide'}}">
+  <view wx:if="{{data.address.addr_id}}" class="layout1">
+    <view class="v1">
+      <view class="name_phone">{{data.address.addr_userName}} {{data.address.addr_userPhone}}</view>
+      <view class="addr" >{{data.address.province_name}}{{data.address.city_name}} {{data.address.area_name}}{{data.address.addr_addrInfo}}</view>
+    </view>
+    <image class="add" bindtap="add_addr" src="../../images/xiayiye@2x.png"></image>
+  </view>
+  <view wx:else class="layout1">
     <view class="tjdz" >添加地址</view>
     <view class="djtx" bindtap="add_addr">点击填写</view>
     <image class="add" bindtap="add_addr" src="../../images/xiayiye@2x.png"></image>
   </view>
 
-  <view class="{{name_phone != ''? 'layout1':'TipHide'}}">
-    <view class="v1">
-      <view class="name_phone">{{name_phone}}</view>
-      <view class="addr" >{{addr}}</view>
-    </view>
-    <image class="add" bindtap="add_addr" src="../../images/xiayiye@2x.png"></image>
-  </view>
+  
 
   <view class="layout2">
     <view class="layout21">
       <view class="layout211">
-        <text class="title">高效备考笔试必修课(2019版)</text>
+        <text class="title">{{courseinfo.title}}</text>
       </view>
       <view class="layout212">
-        <text class="detail">224个课时+616个知识点+793个课后习题</text>
+        <text class="detail">{{courseinfo.video_tot}}个课时+{{courseinfo.point_tot}}个知识点+{{courseinfo.question_tot}}个课后习题</text>
       </view>
     </view>
-    <view class="price">￥299</view>
+    <view wx:if="{{miaosha}}" class="price">￥{{courseinfo.discount_price}}</view>
+    <view wx:else class="price">￥{{courseinfo.price}}</view>
   </view>
-  <view class="layout3">
+  <view style='display:none;' class="layout3">
     <view class="zfxz">
       <text class="zf">选择支付方式</text>
     </view>
@@ -43,7 +45,7 @@
   <view class="layout4">
     <view class="layout41">
       <text class="hj">合计</text>
-      <text class="hjje">￥299</text>
+      <text class="hjje">￥{{data.amount}}</text>
     </view>
     <view class="qrk">
       <text class="qr">确认支付</text>

@@ -1,7 +1,11 @@
 {
   "pages": [
-    "pages/course_xiang/course_xiang",
     "pages/course/course",
+    "pages/course_buy/course_buy",
+    "pages/add_address/add_address",
+    "pages/my_addr/my_addr",
+    
+    "pages/course_xiang/course_xiang",
     "pages/assessment_detail/assessment_detail",
     "pages/assessment_report/assessment_report",
     
@@ -23,10 +27,8 @@
     "pages/material_qu/material_qu",
     "pages/live/live",
     "pages/kan_video/kan_video",
-    "pages/course_buy/course_buy",
-    "pages/add_address/add_address",
+    
     "pages/my/my",
-    "pages/my_addr/my_addr",
     "pages/my_feedback/my_feedback",
     "pages/download_app/download_app",
     "pages/first_page/first_page",
@@ -60,7 +62,7 @@
         "text": "我的",
         "pagePath": "pages/my/my",
         "iconPath": "images/wode_normal@2x.png",
-        "selectedIconPath": "images/daka@2x.png"
+        "selectedIconPath": "images/wode_active@2x.png"
       }
     ]
   },

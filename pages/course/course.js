@@ -55,9 +55,13 @@ Page({
     }
   },
   onLoad: function (options) {
-    this.initcourslist()
+    
     this.initcategory()
     this.initcourselive()
+
+    // Promise.all([d1,d2,d3]).then(function(result){
+    //   console.log(result)
+    // })
     var that = this;
     // this.setData({
     //   user_task_id: options.user_task_id,
@@ -118,6 +122,7 @@ Page({
   },
   //获取直播接口
   initcourselive: function(){
+    wx.showLoading({ title: '加载中' });
     var that = this
     var token = wx.getStorageSync('token')
     var params = {
@@ -126,7 +131,10 @@ Page({
     app.sz.courseLive(params).then(d=>{
         if(d.data.status == 1){
           that.setData({ livelist: d.data.data})
+          that.initcourslist()
+
         }
+        wx.hideLoading()
     })
   },
   //初始化curcourselist
@@ -142,6 +150,14 @@ Page({
     // console.log("zhe"+d)
     that.setData({curcourselist:d})
       
+  },
+  //跳转
+  gocourse_xiang: function(e){
+    var system_id = e.currentTarget.dataset.system_id
+     wx.navigateTo({
+       url: '/pages/course_xiang/course_xiang?system_id=' + system_id,
+     })
   }
+
 
 })

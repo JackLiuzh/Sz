@@ -69,7 +69,7 @@
          </view>
     </view>
 </view>
-<view class='timefixed'>距离结束还剩 <text style='margin-left:10rpx;margin-right:10rpx;' class='fang'>{{clock.day}}</text>天<text style='margin: 0 10rpx;' class='fang'>{{clock.hou}}</text>:<text style='margin: 0 10rpx;' class='fang' style='margin: 0 10rpx;'>{{clock.min}}</text>:<text style='margin: 0 10rpx;' class='fang'>{{clock.sec}}</text></view>
+<view wx:if="{{discount_end_time}}" class='timefixed'>距离结束还剩 <text style='margin-left:10rpx;margin-right:10rpx;' class='fang'>{{clock.day}}</text>天<text style='margin: 0 10rpx;' class='fang'>{{clock.hou}}</text>:<text style='margin: 0 10rpx;' class='fang' style='margin: 0 10rpx;'>{{clock.min}}</text>:<text style='margin: 0 10rpx;' class='fang'>{{clock.sec}}</text></view>
 <view class='fixbut'>
     <view class='box_but'>
         <view wx:if="{{info.discount_price}}" class='but_le'>
@@ -83,7 +83,7 @@
              <view style='padding-left:93rpx;' class='le_pri'><text>￥</text>{{info.price}}</view>
         </view>
         <view class='but_ri'>
-            <view class='ri_now'>立即购买</view>
+            <view bindtap='gobuy_page' class='ri_now'>立即购买</view>
         </view>
     </view>
 </view>

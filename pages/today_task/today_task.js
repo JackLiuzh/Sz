@@ -85,7 +85,7 @@ Page(filter.loginCheck({
        //获取屏幕宽度，获取自适应单位
        wx.getSystemInfo({
          success: function(res) {
-            that.setData({ height: res.windowHeight, width: res.windowWidth })
+            that.setData({ height: res.windowHeight + 64, width: res.windowWidth })
          },
        })
   },

@@ -26,16 +26,16 @@
                 <swiper-item >
                     <scroll-view scroll-y="true" class="scoll-h" > -->
                         <block wx:for="{{curcourselist}}" wx:key="this">
-                            <view class="course_d">
+                            <view bindtap='gocourse_xiang' data-system_id="{{item.system_id}}" class="course_d" >
                                 <view class='course_d-top'>
                                    <text class="course_d-lan">直播</text>
                                     {{item.title}}
                                 </view>
-                                <view class='course_d-keshi'>224个课时+616个知识点+793个课后习题</view>
+                                <view class='course_d-keshi'>{{item.video_count}}个课时+{{item.point_count}}个知识点+{{item.question_count}}个课后习题</view>
                                 <view class='teach-jiage'>
                                    <view class='teach'>
                                      <view class='teach-ico' wx:for="{{item.teacherlist}}" wx:key="this" wx:for-key="pindex" wx:for-item="item1">
-                                         <image src="/images/test.png" mode="aspectFill" class="teach-ico-img"></image>
+                                         <image src="{{item1.avatar}}" mode="aspectFill" class="teach-ico-img"></image>
                                          <text class='course-name'>{{item1.name}}</text>
                                      </view>
                                    </view>

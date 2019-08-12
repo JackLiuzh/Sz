@@ -9,16 +9,22 @@ Page({
 
     name_phone:'',
     addr:'',
-
+    system_id:'',
+    miaosha:'',
+    data:'',
+    courseinfo:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    console.log(options)
     // console.log(this.data.name_phone)
+    var course = JSON.parse(options.course)
+    this.setData({ courseinfo: course,miaosha:options.miaosha})
 
+    this.initdata(options.system_id,options.miaosha)
   },
 
   /**
@@ -32,10 +38,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      name_phone: wx.getStorageSync('namephone'),
-      addr: wx.getStorageSync('address')
-    })
+    // this.setData({
+    //   name_phone: wx.getStorageSync('namephone'),
+    //   addr: wx.getStorageSync('address')
+    // })
   },
 
   /**
@@ -85,5 +91,26 @@ Page({
       url: '../add_address/add_address'
     })
   },
+  initdata: function(system_id,miaosha){
+     var that = this
+     var token = wx.getStorageSync("token")
+     var uid  = wx.getStorageSync("uid")
+     var params = {
+        system_id:system_id,
+        miaosha: miaosha,
+        token: token,
+        uid :uid
+     }
+     app.sz.createCourseOrder(params).then(d=>{
+        //  console.log(d)
+        if(d.data.status == 1){
+          // that.data.amount = d.data.data.amount
+          that.setData({data:d.data.data})
+        }else {
+          console.log("生成订单接口报错")
+        }
+         
+     }) 
+  }
 
 })

@@ -1,9 +1,18 @@
 <view class="container">
-  <view class="layout1">
-    <view class="tjdz">添加地址</view>
-    <view class="djtx">点击填写</view>
-    <image class="add" src="../../images/xiayiye@2x.png"></image>
+  <view class="{{name_phone == ''? 'layout1':'TipHide'}}">
+    <view class="tjdz" >添加地址</view>
+    <view class="djtx" bindtap="add_addr">点击填写</view>
+    <image class="add" bindtap="add_addr" src="../../images/xiayiye@2x.png"></image>
   </view>
+
+  <view class="{{name_phone != ''? 'layout1':'TipHide'}}">
+    <view class="v1">
+      <view class="name_phone">{{name_phone}}</view>
+      <view class="addr" >{{addr}}</view>
+    </view>
+    <image class="add" bindtap="add_addr" src="../../images/xiayiye@2x.png"></image>
+  </view>
+
   <view class="layout2">
     <view class="layout21">
       <view class="layout211">

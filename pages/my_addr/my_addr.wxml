@@ -14,7 +14,7 @@
 
     <view class="layout">
       <view class="title">街道地址</view>
-      <input class="sr" placeholder="请输入"/>
+      <input class="sr" bindinput="input" placeholder="请输入"/>
       <!-- <image class="xz" src="../../images/xiayiye@2x.png"></image> -->
     </view>
 

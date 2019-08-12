@@ -40,12 +40,19 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 2,
 			"list": [
 				{
 					"id": 0,
 					"name": "pages/first_page/first_page",
 					"pathName": "pages/first_page/first_page",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "pages/course_buy/course_buy",
+					"pathName": "pages/course_buy/course_buy",
 					"query": "",
 					"scene": null
 				},

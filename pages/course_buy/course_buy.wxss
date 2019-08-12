@@ -9,6 +9,9 @@ page {
   background:rgba(255,255,255,1);
   opacity:1;
 }
+.TipHide{
+  display: none;
+}
 .tjdz{
   margin-left:32rpx;
   margin-top:46rpx;
@@ -39,6 +42,34 @@ page {
   width:32rpx;
   height:32rpx;
   background:rgba(255,255,255,1);
+}
+.v1{
+  display:flex;
+  flex-direction:column;
+}
+.name_phone{
+  margin-left:20rpx;
+  margin-top:18rpx;
+  width:650rpx;
+  height:45rpx;
+  font-size:32rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  line-height:45rpx;
+  color:rgba(10,10,10,1);
+  opacity:1;
+}
+.addr{
+  margin-left:20rpx;
+  margin-top:6rpx;
+  width:650rpx;
+  height:40rpx;
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  line-height:40rpx;
+  color:rgba(10,10,10,1);
+  opacity:1;
 }
 .layout2{
   display:flex;

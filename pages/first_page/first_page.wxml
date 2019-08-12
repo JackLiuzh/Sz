@@ -2,27 +2,37 @@
 
   <view class="zhibo">
 
-    <view class="broadcasting">
-      <view class="shu1"></view>
-      <view class="shu2"></view>
-      <view class="shu3"></view>
-      <view class="zbz">直播中</view>
-    </view>
+    <!-- <cover-view class="controls" id="controls" > -->
+    <cover-image  class="zbfm" src="http://image.pearvideo.com/cont/20181116/cont-1477146-11703021.jpeg"/>
+    <!-- </cover-view> -->
 
-    <view class="title">2019国考联考前指导联考前指导</view>
+    <cover-view class="broadcasting">
+      <cover-view class="shu1"></cover-view>
+      <cover-view class="shu2"></cover-view>
+      <cover-view class="shu3"></cover-view>
+      <cover-view class="zbz" >直播中</cover-view>
+    </cover-view>
 
-    <view class="speak">
-      <image class="touxiang" src="../../images/biaoqing@2x.png"></image>
-      <text class="speaker">徐文静老师</text>
-      <view class="shu4"></view>
-      <text class="num">1111人</text>
-      <text class="joining">正在参与 </text>
-    </view>
+    <!-- <cover-view  class="qw" wx:for='{{courselive}}' wx:key="index"> -->
+      <!-- <view wx:if="{{item[index].liveStatus == 2}}"> -->
+        <cover-view class="title">hhh</cover-view>
+      <!-- </view> -->
+    <!-- </cover-view> -->
 
-    <view class="enter_zb" bindtap="showModalZb">
-      <image class="play_zb" src='../../images/多边形 10@2x.png'></image>
-      <view class="enter">进入直播间</view>
-    </view>
+    
+
+    <cover-view class="speak">
+      <cover-image class="touxiang" src="../../images/biaoqing@2x.png"></cover-image>
+      <cover-view class="speaker">徐文静老师</cover-view>
+      <cover-view class="shu4"></cover-view>
+      <cover-view class="num">1111人</cover-view>
+      <cover-view class="joining">正在参与 </cover-view>
+    </cover-view>
+
+    <cover-view class="enter_zb" bindtap="showModalZb">
+      <cover-image class="play_zb" src='../../images/多边形 10@2x.png'></cover-image>
+      <cover-view class="enter">进入直播间</cover-view>
+    </cover-view>
   </view>
 
 
@@ -41,9 +51,9 @@
     </view>
 
     <view class='date-box'>
-      <view wx:for='{{dateArr}}'  data-date='{{item.isToday}}'>            
+      <view wx:for='{{dateArr}}'>            
         <view class='date-head'>
-          <view>{{item}}</view>
+          <view class="waiting">{{item}}</view>
         </view>
       </view>
     </view>

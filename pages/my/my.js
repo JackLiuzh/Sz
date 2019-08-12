@@ -50,12 +50,12 @@ Page({
 
     app.sz.xcxMy(params).then(d => {
       if (d.data.status == 1) {
-        this.setData({ user_area: d.data.data.user_area, isbuy: d.data.data.isbuy })
+        this.setData({  isbuy: d.data.data.isbuy })
         if (d.data.data.phone != '')
           this.setData({ userphone: d.data.data.phone })
-        console.log(this.data.userphone)
+        // console.log(this.data.userphone)
       } else {
-        console.log(d.data.msg)
+        // console.log(d.data.msg)
       }
     })
     
@@ -74,7 +74,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      user_area: wx.getStorageSync('address')
+    })
   },
 
   /**
@@ -189,11 +191,11 @@ Page({
     })
   },
 
-  getPhoneNumber(e) {
-    console.log(e.detail.errMsg)
-    console.log(e.detail.iv)
-    console.log(e.detail.encryptedData)
-  },
+  // getPhoneNumber(e) {
+  //   console.log(e.detail.errMsg)
+  //   console.log(e.detail.iv)
+  //   console.log(e.detail.encryptedData)
+  // },
 
   feedback: function () {
     wx.navigateTo({
@@ -218,28 +220,73 @@ Page({
       url: '../download_app/download_app'
     })
   },
+  // getPhoneNumber(e) {
+  //   console.log(e.detail.errMsg)
+  //   console.log(e.detail.iv)
+  //   console.log(e.detail.encryptedData)
+  // },
+
   getPhoneNumber: function (e) {
-    var that = this;
-    console.log(e.detail.errMsg == "getPhoneNumber:ok");
-    if (e.detail.errMsg == "getPhoneNumber:ok") {
-      wx.request({
-        url: 'http://localhost/index/users/decodePhone',
-        data: {
-          encryptedData: e.detail.encryptedData,
-          iv: e.detail.iv,
-          sessionKey: that.data.session_key,
-          uid: "",
-        },
-        method: "post",
-        success: function (res) {
-          console.log(res);
-        }
-      })
-    }
-    else {
+    console.log(e.detail.iv);
+    console.log(e.detail.encryptedData);
+    wx.login({
+      success: res => {
+        console.log(res.code);
+        if (e.detail.errMsg == "getPhoneNumber:ok") {
+        wx.request({
+          url: 'https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html',
+          data: {
+            'encryptedData': encodeURIComponent(e.detail.encryptedData),
+            'iv': e.detail.iv,
+            'code': res.code
+          },
+          method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+          header: {
+            'content-type': 'application/json'
+          }, // 设置请求的 header
+          success: function (res) {
+            if (res.status == 1) {//我后台设置的返回值为1是正确
+              //存入缓存即可
+              wx.setStorageSync('phone', res.phone);
+            }
+          },
+          fail: function (err) {
+            console.log(err);
+          }
+        })
+      }
+        else {
       this.setData({
         showModal: true
       })
     }
+    }
+    })
   },
+  // getPhoneNumber: function (e) {
+  //   var that = this;
+  //   // var uid = wx.getStorageSync('uid');
+  //   // console.log(e.detail.errMsg == "getPhoneNumber:ok");
+  //   if (e.detail.errMsg == "getPhoneNumber:ok") {
+  //     wx.request({
+  //       // url: 'https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html',
+  //       url: 'http://localhost/index/users/decodePhone',
+  //       data: {
+  //         encryptedData: e.detail.encryptedData,
+  //         iv: e.detail.iv,
+  //         sessionKey: that.data.session_key,
+  //         // uid: uid,
+  //       },
+  //       method: "POST",
+  //       success: function (res) {
+  //         console.log(res);
+  //       }
+  //     })
+  //   }
+  //   else {
+  //     this.setData({
+  //       showModal: true
+  //     })
+  //   }
+  // },
 })

@@ -2,21 +2,31 @@ page {
   background-color: #fff;
 }
 .zhibo{
+  position: relative;
   width:750rpx;
   height:400rpx;
   background:rgba(0,0,0,0.35);
   opacity:1;
 }
+.qw{
+  position: absolute;
+}
+.zbfm{
+  position: absolute;
+}
 .broadcasting{
   display: flex;
+  position: absolute;
   width:172rpx;
   height:57rpx;
+  
   background:rgba(230,85,87,0.7);
   opacity:1;
   border-radius:0rpx 0rpx 20rpx 0rpx;
 }
 .shu1{
-  margin-left:26rpx;
+  position: absolute;
+  margin-left:20rpx;
   margin-top:25rpx;
   width:3rpx;
   height:20rpx;
@@ -25,7 +35,8 @@ page {
   border-radius:1rpx;
 }
 .shu2{
-  margin-left:10rpx;
+  position: absolute;
+  margin-left:30rpx;
   margin-top:15rpx;
   width:3rpx;
   height:30rpx;
@@ -34,7 +45,8 @@ page {
   border-radius:1rpx;
 }
 .shu3{
-  margin-left:7rpx;
+  position: absolute;
+  margin-left:40rpx;
   margin-top:22rpx;
   width:3rpx;
   height:23rpx;
@@ -43,7 +55,8 @@ page {
   border-radius:1rpx;
 }
 .zbz{
-  margin-left:14rpx;
+  position: absolute;
+  margin-left:60rpx;
   margin-top:8rpx;
   width:84rpx;
   height:40rpx;
@@ -55,8 +68,9 @@ page {
   opacity:1;
 }
 .title{
-  margin-left:73rpx;
-  margin-top:55rpx;
+  position: absolute;
+  margin-left:95rpx;
+  margin-top:100rpx;
   width:605rpx;
   height:60rpx;
   font-size:40rpx;
@@ -68,10 +82,12 @@ page {
 }
 .speak{
   display: flex;
+  /* s */
 }
 .touxiang{
+  position: absolute;
   margin-left:178rpx;
-  margin-top:14rpx;
+  margin-top:180rpx;
   width:34rpx;
   height:34rpx;
   background:rgba(0,0,0,0);
@@ -79,8 +95,9 @@ page {
   opacity:1;
 }
 .speaker{
-  margin-left:12rpx;
-  margin-top:11rpx;
+  position: absolute;
+  margin-left:230rpx;
+  margin-top:180rpx;
   width:120rpx;
   height:33rpx;
   font-size:24rpx;
@@ -91,16 +108,18 @@ page {
   opacity:1;
 }
 .shu4{
-  margin-left:25rpx;
-  margin-top:21rpx;
+  position: absolute;
+  margin-left:360rpx;
+  margin-top:188rpx;
   width:0rpx;
   height:17rpx;
   border:1rpx solid rgba(255,255,255,1);
   opacity:1;
 }
 .num{
-  margin-left:24rpx;
-  margin-top:11rpx;
+  position: absolute;
+  margin-left:380rpx;
+  margin-top:185rpx;
   /* width:163rpx; */
   height:33rpx;
   font-size:24rpx;
@@ -111,7 +130,9 @@ page {
   opacity:1;
 }
 .joining{
-  margin-top:11rpx;
+  position: absolute;
+  margin-top:185rpx;
+  margin-left:470rpx;
   /* width:rpx; */
   height:33rpx;
   font-size:24rpx;
@@ -122,9 +143,10 @@ page {
   opacity:1;
 }
 .enter_zb{
+  position: absolute;
   display: flex;
   margin-left:235rpx;
-  margin-top:45rpx;
+  margin-top:270rpx;
   width:283rpx;
   height:72rpx;
   background:rgba(230,85,87,1);
@@ -132,6 +154,7 @@ page {
   border-radius:96rpx;
 }
 .play_zb{
+  position: absolute;
   margin-left:37rpx;
   margin-top:19rpx;
   width:25rpx;
@@ -140,7 +163,8 @@ page {
   opacity:1; */
 }
 .enter{
-  margin-left:15rpx;
+  position: absolute;
+  margin-left:80rpx;
   margin-top:12rpx;
   width:170rpx;
   height:48rpx;
@@ -464,7 +488,15 @@ page {
   /* text-align: center;
   line-height:60rpx; */
 }
-
-
+.waiting{
+  margin-left:17rpx;
+  width:60rpx;
+  height:60rpx;
+  font-family:PingFang SC;
+  color:rgba(255,255,255,1);
+  background:rgba(31,187,148,1);
+  border-radius:50%;
+  opacity:1;
+}
 
 

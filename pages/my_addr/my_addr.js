@@ -12,6 +12,7 @@ Page({
     city_name: '',
     area_name: '',
     addrinfo: '',
+    address:'',
     // uid: '', 
     // token: '', 
     
@@ -110,6 +111,12 @@ Page({
           console.log("接口错误")
         }
       })
+
+      this.setData({
+        address: this.data.province_name + this.data.city_name + this.data.area_name
+      })
+     
+      wx.setStorageSync('address', this.data.address)
 
       wx.navigateBack({
         delta: 1

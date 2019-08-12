@@ -6,6 +6,7 @@ Page({
     month: 0,
     date: ['日', '一', '二', '三', '四', '五', '六'],
     dateArr: [],
+    courselive: [],
     showModal_zb: false,
     showModal_pb: false,
   },
@@ -20,6 +21,31 @@ Page({
       month: month,
       // isToday: '' + year + month + day 
     })
+
+    var token = wx.getStorageSync('token');
+    var params = {
+      // "uid": uid,
+      "token": token,
+    }
+
+    console.log(params)
+
+    app.sz.courseLive(params).then(d => {
+      if (d.data.status == 1) {
+        this.setData({ courselive: d.data.data })
+        console.log(d.data.msg)
+        for(let i=0;i<this.data.courselive.length;i++){
+          if (this.data.courselive[i].liveStatus == 2) {
+            console.log(this.data.courselive[i].video_title)
+          }
+        }
+        
+      } else {
+        console.log(d.data.msg)
+      }
+    })
+    
+
   },
   dateInit: function (setYear, setMonth) {
     //全部时间的月份都是按0~11基准，显示月份才+1 
@@ -45,46 +71,15 @@ Page({
       nextYear = year + 1;
       dayNums = new Date(nextYear, nextMonth, 0).getDate();
     }
-    // arrLen = startWeek + dayNums; 
-    // let i = 0 
-    // for (i; i < arrLen; i++) { 
-    //   if (i >= startWeek) { 
-    //     num = i - startWeek + 1; 
-    //     dateArr[i] = num; 
-    //   } else { 
-    //     dateArr[i] = ''; 
-    //   } 
-    //   // console.log(day) 
-    //   // if (day == dateArr[i]) { 
-    //   //   for (let j = 0;j < arrLen-i+1;j++) { 
-    //   //     let hh = i+j; 
-    //   //     dataArr2[j] = dateArr[hh] 
-    //   //   }   
-    //   // } 
-    // } 
-    // console.log(day) 
-    // let q,j ; 
-    // // let nnn = day 
-    // for (q = 0; q < arrLen;q++ ){ 
-    //   if (day == dateArr[q]) { 
-    //     // console.log("day") 
-    //     for (j = 0; j < arrLen - q; j++) { 
-    //     let hh = q+j; 
-    //     // console.log(hh) 
-    //       dateArr2[j] = dateArr[hh]    
-    //     }   
-    //   } 
-    // } 
-    // console.log(j) 
     let syday = dayNums - day + 1;
     console.log(syday)
     for (let s = 0; s < syday + xq; s++) {
       if (s >= xq) {
         num = s - xq + day;
-        for (let w = 0; w < syday; w++) {
+        for (let w = 0; w < syday; w++) { 
           dateArr[s] = num
         }
-        // dateArr3[s] = dateArr2[w]; 
+        
       } else {
         dateArr[s] = '';
       }
@@ -93,28 +88,8 @@ Page({
     this.setData({
       dateArr: dateArr
     })
-
-
-    //   let nowDate = new Date(); 
-    //   let nowYear = nowDate.getFullYear(); 
-    //   let nowMonth = nowDate.getMonth() + 1; 
-    //   let nowWeek = nowDate.getDay(); 
-    //   let getYear = setYear || nowYear; 
-    //   let getMonth = setMonth >= 0 ? (setMonth + 1) : nowMonth; 
-
-    //   if (nowYear == getYear && nowMonth == getMonth) { 
-    //     this.setData({ 
-    //       isTodayWeek: true, 
-    //       todayIndex: nowWeek 
-    //     }) 
-    //   } else { 
-    //     this.setData({ 
-    //       isTodayWeek: false, 
-    //       todayIndex: -1 
-    //     }) 
-    //   } 
   },
-  datene: function (setYear, setMonth) {
+  nextmonth: function (setYear, setMonth) {
     //全部时间的月份都是按0~11基准，显示月份才+1 
     let dateArr = [];
 
@@ -220,7 +195,7 @@ Page({
       year: year,
       month: (month + 1)
     })
-    this.datene(year, month);
+    this.nextmonth(year, month);
   },
   showModalZb: function () {
     this.setData({

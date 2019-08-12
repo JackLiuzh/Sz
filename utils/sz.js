@@ -28,7 +28,10 @@ function xcxfeedbackyzm(params) {
 function xcxsuggest(params) {
   return fetch.szfetch(URI, 'suggest', params)
 } 
-
+//添加/修改收货地址
+function xcxaddUserAddress(params) {
+  return fetch.szfetch(URI, 'addUserAddress', params)
+} 
 
 //微信登录
 function loginregister(params) {
@@ -240,5 +243,5 @@ function courseDetail(params) {
   return fetch.szfetch(URI, 'xcxcourseDetail', params)
 }
 
-module.exports = { loginregister, xcxindex, xcxfirstLogin, xcxSubmitTask, xcxTodayTask, xcxUserTasklist, xcxAddUserTask, xcxDelUserTask, xcxUpdateTaskSet, xcxUpdateCycle, xcxUpdatePushNum, xcxUpdatePinlv, xcxCommentThumbsList, xcxEliminateCommentThumbs, xcxUpdateRange, xcxUpdateRangepost, xcxDakaTask, xcxRiliInfo, xcxgetTaskTi, xcxVideoDetail, xcxAnswerInsert, xcxAddComment, xcxAddThum, xcxAddVideoJilu, xcxgetTaskTiOne, courseList, courseLive, category, courseDetail, xcxMyAddr, xcxMy, xcxMyGetyzm, xcxMySendyzm, xcxfeedbackyzm, xcxsuggest}
+module.exports = { loginregister, xcxindex, xcxfirstLogin, xcxSubmitTask, xcxTodayTask, xcxUserTasklist, xcxAddUserTask, xcxDelUserTask, xcxUpdateTaskSet, xcxUpdateCycle, xcxUpdatePushNum, xcxUpdatePinlv, xcxCommentThumbsList, xcxEliminateCommentThumbs, xcxUpdateRange, xcxUpdateRangepost, xcxDakaTask, xcxRiliInfo, xcxgetTaskTi, xcxVideoDetail, xcxAnswerInsert, xcxAddComment, xcxAddThum, xcxAddVideoJilu, xcxgetTaskTiOne, courseList, courseLive, category, courseDetail, xcxMyAddr, xcxMy, xcxMyGetyzm, xcxMySendyzm, xcxfeedbackyzm, xcxsuggest,xcxaddUserAddress}
 

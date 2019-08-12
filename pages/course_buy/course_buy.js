@@ -1,10 +1,14 @@
 // pages/course_buy/course_buy.js
+const app = getApp()
 Page({
-
+  
   /**
    * 页面的初始数据
    */
   data: {
+
+    name_phone:'',
+    addr:'',
 
   },
 
@@ -12,6 +16,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
+    // console.log(this.data.name_phone)
 
   },
 
@@ -26,7 +32,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      name_phone: wx.getStorageSync('namephone'),
+      addr: wx.getStorageSync('address')
+    })
   },
 
   /**
@@ -62,5 +71,19 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  // hh: function () {
+  //   this.setData({
+  //     name_phone : wx.getStorageSync('namephone'),
+  //     addr : wx.getStorageSync('address')
+  //   })
+  //   console.log(this.data.name_phone)
+  // },
+
+  add_addr: function () {
+    wx.navigateTo({
+      url: '../add_address/add_address'
+    })
+  },
+
 })

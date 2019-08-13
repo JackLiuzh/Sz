@@ -1,38 +1,86 @@
 // pages/assessment_report/assessment_report.js
 let Charts = require('./../../utils/wxcharts-min.js')
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    zongtishu:0, //总题数
+    tot:0, //做题总数
+    tot_correct: 0, //做题正确总数
+    category:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      this.initchart()
+    let that =this;
+    var user_task_id = options.user_task_id
+    var time = options.time
+    var uid = app.globalData.uid
+    var params = {
+      "uid": 89,
+      "user_task_id": 636,
+      "time": "2019-08-13"
+    }
+    app.sz.xcxshutiteport(params).then(d => {
+      console.log(d.data);
+      
+       if (d.data.status == 0) {
+         var res = d.data.data
+         that.setData({
+           zongtishu: res.zongtishu,
+           tot: res.tot,
+           tot_correct: res.tot_correct,
+           category: res.category
+         })
+
+         //雷达图
+         this.initchart()
+       }else{
+          console.log("接口错误")
+       }
+     })  
+
+
+
+     
   },
   initchart:function(){
+    var that = this
+    var category = that.data.category
+    var categories = []
+    var corrct_data = []
+    var sa_data = []
+
+    category.forEach(function(item,index){
+      categories.push(item.cate_name)
+      corrct_data.push(item.lv)
+      sa_data.push(item.reference)
+    })
+
     new Charts({
       animation: true,
       canvasId: 'canvas1',
       type: 'radar',
-      categories: ['1', '2', '3', '4', '5', '6'],
+      categories: categories,
       series: [{
-        name: '成交量1',
-        data: [90, 110, 125, 95, 87, 122]
+        name: '我的正确率',
+        color: '#F76F58',
+        data: corrct_data
       }, {
-        name: '成交量2',
-        data: [190, 210, 105, 35, 27, 102]
+        name: '上岸参考正确率',
+          color: '#FCD356',
+          data: sa_data
       }],
       width: 300,
       height: 200,
       extra: {
         radar: {
-          max: 200//雷达数值的最大值
+          max: 100//雷达数值的最大值
         }
       }
     });
@@ -84,5 +132,16 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  //跳转首页
+  backindex: function(){
+    wx.switchTab({
+
+      url: '../today_task/today_task'
+
+    });  
   }
+
+
 })

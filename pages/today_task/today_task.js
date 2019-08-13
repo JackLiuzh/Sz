@@ -509,6 +509,25 @@ Page(filter.loginCheck({
     this.setData({ display: 'none' });
     //销毁缓存 accomplish_days
     wx.removeStorageSync("accomplish_days");
+  },
+
+  //跳转到专项测评列表
+  gospecial_subject: function(){
+    let project =  this.data.project;
+    if (project.isover_project > 0 ){
+        wx.navigateTo({
+          url: '../special_subject/special_subject'
+        });
+    }
+  },
+
+  //跳转到专项测评做题页面
+  godatiproject: function(e){
+    var id = e.currentTarget.dataset.id
+    var kemu_id = e.currentTarget.dataset.kemu_id
+    wx.navigateTo({
+      url: '../test_dati/test_dati?id=' + id + '&kemu_id=' + kemu_id
+    });
   }
 
 }))

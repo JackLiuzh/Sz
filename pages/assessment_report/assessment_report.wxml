@@ -4,46 +4,28 @@
   
         <view class='rate-title'>各模块正确率</view>
         <view class='rate-num'>
-          题数<text class="heise" style="padding:0 46rpx 0 14rpx;">15</text>
-            做对<text class="lvse" style="padding:0 46rpx 0 14rpx;">5</text>
-            做错<text class="red" style="padding:0 46rpx 0 14rpx;">3</text>
-              未做<text class="heise" style="padding:0 0 0 14rpx;">7</text>
+          题数<text class="heise" style="padding:0 46rpx 0 14rpx;">{{zongtishu}}</text>
+            做对<text class="lvse" style="padding:0 46rpx 0 14rpx;">{{tot_correct}}</text>
+            做错<text class="red" style="padding:0 46rpx 0 14rpx;">{{tot-tot_correct}}</text>
+              未做<text class="heise" style="padding:0 0 0 14rpx;">{{zongtishu-tot}}</text>
         </view>
         <!-- 雷达图 -->
         <view class="leida">
-            <canvas style='width:640rpx;height:600rpx;display:block;margin:0 auto;'  canvas-id="canvas1"></canvas>
+            <canvas style='width:600rpx;height:400rpx;display:block;margin:0 auto;'  canvas-id="canvas1"></canvas>
         </view>
-        <view class="leida-info">
+        <view class="leida-info" hidden="false">
             <text class="leida-red"></text>我的正确率<text class="leida-huang"></text>上岸参考正确率
         </view>
         <!-- 雷达图结束 -->
         <view class="catgory">
-            <view class="catgory-in">
-              <text class="catgory-l">常识判断</text>
-              <view class="catgory-z">正确率<text class="catgory-number">80</text>%</view>
-              <text class="catgory-r">偏低，还需多看视频多刷题</text>
-            </view>
-            <view class="catgory-in">
-              <text class="catgory-l">语言理解与表达</text>
-              <view class="catgory-z">正确率<text class="catgory-number">80</text>%</view>
-              <text class="catgory-r">良好，稳住保持优秀</text>
-            </view>
-            <view class="catgory-in">
-              <text class="catgory-l">数量关系</text>
-              <view class="catgory-z">正确率<text class="catgory-number">80</text>%</view>
-              <text class="catgory-r">中等，多巩固做题技巧</text>
-            </view>
-            <view class="catgory-in">
-              <text class="catgory-l">常识判断</text>
-              <view class="catgory-z">正确率<text class="catgory-number">80</text>%</view>
-              <text class="catgory-r">中等偏下，加油还有提升空间</text>
-            </view>
-            <view class="catgory-in">
-              <text class="catgory-l">数量关系</text>
-              <view class="catgory-z">正确率<text class="catgory-number">80</text>%</view>
-              <text class="catgory-r">中等偏上，继续刷题提高</text>
+            <view class="catgory-in" wx:for="{{category}}" >
+              <text class="catgory-l">{{ item.cate_name }}</text>
+              <view class="catgory-z">正确率<text class="catgory-number">{{ item.lv }}</text>%</view>
+              <text class="catgory-r" wx:if="{{ item.lv < item.rank_B }}" >{{ item.rank_text_C }}</text>
+              <text class="catgory-r" wx:if="{{ item.lv < item.rank_A && item.lv >= item.rank_B }}" >{{ item.rank_text_B }}</text>
+             <text class="catgory-r" wx:if="{{  item.lv >= item.rank_A }}" >{{ item.rank_text_A }}</text>
             </view>
         </view>
     </view>
-    <view class="backindex">返回首页</view>
+    <view class="backindex" catchtap='backindex'>返回首页</view>
 </view>

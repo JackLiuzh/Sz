@@ -5,6 +5,21 @@ page{
 .container{
   
 }
+
+/* 评估报告 */
+.pinggureport{
+   width:100%;
+   height: 90rpx;
+   line-height: 90rpx;
+   text-align: center;
+   background-color: #E65557;
+   color: #fff;
+   font-size:28rpx;
+  font-family:PingFang-SC-Regular;
+  font-weight:400;
+ 
+}
+
 .box-top {
    display: flex;
    flex-direction: row;
@@ -40,6 +55,35 @@ page{
 }
 .box-top .top-type .type-qname {
     font-size:24rpx;
+}
+
+.huadong{
+  width: 100%;
+  height: 100%;
+ background:rgba(0,0,0,0.5);
+ position: fixed;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ z-index: 100;
+}
+.huadong-zi{
+  font-size:36rpx;
+  font-family:PingFang-SC-Bold;
+  font-weight:bold;
+  color:rgba(255,255,255,1);
+  position: absolute;
+  right: 34rpx;
+  top: 448rpx;
+}
+.huadong-img{
+  width: 80rpx;
+  height: 82rpx;
+  position: absolute;
+  right: 110rpx;
+  top: 515rpx;
+
 }
 
 .box-top .top-image{

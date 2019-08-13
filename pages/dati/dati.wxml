@@ -157,10 +157,10 @@
                                 </view>      
                             </view>
                       </view>
-                      <view wx:else style='height:120rpx;'></view>
+                      <view wx:else style='height:120rpx;' hidden="false"></view>
                       <!-- 评论盒子 -->
                       <view class="cf-bg" catchtap="cemojiCfBg"  style="display:{{cfBg ? 'block' : 'none'}}"></view>
-                      <view wx:if="{{item.isdo}}"  class='comment-fixed'>
+                      <view wx:if="{{item.isdo}}" hidden="false"  class='comment-fixed'>
                            <view class='cf-box'>
                               <view style='display:none;' class='emoji' catchtap='emojiShowHide'>
                                  <image style="width:60rpx;height:60rpx;" src='../../images/biaoqing@2x.png'></image>
@@ -188,3 +188,14 @@
     </view>
 </view>
 
+<!-- 滑动查看下一题 -->
+<view class="huadong" hidden="{{huadong}}" catchtap="huadongClick" >
+  <view class='huadong-zi'>滑动查看下一题</view>
+  <image src="/images/task_huadong@2x.png" class="huadong-img"></image>
+</view>
+
+
+<!-- 查看评估报告 -->
+<view class="pinggureport" hidden="{{pinggureport}}" catchtap="gopingguClick" >
+         查看评估报告
+</view>

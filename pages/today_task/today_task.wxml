@@ -37,13 +37,13 @@
 
     <view wx:else class='tishixinxi' hidden="false">坚持每天做任务，一个周期结束后可获取课程资料包呦</view>
     <!-- 专项测评列表 -->
-    <view class="ceping" wx:for="{{project.project_list}}" wx:key="this" style=" overflow: hidden;position: relative;">
+    <view class="ceping"  wx:for="{{project.project_list}}" wx:key="this" style=" overflow: hidden;position: relative;">
         <image   src='../../images/task_zhibozhong.png' wx:if="{{item.iflive== 1}}" mode="widthFix" class='zbz' ></image>
-        <image wx:if="{{ item.kemu_id== 1}}"  class='zximg'    src='../../images/panduan.png' mode="widthFix" ></image>
-        <image wx:if="{{ item.kemu_id== 2}}"    class='zximg'  src='../../images/shuliang.png'  mode="widthFix"  ></image>
-        <image wx:if="{{ item.kemu_id== 3}}"    class='zximg'  src='../../images/ziliao.png'  mode="widthFix"  ></image>
-        <image wx:if="{{ item.kemu_id== 4}}"   class='zximg'   src='../../images/yuyan.png'  mode="widthFix"  ></image>
-        <image wx:if="{{ item.kemu_id== 5}}"    class='zximg'  src='../../images/changshi.png'  mode="widthFix"  ></image>
+        <image wx:if="{{ item.kemu_id== 1}}" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}"  catchtap='godatiproject'  class='zximg'    src='../../images/panduan.png' mode="widthFix" ></image>
+        <image wx:if="{{ item.kemu_id== 2}}"    class='zximg'  src='../../images/shuliang.png'  mode="widthFix" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}"  catchtap='godatiproject' ></image>
+        <image wx:if="{{ item.kemu_id== 3}}"    class='zximg'  src='../../images/ziliao.png'  mode="widthFix" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}"  catchtap='godatiproject' ></image>
+        <image wx:if="{{ item.kemu_id== 4}}"   class='zximg'   src='../../images/yuyan.png'  mode="widthFix" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}"  catchtap='godatiproject' ></image>
+        <image wx:if="{{ item.kemu_id== 5}}"    class='zximg'  src='../../images/changshi.png'  mode="widthFix" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}"  catchtap='godatiproject' ></image>
     </view>
     <!-- 专项测评列表结束 -->
     <view class='bottom_content'>
@@ -100,23 +100,22 @@
             <view class='taskzhouqi'>任务周期：{{item.tastzhouqi}}</view>
         </view>
         <!--专项刷题 begin -->
-        <view class="box1" wx:if="{{ project.isover_project  > 0 }}">
+        <view class="box1" wx:if="{{ project.isover_project  > 0 }}"  catchtap="gospecial_subject" >
             <view class='b_top' style="margin-bottom:20rpx;">
                 <view  style='flex:1;' class="b_t_left" >
                     <view class='te1'>专项刷题</view>
                     <view class='te2'>共{{project.project_count}}期，已完成{{project.userproject_count}}期</view>
                 </view>
                 <view  class='b_t_zhong' style="">
-                    <image style="width:36rpx;height:36rpx;" src='../../images/task_fxiang.png' bindtap='createNewImg'></image>
+                    <image style="width:36rpx;height:36rpx;" src='../../images/task_fxiang.png' catchtap='createNewImg'></image>
                 </view>
             </view>
              <view class='taskzhouqi'>每周一期专题测试，免费专题课同步讲解</view>
         </view>
         <!--专项刷题 end -->
     </view>
-   
     <!-- + -->
-    <view class='botom_but' hidden="false">
+    <view class='botom_but' >
         <navigator hover-class="none" url="../../pages/add_task/add_task"><view class='but'><image style='width:53rpx;height:53rpx;' src='../../images/tianjia@2x.png'></image></view></navigator>
     </view>
     <!-- 海报开始 -->

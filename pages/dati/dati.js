@@ -6,6 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+     time:'',             //上个页面传过来的参数
+     pinggureport:true,  //查看评估报告显示
+     huadong: true,       //滑动查看下一题是否显示
      isshowtext:false, //false隐藏文本域
      clientHeight: 500,
      list:[
@@ -98,8 +101,8 @@ emojiChar:"☺-😋-😌-😍-😏-😜-😝-😞-😔-😪-😭-😁-😂-😃-
     })
     //初始化数据
     var user_task_id = options.user_task_id
-    that.setData({ user_task_id:user_task_id })
     var time = options.time
+    that.setData({ user_task_id: user_task_id, time: time })  
     var uid = app.globalData.uid
     var params ={
       "uid":uid,
@@ -521,6 +524,15 @@ emojiChar:"☺-😋-😌-😍-😏-😜-😝-😞-😔-😪-😭-😁-😂-😃-
       //统一修改setdata
     that.setData({ [a]: a_an, [b]: b_an, [c]: c_an, [d]: d_an, [isdo]: 1, [iswro]: iswrong, [du]: duration, [ave_du]: newave_du, [ro]: newro, uptime: new Date().getTime(), [datiiswrong]: iswrong})
 
+      //做完第一题 显示滑动查看下一题
+      if (that.data.answerlist.length == 1 && that.data.total_nums == that.data.unzuo_nums){
+         that.setData({ huadong: false });
+      }
+      //做完最后一题显示查看评估报告
+       var last_index =  that.data.total_nums - 1;
+       if (last_index == pindex){
+         that.setData({ pinggureport: false });
+       }
       //答题正确自动跳转
       // if (answer == xuanxiang) {
       //   var arlength = that.data.questions.length
@@ -687,6 +699,20 @@ emojiChar:"☺-😋-😌-😍-😏-😜-😝-😞-😔-😪-😭-😁-😂-😃-
     question.c_an = c_an;
     question.d_an = d_an;
     question.isfocus = false;
+  },
+  //滑动查看下一题 是否显示
+  huadongClick:function(e){
+    let huadong = this.data.huadong;
+    this.setData({ huadong: !huadong})
+  },
+  
+  //跳转查看评估报告
+  gopingguClick:function(){
+    var user_task_id = this.data.user_task_id
+    var time = this.data.time
+    wx.navigateTo({
+      url: '../assessment_report/assessment_report?user_task_id=' + user_task_id + '&time=' + time
+    });
   }
 
 })

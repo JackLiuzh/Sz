@@ -18,6 +18,10 @@ Page({
     isbuy: 0,
     code: '',
     userphone: '请填写手机号',
+    code:'',
+    iv:'',
+    encryptedData:'',
+
   },
 
 
@@ -231,29 +235,46 @@ Page({
     console.log(e.detail.encryptedData);
     wx.login({
       success: res => {
-        console.log(res.code);
+        this.setData({ code: res.code, iv: e.detail.iv, encryptedData: e.detail.encryptedData})
+        console.log(this.data.code, this.data.iv, this.data.encryptedData);
         if (e.detail.errMsg == "getPhoneNumber:ok") {
-        wx.request({
-          url: 'https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html',
-          data: {
-            'encryptedData': encodeURIComponent(e.detail.encryptedData),
-            'iv': e.detail.iv,
-            'code': res.code
-          },
-          method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-          header: {
-            'content-type': 'application/json'
-          }, // 设置请求的 header
-          success: function (res) {
-            if (res.status == 1) {//我后台设置的返回值为1是正确
-              //存入缓存即可
-              wx.setStorageSync('phone', res.phone);
-            }
-          },
-          fail: function (err) {
-            console.log(err);
+          
+          var params = {
+            "code": this.data.code,
+            "iv": this.data.iv,
+            "encryptedData": this.data.encryptedData,
+            // "code": this.data.code,
           }
-        })
+          console.log(params)
+          app.sz.xcxphone(params).then(d => {
+            if (d.data.status == 0) {
+              console.log(d.data.msg)
+            } else {
+              console.log(d.data.msg)
+            }
+          })
+
+        // wx.request({
+        //   url: 'https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html',
+        //   data: {
+        //     'encryptedData': encodeURIComponent(e.detail.encryptedData),
+        //     'iv': e.detail.iv,
+        //     'code': res.code
+        //   },
+        //   method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+        //   header: {
+        //     'content-type': 'application/json'
+        //   }, // 设置请求的 header
+        //   success: function (res) {
+        //     if (res.status == 1) {//我后台设置的返回值为1是正确
+        //       //存入缓存即可
+        //       wx.setStorageSync('phone', res.phone);
+        //     }
+        //   },
+        //   fail: function (err) {
+        //     console.log(err);
+        //   }
+        // })
       }
         else {
       this.setData({

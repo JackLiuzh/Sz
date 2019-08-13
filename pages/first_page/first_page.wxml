@@ -51,28 +51,27 @@
     </view>
 
     <view class='date-box'>
-      <view wx:for='{{dateArr}}'>            
+      <view wx:for='{{showcal}}' wx:key="index">            
         <view class='date-head'>
-          <view class="waiting">{{item}}</view>
+          <view class="{{showcal[index][1]?'waiting':''}}">{{item[0]}}</view>
         </view>
       </view>
     </view>
 
   </view>
 
-  <!-- <view class="playback"> -->
     <text class="playbacking">回放中</text>
 
-    <view class="list_pb">
-      <view class="content_pb">
-        <image class="img_bp" src="../../images/test.png"></image>
+    <view class="list_pb" wx:for='{{courselive}}' wx:key="index4" >
+      <view class="content_pb" wx:if="{{item.liveStatus == 3}}">
+        <image class="img_bp" src="{{item.avatar}}"></image>
         <view class="content_pb_brief">
-          <view class="brief_title">你必须了解的考场策略</view>
+          <view class="brief_title">{{item.video_title}}</view>
           <view class="speak_pb">
             <image class="touxiang_spk" src="../../images/biaoqing@2x.png"></image>
-            <text class="speaker_pb">徐文静老师</text>
+            <text class="speaker_pb">{{item.live_info.zhubo.nickname}}</text>
           </view>
-          <text class="join_pb">365人参与</text>
+          <text class="join_pb">{{item.buy_count}}人参与</text>
         </view>
         <view class="watch_pb" bindtap="showModalPb">看回放</view>
       </view>

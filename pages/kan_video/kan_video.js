@@ -1,10 +1,20 @@
 // pages/kan_video/kan_video.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    system_id: 1,
+    lesson_id: 1,
+    
+    pinglun: [],
+    // videoUrl: '',
+    
+    
+
+
 
   },
 
@@ -12,8 +22,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var video = ''
+    var uid = wx.getStorageSync('uid');
+    var token = wx.getStorageSync('token');
+    var params = {
+      "uid": uid,
+      "lesson_id": this.data.lesson_id,
+      "system_id": this.data.system_id,
+      "token": token,
+    }
+    // console.log(params)
+    app.sz.xcxkanVideo(params).then(d => {
+      if (d.data.status == 1) {
+        this.setData({ pinglun: d.data.data.pinglun, videoUrl: d.data.data.videoUrl, avatar: d.data.data.avatar})
+        
+        
+      } else {
+        console.log(d.data.msg)
+      }
+    })
+    // console.log(this.data.videoUrl)
     
-
   },
 
   /**
@@ -27,7 +56,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**

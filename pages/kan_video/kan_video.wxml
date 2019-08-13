@@ -1,12 +1,18 @@
 <view class="container">
-  <view class="video">shiping</view>
-   <view class="layout1">
+
+  
+    <video wx:if="{{videoUrl}}" class="video" poster="{{avatar}}" src='{{videoUrl}}' ></video>
+ 
+    
+  
+
+   <!-- <view class="layout1">
      <image class="image1" src="../../images/zhishidian@2x.png"></image>
      <text class="zsd">知识点(2)</text>
      <view class="shu1"></view>
      <image class="image2" src="../../images/lianxiti@2x.png"></image>
      <view class="lxt">练习题(3)</view>
-    </view>
+    </view> -->
 
     <view class="layout2">
 
@@ -15,18 +21,25 @@
         <view class="pinglun">评论</view>
       </view>
 
-      <view class="layout22">
-        <view class="touxiang"></view>
+      <view class="layout22" wx:for="{{pinglun}}" wx:key="index" wx:for-item="pl">
+        <image class="touxiang" src="{{pl.avatar}}"></image>
         <view class="layout221">
-          <view class="name">鬼大爷</view>
-          <view class="plnr">哈哈哈哈哈哈</view>
+          <view class="name">{{pl.u_name}}</view>
+          <view class="plnr">{{pl.content}}</view>
           <view class="layout2211">
-            <view class="riqi">今天 08:30</view>
+            <view class="riqi">{{pl.create_time}}</view>
             <image class="plpl" bindtap="tip" src="../../images/pinglun@2x.png"></image>
             <image class="zan" bindtap="tip" src="../../images/dianzan@2x.png"></image>
-            <view class="num">12</view>
+            <view class="num">{{pl.thumbs_num}}</view>
           </view>
-          <view class="plq"></view>
+          <view class="{{pl.reply_data ==''?'':'plq'}}"> 
+            <view class="hf" wx:for="{{pl.reply_data}}" wx:key='index2' wx:for-item="hf">
+              <view class="hf_name">{{hf.user_name}}:</view>
+              <view class="hf_content">{{hf.content}}</view>
+            </view>
+            
+          
+          </view>
           <view class="heng1"></view>
         </view>
       </view>
@@ -41,7 +54,7 @@
           <view class="text1">要下载APP才能评论哦~</view>
         </view>
       </view>
-      <view class="heng2"></view>
+      <!-- <view class="heng2"></view> -->
 
-    </view>
+  </view>
 </view>

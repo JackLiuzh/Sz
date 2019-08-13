@@ -3,14 +3,21 @@ page {
   background-color: #fff;
 }
 .video{
-  width:828rpx;
+  width:750rpx;
   height:468rpx;
   background:rgba(0,0,0,0);
   opacity:1;
 }
+.controls{
+  /* position:absolute;
+  /* z-index:1; 
+  background-color: #fff;    
+   height: calc(9 * 750rpx / 16); 
+  margin-top:-430rpx; */ 
+}
 .layout1{
   display:flex;
-  width:828rpx;
+  width:750rpx;
   height:124rpx;
   background:rgba(255,255,255,1);
   opacity:1;
@@ -60,7 +67,7 @@ page {
   opacity:1;
 }
 .layout2{
-  width:828rpx;
+  width:750rpx;
   height:896rpx;
   background:rgba(255,255,255,1);
   opacity:1;
@@ -135,7 +142,7 @@ page {
 .riqi{
   margin-left:28rpx;
   margin-top:8rpx;
-  width:120rpx;
+  /* width:120rpx; */
   height:34rpx;
   font-size:24rpx;
   font-family:PingFang SC;
@@ -145,7 +152,7 @@ page {
   opacity:1;
 }
 .plpl{
-  margin-left:314rpx;
+  margin-left:200rpx;
   margin-top:8rpx;
   width:36rpx;
   height:36rpx;
@@ -161,7 +168,7 @@ page {
 .num{
   margin-left:4rpx;
   margin-top:8rpx;
-  width:28rpx;
+  width:30rpx;
   height:34rpx;
   font-size:24rpx;
   font-family:PingFang SC;
@@ -171,11 +178,39 @@ page {
   opacity:1;
 }
 .plq{
+  
   margin-left:28rpx;
   margin-top:16rpx;
-  width:580rpx;
-  height:268rpx;
+  width:560rpx;
+ 
   background:rgba(242,243,247,1);
+  opacity:1;
+}
+.hf{
+  display:flex;
+}
+.hf_name{
+  margin-left:10rpx;
+  margin-top:8rpx;
+  margin-bottom:10rpx;
+  height:35rpx;
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  /* line-height:40rpx; */
+  color:rgba(102,102,102,1);
+  opacity:1;
+}
+.hf_content{
+  margin-left:10rpx;
+  margin-top:8rpx;
+  margin-bottom:10rpx;
+  height:35rpx;
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  /* line-height:40rpx; */
+  color:rgba(10,10,10,1);
   opacity:1;
 }
 .heng{
@@ -205,7 +240,7 @@ page {
 .plts{
   margin-left:26rpx;
   margin-top:18rpx;
-  width:680rpx;
+  width:600rpx;
   height:72rpx;
   background:rgba(242,242,242,1);
   opacity:1;
@@ -222,7 +257,7 @@ page {
   color:rgba(153,153,153,1);
   opacity:1;
 }
-.heng2{
+/* .heng2{
   margin-left:270rpx;
   margin-top:50rpx;
   width:268rpx;
@@ -231,4 +266,4 @@ page {
   opacity:1;
   border-radius:200rpx;
   
-}
+} */

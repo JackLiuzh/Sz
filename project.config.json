@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 1,
 			"list": [
 				{
 					"id": 0,
@@ -51,8 +51,8 @@
 				},
 				{
 					"id": 1,
-					"name": "pages/course_buy/course_buy",
-					"pathName": "pages/course_buy/course_buy",
+					"name": "pages/kan_video/kan_video",
+					"pathName": "pages/kan_video/kan_video",
 					"query": "",
 					"scene": null
 				},

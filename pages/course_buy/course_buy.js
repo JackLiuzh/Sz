@@ -26,7 +26,33 @@ Page({
 
     this.initdata(options.system_id,options.miaosha)
   },
-
+  zhifu: function() {
+     var that =this
+     console.log(222)
+     var token = wx.getStorageSync("token")
+     var uid = wx.getStorageSync("uid")
+     var order_sn = that.data.data.order_sn
+     var type = 3  
+     var addr_id = that.data.data.address.addr_id
+     if(addr_id> 0){
+        var params = {
+          token: token,
+          uid : uid,
+          order_sn: order_sn,
+          type: 3,
+          addr_id :addr_id
+        }
+        app.sz.coursePay(params).then(d=>{
+           console.log(d)
+        })
+     }else {
+         wx.showToast({
+           title: '请添加地址',
+           icon: 'none',
+           duration: 2000
+         })
+     }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

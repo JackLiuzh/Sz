@@ -1,4 +1,5 @@
 // pages/assessment_report/assessment_report.js
+let Charts = require('./../../utils/wxcharts-min.js')
 Page({
 
   /**
@@ -12,9 +13,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      this.initchart()
   },
-
+  initchart:function(){
+    new Charts({
+      animation: true,
+      canvasId: 'canvas1',
+      type: 'radar',
+      categories: ['1', '2', '3', '4', '5', '6'],
+      series: [{
+        name: '成交量1',
+        data: [90, 110, 125, 95, 87, 122]
+      }, {
+        name: '成交量2',
+        data: [190, 210, 105, 35, 27, 102]
+      }],
+      width: 300,
+      height: 200,
+      extra: {
+        radar: {
+          max: 200//雷达数值的最大值
+        }
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

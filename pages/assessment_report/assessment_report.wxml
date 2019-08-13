@@ -10,7 +10,9 @@
               未做<text class="heise" style="padding:0 0 0 14rpx;">7</text>
         </view>
         <!-- 雷达图 -->
-        <view class="leida"></view>
+        <view class="leida">
+            <canvas style='width:640rpx;height:600rpx;display:block;margin:0 auto;'  canvas-id="canvas1"></canvas>
+        </view>
         <view class="leida-info">
             <text class="leida-red"></text>我的正确率<text class="leida-huang"></text>上岸参考正确率
         </view>

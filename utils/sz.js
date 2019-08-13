@@ -151,6 +151,14 @@ function xcxgetTaskTiOne(params) {
   return fetch.szfetch(URI, 'xcxgetTaskTiOne', params)
 }
 
+//获取专题列表
+function xcxgetSpecialList(params){
+  return fetch.szfetch(URI, 'xcxgetSpecialList', params)
+}
+
+function xcxgetProjectevaluationTi(params) {
+  return fetch.szfetch(URI, 'xcxgetProjectevaluationTi', params)
+}
 // //获得打卡主题列表daka 页面
 // function dakazhutilist(params) {
 //   return fetch.szfetch(URI,"clockselect",params)
@@ -248,5 +256,5 @@ function createCourseOrder(params) {
   return fetch.szfetch(URI, 'createCourseOrder', params)
 }
 
-module.exports = { loginregister, xcxindex, xcxfirstLogin, xcxSubmitTask, xcxTodayTask, xcxUserTasklist, xcxAddUserTask, xcxDelUserTask, xcxUpdateTaskSet, xcxUpdateCycle, xcxUpdatePushNum, xcxUpdatePinlv, xcxCommentThumbsList, xcxEliminateCommentThumbs, xcxUpdateRange, xcxUpdateRangepost, xcxDakaTask, xcxRiliInfo, xcxgetTaskTi, xcxVideoDetail, xcxAnswerInsert, xcxAddComment, xcxAddThum, xcxAddVideoJilu, xcxgetTaskTiOne, courseList, courseLive, category, courseDetail, xcxMyAddr, xcxMy, xcxMyGetyzm, xcxMySendyzm, xcxfeedbackyzm, xcxsuggest, xcxaddUserAddress, createCourseOrder}
+module.exports = { loginregister, xcxindex, xcxfirstLogin, xcxSubmitTask, xcxTodayTask, xcxUserTasklist, xcxAddUserTask, xcxDelUserTask, xcxUpdateTaskSet, xcxUpdateCycle, xcxUpdatePushNum, xcxUpdatePinlv, xcxCommentThumbsList, xcxEliminateCommentThumbs, xcxUpdateRange, xcxUpdateRangepost, xcxDakaTask, xcxRiliInfo, xcxgetTaskTi, xcxVideoDetail, xcxAnswerInsert, xcxAddComment, xcxAddThum, xcxAddVideoJilu, xcxgetTaskTiOne, courseList, courseLive, category, courseDetail, xcxMyAddr, xcxMy, xcxMyGetyzm, xcxMySendyzm, xcxfeedbackyzm, xcxsuggest, xcxaddUserAddress, createCourseOrder, xcxgetSpecialList, xcxgetProjectevaluationTi}
 

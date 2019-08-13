@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="list">
+    <block wx:for="{{ list }}" wx:key="this" class='box1'>
+      <view class = "c_line">
+        <image class='img'  src='../../images/special/bg{{item.kemu_id}}.png'></image>
+        <view class="c_line_text">
+          <view class="gong gong_color{{item.kemu_id}}">共</view>
+          <view class="number number_color{{item.kemu_id}}">{{item.ti_count}}</view>
+          <view class="ti ti_color{{item.kemu_id}}">题</view>
+        </view>    
+        <block wx:if="{{item.test == 1}}">
+            <view class="btn_tested btn_tested_color{{item.kemu_id}}">
+            <navigator url="#">
+              <view class="btn_tested_text btn_tested_text_color{{item.kemu_id}}">已测试，查看解析 ></view>
+            </navigator>
+          </view>
+        </block>
+        <block wx:else >
+        <view class="btn_test btn_test_color{{item.kemu_id}}">
+            <navigator url="/pages/test_dati/test_dati?id={{item.id}}&kemu_id={{item.kemu_id}}">
+              <view class="btn_text">去测试 ></view>
+            </navigator>
+          </view>            
+        </block>
+      </view>
+    </block>
+  </view>
+</view>

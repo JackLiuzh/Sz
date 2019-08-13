@@ -1,10 +1,10 @@
 {
   "pages": [
+
     "pages/course/course",
     "pages/course_buy/course_buy",
     "pages/add_address/add_address",
-    "pages/my_addr/my_addr",
-    
+    "pages/special_subject/special_subject",
     "pages/course_xiang/course_xiang",
     "pages/assessment_detail/assessment_detail",
     "pages/assessment_report/assessment_report",
@@ -32,7 +32,9 @@
     "pages/my_feedback/my_feedback",
     "pages/download_app/download_app",
     "pages/first_page/first_page",
-    "pages/my_set/my_set"
+    "pages/my_set/my_set",
+    "pages/my_addr/my_addr",
+    "pages/test_dati/test_dati"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -20,7 +20,7 @@ function xcxMyGetyzm(params) {
 function xcxMySendyzm(params) {
   return fetch.szfetch(URI, 'loginBindPhone', params)
 }
-//反馈验证验证码 
+//反馈中手机验证验证码 
 function xcxfeedbackyzm(params) {
   return fetch.szfetch(URI, 'SendCodeCheck', params)
 }
@@ -36,7 +36,7 @@ function xcxaddUserAddress(params) {
 function xcxkanVideo(params) {
   return fetch.szfetch(URI, 'xcxwatchVideoHuifu', params)
 }
-//绑定手机
+//获取威胁绑定手机号
 function xcxphone(params) {
   return fetch.szfetchpost(URI, 'xcxphone', params)
 }  

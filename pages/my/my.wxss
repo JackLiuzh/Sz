@@ -60,7 +60,7 @@ page {
 }
 .tj{
   margin-left:200rpx;
-  margin-top:45rpx;
+  margin-top:32rpx;
 }
 .phone{
   font-size:24rpx;
@@ -72,7 +72,7 @@ page {
 }
 .img{
   margin-left:10rpx;
-  margin-top:55rpx;
+  margin-top:40rpx;
   width:30rpx;
   height:30rpx;
   background:rgba(255,255,255,1);

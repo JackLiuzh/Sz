@@ -227,9 +227,6 @@ Page({
 
   getPhoneNumber: function (e) {
     var that = this
-    if (that.data.userphone != "请填写手机号"){
-       return;
-    }
     wx.checkSession({
       success: function () {
         if (e.detail.errMsg == "getPhoneNumber:ok") {

@@ -1,8 +1,21 @@
 /* pages/course_xiang/course_xiang.wxss */
+.ri_suo{
+  font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(187,187,187,1);
+opacity:1;
+}
+.suo_img{
+  padding-right: 10rpx;
+}
 .top{
   margin-top: 2rpx;
   padding: 40rpx 32rpx;
   background: white;
+}
+.dd{
+  transform: rotate(180deg)
 }
 .tit{
 

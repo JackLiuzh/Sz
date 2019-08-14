@@ -32,12 +32,15 @@
                         <view wx:for="{{info.info}}" wx:key="this" class='item'>
                             <view class='item_cell'>
                                  <view class='cell_le'>第{{index + 1}}章  {{item.title}}<text class='dt'>({{item.video_num}}课时)</text></view>
-                                 <view class='cell_ri'>
+                                 <view wx:if="{{item.iszhedie}}" bindtap='zhedie' data-index="{{index}}" class='cell_ri'>
+                                     <image style='width:48rpx;height:48rpx;' src="/images/shou@2x.png"></image>
+                                 </view>
+                                 <view  wx:else bindtap='zhedie' data-index="{{index}}" class='cell_ri dd'>
                                      <image style='width:48rpx;height:48rpx;' src="/images/shou@2x.png"></image>
                                  </view>
                             </view>
-                            <view class='subcell_box'>
-                                <view wx:for="{{item.video_data}}" wx:key="this" wx:for-item="pitem" wx:for-index="pindex" class='item_subcell'>
+                            <view wx:if="{{item.iszhedie}}" class='subcell_box'>
+                                <view  wx:for="{{item.video_data}}" wx:key="this" wx:for-item="pitem" wx:for-index="pindex"  class='item_subcell'>
                                   <view class='subcell_le'>
                                         <view class='text_le'>
                                             <image style='width:32rpx;height:32rpx;' src="/images/bofang.png"></image>
@@ -46,18 +49,24 @@
                                             <view class='ri_tit'>{{pitem.serial_number}} {{pitem.video_title}}</view> 
                                             <view class='ri_lab'>
                                                 <view class='lab_box'>{{pitem.duration}}分钟</view>
-                                                <view class='lab_box'>{{pitem.point_count}}知识点</view>
-                                                <view class='lab_box'>{{pitem.question_count}}练习题</view>
+                                                <view style='display:none;' class='lab_box'>{{pitem.point_count}}知识点</view>
+                                                <view style='display:none;' class='lab_box'>{{pitem.question_count}}练习题</view>
                                             </view>
                                         </view>
                                   </view>
                                   <view class='subcell_ri'>
-                                      <view class='ri_text'>
-                                          试听
+                                      <view wx:if="{{info.is_xcxpay}}" data-lesson_id="{{pitem.id}}" data-system_id="{{pitem.system_id}}" bindtap='gokan_video' class='ri_text'>
+                                          播放
                                       </view>
-                                      <view class='ri_img'>
-                                         <!-- <image style='width:48rpx;height:48rpx;' src="/images/xiazai@2x.png"></image> -->
-                                      </view>
+                                      <block wx:else>
+                                          <view bindtap='gokan_video' wx:if="{{pitem.isfees}}" data-lesson_id="{{pitem.id}}" data-system_id="{{pitem.system_id}}"  class='ri_text'>
+                                              试听
+                                          </view>
+                                          <view wx:else class='ri_suo'>
+                                              <image class='suo_img' style='width:24rpx;height:28rpx;' src="/images/749@2x.png"></image>待解锁
+                                          </view>
+                                          
+                                      </block>
                                   </view>
                               </view>
                             </view>
@@ -69,6 +78,7 @@
          </view>
     </view>
 </view>
+<block wx:if="{{info.is_xcxpay == 0}}">
 <view wx:if="{{discount_end_time}}" class='timefixed'>距离结束还剩 <text style='margin-left:10rpx;margin-right:10rpx;' class='fang'>{{clock.day}}</text>天<text style='margin: 0 10rpx;' class='fang'>{{clock.hou}}</text>:<text style='margin: 0 10rpx;' class='fang' style='margin: 0 10rpx;'>{{clock.min}}</text>:<text style='margin: 0 10rpx;' class='fang'>{{clock.sec}}</text></view>
 <view class='fixbut'>
     <view class='box_but'>
@@ -87,3 +97,4 @@
         </view>
     </view>
 </view>
+</block>

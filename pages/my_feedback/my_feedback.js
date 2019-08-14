@@ -116,7 +116,7 @@ Page({
           // console.log(params)
           app.sz.xcxphone(params).then(d => {
             if (d.data.status == 0) {
-              // this.setData({ contact: d.data.data.phoneNumber })
+              this.setData({ contact: d.data.data.phoneNumber })
               console.log(d.data.data.phoneNumber)
             } else {
               console.log(d.data.msg)

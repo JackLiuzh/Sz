@@ -12,6 +12,7 @@ Page({
     showcal:[],
     showModal_zb: false,
     showModal_pb: false,
+    bpurl: '',
   },
   onLoad: function () {
     // let that = this;
@@ -87,6 +88,7 @@ Page({
             calPanduan: cal_add_false,
           })
         }
+        // this.showModalPb(e)
         for(let l=0;l<this.data.courselive.length;l++){
           if (this.data.courselive[l].liveStatus == 1){
             for (let m = 0; m < this.data.comDateTime.length;m++){
@@ -173,12 +175,24 @@ Page({
     })
     this.nextmonth(year, month);
   },
-  showModalZb: function () {
+  showModalZb: function (e) {
+    var id = e.currentTarget.dataset.xb;
+    console.log(id);
+    this.setData({
+      bpurl: this.data.courselive[id].live_info.playbackUrl
+    })
+    console.log(this.data.bpurl);
     this.setData({
       showModal_zb: true
     })
   },
-  showModalPb: function () {
+  showModalPb: function (e) {
+    var id = e.currentTarget.dataset.xb;
+    console.log(id);
+    this.setData({
+      bpurl: this.data.courselive[id].live_info.playbackUrl
+    })
+    console.log(this.data.bpurl);
     this.setData({
       showModal_pb: true
     })
@@ -192,5 +206,12 @@ Page({
     this.setData({
       showModal_pb: false
     })
+  },
+  golive: function () {
+    let url = encodeURIComponent(this.data.bpurl);
+    console.log(url);
+    wx.navigateTo({
+      url: '../live/live?url=' + url,
+    });
   },
 })

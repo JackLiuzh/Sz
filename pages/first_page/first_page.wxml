@@ -1,7 +1,7 @@
 <view class="container">
 
   <view class="zhibo" >
-    <view wx:for='{{courselive}}' wx:key="index1" >
+    <view wx:for='{{courselive}}' wx:key="index1" wx:for-index="xb" >
       <view wx:if="{{item.liveStatus == 3}}">
         <image  class="zbfm" src="{{item.avatar}}"/>
    
@@ -13,9 +13,9 @@
       <cover-view class="zbz" >直播中</cover-view>
     </cover-view>
 
-      <cover-view class="cs">
+      <!-- <cover-view class="cs"> -->
         <cover-view class="title">{{item.video_title}}</cover-view>
-      </cover-view>
+      <!-- </cover-view> -->
 
     <cover-view class="speak">
       <cover-image class="touxiang" src="{{item.live_info.zhubo.p_40}}"></cover-image>
@@ -25,10 +25,25 @@
       <cover-view class="joining">正在参与 </cover-view>
     </cover-view>
 
-    <cover-view class="enter_zb" bindtap="showModalZb">
+    <cover-view class="enter_zb" bindtap="showModalZb" data-xb='{{xb}}'>
       <cover-image class="play_zb" src='../../images/多边形 10@2x.png'></cover-image>
-      <cover-view class="enter">进入直播间</cover-view>
+      <cover-view class="enter" >进入直播间</cover-view>
     </cover-view> 
+
+    <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_zb}}"></view>
+      <view class="modalDlg" wx:if="{{showModal_zb}}">
+        <view class="modal">
+          <image class="close" bindtap="close_zb" src="../../images/组 2065@2x.png"/>
+          <image class="img_dlg"  src="../../images/组 2409@2x.png"/>
+          <text class="tishi">专题课视频有对应的<text class="jiacu">专题测试</text>呦~</text>
+        </view>
+        <view class="button">
+          <view class="test" bindtap="gotest">前去测试</view>
+          <view class="watch_zb" bindtap="golive">执意看直播</view>
+          <!-- <navigator class="watch_zb" url="{{item.live_info.zhubo.playbackUrl}}" open-type="navigate" >执意看直播</navigator> -->
+        </view>
+      </view>
+
       </view>
     </view>
   </view>
@@ -60,7 +75,7 @@
 
     <text class="playbacking">回放中</text>
 
-    <view class="list_pb" wx:for='{{courselive}}' wx:key="index4" >
+    <view class="list_pb" wx:for='{{courselive}}' wx:key="index4" wx:for-index="xb" >
       <view class="content_pb" wx:if="{{item.liveStatus == 3}}">
         <image class="img_bp" src="{{item.avatar}}"></image>
         <view class="content_pb_brief">
@@ -71,36 +86,27 @@
           </view>
           <text class="join_pb">{{item.buy_count}}人参与</text>
         </view>
-        <view class="watch_pb" bindtap="showModalPb">看回放</view>
+        <view class="watch_pb" bindtap="showModalPb" data-xb='{{xb}}'>看回放</view>
+
+        <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_pb}}"></view>
+        <view class="modalDlg" wx:if="{{showModal_pb}}">
+          <view class="modal">
+            <image class="close" bindtap="close_pb" src="../../images/组 2065@2x.png"/>
+            <image class="img_dlg"  src="../../images/组 2409@2x.png"/>
+            <text class="tishi">专题课视频有对应的<text class="jiacu">专题测试</text>呦~</text>
+          </view>
+          <view class="button">
+            <view class="test" bindtap="gotest">前去测试</view>
+            <view class="watch_zb" bindtap="golive">执意看回放</view>
+          </view>
+        </view>
       </view>
     </view>
   <!-- </view> -->
 
-  <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_zb}}"></view>
-  <view class="modalDlg" wx:if="{{showModal_zb}}">
-    <view class="modal">
-      <image class="close" bindtap="close_zb" src="../../images/组 2065@2x.png"/>
-      <image class="img_dlg"  src="../../images/组 2409@2x.png"/>
-      <text class="tishi">专题课视频有对应的<text class="jiacu">专题测试</text>呦~</text>
-    </view>
-    <view class="button">
-      <view class="test" bindtap="gotest">前去测试</view>
-      <view class="watch_zb" bindtap="gotest">执意看直播</view>
-    </view>
-  </view>
   
-  <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_pb}}"></view>
-  <view class="modalDlg" wx:if="{{showModal_pb}}">
-    <view class="modal">
-      <image class="close" bindtap="close_pb" src="../../images/组 2065@2x.png"/>
-      <image class="img_dlg"  src="../../images/组 2409@2x.png"/>
-      <text class="tishi">专题课视频有对应的<text class="jiacu">专题测试</text>呦~</text>
-    </view>
-    <view class="button">
-      <view class="test" bindtap="gotest">前去测试</view>
-      <view class="watch_zb" bindtap="gotest">执意看回放</view>
-    </view>
-  </view>
+  
+  
   
 
 </view>

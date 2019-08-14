@@ -233,10 +233,15 @@ Page({
         console.log(this.data.code, this.data.iv, this.data.encryptedData);
         if (e.detail.errMsg == "getPhoneNumber:ok") {
           
+          let iv = encodeURIComponent(this.data.iv);
+          let encryptedData = encodeURIComponent(this.data.encryptedData);
+          let uid = app.globalData.uid; 
           var params = {
             "code": this.data.code,
-            "iv": this.data.iv,
-            "encryptedData": this.data.encryptedData,
+            "iv": iv,
+            "encryptedData": encryptedData,
+            "uid": uid,
+            "XDEBUG_SESSION_START":141454
             // "code": this.data.code,
           }
           console.log(params)

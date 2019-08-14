@@ -107,7 +107,7 @@
                     <view class='te2'>共{{project.project_count}}期，已完成{{project.userproject_count}}期</view>
                 </view>
                 <view  class='b_t_zhong' style="">
-                    <image style="width:36rpx;height:36rpx;" src='../../images/task_fxiang.png' catchtap='createNewImg'></image>
+                    <image style="width:36rpx;height:36rpx;" src='../../images/task_fxiang.png' catchtap='createZhuantiImg'></image>
                 </view>
             </view>
              <view class='taskzhouqi'>每周一期专题测试，免费专题课同步讲解</view>

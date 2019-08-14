@@ -528,6 +528,214 @@ Page(filter.loginCheck({
     wx.navigateTo({
       url: '../test_dati/test_dati?id=' + id + '&kemu_id=' + kemu_id
     });
+  },
+
+  //生成专题测海报
+  createZhuantiImg: function (e){
+    var that = this
+    //1获取微信头像 
+    let promise1 = new Promise(function (resolve, reject) {
+      wx.getImageInfo({
+        src: that.data.touxiang,
+        success: function (res) {
+          resolve(res);
+        }
+      })
+    })
+    //2获取打卡背景
+    let promise2 = new Promise(function (resolve, reject) {
+      wx.getImageInfo({
+        src: that.data.daka_bg,
+        success: function (res) {
+          resolve(res);
+        }
+      })
+    })
+
+
+    //获取背景网络图片
+    Promise.all([promise1, promise2]).then(res => {
+      wx.showLoading({
+        title: '分享图片生成中...',
+        icon: 'loading',
+        duration: 1000
+      })
+      var nickName = that.data.nickName
+      var erweima = that.data.erweima
+      var daka_bg = res[1].path
+      var daka_text = that.data.daka_text
+      var touxiang = res[0].path
+     
+      let project = that.data.project 
+      
+      var project_count = project.project_count
+      var wancheng_total = project.userproject_count
+      var look_count = project.isover_project
+
+      that.shengchenghuantihaibao(touxiang, nickName, erweima, daka_bg, daka_text, project_count, wancheng_total, look_count)
+    })
+       
+  },
+  //生成专题测海报
+  shengchenghuantihaibao: function (touxiang, nickName, erweima, daka_bg, daka_text, project_count, wancheng_total, look_count){
+
+    var rpx;
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res);
+        rpx = res.windowWidth / 375
+      },
+    })
+
+    var that = this
+    const context = wx.createCanvasContext('mycanvas')
+
+    //画背景
+    context.setFillStyle("white")
+    context.drawImage(daka_bg, 0, 0, 432 * rpx, 223 * rpx)
+    //画背景文字
+    var text = daka_text
+    var chr = text.split("");
+    var temp = "";
+    var row = [];
+    context.setFontSize(20 * rpx);
+    context.setFillStyle("#fff");
+    context.setTextAlign('center');
+    for (var a = 0; a < chr.length; a++) {
+      if (context.measureText(temp).width < 250) {
+        temp += chr[a];
+      } else {
+        a--;
+        row.push(temp);
+        temp = "";
+      }
+    }
+    row.push(temp);
+    //如果数组长度大于2 则截取前两个
+    if (row.length > 2) {
+      var rowCut = row.slice(0, 2);
+      var rowPart = rowCut[1];
+      var test = "";
+      var empty = [];
+      for (var a = 0; a < rowPart.length; a++) {
+        if (context.measureText(test).width < 220) {
+          test += rowPart[a];
+        }
+        else {
+          break;
+        }
+      }
+      empty.push(test);
+      var group = empty[0] + "..."//这里只显示两行，超出的用...表示
+      rowCut.splice(1, 1, group);
+      row = rowCut;
+    }
+    for (var b = 0; b < row.length; b++) {
+      context.fillText(row[b], 185 * rpx, (96 + b * 30) * rpx, 300 * rpx);
+    }
+
+    //画下半部的白底
+    context.setFillStyle('white')
+    context.fillRect(0, 223 * rpx, 432 * rpx, 450 * rpx)
+
+    //画头像
+    context.save();
+    context.beginPath();
+    context.arc(180 * rpx, (222 * rpx), 40 * rpx, 0, 2 * Math.PI);
+    context.setStrokeStyle('white')
+    context.stroke()
+    context.clip()
+    context.drawImage(touxiang, 132 * rpx, 177 * rpx, 100 * rpx, 100 * rpx)
+
+    //画昵称
+    context.restore()
+    context.beginPath()
+    context.setFontSize(20 * rpx)
+    context.setFillStyle('black')
+    context.setTextAlign('center')
+    context.fillText(nickName, 180 * rpx, 290 * rpx)
+    context.stroke()
+
+    //画专项刷题
+    context.beginPath()
+    context.setFontSize(24 * rpx)
+    context.setFillStyle('black')
+    context.setTextAlign('center')
+    context.setTextBaseline('bottom')
+    context.fillText('专项刷题', 186 * rpx, 335 * rpx)
+    context.stroke()
+
+  
+     
+        context.setFontSize(16 * rpx)
+        context.setFillStyle('black')
+        context.fillText("本期专题任务", 183 * rpx, 369 * rpx)
+        context.setFontSize(40 * rpx)
+        context.setFillStyle('#E65557')
+        context.fillText("已完成", 171 * rpx, 420 * rpx)
+
+    
+    //总的统计
+    context.setFillStyle('#F3F4F5')
+    context.fillRect(0, 450 * rpx, 432 * rpx, 100 * rpx)
+
+    context.setFontSize(27 * rpx)
+    context.setFillStyle('#303030')
+    context.fillText(project_count, 56 * rpx, 500 * rpx)
+    context.setFontSize(18 * rpx)
+    context.setFillStyle('#666666')
+    context.fillText('期', 85 * rpx, 500 * rpx)
+    context.setTextBaseline('bottom')
+    context.fillText('专项刷题共', 75 * rpx, 536 * rpx)
+
+    context.setFontSize(27 * rpx)
+    context.setFillStyle('#303030')
+    context.fillText(wancheng_total, 182 * rpx, 500 * rpx)
+    context.setFontSize(18 * rpx)
+    context.setFillStyle('#666666')
+    context.fillText('题', 218 * rpx, 500 * rpx)
+    context.setTextBaseline('bottom')
+    context.fillText('刷题完成', 194 * rpx, 536 * rpx)
+
+    context.setFontSize(27 * rpx)
+    context.setFillStyle('#303030')
+    context.fillText(look_count, 298 * rpx, 500 * rpx)
+    context.setFontSize(18 * rpx)
+    context.setFillStyle('#666666')
+    context.fillText('个', 327 * rpx, 500 * rpx)
+    context.setTextBaseline('bottom')
+    context.fillText('看专题课', 320 * rpx, 536 * rpx)
+
+    // 底部标语和二维码
+    context.setFontSize(20 * rpx)
+    context.setFillStyle('#333333')
+    context.setTextBaseline('bottom')
+    context.fillText('尚政公考', 74 * rpx, 600 * rpx)
+    context.setFontSize(18 * rpx)
+    context.setFillStyle('#999999')
+    context.setTextBaseline('bottom')
+    context.fillText('公务员考试提分利器', 114 * rpx, 630 * rpx)
+
+    //底部扫码
+    context.drawImage(erweima, 256 * rpx, 560 * rpx, 90 * rpx, 103 * rpx)
+
+
+    context.draw()
+    //生成临时图片 
+    setTimeout(function () {
+      wx.canvasToTempFilePath({
+        canvasId: 'mycanvas',
+        success: function (res) {
+          that.setData({ imagePath: res.tempFilePath })
+        },
+        fail: function (res) {
+          console.log(res);
+        }
+      })
+    }, 300)
+
+    this.setData({ maskHidden: true })
   }
+
 
 }))

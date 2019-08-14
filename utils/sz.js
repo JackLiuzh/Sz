@@ -1,7 +1,8 @@
-const URI = 'http://cs.szgk.cn/api.php'
+//const URI = 'http://cs.szgk.cn/api.php'
 // const URI = 'http://192.168.1.219/api.php' 
-//const URI = 'http://sz.com/api.php' 
+const URI = 'http://li.szgk.cn/api.php' 
 // const URI = 'https://www.szgk.cn/api.php' 
+
 const fetch = require('./fetch')
 
 //我的地址 
@@ -37,7 +38,7 @@ function xcxkanVideo(params) {
 }
 //绑定手机
 function xcxphone(params) {
-  return fetch.szfetch(URI, 'xcxphone', params)
+  return fetch.szfetchpost(URI, 'xcxphone', params)
 }  
 
 //微信登录 
@@ -166,6 +167,7 @@ function xcxgetSpecialList(params) {
 function xcxgetProjectevaluationTi(params) {
   return fetch.szfetch(URI, 'xcxgetProjectevaluationTi', params)
 }
+
 // //获得打卡主题列表daka 页面 
 // function dakazhutilist(params) { 
 //   return fetch.szfetch(URI,"clockselect",params) 
@@ -240,7 +242,85 @@ function xcxgetProjectevaluationTi(params) {
 //   return fetch.szfetch(URI,"clocksetinfo", params) 
 // } 
 
-//课程列表接口 
+//每日刷题评估报告
+function xcxshutiteport(params) {
+  return fetch.szfetch(URI, 'xcxshutiReport', params)
+}
+// //获得打卡主题列表daka 页面
+// function dakazhutilist(params) {
+//   return fetch.szfetch(URI,"clockselect",params)
+// }
+
+// //打卡 - 打卡主题
+// function dakazhuti(params) {
+//   return fetch.szfetch(URI,"clockdetail",params)
+// }
+
+// //进入立即加入页面daka_detail
+// function dakadetail(params) {
+//   return fetch.szfetch(URI, "addclockdetail", params)
+// }
+
+// //加载更多打卡日记daka_detail页
+// function dakadetailemore(params) {
+//   return fetch.szfetch(URI, "clockcomment", params)
+// }
+
+// //daka_detail页面立即加入
+// function dakadetailjiarubut(params) {
+//   return fetch.szfetch(URI, "addclockuser", params)
+// }
+
+// //daka_jiaru页面初始化接口
+// function dakajiaru(params) {
+//   return fetch.szfetch(URI, "clockdetail", params)
+// }
+
+// //daka_zhuti 页面初始化列表
+// function dakazhutizilist(params) {
+//   return fetch.szfetch(URI, "clocklistselect", params)
+// }
+
+// //daka-zhuti-detail 页面初始化
+// function dakazhutidetail (params) {
+//   return fetch.szfetch(URI, "clocklistdetail", params)
+// }
+
+// //daka-zhuti-detail 发表打卡日记
+// function dakazhutidetail_submit(params) {
+//   return fetch.szfetch(URI, "clocklistsave", params)
+// }
+
+// //my-yijian 提交反馈信息
+// function myfankui(params) {
+//   return fetch.szfetch(URI, "addenroll", params)
+// }
+
+// //随机返回海报内容的接口
+// function haibao() {
+//   return fetch.szfetch(URI, "clockplacardfind")
+// }
+
+// //我打卡记录 my 
+// function my(params) {
+//   return fetch.szfetch(URI,"selectuserclockrecord",params)
+// }
+
+// // daka-zhuti-detail 获得海报信息
+// function gethaibaoinfo() {
+//   return fetch.szfetch(URI, "clockplacardfind")
+// }
+
+// // daka-setting 设置打卡提醒
+// function dakasetting(params) {
+//   return fetch.szfetch(URI, "clockset", params)
+// }
+// // 获取打卡设置参数
+// function clocksetinfo(params) {
+//   return fetch.szfetch(URI,"clocksetinfo", params)
+// }
+
+//课程列表接口
 function courseList(params) {
   return fetch.szfetch(URI, 'courseList', params)
 }
@@ -267,4 +347,6 @@ function createCourseOrder(params) {
 function coursePay(params) {
   return fetch.szfetch(URI, 'coursePay', params)
 }
-module.exports = { loginregister, xcxindex, xcxfirstLogin, xcxSubmitTask, xcxTodayTask, xcxUserTasklist, xcxAddUserTask, xcxDelUserTask, xcxUpdateTaskSet, xcxUpdateCycle, xcxUpdatePushNum, xcxUpdatePinlv, xcxCommentThumbsList, xcxEliminateCommentThumbs, xcxUpdateRange, xcxUpdateRangepost, xcxDakaTask, xcxRiliInfo, xcxgetTaskTi, xcxVideoDetail, xcxAnswerInsert, xcxAddComment, xcxAddThum, xcxAddVideoJilu, xcxgetTaskTiOne, courseList, courseLive, category, courseDetail, xcxMyAddr, xcxMy, xcxMyGetyzm, xcxMySendyzm, xcxfeedbackyzm, xcxsuggest, xcxaddUserAddress, createCourseOrder, xcxgetSpecialList, xcxgetProjectevaluationTi, xcxkanVideo,xcxphone } 
+module.exports = { loginregister, xcxindex, xcxfirstLogin, xcxSubmitTask, xcxTodayTask, xcxUserTasklist, xcxAddUserTask, xcxDelUserTask, xcxUpdateTaskSet, xcxUpdateCycle, xcxUpdatePushNum, xcxUpdatePinlv, xcxCommentThumbsList, xcxEliminateCommentThumbs, xcxUpdateRange, xcxUpdateRangepost, xcxDakaTask, xcxRiliInfo, xcxgetTaskTi, xcxVideoDetail, xcxAnswerInsert, xcxAddComment, xcxAddThum, xcxAddVideoJilu, xcxgetTaskTiOne, courseList, courseLive, category, courseDetail, xcxMyAddr, xcxMy, xcxMyGetyzm, xcxMySendyzm, xcxfeedbackyzm, xcxsuggest, xcxaddUserAddress, createCourseOrder, xcxgetSpecialList, xcxgetProjectevaluationTi, coursePay, xcxshutiteport,xcxkanVideo,xcxphone}
+
+

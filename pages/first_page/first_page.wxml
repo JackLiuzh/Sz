@@ -4,7 +4,7 @@
     <view wx:for='{{courselive}}' wx:key="index1" wx:for-index="xb" >
       <view wx:if="{{item.liveStatus == 3}}">
         <image  class="zbfm" src="{{item.avatar}}"/>
-   
+   <cover-view class="zbmask" catchtouchmove="preventTouchMove" ></cover-view>
 
     <cover-view class="broadcasting">
       <cover-view class="shu1"></cover-view>

@@ -8,11 +8,24 @@ page {
   background:rgba(0,0,0,0.35);
   opacity:1;
 }
+.zbmask{
+  width:750rpx;
+  height:400rpx;
+  /* position: fixed; */
+position: absolute;
+  top: 0;
+  left: 0;
+  background:rgb(19, 18, 18);
+  
+  opacity: 0.7;
+}
 .qw{
   position: absolute;
 }
 .zbfm{
   position: absolute;
+  width:750rpx;
+  height:400rpx;
 }
 .broadcasting{
   display: flex;
@@ -71,7 +84,7 @@ page {
   position: absolute;
   text-align: center;
   /* margin-left:95rpx; */
-  margin-top:100rpx;
+  margin-top:115rpx;
   width:750rpx;
   height:60rpx;
   font-size:40rpx;
@@ -148,7 +161,7 @@ page {
   position: absolute;
   display: flex;
   margin-left:235rpx;
-  margin-top:270rpx;
+  margin-top:250rpx;
   width:283rpx;
   height:72rpx;
   background:rgba(230,85,87,1);

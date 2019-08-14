@@ -43,7 +43,17 @@ Page({
           addr_id :addr_id
         }
         app.sz.coursePay(params).then(d=>{
-           console.log(d)
+          // console.log(d.data.data.paystr)
+          if(d.data.data.paystr){
+            var ob = JSON.parse(d.data.data.paystr)
+            var timeStamp = ob.timeStamp
+            var nonceStr = ob.nonceStr
+            var pack = ob.package
+            var paySign = ob.paySign
+            that.laqizhifu(timeStamp, nonceStr, pack, paySign)
+          }else{
+             console.log("支付接口错误")
+          }
         })
      }else {
          wx.showToast({
@@ -52,6 +62,22 @@ Page({
            duration: 2000
          })
      }
+  },
+  //拉起微信支付
+  laqizhifu: function (timeStamp, nonceStr, pack, paySign){
+    wx.requestPayment({
+      timeStamp: timeStamp, 
+      nonceStr: nonceStr,
+      package: pack,
+      signType: 'MD5',
+      paySign: paySign,
+      success(res) { 
+        console.log(11)
+      },
+      fail(res) { 
+        console.log("失败")
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

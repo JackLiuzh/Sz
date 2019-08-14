@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/assessment_report/assessment_report",
+    
     "pages/course/course",
+    "pages/assessment_report/assessment_report",
     "pages/course_buy/course_buy",
     "pages/add_address/add_address",
     "pages/special_subject/special_subject",

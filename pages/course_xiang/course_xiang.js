@@ -59,6 +59,18 @@ Page({
          }
     })
   },
+  zhedie: function(e){
+    //  console.log(e)
+     var index = e.currentTarget.dataset.index
+    if (this.data.info.info[index].iszhedie){
+      var dd = 'info.info[' + index + '].iszhedie'
+      this.setData({ [dd]: false })
+    }else{
+      var dd = 'info.info[' + index + '].iszhedie'
+      this.setData({ [dd]: true })
+    }
+     
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

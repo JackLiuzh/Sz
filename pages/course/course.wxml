@@ -28,10 +28,11 @@
                         <block wx:for="{{curcourselist}}" wx:key="this">
                             <view bindtap='gocourse_xiang' data-system_id="{{item.system_id}}" class="course_d" >
                                 <view class='course_d-top'>
-                                   <text class="course_d-lan">直播</text>
+                                   <text wx:if="{{item.isLive == '1'}}" class="course_d-lan">直播</text>
+                                   <text wx:else class="course_d-lan course_d-red">录播</text>
                                     {{item.title}}
                                 </view>
-                                <view class='course_d-keshi'>{{item.video_count}}个课时+{{item.point_count}}个知识点+{{item.question_count}}个课后习题</view>
+                                <view class='course_d-keshi'>{{item.video_count}}个课时</view>
                                 <view class='teach-jiage'>
                                    <view class='teach'>
                                      <view class='teach-ico' wx:for="{{item.teacherlist}}" wx:key="this" wx:for-key="pindex" wx:for-item="item1">
@@ -40,8 +41,13 @@
                                      </view>
                                    </view>
                                    <view class='price'>
-                                    <view class='right-jiage'>
-                                    <image style='width:34rpx;height:34rpx;' src="{{item1.avatar}}"  class="miaosha-img"></image>
+                                    <view wx:if="{{item.discount_price}}" class='right-jiage'>
+                                    <image  style='width:34rpx;height:34rpx;' src="{{item1.avatar}}"  class="miaosha-img"></image>
+                                     ￥{{item.discount_price}}
+                                     
+                                    </view>
+                                    <view wx:else class='right-jiage'>
+                                    <image  style='width:34rpx;height:34rpx;' src="{{item1.avatar}}"  class="miaosha-img"></image>
                                      ￥{{item.price}}
                                      
                                     </view>
@@ -49,7 +55,7 @@
                                    </view>
                                 </view>
                                 <!-- 已加入  -->
-                                 <image src="/images/course-yijiaru.png"  class="yijia-img"></image>
+                                 <image wx:if="{{item.is_xcxpay}}" src="/images/course-yijiaru.png"  class="yijia-img"></image>
                             </view>
                         </block>
                     <!-- </scroll-view>

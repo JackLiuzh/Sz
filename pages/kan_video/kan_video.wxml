@@ -1,7 +1,7 @@
 <view class="container">
 
   
-    <video wx:if="{{videoUrl}}" class="video" poster="{{avatar}}" src='{{videoUrl}}' ></video>
+    <video wx:if="{{videoUrl}}" class="video" poster="{{avatar}}" src='{{videoUrl}}' controls='true'></video>
  
     
   

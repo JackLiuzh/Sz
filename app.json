@@ -1,6 +1,6 @@
 {
   "pages": [
-    
+    "pages/today_task/today_task",
     "pages/course/course",
     "pages/assessment_report/assessment_report",
     "pages/course_buy/course_buy",
@@ -11,7 +11,6 @@
     
     
     "pages/zhibo/zhibo",
-    "pages/today_task/today_task",
     "pages/kao_videodetail/kao_videodetail",
     "pages/kao_video/kao_video",
     "pages/dati/dati",

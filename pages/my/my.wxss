@@ -79,9 +79,7 @@ page {
   opacity:1;
 }
 .btp{
-  
   background-color: white;
-
 }
 .btp::after {
   border: 0; 

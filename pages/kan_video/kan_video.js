@@ -6,8 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    system_id: 1,
-    lesson_id: 1,
+    system_id: '',
+    lesson_id: '',
     
     pinglun: [],
     // videoUrl: '',
@@ -22,7 +22,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    console.log(options.system_id)
+    console.log(options.system_id)
     var video = ''
+    this.data.system_id = options.system_id;
+    this.data.lesson_id = options.lesson_id;
     var uid = wx.getStorageSync('uid');
     var token = wx.getStorageSync('token');
     var params = {
@@ -38,7 +43,7 @@ Page({
         
         
       } else {
-        console.log(d.data.msg)
+        // console.log(d.data.msg)
       }
     })
     // console.log(this.data.videoUrl)

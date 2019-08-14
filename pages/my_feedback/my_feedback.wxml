@@ -18,10 +18,10 @@
   <view class="layout"> 
     
     <view class="lxfs">{{contact}}</view> 
-    <!-- <button class="button" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> 
+    <button class="button" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> 
       <image class="img1" src="../../images/xiayiye@2x.png"></image> 
-    </button>  -->
-    <image class="imgbutton" bindtap="getphone" src="../../images/xiayiye@2x.png"></image> 
+    </button> 
+    <!-- <image class="imgbutton" bindtap="getphone" src="../../images/xiayiye@2x.png"></image>  -->
     
     <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view> 
     <view class="modalDlg" wx:if="{{showModal}}"> 

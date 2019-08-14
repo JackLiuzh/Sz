@@ -33,7 +33,7 @@ Page({
     var that = this;
     wx.getUserInfo({
       success: function (res) {
-        // console.log(res);
+        // console.log(avatarUrl);
         var avatarUrl = 'userInfo.avatarUrl';
         var nickName = 'userInfo.nickName';
         that.setData({

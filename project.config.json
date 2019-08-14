@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 4,
 			"list": [
 				{
 					"id": 0,
@@ -67,6 +67,13 @@
 					"id": 3,
 					"name": "pages/first_page/first_page",
 					"pathName": "pages/first_page/first_page",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/tologin/tologin",
+					"pathName": "pages/tologin/tologin",
 					"query": "",
 					"scene": null
 				}

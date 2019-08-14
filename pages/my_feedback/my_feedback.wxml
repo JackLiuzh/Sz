@@ -3,15 +3,25 @@
   
   <textarea class="text1" bindinput="inputtextarea" placeholder="请详细写下你的建议与反馈..."></textarea> 
   <view class="v1">图片（选填，提供问题截图）</view> 
-    <image class="img" bindtap="getphoto" src="{{photo}}"></image> 
+    <!-- <view wx:for="{{photo}}" wx:key='index'>
+      <image class="img"  bindtap="getphoto" src="{{item}}"></image> 
+    </view> -->
+    <view class='show_img'>
+      <view  wx:for="{{imgs}}" wx:key="*this">
+        <image class="img"  bindtap="chooseImg" src="{{item}}"></image> 
+      </view>
+    </view>
+     
+    
   </view> 
   <view class="v1">联系方式</view> 
   <view class="layout"> 
     
     <view class="lxfs">{{contact}}</view> 
-    <button class="button" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> 
+    <!-- <button class="button" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> 
       <image class="img1" src="../../images/xiayiye@2x.png"></image> 
-    </button> 
+    </button>  -->
+    <image class="imgbutton" bindtap="getphone" src="../../images/xiayiye@2x.png"></image> 
     
     <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view> 
     <view class="modalDlg" wx:if="{{showModal}}"> 

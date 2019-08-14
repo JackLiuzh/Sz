@@ -50,7 +50,7 @@ Page({
       "token": token,
     }
 
-    console.log(params)
+    // console.log(params)
 
     app.sz.xcxMy(params).then(d => {
       if (d.data.status == 1) {
@@ -165,7 +165,7 @@ Page({
       "phone": phone,
       "code": this.data.code,
     }
-    console.log(params)
+    // console.log(params)
     app.sz.xcxMySendyzm(params).then(d => {
       if (d.data.status == 1) {
         console.log(d.data.msg)
@@ -218,11 +218,7 @@ Page({
       url: '../download_app/download_app'
     })
   },
-  // getPhoneNumber(e) {
-  //   console.log(e.detail.errMsg)
-  //   console.log(e.detail.iv)
-  //   console.log(e.detail.encryptedData)
-  // },
+  
 
   getPhoneNumber: function (e) {
     console.log(e.detail.iv);
@@ -244,7 +240,7 @@ Page({
             "XDEBUG_SESSION_START":141454
             // "code": this.data.code,
           }
-          console.log(params)
+          // console.log(params)
           app.sz.xcxphone(params).then(d => {
             if (d.data.status == 0) {
               console.log(d.data.msg)
@@ -252,28 +248,6 @@ Page({
               console.log(d.data.msg)
             }
           })
-
-        // wx.request({
-        //   url: 'https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html',
-        //   data: {
-        //     'encryptedData': encodeURIComponent(e.detail.encryptedData),
-        //     'iv': e.detail.iv,
-        //     'code': res.code
-        //   },
-        //   method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-        //   header: {
-        //     'content-type': 'application/json'
-        //   }, // 设置请求的 header
-        //   success: function (res) {
-        //     if (res.status == 1) {//我后台设置的返回值为1是正确
-        //       //存入缓存即可
-        //       wx.setStorageSync('phone', res.phone);
-        //     }
-        //   },
-        //   fail: function (err) {
-        //     console.log(err);
-        //   }
-        // })
       }
         else {
       this.setData({
@@ -283,30 +257,5 @@ Page({
     }
     })
   },
-  // getPhoneNumber: function (e) {
-  //   var that = this;
-  //   // var uid = wx.getStorageSync('uid');
-  //   // console.log(e.detail.errMsg == "getPhoneNumber:ok");
-  //   if (e.detail.errMsg == "getPhoneNumber:ok") {
-  //     wx.request({
-  //       // url: 'https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html',
-  //       url: 'http://localhost/index/users/decodePhone',
-  //       data: {
-  //         encryptedData: e.detail.encryptedData,
-  //         iv: e.detail.iv,
-  //         sessionKey: that.data.session_key,
-  //         // uid: uid,
-  //       },
-  //       method: "POST",
-  //       success: function (res) {
-  //         console.log(res);
-  //       }
-  //     })
-  //   }
-  //   else {
-  //     this.setData({
-  //       showModal: true
-  //     })
-  //   }
-  // },
+  
 })

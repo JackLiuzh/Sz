@@ -40,12 +40,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/first_page/first_page",
-					"pathName": "pages/first_page/first_page",
+					"name": "pages/my_feedback/my_feedback",
+					"pathName": "pages/my_feedback/my_feedback",
 					"query": "",
 					"scene": null
 				},

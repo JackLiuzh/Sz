@@ -33,6 +33,7 @@ Page({
   gokan_video: function (e){
     var system_id = e.currentTarget.dataset.system_id
     var lesson_id = e.currentTarget.dataset.id
+    console.log(lesson_id)
     wx.navigateTo({
       url: '/pages/kan_video/kan_video?system_id=' + system_id + '&lesson_id=' + lesson_id,
     })

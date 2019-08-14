@@ -64,9 +64,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/tologin/tologin",
-					"pathName": "pages/tologin/tologin",
+					"id": 3,
+					"name": "pages/course/course",
+					"pathName": "pages/course/course",
 					"query": "",
 					"scene": null
 				}

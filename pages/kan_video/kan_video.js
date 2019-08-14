@@ -24,7 +24,7 @@ Page({
   onLoad: function (options) {
 
     console.log(options.system_id)
-    console.log(options.system_id)
+    console.log(options.lesson_id)
     var video = ''
     this.data.system_id = options.system_id;
     this.data.lesson_id = options.lesson_id;

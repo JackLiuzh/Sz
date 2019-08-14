@@ -227,7 +227,7 @@ Page({
 
   getPhoneNumber: function (e) {
     var that = this
-    if (that.data.userphone == "请填写手机号"){
+    if (that.data.userphone != "请填写手机号"){
        return;
     }
     wx.checkSession({
@@ -245,7 +245,7 @@ Page({
           }
           app.sz.xcxphone(params).then(d => {
             if (d.data.status == 0) {
-              this.setData({ userphone: d.data.data.phoneNumber })
+              that.setData({ userphone: d.data.data.phoneNumber })
               console.log(d.data.msg)
             } else {
               console.log(d.data.msg)

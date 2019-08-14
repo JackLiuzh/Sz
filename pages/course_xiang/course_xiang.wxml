@@ -40,7 +40,7 @@
                                  </view>
                             </view>
                             <view wx:if="{{item.iszhedie}}" class='subcell_box'>
-                                <view wx:for="{{item.video_data}}" wx:key="this" wx:for-item="pitem" wx:for-index="pindex" class='item_subcell'>
+                                <view  wx:for="{{item.video_data}}" wx:key="this" wx:for-item="pitem" wx:for-index="pindex"  class='item_subcell'>
                                   <view class='subcell_le'>
                                         <view class='text_le'>
                                             <image style='width:32rpx;height:32rpx;' src="/images/bofang.png"></image>
@@ -55,11 +55,11 @@
                                         </view>
                                   </view>
                                   <view class='subcell_ri'>
-                                      <view wx:if="{{info.is_xcxpay}}" class='ri_text'>
+                                      <view wx:if="{{info.is_xcxpay}}" data-lesson_id="{{pitem.id}}" data-system_id="{{pitem.system_id}}" bindtap='gokan_video' class='ri_text'>
                                           播放
                                       </view>
                                       <block wx:else>
-                                          <view wx:if="{{pitem.isfees}}" class='ri_text'>
+                                          <view bindtap='gokan_video' wx:if="{{pitem.isfees}}" data-lesson_id="{{pitem.id}}" data-system_id="{{pitem.system_id}}"  class='ri_text'>
                                               试听
                                           </view>
                                           <view wx:else class='ri_suo'>

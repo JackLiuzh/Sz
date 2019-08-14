@@ -29,6 +29,14 @@ Page({
          currentData: e.detail.current
      })
   },
+  //跳转去看视频
+  gokan_video: function (e){
+    var system_id = e.currentTarget.dataset.system_id
+    var lesson_id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/kan_video/kan_video?system_id=' + system_id + '&lesson_id=' + lesson_id,
+    })
+  },
 
   checkCurrent: function(e){
      const that = this
@@ -40,8 +48,7 @@ Page({
         })
      }
   },
-
-
+  
   //初始化详情页数据
   initData: function (system_id){
      var that = this

@@ -22,21 +22,7 @@ Page({
   // * / 
   onLoad: function (options) {
 
-    var uid = wx.getStorageSync('uid');
-    var token = wx.getStorageSync('token');
-    var params = {
-      "uid": uid,
-      "token": token,
-    }
-    app.sz.xcxMy(params).then(d => {
-      if (d.data.status == 1) {
-        if (d.data.data.phone != '')
-          this.setData({ contact: d.data.data.phone })
-        console.log(this.data.contact)
-      } else {
-        // console.log(d.data.msg)
-      }
-    })
+    
   },
   chooseImg() {
     let that = this;
@@ -95,56 +81,7 @@ Page({
     }) 
   }, 
  
-  // getphoto: function () {
-  //   let that = this
-  //       var tempFilePaths1;
-  //       wx.chooseImage({
-  //         sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有 
-  //         sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有 
-  //         success: function (res) {
-  //           // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片 
-
-  //           success: (res) => {
-  //             let tempFilePaths = res.tempFilePaths;
-  //             console.log(tempFilePaths)
-  //             let imgs = that.data.imgs;
-  //             for (let i = 0; i < tempFilePaths.length; i++) {
-  //               if (imgs.length < 9) {
-  //                 imgs.push(tempFilePaths[i])
-  //               } else {
-  //                 that.setData({
-  //                   imgs
-  //                 })
-  //                 wx.showModal({
-  //                   title: '提示',
-  //                   content: '最多只能有九张图片'
-  //                 })
-  //                 return;
-  //               }
-  //             }
-  //             that.setData({
-  //               imgs
-  //             })
-  //           }
-
-
-  //           // tempFilePaths1 = res.tempFilePaths
-  //           // that.data.photo.push(tempFilePaths1)
-  //           // console.log(this.data.photo)
-  //           // console.log(tempFilePaths1)
-  //           // this.setData({ tempFilePaths: tempFilePaths1 })
-  //           // this.data.photo.push(tempFilePaths1)
-  //           // console.log(this.data.photo)
-
-  //         }
-  //       })
-  //       console.log(this.data.photo)
-  //       // this.setData({ photo: tempFilePaths }) 
-        
-  //     },
-      // fail: function (res) {
-      //   console.log(res.errMsg)
-      // },
+ 
 
       preventTouchMove: function () {
 
@@ -155,6 +92,46 @@ Page({
           showModal: false
         })
       },
+
+  getPhoneNumber: function (e) {
+    console.log(e.detail.iv);
+    console.log(e.detail.encryptedData);
+    wx.login({
+      success: res => {
+        this.setData({ code: res.code, iv: e.detail.iv, encryptedData: e.detail.encryptedData })
+        console.log(this.data.code, this.data.iv, this.data.encryptedData);
+        if (e.detail.errMsg == "getPhoneNumber:ok") {
+
+          let iv = encodeURIComponent(this.data.iv);
+          let encryptedData = encodeURIComponent(this.data.encryptedData);
+          let uid = app.globalData.uid;
+          var params = {
+            "code": this.data.code,
+            "iv": iv,
+            "encryptedData": encryptedData,
+            "uid": uid,
+            "XDEBUG_SESSION_START": 141454
+            // "code": this.data.code,
+          }
+          // console.log(params)
+          app.sz.xcxphone(params).then(d => {
+            if (d.data.status == 0) {
+              // this.setData({ contact: d.data.data.phoneNumber })
+              console.log(d.data.data.phoneNumber)
+            } else {
+              console.log(d.data.msg)
+            }
+          })
+        }
+        else {
+          this.setData({
+            showModal: true
+          })
+        }
+      }
+    })
+  },
+
 
   // getPhoneNumber: function (e) {
   //   console.log(e.detail.iv);
@@ -167,13 +144,16 @@ Page({
 
   //         var params = {
   //           "code": this.data.code,
-  //           "iv": this.data.iv,
-  //           "encryptedData": this.data.encryptedData,
-  //           // "code": this.data.code,
+  //           "iv": iv,
+  //           "encryptedData": encryptedData,
+  //           "uid": uid,
+  //           "XDEBUG_SESSION_START": 141454
   //         }
   //         console.log(params)
   //         app.sz.xcxphone(params).then(d => {
   //           if (d.data.status == 0) {
+  //             this.setData({ userphone: d.data.data.phoneNumber }),
+  //             console.log(this.data.contact)
   //             console.log(d.data.msg)
   //           } else {
   //             console.log(d.data.msg)
@@ -189,11 +169,11 @@ Page({
   //   })
   // },
 
-  getphone: function () {
-    this.setData({
-            showModal: true
-          })
-  },
+  // getphone: function () {
+  //   this.setData({
+  //           showModal: true
+  //         })
+  // },
 
       inputphone: function (e) {
         this.setData({

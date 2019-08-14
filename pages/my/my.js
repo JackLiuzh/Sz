@@ -33,7 +33,7 @@ Page({
     var that = this;
     wx.getUserInfo({
       success: function (res) {
-        console.log(res);
+        // console.log(res);
         var avatarUrl = 'userInfo.avatarUrl';
         var nickName = 'userInfo.nickName';
         that.setData({
@@ -168,6 +168,7 @@ Page({
     // console.log(params)
     app.sz.xcxMySendyzm(params).then(d => {
       if (d.data.status == 1) {
+        
         console.log(d.data.msg)
       } else {
         console.log(d.data.msg)
@@ -243,6 +244,7 @@ Page({
           // console.log(params)
           app.sz.xcxphone(params).then(d => {
             if (d.data.status == 0) {
+              this.setData({ userphone: d.data.data.phoneNumber })
               console.log(d.data.msg)
             } else {
               console.log(d.data.msg)

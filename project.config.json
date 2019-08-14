@@ -65,8 +65,8 @@
 				},
 				{
 					"id": 3,
-					"name": "pages/course/course",
-					"pathName": "pages/course/course",
+					"name": "pages/first_page/first_page",
+					"pathName": "pages/first_page/first_page",
 					"query": "",
 					"scene": null
 				}

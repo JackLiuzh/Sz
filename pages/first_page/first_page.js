@@ -294,11 +294,21 @@ Page({
     //全部时间的月份都是按0~11基准，显示月份才+1 
     let year = this.data.month > 11 ? this.data.year + 1 : this.data.year;
     let month = this.data.month > 11 ? 0 : this.data.month;
-    this.setData({
-      year: year,
-      month: (month + 1)
-    })
-    this.jumpmonth(year, month);
+    let now = new Date();
+    let nowmonth = now.getMonth();
+    if (month == nowmonth) {
+      // this.setData({
+      //   year: year,
+      //   month: (month + 1)
+      // })
+      this.nowmonth();
+    } else {
+      this.setData({
+        year: year,
+        month: (month + 1)
+      })
+      this.jumpmonth(year, month);
+    }
   },
 
   

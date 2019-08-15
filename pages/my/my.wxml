@@ -24,7 +24,7 @@
   <view class="layout2">
     <image class="img1" src="../../images/组 2060@2x.png"></image>
     <view class="v1"><text class="num">我的地址</text></view>
-    <view class="add_addr">{{user_area}}</view>
+    <view class="add_addr" bindtap="addAddress">{{user_area}}</view>
     <!-- <picker class="add_addr" mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
     <view class="addr">
     {{region[0]}},{{region[1]}},{{region[2]}}

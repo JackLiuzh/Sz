@@ -40,6 +40,14 @@ function xcxkanVideo(params) {
 function xcxphone(params) {
   return fetch.szfetchpost(URI, 'xcxphone', params)
 }  
+//获取反馈图片后台下载
+function photouploads(params) {
+  return fetch.szfetchpost(URI, 'uploads', params)
+}  
+//课程直播课列表 
+function xcxcourseLive(params) {
+  return fetch.szfetch(URI, 'xcxcourseLive', params)
+}
 
 //微信登录 
 function loginregister(params) {
@@ -347,6 +355,6 @@ function createCourseOrder(params) {
 function coursePay(params) {
   return fetch.szfetch(URI, 'coursePay', params)
 }
-module.exports = { loginregister, xcxindex, xcxfirstLogin, xcxSubmitTask, xcxTodayTask, xcxUserTasklist, xcxAddUserTask, xcxDelUserTask, xcxUpdateTaskSet, xcxUpdateCycle, xcxUpdatePushNum, xcxUpdatePinlv, xcxCommentThumbsList, xcxEliminateCommentThumbs, xcxUpdateRange, xcxUpdateRangepost, xcxDakaTask, xcxRiliInfo, xcxgetTaskTi, xcxVideoDetail, xcxAnswerInsert, xcxAddComment, xcxAddThum, xcxAddVideoJilu, xcxgetTaskTiOne, courseList, courseLive, category, courseDetail, xcxMyAddr, xcxMy, xcxMyGetyzm, xcxMySendyzm, xcxfeedbackyzm, xcxsuggest, xcxaddUserAddress, createCourseOrder, xcxgetSpecialList, xcxgetProjectevaluationTi, coursePay, xcxshutiteport,xcxkanVideo,xcxphone}
+module.exports = { loginregister, xcxindex, xcxfirstLogin, xcxSubmitTask, xcxTodayTask, xcxUserTasklist, xcxAddUserTask, xcxDelUserTask, xcxUpdateTaskSet, xcxUpdateCycle, xcxUpdatePushNum, xcxUpdatePinlv, xcxCommentThumbsList, xcxEliminateCommentThumbs, xcxUpdateRange, xcxUpdateRangepost, xcxDakaTask, xcxRiliInfo, xcxgetTaskTi, xcxVideoDetail, xcxAnswerInsert, xcxAddComment, xcxAddThum, xcxAddVideoJilu, xcxgetTaskTiOne, courseList, courseLive, category, courseDetail, xcxMyAddr, xcxMy, xcxMyGetyzm, xcxMySendyzm, xcxfeedbackyzm, xcxsuggest, xcxaddUserAddress, createCourseOrder, xcxgetSpecialList, xcxgetProjectevaluationTi, coursePay, xcxshutiteport, xcxkanVideo, xcxphone, photouploads, xcxcourseLive}
 
 

@@ -7,9 +7,10 @@
       <image class="img"  bindtap="getphoto" src="{{item}}"></image> 
     </view> -->
     <view class='show_img'>
-      <view  wx:for="{{imgs}}" wx:key="*this">
-        <image class="img"  bindtap="chooseImg" src="{{item}}"></image> 
+      <view  wx:for="{{img}}" wx:key="*this">
+        <image  class="img"   src="{{item}}"></image> 
       </view>
+      <image  class="img"  bindtap="chooseImg" src="../../images/tupian@2x.png"></image> 
     </view>
      
     

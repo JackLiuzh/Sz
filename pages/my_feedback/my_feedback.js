@@ -13,7 +13,9 @@ Page({
     content: '',
     // photo: ["../../images/tianjia@2x.png"],
     // tempFilePaths: '',
-    imgs: ["../../images/tupian@2x.png"],
+    img: [],
+    photo: '',
+    
 
   },
 
@@ -43,35 +45,86 @@ Page({
   },
   chooseImg() {
     let that = this;
-    let len = this.data.imgs;
-    if (len >= 9) {
-      this.setData({
-        lenMore: 1
-      })
-      return;
-    }
+    // let len = this.data.imgs;
+    // if (len >= 9) {
+    //   this.setData({
+    //     lenMore: 1
+    //   })
+    //   return;
+    // }
     wx.chooseImage({
       success: (res) => {
         let tempFilePaths = res.tempFilePaths;
-        console.log(tempFilePaths)
-        let imgs = that.data.imgs;
+        // console.log(tempFilePaths)
+        let imgs = [];
+        
         for (let i = 0; i < tempFilePaths.length; i++) {
-          if (imgs.length < 10) {
-            imgs.push(tempFilePaths[i])
-          } else {
-            that.setData({
-              imgs
+          // if (imgs.length < 10) {
+            // imgs.push(tempFilePaths[i])
+
+            var token = wx.getStorageSync('token');
+            // var params = {
+            //   "file": tempFilePaths[i],
+            //   "token": token,
+            // }
+            wx.uploadFile({
+              url: 'http://cs.szgk.cn/api.php?', 
+              filePath: tempFilePaths[i],
+              name: 'file',
+              formData: {
+                'file': tempFilePaths[i],
+                "token": token,
+                "action": "uploads", //action=uploads&authhash=445454554
+              },
+              success(r) {
+                 let hhh = JSON.parse(r.data); 
+                if (hhh.status == 1) {
+                  imgs.unshift(hhh.data.src)
+                  // that.data.img = 
+                  that.setData({
+                    img: imgs
+                  })
+                  console.log(that.data.img)
+                  
+                  // console.log(imgs)
+                  
+                } else {
+                  // that.setData({
+                  //   img : imgs
+                  // })
+                  console.log('失败')
+                  console.log(hhh.status)
+                }
+                
+             
+
+              //   console.log(res.data)
+              //   //do something
+                // console.log(res.data)
+              }
             })
-            wx.showModal({
-              title: '提示',
-              content: '最多只能有九张图片'
-            })
-            return;
-          }
+            // // console.log(params)
+
+            // app.sz.photouploads(params).then(d => {
+            //   if (d.data.status == 1) {
+            //     imgs.push(d.data.data)
+            //     that.setData({
+            //       imgs: imgs
+            //     })
+            //     // console.log(d.data.status)
+            //     // console.log(this.data.imgs)
+            //   } else {
+            //     that.setData({
+            //       imgs : imgs
+            //     })
+            //     console.log(imgs)
+            //     // console.log(d.data.status)
+            //   }
+            // })
+          
+          // console.log(imgs)
         }
-        that.setData({
-          imgs
-        })
+        
       }
     })
   },
@@ -329,12 +382,18 @@ Page({
      
 
       suggest: function (e) {
+        // var photo = [];
+        
         var token = wx.getStorageSync('token');
         var uid = wx.getStorageSync('uid');
         var content = this.data.content;
-        var photo = this.data.imgs;
+        // photo.push(this.data.img);
+        var photo = this.data.img.join()
+        
         var contact = this.data.contact;
+        
 
+        console.log(photo)
         // console.log(phone) 
         var params = {
           "token": token,

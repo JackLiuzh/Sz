@@ -13,6 +13,9 @@ Page({
     showModal_zb: false,
     showModal_pb: false,
     bpurl: '',
+    project_id: '',
+    kemu_id: '',
+
   },
   onLoad: function () {
     // let that = this;
@@ -34,7 +37,7 @@ Page({
       "token": token,
     }
 
-    app.sz.courseLive(params).then(d => {
+    app.sz.xcxcourseLive(params).then(d => {
       if (d.data.status == 1) {
         this.setData({ courselive: d.data.data })
         var that = this;
@@ -179,9 +182,13 @@ Page({
     var id = e.currentTarget.dataset.xb;
     console.log(id);
     this.setData({
-      bpurl: this.data.courselive[id].live_info.playbackUrl
+      bpurl: this.data.courselive[id].live_info.playbackUrl,
+      project_id: this.data.courselive[id].project_id,
+      kemu_id: this.data.courselive[id].kemu_id,
     })
     console.log(this.data.bpurl);
+    console.log(this.data.project_id);
+    console.log(this.data.kemu_id);
     this.setData({
       showModal_zb: true
     })
@@ -190,9 +197,13 @@ Page({
     var id = e.currentTarget.dataset.xb;
     console.log(id);
     this.setData({
-      bpurl: this.data.courselive[id].live_info.playbackUrl
+      bpurl: this.data.courselive[id].live_info.playbackUrl,
+      project_id: this.data.courselive[id].project_id,
+      kemu_id: this.data.courselive[id].kemu_id,
     })
     console.log(this.data.bpurl);
+    console.log(this.data.project_id);
+    console.log(this.data.kemu_id);
     this.setData({
       showModal_pb: true
     })
@@ -212,6 +223,11 @@ Page({
     console.log(url);
     wx.navigateTo({
       url: '../live/live?url=' + url,
+    });
+  },
+  gotest_dati: function () {
+    wx.navigateTo({
+      url: '../test_dati/test_dati?id=' + this.data.project_id + '&kemu_id=' + this.data.kemu_id
     });
   },
 })

@@ -15,7 +15,7 @@
     <image class="img1" src="../../images/组 2050@2x.png"></image>
     <view class="v1"><text class="num">我的手机号</text></view>
     <view class="tj"><text class="phone">{{userphone}}</text></view>
-    <button class="{{userphone == ''?'btp':'TipHide'}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+    <button class="{{ userphone == '请填写手机号' ?'btp':'TipHide'}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
       <image class="img" src="../../images/xiayiye@2x.png"></image>
     </button>
     <!-- <image class="img" bindtap="showModal" src="../../images/xiayiye@2x.png"></image> -->
@@ -24,7 +24,7 @@
   <view class="layout2">
     <image class="img1" src="../../images/组 2060@2x.png"></image>
     <view class="v1"><text class="num">我的地址</text></view>
-    <view class="add_addr">{{user_area}}</view>
+    <view class="add_addr" bindtap="addAddress">{{user_area}}</view>
     <!-- <picker class="add_addr" mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
     <view class="addr">
     {{region[0]}},{{region[1]}},{{region[2]}}

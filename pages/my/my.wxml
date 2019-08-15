@@ -1,7 +1,7 @@
 <view class="container">
   <view class="layout1">
-    <image class="touxiang" src='{{userInfo.avatarUrl}}'></image>
-    <view class="name">{{userInfo.nickName}}</view>
+    <image class="touxiang" src='{{avatarUrl}}'></image>
+    <view class="name">{{nickName}}</view>
   </view>
 
   <view class="{{isbuy==1?'TipShow':'TipHide'}}">
@@ -15,7 +15,7 @@
     <image class="img1" src="../../images/组 2050@2x.png"></image>
     <view class="v1"><text class="num">我的手机号</text></view>
     <view class="tj"><text class="phone">{{userphone}}</text></view>
-    <button class="btp" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+    <button class="{{userphone == ''?'btp':'TipHide'}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
       <image class="img" src="../../images/xiayiye@2x.png"></image>
     </button>
     <!-- <image class="img" bindtap="showModal" src="../../images/xiayiye@2x.png"></image> -->

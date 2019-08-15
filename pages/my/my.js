@@ -8,10 +8,10 @@ Page({
   data: {
     // region: ['广东省', '广州市', '海珠区'],
     // customItem: '全部'
-    userInfo: {
+    
       avatarUrl: "",//用户头像
       nickName: "",//用户昵称
-    },
+   
     showModal: false,
     user_area: '',
     dphone: '',
@@ -30,18 +30,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    wx.getUserInfo({
-      success: function (res) {
-        // console.log(avatarUrl);
-        var avatarUrl = 'userInfo.avatarUrl';
-        var nickName = 'userInfo.nickName';
-        that.setData({
-          [avatarUrl]: res.userInfo.avatarUrl,
-          [nickName]: res.userInfo.nickName,
-        })
-      }
-    })
+    // var that = this;
+    // wx.getUserInfo({
+    //   success: function (res) {
+    //     // console.log(avatarUrl);
+    //     var avatarUrl = 'userInfo.avatarUrl';
+    //     var nickName = 'userInfo.nickName';
+    //     that.setData({
+    //       [avatarUrl]: res.userInfo.avatarUrl,
+    //       [nickName]: res.userInfo.nickName,
+    //     })
+    //   }
+    // })
 
     var uid = wx.getStorageSync('uid');
     var token = wx.getStorageSync('token');
@@ -54,7 +54,7 @@ Page({
 
     app.sz.xcxMy(params).then(d => {
       if (d.data.status == 1) {
-        this.setData({  isbuy: d.data.data.isbuy })
+        this.setData({ isbuy: d.data.data.isbuy, nickName: d.data.data.name, avatarUrl: d.data.data.avatar})
         if (d.data.data.phone != '')
           this.setData({ userphone: d.data.data.phone })
         // console.log(this.data.userphone)

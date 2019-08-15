@@ -21,7 +21,24 @@ Page({
   // * 生命周期函数--监听页面加载
   // * / 
   onLoad: function (options) {
+    var uid = wx.getStorageSync('uid');
+    var token = wx.getStorageSync('token');
+    var params = {
+      "uid": uid,
+      "token": token,
+    }
 
+    // console.log(params)
+
+    app.sz.xcxMy(params).then(d => {
+      if (d.data.status == 1) {
+        if (d.data.data.phone != '')
+          this.setData({ contact: d.data.data.phone })
+        // console.log(this.data.userphone)
+      } else {
+        // console.log(d.data.msg)
+      }
+    })
     
   },
   chooseImg() {

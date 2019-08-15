@@ -64,7 +64,9 @@ page {
 .button::after { 
   border: 0;  
 } 
-
+.TipHide{
+  display: none;
+}
 .img1{ 
   /* margin-left:50rpx; 
   margin-top:55rpx; */ 

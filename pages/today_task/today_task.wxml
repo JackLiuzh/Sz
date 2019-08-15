@@ -39,11 +39,12 @@
     <!-- 专项测评列表 -->
     <view class="ceping"  wx:for="{{project.project_list}}" wx:key="this" style=" overflow: hidden;position: relative;">
         <image   src='../../images/task_zhibozhong.png' wx:if="{{item.iflive== 1}}" mode="widthFix" class='zbz' ></image>
-        <image wx:if="{{ item.kemu_id== 1}}" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}"  catchtap='godatiproject'  class='zximg'    src='../../images/panduan.png' mode="widthFix" ></image>
+
+        <image wx:if="{{ item.kemu_id== 1}}" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}"  catchtap='godatiproject'  class='zximg'    src='../../images/changshi.png' mode="widthFix" ></image>        
         <image wx:if="{{ item.kemu_id== 2}}"    class='zximg'  src='../../images/shuliang.png'  mode="widthFix" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}"  catchtap='godatiproject' ></image>
-        <image wx:if="{{ item.kemu_id== 3}}"    class='zximg'  src='../../images/ziliao.png'  mode="widthFix" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}"  catchtap='godatiproject' ></image>
-        <image wx:if="{{ item.kemu_id== 4}}"   class='zximg'   src='../../images/yuyan.png'  mode="widthFix" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}"  catchtap='godatiproject' ></image>
-        <image wx:if="{{ item.kemu_id== 5}}"    class='zximg'  src='../../images/changshi.png'  mode="widthFix" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}"  catchtap='godatiproject' ></image>
+        <image wx:if="{{ item.kemu_id== 3}}"    class='zximg'  src='../../images/panduan.png'  mode="widthFix" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}"  catchtap='godatiproject' ></image>
+        <image wx:if="{{ item.kemu_id== 4}}"   class='zximg'   src='../../images/ziliang.png'  mode="widthFix" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}"  catchtap='godatiproject' ></image>
+        <image wx:if="{{ item.kemu_id== 5}}"    class='zximg'  src='../../images/yuyan.png'  mode="widthFix" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}"  catchtap='godatiproject' ></image>
     </view>
     <!-- 专项测评列表结束 -->
     <view class='bottom_content'>
@@ -115,7 +116,7 @@
         <!--专项刷题 end -->
     </view>
     <!-- + -->
-    <view class='botom_but' >
+    <view class='botom_but' hidden="false">
         <navigator hover-class="none" url="../../pages/add_task/add_task"><view class='but'><image style='width:53rpx;height:53rpx;' src='../../images/tianjia@2x.png'></image></view></navigator>
     </view>
     <!-- 海报开始 -->

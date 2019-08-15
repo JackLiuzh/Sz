@@ -59,11 +59,11 @@
                                           播放
                                       </view>
                                       <block wx:else>
-                                          <view bindtap='gokan_video' wx:if="{{pitem.isfees}}" data-lesson_id="{{pitem.id}}" data-system_id="{{pitem.system_id}}"  class='ri_text'>
-                                              试听
+                                          <view wx:if="{{pitem.isfees == 0}}" class='ri_suo'>
+                                              <image class='suo_img'  style='width:24rpx;height:28rpx;' src="/images/749@2x.png"></image>待解锁
                                           </view>
-                                          <view wx:else class='ri_suo'>
-                                              <image class='suo_img' style='width:24rpx;height:28rpx;' src="/images/749@2x.png"></image>待解锁
+                                          <view wx:else bindtap='gokan_video'  data-lesson_id="{{pitem.id}}" data-system_id="{{pitem.system_id}}"  class='ri_text'>
+                                              试听
                                           </view>
                                           
                                       </block>

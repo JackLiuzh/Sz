@@ -208,7 +208,7 @@ position: absolute;
   opacity:1;
 }
 .date-show{
-  margin-left:480rpx;
+  margin-left:20rpx;
   margin-top:33rpx;
   /* position: relative; */
   font-size:28rpx;
@@ -218,8 +218,14 @@ position: absolute;
   color:rgba(230,85,87,1);
   opacity:1;
 }
+.shangyue{
+  margin-left:450rpx;
+  margin-top:35rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
 .img{
-  margin-left:30rpx;
+  margin-left:20rpx;
   margin-top:35rpx;
   width: 40rpx;
   height: 40rpx;

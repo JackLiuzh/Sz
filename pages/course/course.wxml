@@ -29,7 +29,7 @@
                         <block wx:for="{{curcourselist}}" wx:key="this">
                             <view bindtap='gocourse_xiang' data-system_id="{{item.system_id}}" class="course_d" >
                                 <view class='course_d-top'>
-                                   <text wx:if="{{item.isLive == '1'}}" class="course_d-lan">直播</text>
+                                   <text wx:if="{{item.isLive == '2'}}" class="course_d-lan">直播</text>
                                    <text wx:else class="course_d-lan course_d-red">录播</text>
                                     {{item.title}}
                                 </view>

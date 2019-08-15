@@ -143,6 +143,7 @@ opacity:1;
 .subcell_ri{
   display: flex;
   align-items: center;
+  width: 160rpx;
 }
 .lab_box{
   border-top: 10rpx solid #F0F0F0;

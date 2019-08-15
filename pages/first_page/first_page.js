@@ -120,9 +120,11 @@ Page({
   },
 
   dateInit: function () {
-    //全部时间的月份都是按0~11基准，显示月份才+1 
   },
-  nextmonth: function (setYear, setMonth) {
+
+  
+
+  jumpmonth: function (setYear, setMonth) {
     //全部时间的月份都是按0~11基准，显示月份才+1 
     let dateArr = [];
     let cal_add_false = [];
@@ -168,6 +170,126 @@ Page({
       })
     }
   }, 
+
+  nowmonth: function () {
+    let now = new Date();
+    let year = now.getFullYear();
+    let month = now.getMonth() + 1;
+    let day = now.getDate();
+    this.dateInit();
+    this.setData({
+      year: year,
+      month: month,
+      // isToday: '' + year + month + day 
+    })
+
+    var token = wx.getStorageSync('token');
+    var params = {
+      // "uid": uid,
+      "token": token,
+    }
+
+    app.sz.xcxcourseLive(params).then(d => {
+      if (d.data.status == 1) {
+        this.setData({ courselive: d.data.data })
+        var that = this;
+        let dateArr = [];
+        let comDateTime = [];
+        let cal_add_false = [];
+        let xq = new Date().getDay();      //获取日期所属星期
+        //需要遍历的日历数组数据 
+        let arrLen = 0;                            //dateArr的数组长度 
+        let now = new Date();
+        let year = now.getFullYear();
+        let nextYear = 0;
+        let month = now.getMonth();  //没有+1方便后面计算当月总天数 
+        let nextMonth = (month + 1) > 11 ? 1 : (month + 1);
+        let startWeek = new Date(year + ',' + (month + 1) + ',' + 1).getDay();         //目标月1号对应的星期 
+        let dayNums = new Date(year, nextMonth, 0).getDate();
+        //获取目标月有多少天 
+        // console.log(new Date(setYear, setMonth))  
+        let obj = {};
+        let num = 0;
+        let day = now.getDate();
+        // let hoo = year + '-' + month + '-' +;
+        // console.log() 
+
+        if (month + 1 > 11) {
+          nextYear = year + 1;
+          dayNums = new Date(nextYear, nextMonth, 0).getDate();
+        }
+        let syday = dayNums - day + 1;
+        // console.log(syday)
+        for (let s = 0; s < syday + xq; s++) {
+          if (s >= xq) {
+            num = s - xq + day;
+            for (let w = 0; w < syday; w++) {
+              dateArr[s] = num
+            }
+          } else {
+            dateArr[s] = '';
+          }
+          comDateTime.push([year + '-' + '0' + (month + 1) + '-' + num, num])
+        }
+
+        this.setData({
+          dateArr: dateArr,
+          comDateTime: comDateTime
+        })
+        for (let n = 0; n < this.data.dateArr.length; n++) {
+          cal_add_false.push([this.data.dateArr[n], false])
+
+          this.setData({
+            calPanduan: cal_add_false,
+          })
+        }
+        // this.showModalPb(e)
+        for (let l = 0; l < this.data.courselive.length; l++) {
+          if (this.data.courselive[l].liveStatus == 1) {
+            for (let m = 0; m < this.data.comDateTime.length; m++) {
+              if (this.data.courselive[l].dateTime == this.data.comDateTime[m][0]) {
+                for (let n = 0; n < this.data.calPanduan.length; n++) {
+                  if (this.data.comDateTime[m][1] == this.data.calPanduan[n][0]) {
+                    this.data.calPanduan[n][1] = true
+                    this.setData({ showcal: this.data.calPanduan })
+                  }
+                }
+              }
+            }
+          }
+          else {
+            this.setData({ showcal: this.data.calPanduan })
+            console.log(this.data.showcal)
+          }
+        }
+      }
+    })
+
+  },
+
+  lastMonth: function () {
+    //全部时间的月份都是按0~11基准，显示月份才+1 
+    let year = this.data.month - 2 < 0 ? this.data.year - 1 : this.data.year;
+    let month = this.data.month - 2 < 0 ? 11 : this.data.month - 2;
+    let now = new Date();
+    let nowmonth = now.getMonth();
+    console.log(month)
+    console.log(nowmonth)
+    if (month == nowmonth) {
+      // this.setData({
+      //   year: year,
+      //   month: (month + 1)
+      // })
+      this.nowmonth();
+    } else {
+      this.setData({
+        year: year,
+        month: (month + 1)
+      })
+      this.jumpmonth(year, month);
+    }
+  }, 
+  
   nextMonth: function () {
     //全部时间的月份都是按0~11基准，显示月份才+1 
     let year = this.data.month > 11 ? this.data.year + 1 : this.data.year;
@@ -176,8 +298,10 @@ Page({
       year: year,
       month: (month + 1)
     })
-    this.nextmonth(year, month);
+    this.jumpmonth(year, month);
   },
+
+  
   showModalZb: function (e) {
     var id = e.currentTarget.dataset.xb;
     console.log(id);

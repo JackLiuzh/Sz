@@ -13,6 +13,28 @@ Page({
     livelist:[],
     curcourselist:[] //当前显示的list
   },
+  //跳转first_page
+  golive: function(e){
+      var that = this
+      var livestatus = e.currentTarget.dataset.livestatus
+      var index = e.currentTarget.dataset.index
+      if((livestatus == 3) || (livestatus ==1)){
+         wx.navigateTo({
+           url: '/pages/first_page/first_page',
+         })
+      }else{
+          var playback = that.livelist[index].live_info.playback
+          var url = ''
+          if(playback == 1){
+            url = that.livelist[index].live_info.playbackUrl
+          }else if(playback == 0){
+            url = that.livelist[index].live_info.liveUrl
+          }
+        wx.navigateTo({
+          url: '/pages/live/live?url=' + url,
+        })
+      }
+  },
   // 滚动切换标签样式
   switchTab: function (e) {
     this.setData({

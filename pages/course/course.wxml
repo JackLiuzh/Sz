@@ -5,12 +5,13 @@
     </view>
     <view class="scroll_box"> 
         <scroll-view class="scroll-view_x" scroll-x style="width: auto;overflow:hidden;">
-           <view class="course_con" wx:for="{{livelist}}" wx:key="this">
+           <view bindtap='golive' data-index="{{index}}" data-liveStatus="{{item.liveStatus}}" class="course_con" wx:for="{{livelist}}" wx:key="this">
               <view class='course_con-top' >
                   <image src="/images/test.png" mode="aspectFill" class="course_img"></image>
               </view>
               <view class="course_title">{{item.video_title}}</view>
-              <view class="course_time">{{item.dateTime}} {{item.time_period}}</view>
+              <view wx:if="{{item.liveStatus == 2}}" class='zhengzailive' >正在直播中</view>
+              <view wx:else class="course_time">{{item.dateTime}} {{item.time_period}}</view>
               <view class="course_people"><text>{{item.buy_count}}人已参与</text></view>
             </view>
         </scroll-view>

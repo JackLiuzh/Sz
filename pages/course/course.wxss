@@ -15,7 +15,15 @@
 
 
 
-
+.zhengzailive{
+  font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+line-height:34rpx;
+color:rgba(230,85,87,1);
+opacity:1;
+padding-left:14rpx;
+}
 .course_top{
   display: flex;
   justify-content: space-between;

@@ -326,7 +326,7 @@ function courseList(params) {
 }
 //课程直播课列表 
 function courseLive(params) {
-  return fetch.szfetch(URI, 'courseLive', params)
+  return fetch.szfetch(URI, 'xcxcourseLive', params)
 }
 
 //课程分类 

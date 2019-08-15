@@ -132,6 +132,10 @@ emojiChar:"☺-😋-😌-😍-😏-😜-😝-😞-😔-😪-😭-😁-😂-😃-
            
           }
         }
+        let pinggureport = true;
+        if (d.data.data.unzuo_nums == 0){
+          pinggureport = false;
+        }
         that.setData({
           total_nums: d.data.data.total_nums,
           correct_nums: d.data.data.correct_nums,
@@ -140,6 +144,7 @@ emojiChar:"☺-😋-😌-😍-😏-😜-😝-😞-😔-😪-😭-😁-😂-😃-
           datika: d.data.data.datika,
           questions: d.data.data.data,
           currentTab: d.data.data.zindex,
+          pinggureport: pinggureport,
         })
         wx.hideLoading();
       }else {

@@ -22,9 +22,9 @@ Page({
     var time = options.time
     var uid = app.globalData.uid
     var params = {
-      "uid": 89,
-      "user_task_id": 636,
-      "time": "2019-08-13"
+      "uid": uid,
+      "user_task_id": user_task_id,
+      "time": time
     }
     app.sz.xcxshutiteport(params).then(d => {
       console.log(d.data);

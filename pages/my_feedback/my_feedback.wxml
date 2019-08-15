@@ -19,7 +19,7 @@
   <view class="layout"> 
     
     <view class="lxfs">{{contact}}</view> 
-    <button class="{{contract == ''?'button':'TipHide'}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> 
+    <button class="{{contract == '请输入手机号'?'button':'TipHide'}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> 
       <image class="img1" src="../../images/xiayiye@2x.png"></image> 
     </button> 
     <!-- <image class="imgbutton" bindtap="getphone" src="../../images/xiayiye@2x.png"></image>  -->

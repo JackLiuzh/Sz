@@ -97,7 +97,7 @@ page {
 /* } */
 .add_addr{
   margin-left:165rpx;
-  margin-top:50rpx;
+  margin-top:38rpx;
   width:230rpx;
   height:33rpx;
   font-size:24rpx;

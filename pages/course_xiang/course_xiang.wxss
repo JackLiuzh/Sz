@@ -130,6 +130,7 @@ opacity:1;
 .subcell_le{
   display: flex;
   align-items: center;
+  /* justify-content: space-between; */
 }
 .ri_lab{
   display: flex;
@@ -144,6 +145,7 @@ opacity:1;
   display: flex;
   align-items: center;
   width: 160rpx;
+  justify-content:flex-end;
 }
 .lab_box{
   border-top: 10rpx solid #F0F0F0;

@@ -71,7 +71,7 @@ Page({
             app.sz.xcxSubmitTask(params).then(d => {
               //console.log(d)
               if (d.data.status == 0) {
-                wx.redirectTo({
+                wx.switchTab({
                   url: '../today_task/today_task',
                 })
               }else{

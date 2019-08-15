@@ -55,13 +55,17 @@ Page({
     }
     var dd = []
     that.setData({ curcourselist:[] })
-    that.data.courselist.forEach(function(item,index){
-      if (item.category_id == category_id){
-        dd.push(item)
-      }
-    })
-    // console.log(dd)
-    that.setData({ curcourselist:dd})
+    if(category_id == 0){
+      that.setData({ curcourselist: that.data.courselist })
+    }else{
+      that.data.courselist.forEach(function (item, index) {
+        if (item.category_id == category_id) {
+          dd.push(item)
+        }
+      })
+      // console.log(dd)
+      that.setData({ curcourselist: dd })
+    }
      
   },
   //判断当前滚动超过一屏时，设置tab标题滚动条。
@@ -119,8 +123,8 @@ Page({
           if(d.data.status == 1){
               // console.log(d.data.data)
               // that.data.courselist = d.data.data
-              that.setData({courselist:d.data.data})
-              that.initcurcourselist()
+              that.setData({courselist:d.data.data,curcourselist:d.data.data})
+              // that.initcurcourselist()
           }else{
             console.log("获取课程列表错误")
           }
@@ -136,6 +140,11 @@ Page({
     app.sz.category(params).then(d=>{
         if(d.data.status == 1){
           // console.log(d.data)
+          var obj ={
+            id:0,
+            title:'课程'
+          }
+          d.data.data.unshift(obj)
           that.setData({ categorylist: d.data.data })
         }else {
           console.log("分类接口错误")

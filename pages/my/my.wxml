@@ -33,6 +33,11 @@
     <image class="img" bindtap="addAddress" src="../../images/xiayiye@2x.png"></image>
   </view>
 
+  <!-- <view class="layout3">
+    <image class="img1" src="../../images/youhuiquan@2x.png"></image>
+    <view class="v1"><text class="num">我的优惠券</text></view>
+    <image class="img2" src="../../images/xiayiye@2x.png" bindtap="downloadApp"></image>
+  </view> -->
   <view class="layout3">
     <image class="img1" src="../../images/组 4@2x.png"></image>
     <view class="v1"><text class="num">手机APP下载</text></view>

@@ -44,6 +44,12 @@
     </view>
   </view>
 
+  <view class="layout_youhuiquan">
+    <text class="youhuiquan_title">优惠券</text>
+    <text class="youhuiquan">无可用优惠券</text>
+    <image class="img_youhuiquan" bindtap="" src="../../images/xiayiye@2x.png"></image> 
+  </view>
+
   <view class="layout4">
     <view class="layout41">
       <text class="hj">合计</text>

@@ -1,0 +1,51 @@
+<view class="container"> 
+ 
+  <scroll-view  class="tab-h" scroll-left="{{scrollLeft}}"> 
+    <view wx:for="{{youhuiquan}}" wx:key="index" class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav">{{item}}</view> 
+  </scroll-view> 
+ 
+  <view class="yhq_layout1"> 
+    <image class='yhq_background' src="../../images/ditu@2x.png" mode="aspectFill"></image> 
+    <text class="yhq_rmb">¥<text class="yhq_price">300</text></text>
+    <view class="yhq_layout11">
+      <view class="yhq_layout111">
+        <view class="yhq_title">新人专享礼券</view>
+        <view class="yhq_use"><text class="use">立即使用</text></view>
+      </view>
+      <view class="yhq_course">适用课程：2020年国考系统班</view>
+      <view class="yhq_date">有效期：2019.07.12-2019.07.30</view>
+    </view>
+  </view> 
+  
+  <view class="yhq_layout1"> 
+    <image class='yhq_background' src="../../images/ditu1@2x.png" mode="aspectFill"></image> 
+    <text class="yhq_rmb">¥<text class="yhq_price">300</text></text>
+    <view class="yhq_layout11">
+    
+      <view class="yhq_layout111">
+        <view class="yhq_title">新人专享礼券</view>
+        <image class='yhq_used' src="../../images/yishiyong@2x.png" mode="aspectFill"></image>
+        <!-- <view class="yhq_use"><text class="use">立即使用</text></view> -->
+      </view>
+      <view class="yhq_course">适用课程：2020年国考系统班</view>
+      <view class="yhq_date">有效期：2019.07.12-2019.07.30</view>
+    </view>
+  </view> 
+
+  <view class="yhq_layout1"> 
+    <image class='yhq_background' src="../../images/ditu1@2x.png" mode="aspectFill"></image> 
+    <text class="yhq_rmb">¥<text class="yhq_price">300</text></text>
+    <view class="yhq_layout11">
+    
+      <view class="yhq_layout111">
+        <view class="yhq_title">新人专享礼券</view>
+        <image class='yhq_used' src="../../images/yiguoqi@2x.png" mode="aspectFill"></image>
+      </view>
+      <view class="yhq_course">适用课程：2020年国考系统班</view>
+      <view class="yhq_date">有效期：2019.07.12-2019.07.30</view>
+    </view>
+  </view> 
+ 
+</view> 
+ 
+ 

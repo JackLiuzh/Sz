@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 5,
 			"list": [
 				{
 					"id": 0,
@@ -74,6 +74,13 @@
 					"id": 4,
 					"name": "pages/course_buy/course_buy",
 					"pathName": "pages/course_buy/course_buy",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my_youhuiquan/my_youhuiquan",
+					"pathName": "pages/my_youhuiquan/my_youhuiquan",
 					"query": "",
 					"scene": null
 				}

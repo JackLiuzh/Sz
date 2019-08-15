@@ -34,7 +34,8 @@
     "pages/first_page/first_page",
     "pages/my_set/my_set",
     "pages/my_addr/my_addr",
-    "pages/test_dati/test_dati"
+    "pages/test_dati/test_dati",
+    "pages/my_youhuiquan/my_youhuiquan"   
   ],
   "window": {
     "backgroundTextStyle": "light",

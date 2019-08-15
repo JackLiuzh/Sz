@@ -1,0 +1,145 @@
+/* pages/my_youhuiquan/my_youhuiquan.wxss */ 
+.tab-h{ 
+  height: 100rpx; 
+  width: 100%; 
+  box-sizing: border-box; 
+  overflow: hidden; 
+  line-height: 100rpx; 
+  background: #fff; 
+  white-space: nowrap;  
+} 
+.tab-item{ 
+  margin:0 85rpx; 
+  display: inline-block; 
+  font-size: 28rpx; 
+  color: #888888; 
+} 
+.tab-item.active{ 
+  color: #0A0A0A; 
+  position: relative; 
+  font-weight:bold; 
+  font-size: 32rpx; 
+} 
+.tab-item.active:after{ 
+  content: ""; 
+  display: block; 
+  height: 6rpx; 
+  width: 96%; 
+  background: #E65557; 
+  position: absolute;  
+  bottom: 0;left: 5rpx; 
+} 
+.tab-content{ 
+  margin-top: 20rpx; 
+} 
+.yhq_layout1{ 
+  display:flex; 
+  position: relative;
+    
+} 
+.yhq_background{ 
+  /* position: absolute; */
+  margin-left: 30rpx; 
+  margin-top: 32rpx; 
+  width: 690rpx; 
+  height: 252rpx; 
+} 
+.yhq_rmb{
+  display:flex; 
+  position: absolute;
+  margin-left: 70rpx; 
+  margin-top: 130rpx; 
+  /* width:40px; */
+  height:56rpx;
+  font-size:40rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  line-height:56rpx;
+  color:rgba(255,255,255,1);
+  opacity:1;
+}
+.yhq_price{
+  /* width:114px; */
+height:64rpx;
+font-size:56rpx;
+font-family:FZLanTingHeiS-B-GB;
+font-weight:400;
+line-height:56rpx;
+color:rgba(255,255,255,1);
+opacity:1;
+}
+.yhq_layout11{
+  display:flex;
+  flex-direction: column;
+  position: absolute;
+}
+.yhq_title{
+  
+  margin-left:270rpx; 
+  margin-top:70rpx; 
+  width:192rpx;
+  height:44rpx;
+  font-size:32rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  line-height:44rpx;
+  color:rgba(10,10,10,1);
+  opacity:1;
+}
+.yhq_course{
+  
+  margin-left:270rpx; 
+  margin-top:40rpx; 
+  width:376rpx;
+  height:40rpx;
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  line-height:40rpx;
+  color:rgba(10,10,10,1);
+  opacity:1;
+}
+.yhq_date{
+  
+  margin-left:270rpx; 
+  margin-top:20rpx; 
+  width:426rpx;
+  height:40rpx;
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  line-height:40rpx;
+  color:rgba(10,10,10,1);
+  opacity:1;
+}
+.yhq_layout111{
+  display:flex;
+}
+.yhq_use{
+  margin-left:75rpx; 
+  margin-top:70rpx; 
+  width:135rpx;
+  height:45rpx;
+  background:rgba(230,85,87,1);
+  opacity:1;
+  border-radius:100rpx;
+}
+.use{
+  margin-left:15rpx; 
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  /* align-items:center; */
+  line-height:45rpx;
+  color:rgba(255,255,255,1);
+   opacity:1;
+}
+.yhq_used{
+  margin-left:162rpx; 
+  margin-top:28rpx; 
+  width:100rpx;
+  height:100rpx;
+}
+
+
+ 

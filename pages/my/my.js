@@ -291,5 +291,11 @@ Page({
       }
     })
   },
+
+  go_youhuiquan: function () {
+    wx.navigateTo({
+      url: '../my_youhuiquan/my_youhuiquan'
+    })
+  },
   
 })

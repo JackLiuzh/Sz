@@ -116,16 +116,16 @@ opacity:1;
   display:flex;
 }
 .yhq_use{
-  margin-left:75rpx; 
+  margin-left:80rpx; 
   margin-top:70rpx; 
   width:135rpx;
-  height:45rpx;
+  height:50rpx;
   background:rgba(230,85,87,1);
   opacity:1;
   border-radius:100rpx;
 }
 .use{
-  margin-left:15rpx; 
+  margin-left:17rpx; 
   font-size:24rpx;
   font-family:PingFang SC;
   font-weight:400;

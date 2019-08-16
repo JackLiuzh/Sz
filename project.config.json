@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 6,
 			"list": [
 				{
 					"id": 0,
@@ -81,6 +81,13 @@
 					"id": -1,
 					"name": "pages/my_youhuiquan/my_youhuiquan",
 					"pathName": "pages/my_youhuiquan/my_youhuiquan",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/tologin/tologin",
+					"pathName": "pages/tologin/tologin",
 					"query": "",
 					"scene": null
 				}

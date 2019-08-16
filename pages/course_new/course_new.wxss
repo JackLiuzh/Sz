@@ -1,0 +1,350 @@
+/* pages/course_new/course_new.wxss */
+page {
+  background-color: #fff;
+}
+.zhiboing{
+  position: relative;
+  width:750rpx;
+  height:400rpx;
+  background:rgba(0,0,0,0.35);
+  opacity:1;
+}
+.daizhibo{
+  margin-top:25rpx;
+  position: relative;
+  width:750rpx;
+  height:400rpx;
+  background:rgba(0,0,0,0.35);
+  opacity:1;
+}
+.zbmask{
+  width:750rpx;
+  height:400rpx;
+  /* position: fixed; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  background:rgb(19, 18, 18);
+  
+  opacity: 0.7;
+}
+.qw{
+  position: absolute;
+}
+.zbfm{
+  position: absolute;
+  width:750rpx;
+  height:400rpx;
+}
+.broadcasting{
+  display: flex;
+  position: absolute;
+  width:172rpx;
+  height:57rpx;
+  
+  background:rgba(230,85,87,0.7);
+  opacity:1;
+  border-radius:0rpx 0rpx 20rpx 0rpx;
+}
+.daibroadcast{
+  display: flex;
+  position: absolute;
+  width:172rpx;
+  height:57rpx;
+  
+  background:rgba(31,187,148,0.55);
+  opacity:1;
+  border-radius:0rpx 0rpx 20rpx 0rpx;
+}
+.shu1{
+  position: absolute;
+  margin-left:20rpx;
+  margin-top:25rpx;
+  width:3rpx;
+  height:20rpx;
+  background:rgba(255,255,255,1);
+  opacity:1;
+  border-radius:1rpx;
+}
+.shu2{
+  position: absolute;
+  margin-left:30rpx;
+  margin-top:15rpx;
+  width:3rpx;
+  height:30rpx;
+  background:rgba(255,255,255,1);
+  opacity:1;
+  border-radius:1rpx;
+}
+.shu3{
+  position: absolute;
+  margin-left:40rpx;
+  margin-top:22rpx;
+  width:3rpx;
+  height:23rpx;
+  background:rgba(255,255,255,1);
+  opacity:1;
+  border-radius:1rpx;
+}
+.zbz{
+  position: absolute;
+  margin-left:60rpx;
+  margin-top:8rpx;
+  width:84rpx;
+  height:40rpx;
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  line-height:40rpx;
+  color:rgba(255,255,255,1);
+  opacity:1;
+}
+.title{
+  position: absolute;
+  text-align: center;
+  /* margin-left:95rpx; */
+  margin-top:115rpx;
+  width:750rpx;
+  height:60rpx;
+  font-size:40rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  
+  line-height:35rpx;
+  color:rgba(255,255,255,1);
+  opacity:1;
+}
+.speak{
+  display: flex;
+  /* s */
+}
+.touxiang{
+  position: absolute;
+  margin-left:178rpx;
+  margin-top:180rpx;
+  width:34rpx;
+  height:34rpx;
+  background:rgba(0,0,0,0);
+  border-radius:50%;
+  opacity:1;
+}
+.speaker{
+  position: absolute;
+  margin-left:230rpx;
+  margin-top:180rpx;
+  width:120rpx;
+  height:33rpx;
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  line-height:35rpx;
+  color:rgba(255,255,255,1);
+  opacity:1;
+}
+.shu4{
+  position: absolute;
+  margin-left:360rpx;
+  margin-top:188rpx;
+  width:0rpx;
+  height:17rpx;
+  border:1rpx solid rgba(255,255,255,1);
+  opacity:1;
+}
+.num{
+  position: absolute;
+  margin-left:380rpx;
+  margin-top:185rpx;
+  /* width:163rpx; */
+  height:33rpx;
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  line-height:32rpx;
+  color:#E65557;
+  opacity:1;
+}
+.joining{
+  position: absolute;
+  margin-top:185rpx;
+  margin-left:470rpx;
+  /* width:rpx; */
+  height:33rpx;
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  line-height:32rpx;
+  color:rgba(255,255,255,1);
+  opacity:1;
+}
+.enter_zb{
+  position: absolute;
+  display: flex;
+  margin-left:240rpx;
+  margin-top:250rpx;
+  width:270rpx;
+  height:72rpx;
+  background:rgba(230,85,87,1);
+  opacity:1;
+  border-radius:96rpx;
+}
+.look_detail{
+  position: absolute;
+  display: flex;
+  margin-left:250rpx;
+  margin-top:250rpx;
+  width:250rpx;
+  height:72rpx;
+  background:rgba(31,187,148,0.55);
+  opacity:1;
+  border-radius:96rpx;
+}
+.look_bp{
+  position: absolute;
+  display: flex;
+  margin-left:260rpx;
+  margin-top:250rpx;
+  width:230rpx;
+  height:72rpx;
+  background:rgba(43,145,254,1);
+  opacity:1;
+  border-radius:96rpx;
+}
+.play_zb{
+  position: absolute;
+  margin-left:55rpx;
+  margin-top:22rpx;
+  width:27rpx;
+  height:27rpx;
+  /* background:rgba(255,255,255,1);
+  opacity:1; */
+}
+.enter{
+  position: absolute;
+  margin-left:80rpx;
+  margin-top:12rpx;
+  width:170rpx;
+  height:48rpx;
+  font-size:30rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  line-height:48rpx;
+  color:rgba(255,255,255,1);
+  opacity:1;
+}
+
+.xuanfu {
+  display:flex;
+  margin-left:20rpx;
+  width:710rpx;
+  /* height:267rpx; */
+  background:rgba(255,255,255,1);
+  box-shadow:0rpx 0rpx 11rpx rgba(0,0,0,0.16);
+  opacity:1;
+  overflow: hidden;
+  position: fixed;
+  /* right: 0rpx; */
+  top: 800rpx;
+}
+.layout1 {
+  display:flex;
+  flex-direction: column;
+  position: relative;
+  /* width:149rpx; */
+  height: 300rpx;
+  overflow: hidden;
+}
+/* .kefu{
+   position: absolute;
+   top: 0;
+   right: 0;
+   width: 100%;
+   opacity: 0;
+} */
+.course_title{
+  /* position: absolute; */
+  margin-left:50rpx;
+  margin-top:40rpx;
+  width:360rpx;
+  height:56rpx;
+  font-size:40rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  line-height:38rpx;
+  color:rgba(0,0,0,1);
+  opacity:1;
+}
+.course_detail{
+  position: absolute;
+  margin-left:50rpx;
+  margin-top:100rpx;
+  width:360rpx;
+  height:42rpx;
+  font-size:22rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  line-height:30rpx;
+  color:rgba(164,164,164,1);
+  opacity:1;
+}
+.teach-ico{
+  position: absolute;
+  left: 50rpx;
+  margin-top:150rpx;
+  text-align: center;
+}
+.teach-ico-img{
+  /* margin-top:150rpx; */
+  width: 68rpx;
+  height: 68rpx;
+  border-radius:50%;
+  display: block;
+}
+.teach-name{
+  font-size:22rpx;
+  font-family:PingFang SC;
+  font-weight:300;
+  line-height:32rpx;
+  color: #888888;
+}
+
+.layout2 {
+  display:flex;
+  flex-direction: column;
+  /* position: relative; */
+  /* width:149rpx; */
+  height: 300rpx;
+  overflow: hidden;
+}
+.course_price{
+  margin-left:140rpx;
+  margin-top:90rpx;
+  width:101rpx;
+  height:50rpx;
+  font-size:36rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  line-height:50rpx;
+  color:rgba(230,85,87,1);
+  opacity:1;
+}
+.bt_buy{
+  margin-left:120rpx;
+  margin-top:15rpx;
+  width:165rpx;
+  height:60rpx;
+  text-align: center;
+  line-height:60rpx;
+  background:rgba(230,85,87,1);
+  opacity:1;
+  border-radius:60rpx;
+}
+.go_buy{
+  width:90rpx;
+  height:42rpx;
+  font-size:30rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  line-height:42rpx;
+  color:rgba(255,255,255,1);
+  opacity:1;
+}

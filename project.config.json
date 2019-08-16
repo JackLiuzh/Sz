@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 4,
 			"list": [
 				{
 					"id": 0,
@@ -72,8 +72,8 @@
 				},
 				{
 					"id": 4,
-					"name": "pages/course_buy/course_buy",
-					"pathName": "pages/course_buy/course_buy",
+					"name": "pages/course_new/course_new",
+					"pathName": "pages/course_new/course_new",
 					"query": "",
 					"scene": null
 				},

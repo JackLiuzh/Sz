@@ -36,7 +36,6 @@
     <image class='yhq_background' src="../../images/ditu1@2x.png" mode="aspectFill"></image> 
     <text class="yhq_rmb">¥<text class="yhq_price">300</text></text>
     <view class="yhq_layout11">
-    
       <view class="yhq_layout111">
         <view class="yhq_title">新人专享礼券</view>
         <image class='yhq_used' src="../../images/yiguoqi@2x.png" mode="aspectFill"></image>

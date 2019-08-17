@@ -267,7 +267,8 @@ opacity:1;
   overflow: hidden;
   position: fixed;
   /* right: 0rpx; */
-  top: 800rpx;
+  /* top: 800rpx; */
+  bottom: 10rpx;
 }
 .layout1 {
   display:flex;

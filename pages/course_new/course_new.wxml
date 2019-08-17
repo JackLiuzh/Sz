@@ -11,7 +11,7 @@
         <image wx:if="{{item.liveStatus ==2}}" class="daibroadcast" src="../../images/组 2509@2x.png"></image>
         <image wx:if="{{item.liveStatus ==1}}" class="daibroadcast" src="../../images/组 2510@2x.png"></image>
 
-        <view class="title">{{item.video_title}}</view>
+        <view style='display:none;' class="title">{{item.video_title}}</view>
               
         <view class="speak">
           <image class="touxiang" src="{{item.teacher.avatar}}"></image>

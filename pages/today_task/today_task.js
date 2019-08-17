@@ -110,10 +110,10 @@ Page(filter.loginCheck({
         key:'userInfo',
         success(res) {
             that.setData({
-              nickName:res.data.nickName
+              nickName:res.data.name
             })
             wx.downloadFile({
-              url: res.data.avatarUrl,
+              url: res.data.avatar,
               success: function(r) {
                  that.setData({touxiang: r.tempFilePath})
               }

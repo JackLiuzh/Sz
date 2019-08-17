@@ -12,7 +12,9 @@
         <image src="../../images/bg.png"></image>
     </view>
     <view class="bottom">
-        <button type="warn" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">微信登录</button>
+        <!-- <button type="warn" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">微信登录</button> -->
+        
+        <button type="warn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">微信登录</button>
     </view>
 </view>
 

@@ -2,12 +2,34 @@
 page {
   background-color: #fff;
 }
+.so{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 29rpx;
+}
+.l{
+  font-size:32rpx;
+font-family:PingFang SC;
+font-weight:bold;
+line-height:44rpx;
+color:rgba(10,10,10,1);
+opacity:1;
+}
+.r{
+  font-size:26rpx;
+font-family:PingFang SC;
+font-weight:400;
+line-height:36rpx;
+color:rgba(170,170,170,1);
+opacity:1;
+}
 .zhiboing{
   position: relative;
   width:750rpx;
   height:400rpx;
   background:rgba(0,0,0,0.35);
   opacity:1;
+  margin-top: 20rpx;
 }
 .daizhibo{
   margin-top:25rpx;
@@ -120,7 +142,8 @@ page {
 }
 .touxiang{
   position: absolute;
-  margin-left:178rpx;
+  /* margin-left:178rpx; */
+  margin-left: 228rpx;
   margin-top:180rpx;
   width:34rpx;
   height:34rpx;
@@ -130,7 +153,8 @@ page {
 }
 .speaker{
   position: absolute;
-  margin-left:230rpx;
+  /* margin-left:230rpx; */
+  margin-left: 280rpx;
   margin-top:180rpx;
   width:120rpx;
   height:33rpx;
@@ -166,7 +190,7 @@ page {
 .joining{
   position: absolute;
   margin-top:185rpx;
-  margin-left:470rpx;
+  margin-left:449rpx;
   /* width:rpx; */
   height:33rpx;
   font-size:24rpx;
@@ -272,6 +296,9 @@ page {
   line-height:38rpx;
   color:rgba(0,0,0,1);
   opacity:1;
+  overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
 }
 .course_detail{
   position: absolute;
@@ -318,7 +345,7 @@ page {
 .course_price{
   margin-left:140rpx;
   margin-top:90rpx;
-  width:101rpx;
+  /* width:101rpx; */
   height:50rpx;
   font-size:36rpx;
   font-family:PingFang SC;

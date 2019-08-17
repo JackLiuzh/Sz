@@ -58,7 +58,7 @@
       },
       {
         "text": "课程",
-        "pagePath": "pages/course/course",
+        "pagePath": "pages/course_new/course_new",
         "iconPath": "images/kecheng@2x.png",
         "selectedIconPath": "images/kecheng_active@2x.png"
       },

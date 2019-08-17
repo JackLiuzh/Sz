@@ -1,28 +1,48 @@
 <view class="container">
+  <view class='so'>
+      <view class='l'>近期专题课直播</view>
+      <view bindtap='gokanvideo' class='r'>全部专题课</view>
+  </view>
+  <view wx:for="{{list}}" wx:key="this" class="zhiboing" >
+        <image  class="zbfm" src="{{item.avatar}}"/>
+        <!-- <cover-view class="zbmask" catchtouchmove="preventTouchMove" ></cover-view> -->
+        <view class='zbfm' style='background-color:rgba(0,0,0,.5);'></view>
+        
+        <cover-image wx:if="{{item.liveStatus ==2}}" class="daibroadcast" src="../../images/组 2509@2x.png"></cover-image>
+        <cover-image wx:if="{{item.liveStatus ==1}}" class="daibroadcast" src="../../images/组 2510@2x.png"></cover-image>
 
-  <view class="zhiboing" >
-    <image  class="zbfm" src="../../images/test.png"/>
-    <!-- <cover-view class="zbmask" catchtouchmove="preventTouchMove" ></cover-view> -->
+        <cover-view class="title">{{item.video_title}}</cover-view>
+              
+        <cover-view class="speak">
+          <cover-image class="touxiang" src="{{item.teacher.avatar}}"></cover-image>
+          <cover-view class="speaker">{{item.teacher.name}}</cover-view>
+          <cover-view class="shu4"></cover-view>
+          <block wx:if="{{item.liveStatus ==1}}">
+            <!-- <cover-view class="num">{{item.total_people}}人</cover-view> -->
+            <cover-view class="joining" style='margin-left:389rpx;'>{{item.video_time}} </cover-view>
+          </block>
+          <block wx:else>
+            <cover-view class="num">{{item.total_people}}人</cover-view>
+            <cover-view class="joining">正在参与 </cover-view>
+          </block>
+        </cover-view>
 
-    <cover-image class="daibroadcast" src="../../images/组 2509@2x.png"></cover-image>
-           
-    <cover-view class="title">hhhh</cover-view>
-           
-    <cover-view class="speak">
-      <cover-image class="touxiang" src="../../images/gui@2x.png"></cover-image>
-      <cover-view class="speaker">哈哈哈</cover-view>
-      <cover-view class="shu4"></cover-view>
-      <cover-view class="num">1234人</cover-view>
-      <cover-view class="joining">正在参与 </cover-view>
-    </cover-view>
-
-    <cover-view class="enter_zb" >
-      <cover-image class="play_zb" src='../../images/多边形 10@2x.png'></cover-image>
-      <cover-view class="enter" >进入直播间</cover-view>
-    </cover-view>   
+        <cover-view bindtap='golive' data-playbackUrl="{{item.playurl}}" wx:if="{{item.liveStatus ==2}}" class="enter_zb" >
+          <cover-image class="play_zb" src='../../images/多边形 10@2x.png'></cover-image>
+          <cover-view  class="enter" >进入直播间</cover-view>
+        </cover-view>
+        <cover-view bindtap='godaibo' wx:if="{{item.liveStatus ==1}}" class="look_detail" >
+          <cover-image class="play_zb" src='../../images/多边形 10@2x.png'></cover-image>
+          <cover-view class="enter" >查看详情</cover-view>
+        </cover-view>
+        <cover-view bindtap='gohuifang' data-playbackUrl="{{item.playurl}}" wx:if="{{item.liveStatus ==4}}" class="look_bp" >
+            <cover-image class="play_zb" src='../../images/组 2444@2x.png' ></cover-image>
+            <cover-view class="enter" >看回放</cover-view>
+        </cover-view>    
   </view>
 
-  <view class="daizhibo" >
+  <!-- <view class="daizhibo" >
+    
     <image  class="zbfm" src="../../images/test.png"/>
     <cover-view class="zbmask" catchtouchmove="preventTouchMove" ></cover-view>
 
@@ -42,9 +62,9 @@
       <cover-image class="play_zb" src='../../images/多边形 10@2x.png'></cover-image>
       <cover-view class="enter" >查看详情</cover-view>
     </cover-view>   
-  </view>
+  </view> -->
 
-  <view class="daizhibo" >
+  <!-- <view class="daizhibo" >
     <image  class="zbfm" src="../../images/test.png"/>
     <cover-view class="zbmask" catchtouchmove="preventTouchMove" ></cover-view>
 
@@ -55,7 +75,7 @@
       <cover-view class="zbz" >直播中</cover-view>
     </cover-view> -->
            
-    <cover-view class="title">hhhh</cover-view>
+    <!-- <cover-view class="title">hhhh</cover-view>
            
     <cover-view class="speak">
       <cover-image class="touxiang" src="../../images/gui@2x.png"></cover-image>
@@ -69,24 +89,24 @@
       <cover-image class="play_zb" src='../../images/组 2444@2x.png' ></cover-image>
       <cover-view class="enter" >看回放</cover-view>
     </cover-view>   
-  </view>
+  </view>  -->
 
   <view class='xuanfu'>
 
     <view class='layout1'>
       <!-- <image style='width:149rpx;height:111rpx;' src='../../images/kefu@2x.png'></image>
       <button class='kefu' open-type='contact' bindcontact="handleContact">ff</button> -->
-      <view class='course_title'>定义判断和类比推理</view>
-      <view class='course_detail'>你必须了解的考场策略</view>
-      <view class='teach-ico'>
-        <image class="teach-ico-img" src="../../images/gui@2x.png" mode="aspectFill" ></image>
-        <text class='teach-name'>哈哈哈</text>
+      <view class='course_title'>{{sys.title}}</view>
+      <view class='course_detail'>{{sys.explains}}</view>
+      <view wx:for="{{sys.teacher_list}}" wx:key="this" style='left:{{index * 60 + 50}}rpx;' class='teach-ico'>
+        <image class="teach-ico-img" src="{{item.avatar}}" mode="aspectFill" ></image>
+        <text class='teach-name'>{{item.name}}</text>
       </view>
     </view>
 
     <view class="layout2">
-      <view class="course_price">￥499</view>
-      <view class="bt_buy"><text class="go_buy">去购买</text></view>
+      <view class="course_price">￥{{sys.price}}</view>
+      <view bindtap='gocourse_xiang' data-system_id="{{sys.system_id}}" class="bt_buy"><text class="go_buy">去购买</text></view>
     </view>
 
   </view>

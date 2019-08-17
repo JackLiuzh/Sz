@@ -24,8 +24,7 @@ Page({
     console.log(options)
     // console.log(this.data.name_phone)
     var course = JSON.parse(options.course)
-    this.setData({ courseinfo: course,miaosha:options.miaosha})
-
+    this.setData({ courseinfo: course,miaosha:options.miaosha,system_id:options.system_id})
     this.initdata(options.system_id,options.miaosha)
   },
   zhifu: function() {
@@ -125,6 +124,7 @@ Page({
     //   name_phone: wx.getStorageSync('namephone'),
     //   addr: wx.getStorageSync('address')
     // })
+    this.initdata(this.data.system_id, this.data.miaosha)
   },
 
   /**

@@ -12,7 +12,8 @@ Page({
     system_id:'',
     miaosha:'',
     data:'',
-    courseinfo:''
+    courseinfo:'',
+    coupon:'',//优惠券
   },
 
   /**
@@ -34,34 +35,60 @@ Page({
      var order_sn = that.data.data.order_sn
      var type = 3  
      var addr_id = that.data.data.address.addr_id
-     if(addr_id> 0){
-        var params = {
-          token: token,
-          uid : uid,
-          order_sn: order_sn,
-          type: 3,
-          addr_id :addr_id
-        }
-        app.sz.coursePay(params).then(d=>{
-          // console.log(d.data.data.paystr)
-          if(d.data.data.paystr){
-            var ob = JSON.parse(d.data.data.paystr)
-            var timeStamp = ob.timeStamp
-            var nonceStr = ob.nonceStr
-            var pack = ob.package
-            var paySign = ob.paySign
-            that.laqizhifu(timeStamp, nonceStr, pack, paySign)
-          }else{
+     var is_datum = that.data.data.courseInfo.is_datum
+     var coupon_id = that.data.coupon.coupon_id
+     if(is_datum == 0){ //不填地址可以生成订单
+         var params = {
+           token: token,
+           uid: uid,
+           order_sn: order_sn,
+           type: 3,
+           coupon_id:coupon_id
+         }
+         app.sz.coursePay(params).then(d=>{
+           if (d.data.data.paystr) {
+             var ob = JSON.parse(d.data.data.paystr)
+             var timeStamp = ob.timeStamp
+             var nonceStr = ob.nonceStr
+             var pack = ob.package
+             var paySign = ob.paySign
+             that.laqizhifu(timeStamp, nonceStr, pack, paySign)
+           } else {
              console.log("支付接口错误")
-          }
-        })
-     }else {
-         wx.showToast({
-           title: '请添加地址',
-           icon: 'none',
-           duration: 2000
+           }
          })
+     }else{
+          if(addr_id > 0){
+            var params = {
+              token: token,
+              uid: uid,
+              order_sn: order_sn,
+              type: 3,
+              addr_id: addr_id
+            }
+            app.sz.coursePay(params).then(d => {
+              // console.log(d.data.data.paystr)
+              if (d.data.data.paystr) {
+                var ob = JSON.parse(d.data.data.paystr)
+                var timeStamp = ob.timeStamp
+                var nonceStr = ob.nonceStr
+                var pack = ob.package
+                var paySign = ob.paySign
+                that.laqizhifu(timeStamp, nonceStr, pack, paySign)
+              } else {
+                console.log("支付接口错误")
+              }
+            })
+
+          }else{
+            wx.showToast({
+              title: '请添加地址',
+              icon: 'none',
+              duration: 2000
+            })
+          }
      }
+   
   },
   //拉起微信支付
   laqizhifu: function (timeStamp, nonceStr, pack, paySign){
@@ -73,6 +100,9 @@ Page({
       paySign: paySign,
       success(res) { 
         console.log(11)
+        wx.navigateBack({
+          delta: 1
+        })
       },
       fail(res) { 
         console.log("失败")
@@ -156,8 +186,8 @@ Page({
      app.sz.createCourseOrder(params).then(d=>{
         //  console.log(d)
         if(d.data.status == 1){
-          // that.data.amount = d.data.data.amount
-          that.setData({data:d.data.data})
+          // that.data.amount = d.data.data.amount d.data.data.coupon
+          that.setData({ data: d.data.data, coupon:d.data.data.coupon})
         }else {
           console.log("生成订单接口报错")
         }

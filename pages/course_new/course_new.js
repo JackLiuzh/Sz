@@ -32,7 +32,9 @@ Page({
   },
   //跳转待播
   godaibo: function(){
-
+      wx.navigateTo({
+        url: '/pages/course_newxiang/course_newxiang',
+      })
   },
   //看回放
   gohuifang:function(e){

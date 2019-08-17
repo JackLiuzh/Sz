@@ -1,4 +1,4 @@
-<view class="container">
+<view class="container" style='padding-bottom:400rpx;'>
   <view class='so'>
       <view class='l'>近期专题课直播</view>
       <view bindtap='gokanvideo' class='r'>全部专题课</view>
@@ -6,39 +6,39 @@
   <view wx:for="{{list}}" wx:key="this" class="zhiboing" >
         <image  class="zbfm" src="{{item.avatar}}"/>
         <!-- <cover-view class="zbmask" catchtouchmove="preventTouchMove" ></cover-view> -->
-        <view class='zbfm' style='background-color:rgba(0,0,0,.5);'></view>
+        <view class='zbfm' style='background-color:rgba(0,0,0,.15);'></view>
         
-        <cover-image wx:if="{{item.liveStatus ==2}}" class="daibroadcast" src="../../images/组 2509@2x.png"></cover-image>
-        <cover-image wx:if="{{item.liveStatus ==1}}" class="daibroadcast" src="../../images/组 2510@2x.png"></cover-image>
+        <image wx:if="{{item.liveStatus ==2}}" class="daibroadcast" src="../../images/组 2509@2x.png"></image>
+        <image wx:if="{{item.liveStatus ==1}}" class="daibroadcast" src="../../images/组 2510@2x.png"></image>
 
-        <cover-view class="title">{{item.video_title}}</cover-view>
+        <view class="title">{{item.video_title}}</view>
               
-        <cover-view class="speak">
-          <cover-image class="touxiang" src="{{item.teacher.avatar}}"></cover-image>
-          <cover-view class="speaker">{{item.teacher.name}}</cover-view>
-          <cover-view class="shu4"></cover-view>
+        <view class="speak">
+          <image class="touxiang" src="{{item.teacher.avatar}}"></image>
+          <view class="speaker">{{item.teacher.name}}</view>
+          <view class="shu4"></view>
           <block wx:if="{{item.liveStatus ==1}}">
             <!-- <cover-view class="num">{{item.total_people}}人</cover-view> -->
-            <cover-view class="joining" style='margin-left:389rpx;'>{{item.video_time}} </cover-view>
+            <view class="joining" style='margin-left:389rpx;'>{{item.video_time}} </view>
           </block>
           <block wx:else>
-            <cover-view class="num">{{item.total_people}}人</cover-view>
-            <cover-view class="joining">正在参与 </cover-view>
+            <view class="num">{{item.total_people}}人</view>
+            <view class="joining">正在参与 </view>
           </block>
-        </cover-view>
+        </view>
 
-        <cover-view bindtap='golive' data-playbackUrl="{{item.playurl}}" wx:if="{{item.liveStatus ==2}}" class="enter_zb" >
-          <cover-image class="play_zb" src='../../images/多边形 10@2x.png'></cover-image>
-          <cover-view  class="enter" >进入直播间</cover-view>
-        </cover-view>
-        <cover-view bindtap='godaibo' wx:if="{{item.liveStatus ==1}}" class="look_detail" >
-          <cover-image class="play_zb" src='../../images/多边形 10@2x.png'></cover-image>
-          <cover-view class="enter" >查看详情</cover-view>
-        </cover-view>
-        <cover-view bindtap='gohuifang' data-playbackUrl="{{item.playurl}}" wx:if="{{item.liveStatus ==4}}" class="look_bp" >
-            <cover-image class="play_zb" src='../../images/组 2444@2x.png' ></cover-image>
-            <cover-view class="enter" >看回放</cover-view>
-        </cover-view>    
+        <view bindtap='golive' data-playbackUrl="{{item.playurl}}" wx:if="{{item.liveStatus ==2}}" class="enter_zb" >
+          <image class="play_zb" src='../../images/多边形 10@2x.png'></image>
+          <view  class="enter" >进入直播间</view>
+        </view>
+        <view bindtap='godaibo' wx:if="{{item.liveStatus ==1}}" class="look_detail" >
+          <image style='display:none;' class="play_zb" src='../../images/多边形 10@2x.png'></image>
+          <view style='margin-left:75rpx;' class="enter" >查看详情</view>
+        </view>
+        <view bindtap='gohuifang' data-playbackUrl="{{item.playurl}}" wx:if="{{item.liveStatus ==4}}" class="look_bp" >
+            <image class="play_zb" src='../../images/组 2444@2x.png' ></image>
+            <view class="enter" >看回放</view>
+        </view>    
   </view>
 
   <!-- <view class="daizhibo" >

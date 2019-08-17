@@ -8,8 +8,6 @@
     "pages/special_subject/special_subject",
     "pages/course_xiang/course_xiang",
     "pages/assessment_detail/assessment_detail",
-    
-    
     "pages/zhibo/zhibo",
     "pages/kao_videodetail/kao_videodetail",
     "pages/kao_video/kao_video",
@@ -27,7 +25,6 @@
     "pages/material_qu/material_qu",
     "pages/live/live",
     "pages/kan_video/kan_video",
-    
     "pages/my/my",
     "pages/my_feedback/my_feedback",
     "pages/download_app/download_app",
@@ -36,7 +33,8 @@
     "pages/my_addr/my_addr",
     "pages/test_dati/test_dati",
     "pages/course_new/course_new",
-    "pages/my_youhuiquan/my_youhuiquan"   
+    "pages/my_youhuiquan/my_youhuiquan",
+    "pages/course_newxiang/course_newxiang"
   ],
   "window": {
     "backgroundTextStyle": "light",

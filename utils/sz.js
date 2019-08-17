@@ -352,7 +352,7 @@ function courseDetail(params) {
 
 //获取生成订单 
 function createCourseOrder(params) {
-  return fetch.szfetch(URI, 'createCourseOrder', params)
+  return fetch.szfetch(URI, 'xcxcreateCourseOrder', params)
 }
 
 //下单接口 
@@ -369,9 +369,12 @@ function pigobaogao(params) {
 function xcxanswersave(params) {
   return fetch.szfetch(URI, 'xcxAnswerSave', params)
 }
+//课程模块详情
+function xcxNewCourseDetail(params){
+  return fetch.szfetch(URI, 'xcxNewCourseDetail', params)
+}
 
-
-module.exports = { loginregister, xcxindex, xcxfirstLogin, xcxSubmitTask, xcxTodayTask, xcxUserTasklist, xcxAddUserTask, xcxDelUserTask, xcxUpdateTaskSet, xcxUpdateCycle, xcxUpdatePushNum, xcxUpdatePinlv, xcxCommentThumbsList, xcxEliminateCommentThumbs, xcxUpdateRange, xcxUpdateRangepost, xcxDakaTask, xcxRiliInfo, xcxgetTaskTi, xcxVideoDetail, xcxAnswerInsert, xcxAddComment, xcxAddThum, xcxAddVideoJilu, xcxgetTaskTiOne, courseList, courseLive, category, courseDetail, xcxMyAddr, xcxMy, xcxMyGetyzm, xcxMySendyzm, xcxfeedbackyzm, xcxsuggest, xcxaddUserAddress, createCourseOrder, xcxgetSpecialList, xcxgetProjectevaluationTi, coursePay, xcxshutiteport, xcxkanVideo, xcxphone, photouploads, xcxcourseLive,xcxNewCourse, pigobaogao, xcxanswersave}
+module.exports = { loginregister, xcxindex, xcxfirstLogin, xcxSubmitTask, xcxTodayTask, xcxUserTasklist, xcxAddUserTask, xcxDelUserTask, xcxUpdateTaskSet, xcxUpdateCycle, xcxUpdatePushNum, xcxUpdatePinlv, xcxCommentThumbsList, xcxEliminateCommentThumbs, xcxUpdateRange, xcxUpdateRangepost, xcxDakaTask, xcxRiliInfo, xcxgetTaskTi, xcxVideoDetail, xcxAnswerInsert, xcxAddComment, xcxAddThum, xcxAddVideoJilu, xcxgetTaskTiOne, courseList, courseLive, category, courseDetail, xcxMyAddr, xcxMy, xcxMyGetyzm, xcxMySendyzm, xcxfeedbackyzm, xcxsuggest, xcxaddUserAddress, createCourseOrder, xcxgetSpecialList, xcxgetProjectevaluationTi, coursePay, xcxshutiteport, xcxkanVideo, xcxphone, photouploads, xcxcourseLive, xcxNewCourse, pigobaogao, xcxanswersave,xcxNewCourseDetail}
 
 
 

@@ -218,7 +218,7 @@ opacity:1;
   margin-top:250rpx;
   width:250rpx;
   height:72rpx;
-  background:rgba(31,187,148,0.55);
+  background:rgba(31,187,148,1);
   opacity:1;
   border-radius:96rpx;
 }
@@ -269,6 +269,7 @@ opacity:1;
   /* right: 0rpx; */
   /* top: 800rpx; */
   bottom: 10rpx;
+  z-index: 1000000;
 }
 .layout1 {
   display:flex;

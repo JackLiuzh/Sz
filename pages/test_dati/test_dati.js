@@ -106,7 +106,7 @@ Page({
     if (options.all != undefined){
       var all = options.all
     }else{
-      var all = false
+      var all = 0
     }
     that.setData({ 
       h_id: h_id,

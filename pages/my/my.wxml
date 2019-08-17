@@ -21,10 +21,10 @@
     <!-- <image class="img" bindtap="showModal" src="../../images/xiayiye@2x.png"></image> -->
   </view>
  
-  <view class="layout2">
+  <view class="layout2" bindtap="addAddress" hidden='false'>
     <image class="img1" src="../../images/组 2060@2x.png"></image>
     <view class="v1"><text class="num">我的地址</text></view>
-    <view class="add_addr" bindtap="addAddress">{{user_area}}</view>
+    <view class="add_addr" >{{user_area}}</view>
     <!-- <picker class="add_addr" mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
     <view class="addr">
     {{region[0]}},{{region[1]}},{{region[2]}}
@@ -38,17 +38,17 @@
     <view class="v1"><text class="num">我的优惠券</text></view>
     <image class="img2" src="../../images/xiayiye@2x.png" bindtap="go_youhuiquan"></image>
   </view> -->
-  <view class="layout3">
+  <view class="layout3" bindtap="downloadApp">
     <image class="img1" src="../../images/组 4@2x.png"></image>
     <view class="v1"><text class="num">手机APP下载</text></view>
-    <image class="img2" src="../../images/xiayiye@2x.png" bindtap="downloadApp"></image>
+    <image class="img2" src="../../images/xiayiye@2x.png" ></image>
   </view>
-  <view class="layout4">
+  <view class="layout4" bindtap="feedback">
     <image class="img1" src="../../images/组 2110@2x.png"></image>
     <view class="v1"><text class="num">问题反馈</text></view>
-    <image class="img2" bindtap="feedback" src="../../images/xiayiye@2x.png"></image>
+    <image class="img2"  src="../../images/xiayiye@2x.png"></image>
   </view>
-  <view class="layout4">
+  <view class="layout4" hidden='false'>
     <image class="img1" src="../../images/组 7@2x.png"></image>
     <view class="v1"><text class="num">设置</text></view>
     <image class="img2" bindtap="mySet" src="../../images/xiayiye@2x.png"></image>

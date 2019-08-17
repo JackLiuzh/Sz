@@ -99,7 +99,7 @@ Page({
   //直播
   gozhibo: function(e) {
        let that = this
-      var url = e.currentTarget.dataset.url
+       var url = encodeURIComponent(e.currentTarget.dataset.url)
        if (url){
          wx.navigateTo({
            url: '../live/live?url=' + url

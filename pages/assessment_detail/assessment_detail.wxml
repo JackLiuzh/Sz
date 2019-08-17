@@ -11,7 +11,7 @@
       <view class='rate-num'>
             题数<text class="heise" style="padding:0 46rpx 0 14rpx;">{{pinggu.total_nums}}</text>
             做对<text class="lvse" style="padding:0 46rpx 0 14rpx;">{{pinggu.correct_nums}}</text>
-            做错<text class="red" style="padding:0 46rpx 0 14rpx;">{{pinggu.correct_nums}}</text>
+            做错<text class="red" style="padding:0 46rpx 0 14rpx;">{{pinggu.error_nums}}</text>
             未做<text class="heise" style="padding:0 0 0 14rpx;">{{pinggu.unzuo_nums}}</text>
         </view> 
        

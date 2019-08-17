@@ -102,12 +102,19 @@ Page({
     //初始化数据
     var h_id = options.id
     var kemu_id = options.kemu_id
+    //显示全部提 all = true
+    if (options.all != undefined){
+      var all = options.all
+    }else{
+      var all = false
+    }
     that.setData({ 
       h_id: h_id,
       kemu_id: kemu_id
     })
     var uid = app.globalData.uid
     var params = {
+      "all":all,
       "uid": uid,
       "h_id": h_id,
       "kemu_id": kemu_id

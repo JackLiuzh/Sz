@@ -118,7 +118,7 @@
         <!--专项刷题 end -->
     </view>
     <!-- + -->
-    <view class='botom_but' >
+    <view class='botom_but' hidden='false' >
         <navigator hover-class="none" url="../../pages/add_task/add_task"><view class='but'><image style='width:53rpx;height:53rpx;' src='../../images/tianjia@2x.png'></image></view></navigator>
     </view>
     <!-- 海报开始 -->

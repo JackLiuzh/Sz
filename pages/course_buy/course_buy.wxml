@@ -55,7 +55,7 @@
   <view class="layout4">
     <view class="layout41">
       <text class="hj">合计</text>
-      <text class="hjje">￥{{data.amount}}</text>
+      <text class="hjje">￥{{count}}</text>
     </view>
     <view bindtap='zhifu' class="qrk">
       <text class="qr">确认支付</text>

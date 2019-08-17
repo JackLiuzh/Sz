@@ -10,8 +10,8 @@
         </view>    
         <block wx:if="{{item.test == 1}}">
             <view class="btn_tested btn_tested_color{{item.kemu_id}}">
-            <navigator url="#">
-              <view class="btn_tested_text btn_tested_text_color{{item.kemu_id}}">已测试，查看解析 ></view>
+            <navigator url="/pages/assessment_detail/assessment_detail?h_id={{item.id}}&kemu_id={{item.kemu_id}}">
+              <view class="btn_tested_text btn_tested_text_color{{item.kemu_id}}">查看评估报告 ></view>
             </navigator>
           </view>
         </block>

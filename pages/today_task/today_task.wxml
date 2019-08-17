@@ -38,7 +38,7 @@
     <view wx:else class='tishixinxi' hidden="false">坚持每天做任务，一个周期结束后可获取课程资料包呦</view>
     <!-- 专项测评列表 -->
     <view class="ceping"  wx:for="{{project.project_list}}" wx:key="this" style=" overflow: hidden;position: relative;">
-        <image   src='../../images/task_zhibozhong.png' wx:if="{{item.iflive== 1}}" mode="widthFix" class='zbz' ></image>
+        <image   src='../../images/task_zhibozhong.png' catchtap='golookzhibo' data-url='{{item.playurl}}' wx:if="{{item.iflive== 1}}" mode="widthFix" class='zbz' ></image>
 
         <image wx:if="{{ item.kemu_id== 1}}" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}"  catchtap='godatiproject'  class='zximg'    src='../../images/changshi.png' mode="widthFix" ></image>        
         <image wx:if="{{ item.kemu_id== 2}}"    class='zximg'  src='../../images/shuliang.png'  mode="widthFix" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}"  catchtap='godatiproject' ></image>
@@ -80,11 +80,13 @@
                         <image style='width:30rpx;height:30rpx;' src="../../images/gengduo@2x.png"></image>
                     </navigator>
                 </view>
-                <view wx:if="{{ item.already_total==item.today_tot }}" class='done_img'>
-                    <image style="width:100rpx;height:100rpx;" src='../../images/yiwancheng@2x.png'></image>
-                </view>
+              
             </view>
-            <view class='b_bom'>
+            <!-- 已完成图标 -->
+            <view wx:if="{{ item.already_total==item.today_tot }}" class='done_img' >
+                  <image style="width:100rpx;height:100rpx;" src='../../images/yiwancheng@2x.png'></image>
+            </view>
+            <view class='b_bom' data-user_task_id="{{ item.id }}"  data-task_name="{{ item.tname }}" data-type="{{item.type}}" catchtap='today_goto'>
                  <view class="bar">
                    <wxs module="m1">
                        var ratetrans = function (al,tot) {
@@ -98,7 +100,7 @@
                    <view  class='bar_fu' style='{{m1.ratetrans(item.already_total,item.today_tot)}}'></view>
                  </view>
             </view>
-            <view class='taskzhouqi'>任务周期：{{item.tastzhouqi}}</view>
+            <view class='taskzhouqi' data-user_task_id="{{ item.id }}"  data-task_name="{{ item.tname }}" data-type="{{item.type}}" catchtap='today_goto'>任务周期：{{item.tastzhouqi}}</view>
         </view>
         <!--专项刷题 begin -->
         <view class="box1" wx:if="{{ project.isover_project  > 0 }}"  catchtap="gospecial_subject" >

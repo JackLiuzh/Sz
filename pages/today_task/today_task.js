@@ -672,7 +672,7 @@ Page(filter.loginCheck({
         context.fillText("本期专题任务", 183 * rpx, 369 * rpx)
         context.setFontSize(40 * rpx)
         context.setFillStyle('#E65557')
-        context.fillText("已完成", 171 * rpx, 420 * rpx)
+        context.fillText("未完成", 171 * rpx, 420 * rpx)
 
     
     //总的统计
@@ -735,7 +735,18 @@ Page(filter.loginCheck({
     }, 300)
 
     this.setData({ maskHidden: true })
-  }
+  },
+
+  //看直播
+  golookzhibo: function (e) {
+    var url = e.currentTarget.dataset.url
+    if (url) {
+      wx.navigateTo({
+        url: '../live/live?url=' + url
+      });
+    }
+  }  
+
 
 
 }))

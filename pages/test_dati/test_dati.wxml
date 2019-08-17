@@ -60,7 +60,7 @@
                           </view>
                       </view>
                       <view wx:if="{{item.isdo || item.user_answer }}" class="box-line"></view>
-                      <view wx:if="{{item.isdo || item.user_answer}}" class="box-answer">
+                      <view wx:if="{{item.isdo || item.user_answer}}" class="box-answer"  >
                            <view class="answer-only">
                               <view class='an-box1'>
                                   <view class="box1-top">答题</view>
@@ -121,7 +121,7 @@
                            </view>
                       </view>
                       <view wx:if="{{item.isdo || item.user_answer}}" class='bot-line'></view>
-                      <view wx:if="{{ item.comment_data && (item.isdo || item.user_answer) }}" class="box-comment ">
+                      <view wx:if="{{ item.comment_data && (item.isdo || item.user_answer) }}" class="box-comment"  >
                             <view class='kao-top'>
                                 <view class='top-l'>
                                     <text class='l-icon'></text>
@@ -160,7 +160,7 @@
                       <view wx:else style='height:120rpx;'></view>
                       <!-- 评论盒子 -->
                       <view class="cf-bg" catchtap="cemojiCfBg"  style="display:{{cfBg ? 'block' : 'none'}}"></view>
-                      <view wx:if="{{item.isdo}}"  class='comment-fixed'>
+                      <view wx:if="{{item.isdo}}"   class='comment-fixed'>
                            <view class='cf-box'>
                               <view style='display:none;' class='emoji' catchtap='emojiShowHide'>
                                  <image style="width:60rpx;height:60rpx;" src='../../images/biaoqing@2x.png'></image>

@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+  //  showjiexi:false,   //false 触发选项跳转到下一题
     isshowtext: false, //false隐藏文本域
     clientHeight: 500,
     list: [
@@ -93,15 +94,19 @@ Page({
     that.initscreen()
     //设置页面标题
     var task_name = options.task_name
+    if (task_name != undefined){
     wx.setNavigationBarTitle({
       title: task_name//页面标题为路由参数
     })
+    }
     //初始化数据
     var h_id = options.id
-    that.setData({ h_id: h_id })
     var kemu_id = options.kemu_id
-    //var uid = app.globalData.uid
-    var uid=27
+    that.setData({ 
+      h_id: h_id,
+      kemu_id: kemu_id
+    })
+    var uid = app.globalData.uid
     var params = {
       "uid": uid,
       "h_id": h_id,
@@ -175,32 +180,7 @@ Page({
    * 提交答案
    */
   onUnload: function () {
-    var that = this
-    var uid = app.globalData.uid
-    var data = that.data.answerlist
-    var user_task_id = that.data.user_task_id
-    var params = {
-      "uid": uid,
-      "data": data,
-      "user_task_id": user_task_id
-    }
-    // console.log(params)
-    if (data.length) {
-      app.sz.xcxAnswerInsert(params).then(d => {
-        if (d.data.status == 0) {
-          //如果任务完成 则 存缓存 任务天数
-          if (d.data.accomplish == 1) {
-            wx.setStorageSync('accomplish_days', d.data.days);
-          }
-
-        } else {
-          console.log(d.data.msg);
-        }
-
-      })
-    } else {
-      console.log("无答案需要提交")
-    }
+    this.tijiaoanswer();
     // var pages = getCurrentPages()
     // var currPage = pages[pages.length - 1]
     // var prevPage = pages[pages.length - 2]
@@ -518,19 +498,47 @@ Page({
     var dati = that.data.datika
     var datiiswrong = 'datika[' + pindex + '].iswrong'
     //统一修改setdata
-    that.setData({ [a]: a_an, [b]: b_an, [c]: c_an, [d]: d_an, [isdo]: 1, [iswro]: iswrong, [du]: duration, [ave_du]: newave_du, [ro]: newro, uptime: new Date().getTime(), [datiiswrong]: iswrong })
+    that.setData({ [a]: a_an, [b]: b_an, [c]: c_an, [d]: d_an, [isdo]: 0, [iswro]: iswrong, [du]: duration, [ave_du]: newave_du, [ro]: newro, uptime: new Date().getTime(), [datiiswrong]: iswrong })
 
-    //答题正确自动跳转
-    // if (answer == xuanxiang) {
-    //   var arlength = that.data.questions.length
-    //   var cur = that.data.currentTab + 1
-    //   //console.log(arlength,cur)
-    //   if (cur == arlength) {
-    //     that.setData({ currentTab: that.data.currentTab })
-    //   } else {
-    //     that.setData({ currentTab: that.data.currentTab + 1 })
-    //   }
-    // }
+     //最后一题 提交答案
+      if (that.data.currentTab == (that.data.total_nums - 1)){
+        //提交答案
+        var uid = app.globalData.uid
+        var data = that.data.answerlist
+        var h_id = that.data.h_id
+        var params = {
+          "uid": uid,
+          "data": data,
+          "h_id": h_id
+        }
+        console.log("跳转评估报告")
+        if (data.length) {
+          app.sz.xcxanswersave(params).then(d => {
+            if (d.data.status == 0) {
+              //跳转到评估报告
+              wx.navigateTo({
+                url: '../assessment_detail/assessment_detail?h_id=' + that.data.h_id + '&kemu_id=' + that.data.kemu_id
+              });
+
+            } else {
+              console.log(d.data.msg);
+            }
+
+          })
+        } else {
+          console.log("无答案需要提交")
+        }
+       
+      }else{
+        //跳转下一题
+        that.setData({
+          currentTab: that.data.currentTab+1
+        })
+      }
+    
+
+
+
   },
   swiperchangefinish: function (e) {
     var that = this
@@ -686,6 +694,34 @@ Page({
     question.c_an = c_an;
     question.d_an = d_an;
     question.isfocus = false;
+  },
+  //提交答案
+  tijiaoanswer:function (){
+    var that = this
+    var uid = app.globalData.uid
+    var data = that.data.answerlist
+    var h_id = that.data.h_id
+
+    var params = {
+      "uid": uid,
+      "data": data,
+      "h_id": h_id
+    }
+    console.log("退出提交答案")
+    // console.log(params)
+    if (data.length) {
+      app.sz.xcxanswersave(params).then(d => {
+        if (d.data.status == 0) {
+          
+          
+        } else {
+          console.log(d.data.msg);
+        }
+
+      })
+    } else {
+      console.log("无答案需要提交")
+    }
   }
 
 })

@@ -15,8 +15,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    //var uid = app.globalData.uid
-    var uid=27
+    var uid = app.globalData.uid
     var params = {
       'uid':uid
     }

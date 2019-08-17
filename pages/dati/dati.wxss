@@ -3,7 +3,7 @@ page{
   background-color:white;
 }
 .container{
-  
+  margin-bottom: 100rpx;
 }
 
 /* 评估报告 */
@@ -17,7 +17,8 @@ page{
    font-size:28rpx;
   font-family:PingFang-SC-Regular;
   font-weight:400;
- 
+  position:fixed;
+  bottom:0;
 }
 
 .box-top {

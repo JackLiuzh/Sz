@@ -1,31 +1,31 @@
 <view class='container'>
    <view class="bgse">
-      <view class='rate-title'>尝试判断正确率</view>
+      <view class='rate-title'>{{pinggu.kemu_name}}正确率</view>
       <view class="xuhao">
-          <view class="xuhao-li xu-lv">1</view>
-          <view class="xuhao-li xu-red">2</view>
-          <view class="xuhao-li">3</view>
-          <view class="xuhao-li xu-red">4</view>
-          <view class="xuhao-li xu-red">5</view>
+         <block wx:for="{{pinggu.datika}}">
+              <view wx:if="{{item.iswrong == 1}}" class="xuhao-li xu-lv">{{index+1}}</view>
+              <view wx:if="{{item.iswrong == 0}}" class="xuhao-li xu-red">{{index+1}}</view>
+              <view wx:if="{{item.iswrong == 2}}" class="xuhao-li">{{index+1}}</view>
+         </block>
       </view>
       <view class='rate-num'>
-            题数<text class="heise" style="padding:0 46rpx 0 14rpx;">15</text>
-            做对<text class="lvse" style="padding:0 46rpx 0 14rpx;">5</text>
-            做错<text class="red" style="padding:0 46rpx 0 14rpx;">3</text>
-            未做<text class="heise" style="padding:0 0 0 14rpx;">7</text>
+            题数<text class="heise" style="padding:0 46rpx 0 14rpx;">{{pinggu.total_nums}}</text>
+            做对<text class="lvse" style="padding:0 46rpx 0 14rpx;">{{pinggu.correct_nums}}</text>
+            做错<text class="red" style="padding:0 46rpx 0 14rpx;">{{pinggu.correct_nums}}</text>
+            未做<text class="heise" style="padding:0 0 0 14rpx;">{{pinggu.unzuo_nums}}</text>
         </view> 
        
        <view class="nalv">
               <view class="nalv-title">
-               我的正确率<text class="nalv-title-shuzi">50</text><text style="color:#E65557;font-size:26rpx;">%</text>
+               我的正确率<text class="nalv-title-shuzi">{{ pinggu.accuracy }}</text><text style="color:#E65557;font-size:26rpx;"></text>
               </view>
-               <view class="nalv-miao">中等，多巩固做题技巧</view>
+               <view class="nalv-miao">{{ pinggu.dianping_content.rank_text }}</view>
                <view class="nalv-zhu">
                   <view class="nalv-huang">
-                    <view class="nalv-huang-bai" style="height:80%;">80%</view>
+                    <view class="nalv-huang-bai" style="height:80%;">{{ pinggu.reference }}</view>
                   </view>
                   <view class="nalv-huang">
-                    <view class="nalv-red-bai" style="height:50%;">50%</view>
+                    <view class="nalv-red-bai" style="height:50%;">{{ pinggu.accuracy }}</view>
                   </view>
                </view>
        </view>
@@ -36,19 +36,22 @@
    </view>
 
    <view class='zhibo'>
-        <view class='zhibo-img'><image src="/images/ass_zhibo@2x.png" class="zhibo-img1"></image></view>
+        <view class='zhibo-img'><image src="/images/ass_zhibo@2x.png"  class="zhibo-img1"></image></view>
         <view class="zhuanti-tearch">
             <view class='zhuanti-time'>
                 <image src="/images/ass_time@2x.png" class='zhuanti-time-img'></image>
-                2018-06-03 2018-06-03
+                {{pinggu.video_time}}
             </view>
             <view class="zhuanti-laoshi">
                  <image src="/images/ass_tearch@2x.png" class="img-laoshi"></image>
-                 <image src="/images/test.png" class="avatar-laoshi"></image>
-                 <text class="avatar-name">韩磊</text>
+                 <image src="{{pinggu.teacher_avatar}}" class="avatar-laoshi"></image>
+                 <text class="avatar-name">{{pinggu.teacher}}</text>
             </view>
-            <view class='gozhibo'>
+            <view class='gozhibo' wx:if="{{pinggu.zhiboone.liveStatus == 2}}" data-url="{{pinggu.zhiboone.playurl}}"  catchtap='gozhibo'>
              前往直播间 <view class="sanjiao"></view>
+            </view>
+            <view class='gozhibo' wx:if="{{pinggu.zhiboone.liveStatus == 4}}" data-url="{{pinggu.zhiboone.playurl}}" catchtap='gozhibo'>
+             看回放 <view class="sanjiao"></view>
             </view>
         </view>
         <image src="/images/ass_zhuanti@2x.png" class="tit"></image>
@@ -63,7 +66,25 @@
    </view>
    
    <view class="bot">
-    <view class="bot-l">查看名师点评</view>
-    <view class="bot-r">查看解析</view>
+    <block wx:if="{{timestamp > end_time}}">
+           <view class="bot-l" catchtap="look">查看名师点评</view>
+           <view class="bot-r" catchtap="gojiexi" >查看解析</view>
+    </block>
+   <block wx:if="{{timestamp < end_time}}">
+           <view class="bot-l" catchtap="look" style="width:100%">查看名师点评</view>
+    </block>
+
+
    </view>
+</view>
+
+
+<view class="dianping"  wx:if="{{lookxa}}" >
+     <view class="dian">
+        <image src="../../images/guan@2x.png" catchtap='close' class="close"></image>
+        <view class="dian-title" style="margin-top:60rpx;">名师点评</view>
+        <view class="dian-content">{{pinggu.dianping_content.inst_text}}</view>
+        <view class="dian-title">提分策略</view>
+        <view class="dian-content">{{pinggu.dianping_content.up_text}}</view>
+     </view>
 </view>

@@ -297,3 +297,51 @@ font-weight:400;
   color:rgba(48,48,48,1);
   opacity:1;
 }
+
+.dianping{
+  width: 100%;
+  height: 100%;
+  background:rgba(0,0,0,0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+}
+.dian{
+  background: #fff;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* max-height: 700rpx; */
+}
+.close{
+  position: absolute;
+  right: 20rpx;
+  top: 20rpx;
+  width:36rpx;
+  height:36rpx;
+  display: flex;
+  text-align: right;
+  align-content: right;
+}
+.dian-title{
+  height:56rpx;
+  font-size:32rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  line-height:56rpx;
+  color:rgba(10,10,10,1);
+  opacity:1;
+  margin-left: 30rpx;
+}
+.dian-content{
+  margin: 30rpx;
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  line-height:56rpx;
+  color:rgba(48,48,48,1);
+  opacity:1;
+}

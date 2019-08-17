@@ -77,6 +77,7 @@
    padding:30rpx;
    box-sizing: border-box;
    margin-top: 40rpx;
+   position: relative;
 }
 .bottom_content .box1 .b_top{
   display: flex;
@@ -100,10 +101,10 @@
   font-weight: 400;
   margin-top: 20rpx;
 }
-.bottom_content .box1 .b_top .done_img{
+.bottom_content .box1 .done_img{
   position: absolute;
-  top:0rpx;
-  right: 70rpx;
+  top:115rpx;
+  right: 40rpx;
 }
 .bottom_content .box1 .b_bom .bar{
     width: 100%;

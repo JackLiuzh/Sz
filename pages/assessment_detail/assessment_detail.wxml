@@ -83,8 +83,12 @@
      <view class="dian">
         <image src="../../images/guan@2x.png" catchtap='close' class="close"></image>
         <view class="dian-title" style="margin-top:60rpx;">名师点评</view>
-        <view class="dian-content">{{pinggu.dianping_content.inst_text}}</view>
+        <view class="dian-content">
+        <rich-text nodes="{{pinggu.dianping_content.inst_text}}" class='rich-text'></rich-text>
+        </view>
         <view class="dian-title">提分策略</view>
-        <view class="dian-content">{{pinggu.dianping_content.up_text}}</view>
+        <view class="dian-content">
+           <rich-text nodes="{{pinggu.dianping_content.up_text}}" class='rich-text'></rich-text>
+        </view>
      </view>
 </view>

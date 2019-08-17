@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+
     //message: 'Hello MINA!'
     list: ''
   },
@@ -14,19 +15,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this
-    var uid = app.globalData.uid
-    var params = {
-      'uid':uid
-    }
-    app.sz.xcxgetSpecialList(params).then(d=>{
-      console.log(d);
-      if(d.data.status=='0'){
-          that.setData({list:d.data.data})
-      }else{
-        console.log('获取专题列表失败');
-      }
-    })
+ 
+
   },
 
   /**
@@ -40,7 +30,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this
+    var uid = app.globalData.uid
+    var params = {
+      'uid': uid
+    }
+    app.sz.xcxgetSpecialList(params).then(d => {
+      console.log(d);
+      if (d.data.status == '0') {
+        that.setData({ list: d.data.data })
+      } else {
+        console.log('获取专题列表失败');
+      }
+    })
   },
 
   /**

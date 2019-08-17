@@ -10,6 +10,7 @@ Page({
       clock:'',
       currentData: 0,
       info:'',
+      system_id:'',
       system_id:''
   },
 
@@ -19,8 +20,15 @@ Page({
   onLoad: function (options) {
     console.log(options.system_id)
     this.data.system_id = options.system_id
+    this.setData({system_id:options.system_id})
     this.initData(options.system_id)
     
+  },
+  onShow:function(){
+     var options ={
+       system_id: this.data.system_id
+     }
+     this.onLoad(options)
   },
 
   bindchange:function(e){
@@ -54,9 +62,11 @@ Page({
   initData: function (system_id){
      var that = this
      var token = wx.getStorageSync("token")
+     var uid  = wx.getStorageSync("uid")
      var params = {
         token : token,
-        system_id: system_id
+        system_id: system_id,
+        uid: uid
      }
     app.sz.courseDetail(params).then(d=>{
          if(d.data.status ==1){
@@ -89,9 +99,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
-  },
+  
 
   /**
    * 生命周期函数--监听页面隐藏

@@ -1,0 +1,2 @@
+<!--pages/course_newxiang/course_newxiang.wxml-->
+<image style='width:100%;' src="{{url}}"></image>

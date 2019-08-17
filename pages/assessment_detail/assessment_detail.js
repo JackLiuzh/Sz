@@ -34,7 +34,7 @@ Page({
     app.sz.pigobaogao(params).then(d => {
       console.log(d.data);
       if (d.data.status == 0) {
-        var end_time = parseInt(d.data.data.video_live.end_time) 
+        var end_time = parseInt(d.data.data.end_time) 
         that.setData({
           h_id: h_id,
           kemu_id: kemu_id,
@@ -97,7 +97,7 @@ Page({
 
   },
   //直播
-  gozhibo: function() {
+  gozhibo: function(e) {
        let that = this
       var url = e.currentTarget.dataset.url
        if (url){

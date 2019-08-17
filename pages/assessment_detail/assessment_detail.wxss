@@ -3,6 +3,11 @@
 page{
   background-color:#F2F3F7;
 }
+.container {
+
+margin-bottom:0rpx;
+}
+
 .bgse{
   background: #fff;
 }

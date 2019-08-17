@@ -190,8 +190,13 @@ Page({
           // that.data.amount = d.data.data.amount d.data.data.coupon
           that.setData({ data: d.data.data, coupon: d.data.data.coupon})
           var coupon_pice = parseFloat(d.data.data.coupon.c_price)
-          var zong = parseFloat(that.data.data.amount)
-          var ddd = (zong - coupon_pice).toFixed(2)
+          if(coupon_pice){
+            var zong = parseFloat(that.data.data.amount)
+            var ddd = (zong - coupon_pice).toFixed(2)
+          }else{
+            var ddd = that.data.data.amount
+          }
+          
           that.setData({ count:ddd})
 
         }else {

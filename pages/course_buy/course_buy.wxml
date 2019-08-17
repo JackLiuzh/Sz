@@ -47,7 +47,7 @@
 
   <view class="layout_youhuiquan">
     <text class="youhuiquan_title">优惠券</text>
-    <text wx:if="{{coupon}}" class="youhuiquan">{{coupon.c_price}}元</text>
+    <text wx:if="{{coupon.c_price}}" class="youhuiquan">{{coupon.c_price}}元</text>
     <text wx:else class="youhuiquan">无可用优惠券</text>
     <!-- <image class="img_youhuiquan" bindtap="" src="../../images/xiayiye@2x.png"></image>  -->
   </view>

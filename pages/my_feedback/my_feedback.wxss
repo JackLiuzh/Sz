@@ -35,6 +35,7 @@ page {
 .show_img{
   display:flex; 
   flex-wrap: wrap;
+  overflow: hidden;
 }
 .img{ 
   margin-left:35rpx; 

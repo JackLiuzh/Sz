@@ -525,9 +525,17 @@ Page(filter.loginCheck({
   godatiproject: function(e){
     var id = e.currentTarget.dataset.id
     var kemu_id = e.currentTarget.dataset.kemu_id
-    wx.navigateTo({
-      url: '../test_dati/test_dati?id=' + id + '&kemu_id=' + kemu_id
-    });
+    var finish = e.currentTarget.dataset.finish
+    if (finish == 1){
+      wx.navigateTo({
+        url: '../assessment_detail/assessment_detail?h_id=' + id + '&kemu_id=' + kemu_id
+      });
+    }else{
+      wx.navigateTo({
+        url: '../test_dati/test_dati?id=' + id + '&kemu_id=' + kemu_id
+      });
+    }
+    
   },
 
   //生成专题测海报
@@ -672,7 +680,12 @@ Page(filter.loginCheck({
         context.fillText("本期专题任务", 183 * rpx, 369 * rpx)
         context.setFontSize(40 * rpx)
         context.setFillStyle('#E65557')
-        context.fillText("未完成", 171 * rpx, 420 * rpx)
+        if(that.data.project.first_pro == 1){
+          context.fillText("已完成", 171 * rpx, 420 * rpx)
+        }else{
+          context.fillText("未完成", 171 * rpx, 420 * rpx)
+        }
+        
 
     
     //总的统计

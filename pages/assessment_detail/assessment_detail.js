@@ -128,7 +128,7 @@ Page({
     let h_id = this.data.h_id
     
     wx.navigateTo({
-      url: '../test_dati/test_dati?showjiexi=true&id=' + h_id + '&kemu_id=' + kemu_id
+      url: '../test_dati/test_dati?all=true&id=' + h_id + '&kemu_id=' + kemu_id
     });
   }
 

@@ -372,3 +372,12 @@ button[class="baocun"]::after{
   right:80rpx;
   z-index: 10;
 }
+.sder{
+  display:flex;width:72rpx;height:40rpx;
+  justify-content:center;
+  
+}
+.b_t_zhong{
+  display: flex;
+
+}

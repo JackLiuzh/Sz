@@ -125,7 +125,7 @@ Page({
     //   name_phone: wx.getStorageSync('namephone'),
     //   addr: wx.getStorageSync('address')
     // })
-    this.initdata(this.data.system_id, this.data.miaosha)
+    // this.initdata(this.data.system_id, this.data.miaosha)
   },
 
   /**
@@ -191,13 +191,11 @@ Page({
           // that.data.amount = d.data.data.amount d.data.data.coupon
           that.setData({ data: d.data.data, coupon: d.data.data.coupon})
           var coupon_pice = parseFloat(d.data.data.coupon.c_price)
+          var ddd = that.data.data.amount
           if(coupon_pice){
             var zong = parseFloat(that.data.data.amount)
-            var ddd = (zong - coupon_pice).toFixed(2)
-          }else{
-            var ddd = that.data.data.amount
+             ddd = (zong - coupon_pice).toFixed(2)
           }
-          
           that.setData({ count:ddd})
 
         }else {

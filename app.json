@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/course_new/course_new",
     "pages/today_task/today_task",
     "pages/course/course",
     "pages/assessment_report/assessment_report",
@@ -32,7 +33,6 @@
     "pages/my_set/my_set",
     "pages/my_addr/my_addr",
     "pages/test_dati/test_dati",
-    "pages/course_new/course_new",
     "pages/my_youhuiquan/my_youhuiquan",
     "pages/course_newxiang/course_newxiang"
   ],

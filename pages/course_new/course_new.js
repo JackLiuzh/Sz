@@ -57,7 +57,7 @@ Page({
        title: '加载中...',
      })
      var that = this
-     var uid =  app.globalData.uid
+     var uid =  wx.getStorageSync('uid')
      var params ={
        uid: uid
      }
@@ -81,7 +81,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-     this.onLoad()
+    this.initdata()
   },
 
   /**

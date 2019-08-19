@@ -373,8 +373,12 @@ function xcxanswersave(params) {
 function xcxNewCourseDetail(params){
   return fetch.szfetch(URI, 'xcxNewCourseDetail', params)
 }
+//获取收货地址信息
+function xcxorderaddress(params) {
+  return fetch.szfetch(URI, 'xcxorderaddress', params)
+}
 
-module.exports = { loginregister, xcxindex, xcxfirstLogin, xcxSubmitTask, xcxTodayTask, xcxUserTasklist, xcxAddUserTask, xcxDelUserTask, xcxUpdateTaskSet, xcxUpdateCycle, xcxUpdatePushNum, xcxUpdatePinlv, xcxCommentThumbsList, xcxEliminateCommentThumbs, xcxUpdateRange, xcxUpdateRangepost, xcxDakaTask, xcxRiliInfo, xcxgetTaskTi, xcxVideoDetail, xcxAnswerInsert, xcxAddComment, xcxAddThum, xcxAddVideoJilu, xcxgetTaskTiOne, courseList, courseLive, category, courseDetail, xcxMyAddr, xcxMy, xcxMyGetyzm, xcxMySendyzm, xcxfeedbackyzm, xcxsuggest, xcxaddUserAddress, createCourseOrder, xcxgetSpecialList, xcxgetProjectevaluationTi, coursePay, xcxshutiteport, xcxkanVideo, xcxphone, photouploads, xcxcourseLive, xcxNewCourse, pigobaogao, xcxanswersave,xcxNewCourseDetail}
+module.exports = { loginregister, xcxindex, xcxfirstLogin, xcxSubmitTask, xcxTodayTask, xcxUserTasklist, xcxAddUserTask, xcxDelUserTask, xcxUpdateTaskSet, xcxUpdateCycle, xcxUpdatePushNum, xcxUpdatePinlv, xcxCommentThumbsList, xcxEliminateCommentThumbs, xcxUpdateRange, xcxUpdateRangepost, xcxDakaTask, xcxRiliInfo, xcxgetTaskTi, xcxVideoDetail, xcxAnswerInsert, xcxAddComment, xcxAddThum, xcxAddVideoJilu, xcxgetTaskTiOne, courseList, courseLive, category, courseDetail, xcxMyAddr, xcxMy, xcxMyGetyzm, xcxMySendyzm, xcxfeedbackyzm, xcxsuggest, xcxaddUserAddress, createCourseOrder, xcxgetSpecialList, xcxgetProjectevaluationTi, coursePay, xcxshutiteport, xcxkanVideo, xcxphone, photouploads, xcxcourseLive, xcxNewCourse, pigobaogao, xcxanswersave, xcxNewCourseDetail,xcxorderaddress}
 
 
 

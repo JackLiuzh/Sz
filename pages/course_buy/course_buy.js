@@ -126,6 +126,7 @@ Page({
     //   addr: wx.getStorageSync('address')
     // })
     // this.initdata(this.data.system_id, this.data.miaosha)
+    this.initaddr(this.data.system_id, this.data.miaosha)
   },
 
   /**
@@ -203,6 +204,31 @@ Page({
         }
          
      }) 
+  },
+  initaddr: function (system_id, miaosha){
+    var that = this
+    var token = wx.getStorageSync("token")
+    var uid = wx.getStorageSync("uid")
+    var params = {
+      system_id: system_id,
+      miaosha: miaosha,
+      token: token,
+      uid: uid
+    }
+    app.sz.xcxorderaddress(params).then(d => {
+      //  console.log(d)
+      if (d.data.status == 1) {
+        console.log(d.data.data.address)
+        // that.data.amount = d.data.data.amount d.data.data.coupon
+        if (d.data.data.address){
+          var r = 'data.address'
+          that.setData({ [r]: d.data.data.address })
+        }
+      } else {
+        console.log("获取收货地址接口错误")
+      }
+
+    }) 
   }
 
 })

@@ -9,7 +9,7 @@
         <view class='zbfm' style='background-color:rgba(0,0,0,.15);'></view>
         
         <image wx:if="{{item.liveStatus ==2}}" class="daibroadcast" src="../../images/组 2509@2x.png"></image>
-        <image wx:if="{{item.liveStatus ==1}}" class="daibroadcast" src="../../images/组 2510@2x.png"></image>
+        <image wx:if="{{item.liveStatus ==1}}" class="daibroadcast" src="../../images/daizhibo.png"></image>
 
         <view style='display:none;' class="title">{{item.video_title}}</view>
               

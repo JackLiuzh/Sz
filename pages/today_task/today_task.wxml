@@ -66,12 +66,18 @@
                 <!-- 补任务 分享 设置 3个小图标-->
                 <view  class='b_t_zhong' >
                     <navigator url='../../pages/rili/rili' style="display:inline;">
+                    <view class="sder" >
                          <image style="width:36rpx;height:36rpx;" src='../../images/task_rili.png'></image>
                          <text class="butask" wx:if="{{ item.already_total < item.today_tot }}">补任务</text>
+                         </view>
                     </navigator>
-                    <image style="width:36rpx;height:36rpx;margin:0 71rpx;" src='../../images/task_fxiang.png' bindtap='createNewImg'></image>
+                    <view class="sder" bindtap='createNewImg'>
+                    <image style="width:36rpx;height:36rpx;" src='../../images/task_fxiang.png' ></image>
+                     </view>
                     <navigator  url="/pages/make_plan/make_plan?user_task_id={{item.id}}&name={{item.tname}}" style="display:inline">
+                        <view class="sder" style="" >
                          <image style="width:36rpx;height:36rpx;" src='../../images/task_set.png'></image>
+                         </view>
                      </navigator>
                 </view>
                 <!-- 补任务 分享 设置 结束-->
@@ -110,7 +116,9 @@
                     <view class='te2'>共{{project.project_count}}期，已完成{{project.userproject_count}}期</view>
                 </view>
                 <view  class='b_t_zhong' style="">
-                    <image style="width:36rpx;height:36rpx;" src='../../images/task_fxiang.png' catchtap='createZhuantiImg'></image>
+                    <view class="sder" catchtap='createZhuantiImg'>
+                    <image style="width:36rpx;height:36rpx;" src='../../images/task_fxiang.png' ></image>
+                    </view>
                 </view>
             </view>
              <view class='taskzhouqi'>每周一期专题测试，免费专题课同步讲解</view>

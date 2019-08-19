@@ -30,6 +30,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this;
     // var that = this;
     // wx.getUserInfo({
     //   success: function (res) {
@@ -42,35 +43,35 @@ Page({
     //     })
     //   }
     // })
-    var userinfo = wx.getStorageSync('userInfo');
-    this.setData({ nickName: userinfo.name, avatarUrl: userinfo.avatar, userphone: userinfo.phone})
-    console.log(this.data.nickName)
-    console.log(this.data.avatarUrl)
-    console.log(this.data.userphone)
+    // var userinfo = wx.getStorageSync('userInfo');
+    // this.setData({ nickName: userinfo.name, avatarUrl: userinfo.avatar, userphone: userinfo.phone})
+    // // console.log(this.data.nickName)
+    // console.log(this.data.avatarUrl)
+    // console.log(this.data.userphone)
 
-    // var uid = wx.getStorageSync('uid');
-    // var token = wx.getStorageSync('token');
-    // var params = {
-    //   "uid": uid,
-    //   "token": token,
-    // }
+    var uid = wx.getStorageSync('uid');
+    var token = wx.getStorageSync('token');
+    var params = {
+      "uid": uid,
+      "token": token,
+    }
 
     // console.log(params)
 
-    // app.sz.xcxMy(params).then(d => {
-    //   if (d.data.status == 1) {
-    //     this.setData({ isbuy: d.data.data.isbuy, })
-    //     if (d.data.data.phone != '')
-    //       this.setData({ userphone: d.data.data.phone })
-    //     // console.log(this.data.userphone)
-    //   } else {
-    //     // console.log(d.data.msg)
-    //   }
-    // })
+    app.sz.xcxMy(params).then(d => {
+      if (d.data.status == 1) {
+        that.setData({ isbuy: d.data.data.isbuy, avatarUrl: d.data.data.avatar, nickName: d.data.data.name})
+        if (d.data.data.phone != '')
+          that.setData({ userphone: d.data.data.phone })
+        // console.log(this.data.userphone)
+      } else {
+        // console.log(d.data.msg)
+      }
+    })
     
     wx.login({
       success: res => {
-        this.setData({ code: res.code})
+        that.setData({ code: res.code})
       }
     })    
 

@@ -9,8 +9,8 @@ Page({
     // region: ['广东省', '广州市', '海珠区'],
     // customItem: '全部'
     
-      avatarUrl: "",//用户头像
-      nickName: "",//用户昵称
+    avatarUrl: "",//用户头像
+    nickName: "",//用户昵称
    
     showModal: false,
     user_area: '',
@@ -42,26 +42,31 @@ Page({
     //     })
     //   }
     // })
+    var userinfo = wx.getStorageSync('userInfo');
+    this.setData({ nickName: userinfo.name, avatarUrl: userinfo.avatar, userphone: userinfo.phone})
+    console.log(this.data.nickName)
+    console.log(this.data.avatarUrl)
+    console.log(this.data.userphone)
 
-    var uid = wx.getStorageSync('uid');
-    var token = wx.getStorageSync('token');
-    var params = {
-      "uid": uid,
-      "token": token,
-    }
+    // var uid = wx.getStorageSync('uid');
+    // var token = wx.getStorageSync('token');
+    // var params = {
+    //   "uid": uid,
+    //   "token": token,
+    // }
 
     // console.log(params)
 
-    app.sz.xcxMy(params).then(d => {
-      if (d.data.status == 1) {
-        this.setData({ isbuy: d.data.data.isbuy, nickName: d.data.data.name, avatarUrl: d.data.data.avatar})
-        if (d.data.data.phone != '')
-          this.setData({ userphone: d.data.data.phone })
-        // console.log(this.data.userphone)
-      } else {
-        // console.log(d.data.msg)
-      }
-    })
+    // app.sz.xcxMy(params).then(d => {
+    //   if (d.data.status == 1) {
+    //     this.setData({ isbuy: d.data.data.isbuy, })
+    //     if (d.data.data.phone != '')
+    //       this.setData({ userphone: d.data.data.phone })
+    //     // console.log(this.data.userphone)
+    //   } else {
+    //     // console.log(d.data.msg)
+    //   }
+    // })
     
     wx.login({
       success: res => {
@@ -250,9 +255,9 @@ Page({
           })
 
         } else {
-          that.setData({
-            showModal: true
-          })
+          // that.setData({
+          //   showModal: true
+          // })
         }                    
       },
       fail: function () {
@@ -282,9 +287,9 @@ Page({
                 }
               })
             } else {
-              that.setData({
-                showModal: true
-              })
+              // that.setData({
+              //   showModal: true
+              // })
             }
           }
         })

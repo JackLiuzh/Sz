@@ -54,7 +54,7 @@
     <image class="img2" bindtap="mySet" src="../../images/xiayiye@2x.png"></image>
   </view>
 
-  <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+  <!-- <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
   <view class="modalDlg" wx:if="{{showModal}}">
       <image class="close" bindtap="go" src="../../images/组 2065@2x.png"/>
       <text class="bang">绑定手机号</text>
@@ -68,7 +68,7 @@
       <view class="save" bindtap="Sendyzm">
         <text class="bc">保存</text>
       </view>
-  </view>
+  </view> -->
 
   <view class='kefu_but'>
    <view class='b_img'>

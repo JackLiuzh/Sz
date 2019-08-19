@@ -347,7 +347,7 @@ button[class="baocun"]::after{
 
 .butask{
   position: absolute;
-  right:79px;
+  right:55px;
   top:0;
   background:#E65557;
   width: 62rpx;

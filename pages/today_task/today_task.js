@@ -752,7 +752,7 @@ Page(filter.loginCheck({
 
   //看直播
   golookzhibo: function (e) {
-    var url = e.currentTarget.dataset.url
+    var url = encodeURIComponent(e.currentTarget.dataset.url)
     if (url) {
       wx.navigateTo({
         url: '../live/live?url=' + url

@@ -357,7 +357,7 @@ Page({
       showModal_pb: false
     })
   },
-  golive: function () {
+  pblive: function () {
     let url = encodeURIComponent(this.data.bpurl);
     console.log(url);
     wx.navigateTo({
@@ -367,12 +367,30 @@ Page({
       showModal_pb: false
     })
   },
-  gotest_dati: function () {
+  zblive: function () {
+    let url = encodeURIComponent(this.data.bpurl);
+    console.log(url);
+    wx.navigateTo({
+      url: '../live/live?url=' + url,
+    });
+    this.setData({
+      showModal_zb: false
+    })
+  },
+  pb_dati: function () {
     wx.navigateTo({
       url: '../test_dati/test_dati?id=' + this.data.project_id + '&kemu_id=' + this.data.kemu_id
     });
     this.setData({
       showModal_pb: false
+    })
+  },
+  zb_dati: function () {
+    wx.navigateTo({
+      url: '../test_dati/test_dati?id=' + this.data.project_id + '&kemu_id=' + this.data.kemu_id
+    });
+    this.setData({
+      showModal_zb: false
     })
   },
 })

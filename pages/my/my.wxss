@@ -111,6 +111,7 @@
   display:flex;
   margin-top:20rpx;
   width:750rpx;
+  height:101rpx;
   /* height:101px; */
   background:rgba(255,255,255,1);
   opacity:1;
@@ -126,11 +127,12 @@
 .layout4{
   display:flex;
   width:750rpx;
+  height:101rpx;
   background:rgba(255,255,255,1);
   opacity:1;
 }
 .TipShow{
-  margin-top:54rpx;
+  /* margin-top:54rpx; */
   width:750rpx;
   height:80rpx;
   background:rgba(255,252,230,1);

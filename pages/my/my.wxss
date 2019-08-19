@@ -1,6 +1,6 @@
-page {
+/* page {
   background-color: #fff;
-}
+} */
 .layout1{
   display:flex;
   flex-direction:column;

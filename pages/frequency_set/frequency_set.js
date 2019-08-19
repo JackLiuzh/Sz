@@ -151,11 +151,12 @@ Page({
     if(pinlvnum[index].isdefault) {
       that.cancelgou(pinlvnum,index)
     }
+   
     that.setData({pinlvnum})
   },
   cancelgou: function(data, index) {
       for(var i in data){
-        if(i == 1 || i==2 || i==3){
+        if(i == 1 || i==2 || i==3 ||i==0){
           if(index != i) {
              data[i].isdefault = false
           }

@@ -170,6 +170,19 @@ Page({
       }
       that.setData({['category']:category})
   },
+  ssave:function(){
+    // wx.showLoading({
+    //   title: '加载中',
+    // })
+    // setTimeout(function () {
+    //   wx.hideLoading()
+    // }, 2000)
+    wx.showToast({
+      title: '保存成功',
+      icon: 'success',
+      duration: 2000
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

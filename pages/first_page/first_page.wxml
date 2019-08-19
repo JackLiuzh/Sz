@@ -1,34 +1,34 @@
 <view class="container">
 
-  <view class="zhibo"  >
-    <view wx:for='{{courselive}}' wx:key="index1" wx:for-index="xb" >
+  <view wx:for='{{courselive}}' wx:key="index1" wx:for-index="xb" >
+    <view class="{{item.liveStatus == 2?'zhibo':'TipHide'}}" >
       <view wx:if="{{item.liveStatus == 2}}">
         <image  class="zbfm" src="{{item.avatar}}"/>
-   <view class="zbmask" catchtouchmove="preventTouchMove" ></view>
+      <view class="zbmask" catchtouchmove="preventTouchMove" ></view>
 
-    <cover-view class="broadcasting">
-      <cover-view class="shu1"></cover-view>
-      <cover-view class="shu2"></cover-view>
-      <cover-view class="shu3"></cover-view>
-      <cover-view class="zbz" >直播中</cover-view>
-    </cover-view>
+    <view class="broadcasting">
+      <view class="shu1"></view>
+      <view class="shu2"></view>
+      <view class="shu3"></view>
+      <view class="zbz" >直播中</view>
+    </view>
 
-      <!-- <cover-view class="cs"> -->
+      <!-- <view-view class="cs"> -->
         <!-- <cover-view class="title">{{item.video_title}}</cover-view> -->
-      <!-- </cover-view> -->
+      <!-- </view-view> -->
 
-    <cover class="speak">
-      <cover-image class="touxiang" src="{{item.live_info.zhubo.p_40}}"></cover-image>
-      <cover-view class="speaker">{{item.live_info.zhubo.nickname}}</cover-view>
-      <cover-view class="shu4"></cover-view>
-      <cover-view class="num">{{item.buy_count}}人</cover-view>
-      <cover-view class="joining">正在参与 </cover-view>
-    </cover>
+    <view class="speak">
+      <view class="touxiang" src="{{item.live_info.zhubo.p_40}}"></view>
+      <view class="speaker">{{item.live_info.zhubo.nickname}}</view>
+      <view class="shu4"></view>
+      <view class="num">{{item.buy_count}}人</view>
+      <view class="joining">正在参与 </view>
+    </view>
 
-    <cover-view class="enter_zb" bindtap="showModalZb" data-xb='{{xb}}'>
+    <view class="enter_zb" bindtap="showModalZb" data-xb='{{xb}}'>
       <cover-image class="play_zb" src='../../images/多边形 10@2x.png'></cover-image>
-      <cover-view class="enter" >进入直播间</cover-view>
-    </cover-view> 
+      <view class="enter" >进入直播间</view>
+    </view> 
 
     
     <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_zb}}"></view>
@@ -41,8 +41,8 @@
           <text class="tishi">专题课视频有对应的<text class="jiacu">专题测试</text>呦~</text>
         </view>
         <view class="button">
-          <view class="{{finish==0?'test':'TipHide'}}" bindtap="gotest_dati">前去测试</view>
-          <view class="watch_zb" bindtap="golive">执意看直播</view>
+          <view class="{{finish==0?'test':'TipHide'}}" bindtap="zb_dati">前去测试</view>
+          <view class="watch_zb" bindtap="zblive">执意看直播</view>
           <!-- <navigator class="watch_zb" url="{{item.live_info.zhubo.playbackUrl}}" open-type="navigate" >执意看直播</navigator> -->
         </view>
 
@@ -109,9 +109,9 @@
             <text class="tishi">专题课视频有对应的<text class="jiacu">专题测试</text>呦~</text>
           </view>
           <view class="button">
-          <view class="{{finish==0?'test':'TipHide'}}" bindtap="gotest_dati">前去测试</view>
+          <view class="{{finish==0?'test':'TipHide'}}" bindtap="pb_dati">前去测试</view>
             <!-- <view class="test" bindtap="gotest_dati">前去测试</view> -->
-            <view class="watch_zb" bindtap="golive">执意看回放</view>
+            <view class="watch_zb" bindtap="pblive">执意看回放</view>
           </view>
         </view>
   <!-- </view> -->

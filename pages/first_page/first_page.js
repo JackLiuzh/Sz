@@ -15,6 +15,7 @@ Page({
     bpurl: '',
     project_id: '',
     kemu_id: '',
+    finish: 0,
 
   },
   onLoad: function () {
@@ -30,10 +31,10 @@ Page({
       month: month,
       // isToday: '' + year + month + day 
     })
-
+    var uid = wx.getStorageSync('uid');
     var token = wx.getStorageSync('token');
     var params = {
-      // "uid": uid,
+      "uid": uid,
       "token": token,
     }
 
@@ -316,10 +317,12 @@ Page({
     var id = e.currentTarget.dataset.xb;
     console.log(id);
     this.setData({
+      finish: this.data.courselive[id].finish,
       bpurl: this.data.courselive[id].live_info.playbackUrl,
       project_id: this.data.courselive[id].project_id,
       kemu_id: this.data.courselive[id].kemu_id,
     })
+    console.log(this.data.finish);
     console.log(this.data.bpurl);
     console.log(this.data.project_id);
     console.log(this.data.kemu_id);
@@ -331,10 +334,12 @@ Page({
     var id = e.currentTarget.dataset.xb;
     console.log(id);
     this.setData({
+      finish: this.data.courselive[id].finish,
       bpurl: this.data.courselive[id].live_info.playbackUrl,
       project_id: this.data.courselive[id].project_id,
       kemu_id: this.data.courselive[id].kemu_id,
     })
+    console.log(this.data.finish);
     console.log(this.data.bpurl);
     console.log(this.data.project_id);
     console.log(this.data.kemu_id);

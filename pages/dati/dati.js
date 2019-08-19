@@ -212,6 +212,9 @@ emojiChar:"☺-😋-😌-😍-😏-😜-😝-😞-😔-😪-😭-😁-😂-😃-
     // var currPage = pages[pages.length - 1]
     // var prevPage = pages[pages.length - 2]
     // prevPage.setData({ test: 1 })
+
+
+
      
   },
 
@@ -533,11 +536,41 @@ emojiChar:"☺-😋-😌-😍-😏-😜-😝-😞-😔-😪-😭-😁-😂-😃-
       if (that.data.answerlist.length == 1 && that.data.total_nums == that.data.unzuo_nums){
          that.setData({ huadong: false });
       }
-      //做完最后一题显示查看评估报告
+      //做完最后一题
        var last_index =  that.data.total_nums - 1;
        if (last_index == pindex){
+         //提交答案
+         var uid = app.globalData.uid
+         var data = that.data.answerlist
+         var user_task_id = that.data.user_task_id
+         var params = {
+           "uid": uid,
+           "data": data,
+           "user_task_id": user_task_id
+         }
+         // console.log(params)
+         if (data.length) {
+           app.sz.xcxAnswerInsert(params).then(d => {
+             if (d.data.status == 0) {
+               //如果任务完成 则 存缓存 任务天数
+               if (d.data.accomplish == 1) {
+                 wx.setStorageSync('accomplish_days', d.data.days);
+               }
+
+             } else {
+               console.log(d.data.msg);
+             }
+
+           })
+         } else {
+           console.log("无答案需要提交")
+         }
+         //显示评估报告
          that.setData({ pinggureport: false });
        }
+      
+
+
       //答题正确自动跳转
       // if (answer == xuanxiang) {
       //   var arlength = that.data.questions.length

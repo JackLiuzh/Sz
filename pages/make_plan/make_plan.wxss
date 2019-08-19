@@ -135,3 +135,14 @@
   /* padding-left: 40rpx; */
   text-align: center;
 }
+.b{
+  margin-top:53rpx;
+  text-align: center;
+  height:90rpx;
+  background:rgba(230,85,87,1);
+  line-height: 90rpx;
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+}

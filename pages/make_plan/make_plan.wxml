@@ -62,4 +62,5 @@
       </view>
 
    </view>
+   <view bindtap='ssave' class='b'>保存</view>
 </view>

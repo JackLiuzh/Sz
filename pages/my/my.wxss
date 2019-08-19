@@ -46,7 +46,7 @@ page {
 }
 .v1{
   margin-left:29rpx;
-  /* margin-top:5rpx; */
+  margin-top:10rpx;
   width:200rpx;
   
 }

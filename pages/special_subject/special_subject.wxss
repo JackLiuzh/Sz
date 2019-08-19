@@ -85,58 +85,58 @@
   box-shadow:0rpx 6rpx 18rpx 0rpx rgba(23,157,136,0.68);
 }
 
-.gong_color2{
+.gong_color5{
   color:rgba(225,174,179,1);
 }
-.ti_color2{
+.ti_color5{
   color:rgba(225,174,179,1);
 }
-.number_color2{
+.number_color5{
   color:rgba(231,97,110,1);
 }
-.btn_test_color2{
+.btn_test_color5{
   background:linear-gradient(-54deg,rgba(250,170,177,1),rgba(231,97,110,1));
   box-shadow:0rpx 6rpx 18rpx 0rpx rgba(231,97,110,0.68);    
 }
 
-.gong_color3{
+.gong_color4{
   color:rgba(169,182,200,1);
 }
-.ti_color3{
+.ti_color4{
   color:rgba(169,182,200,1);
 }
-.number_color3{
+.number_color4{
   color:rgba(107,138,182,1);
 }
-.btn_test_color3{
+.btn_test_color4{
   background:linear-gradient(-54deg,rgba(165,194,237,1),rgba(107,138,182,1));
   box-shadow:0rpx 6rpx 18rpx 0rpx rgba(107,138,182,0.68);   
 }
 
-.gong_color4{
+.gong_color3{
   color:rgba(232,189,157,1);
 }
-.ti_color4{
+.ti_color3{
   color:rgba(232,189,157,1);
 }
-.number_color4{
+.number_color3{
   color:rgba(229,117,34,1);
 }
-.btn_test_color4{
+.btn_test_color3{
   background:linear-gradient(-54deg,rgba(232,189,157,1),rgba(229,117,34,1));
   box-shadow:0rpx 6rpx 18rpx 0rpx rgba(229,117,34,0.68);    
 }
 
-.gong_color5{
+.gong_color2{
   color:rgba(167,182,165,1);
 }
-.ti_color5{
+.ti_color2{
   color:rgba(167,182,165,1);
 }
-.number_color5{
+.number_color2{
   color:rgba(111,138,108,1);
 }
-.btn_test_color5{
+.btn_test_color2{
  background:linear-gradient(-54deg,rgba(167,182,165,1),rgba(111,138,108,1));
   box-shadow:0rpx 6rpx 18rpx 0rpx rgba(111,138,108,0.68);    
 }
@@ -156,16 +156,16 @@
 .btn_tested_color1{
   border:2rpx solid rgba(23,157,136,1);
 }
-.btn_tested_color2{
+.btn_tested_color5{
   border:2rpx solid rgba(231,97,110,1);
 }
-.btn_tested_color3{
+.btn_tested_color4{
   border:2rpx solid rgba(107,138,182,1);
 }
-.btn_tested_color4{
+.btn_tested_color3{
   border:2rpx solid rgba(229,117,34,1);
 }
-.btn_tested_color5{
+.btn_tested_color2{
   border:2rpx solid rgba(111,138,108,1);
 }
 .btn_tested_text{
@@ -183,16 +183,16 @@
 .btn_tested_text_color1{
   color:rgba(23,157,136,1);
 }
-.btn_tested_text_color2{
+.btn_tested_text_color5{
   color:rgba(231,97,110,1);
 }
-.btn_tested_text_color3{
+.btn_tested_text_color4{
   color:rgba(107,138,182,1);
 }
-.btn_tested_text_color4{
+.btn_tested_text_color3{
   color:rgba(229,117,34,1);
 }
-.btn_tested_text_color5{
+.btn_tested_text_color2{
   color:rgba(111,138,108,1);
 }
 

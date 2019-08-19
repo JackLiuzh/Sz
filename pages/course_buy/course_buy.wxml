@@ -1,11 +1,12 @@
 <view class="container">
   <block wx:if="{{data.courseInfo.is_datum > 0}}">
   <view wx:if="{{data.address.addr_id}}" class="layout1">
-    <view class="v1">
+    <view bindtap="add_addr" class="v1">
       <view class="name_phone">{{data.address.addr_userName}} {{data.address.addr_userPhone}}</view>
       <view class="addr" >{{data.address.province_name}}{{data.address.city_name}} {{data.address.area_name}}{{data.address.addr_addrInfo}}</view>
+      
     </view>
-    <!-- <image class="add" bindtap="add_addr" src="../../images/xiayiye@2x.png"></image> -->
+    <image class="add" bindtap="add_addr" src="../../images/xiayiye@2x.png"></image>
   </view>
   <view wx:else class="layout1">
     <view class="tjdz" >添加地址</view>

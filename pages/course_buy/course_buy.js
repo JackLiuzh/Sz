@@ -64,7 +64,8 @@ Page({
               uid: uid,
               order_sn: order_sn,
               type: 3,
-              addr_id: addr_id
+              addr_id: addr_id,
+              coupon_id: coupon_id
             }
             app.sz.coursePay(params).then(d => {
               // console.log(d.data.data.paystr)

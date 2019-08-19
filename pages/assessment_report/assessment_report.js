@@ -140,7 +140,7 @@ Page({
   backindex: function(){
     wx.switchTab({
 
-      url: '../today_task/today_task'
+      url: '/pages/today_task/today_task'
 
     });  
   }

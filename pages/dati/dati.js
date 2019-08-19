@@ -124,12 +124,6 @@ emojiChar:"☺-😋-😌-😍-😏-😜-😝-😞-😔-😪-😭-😁-😂-😃-
                 var answer = d.data.data.data[i].answer
                 that.isshowzuotido(xuanxiang, pindex, answer, d.data.data.data[i] )
             }
-            // for (let y = 0;y< d.data.data.data[i].material.length; y++){
-              // d.data.data.data[i].material[y].content.replace('<img', '<img style="max-width:100%;height:auto" ')            
-              // d.data.data.data[i].material[y].content = d.data.data.data[i].material[y].content.replace('<img', '<img style="max-width:100%;height:auto" ')
-             
-            // }
-           
           }
         }
         let pinggureport = true;
@@ -145,6 +139,7 @@ emojiChar:"☺-😋-😌-😍-😏-😜-😝-😞-😔-😪-😭-😁-😂-😃-
           questions: d.data.data.data,
           currentTab: d.data.data.zindex,
           pinggureport: pinggureport,
+          first: d.data.data.first,
         })
         wx.hideLoading();
       }else {
@@ -533,7 +528,7 @@ emojiChar:"☺-😋-😌-😍-😏-😜-😝-😞-😔-😪-😭-😁-😂-😃-
     that.setData({ [a]: a_an, [b]: b_an, [c]: c_an, [d]: d_an, [isdo]: 1, [iswro]: iswrong, [du]: duration, [ave_du]: newave_du, [ro]: newro, uptime: new Date().getTime(), [datiiswrong]: iswrong})
 
       //做完第一题 显示滑动查看下一题
-      if (that.data.answerlist.length == 1 && that.data.total_nums == that.data.unzuo_nums){
+    if (that.data.answerlist.length == 1 && that.data.first == 0){
          that.setData({ huadong: false });
       }
       //做完最后一题

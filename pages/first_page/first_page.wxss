@@ -442,9 +442,13 @@ page {
     flex-direction: column;
     align-items: center;
 }
-.close{
+.dj_close{
   margin-left:450rpx;
-  margin-top:32rpx;
+  margin-top:30rpx;
+  width: 70rpx;
+  height:50rpx;
+}
+.close{
   width: 36rpx;
   height:36rpx;
 }

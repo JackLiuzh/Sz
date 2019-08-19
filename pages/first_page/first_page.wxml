@@ -1,10 +1,10 @@
 <view class="container">
 
-  <view class="zhibo" >
+  <view class="zhibo"  >
     <view wx:for='{{courselive}}' wx:key="index1" wx:for-index="xb" >
       <view wx:if="{{item.liveStatus == 2}}">
         <image  class="zbfm" src="{{item.avatar}}"/>
-   <cover-view class="zbmask" catchtouchmove="preventTouchMove" ></cover-view>
+   <view class="zbmask" catchtouchmove="preventTouchMove" ></view>
 
     <cover-view class="broadcasting">
       <cover-view class="shu1"></cover-view>
@@ -14,7 +14,7 @@
     </cover-view>
 
       <!-- <cover-view class="cs"> -->
-        <cover-view class="title">{{item.video_title}}</cover-view>
+        <!-- <cover-view class="title">{{item.video_title}}</cover-view> -->
       <!-- </cover-view> -->
 
     <cover-view class="speak">
@@ -89,7 +89,11 @@
         </view>
         <view class="watch_pb" bindtap="showModalPb" data-xb='{{xb}}'>看回放</view>
 
-        <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_pb}}"></view>
+       
+      </view>
+    </view>
+
+     <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_pb}}"></view>
         <view class="modalDlg" wx:if="{{showModal_pb}}">
           <view class="modal">
             <image class="close" bindtap="close_pb" src="../../images/组 2065@2x.png"/>
@@ -101,8 +105,6 @@
             <view class="watch_zb" bindtap="golive">执意看回放</view>
           </view>
         </view>
-      </view>
-    </view>
   <!-- </view> -->
 
   

@@ -12,7 +12,7 @@ page {
   width:750rpx;
   height:400rpx;
   /* position: fixed; */
-position: absolute;
+  position: absolute;
   top: 0;
   left: 0;
   background:rgb(19, 18, 18);
@@ -413,6 +413,7 @@ position: absolute;
     z-index: 9000;
     opacity: 0.7;
 }
+
 .modalDlg{
     /* width: 580rpx;
     height: 620rpx; */

@@ -4,31 +4,31 @@
     <view class="{{item.liveStatus == 2?'zhibo':'TipHide'}}" >
       <view wx:if="{{item.liveStatus == 2}}">
         <image  class="zbfm" src="{{item.avatar}}"/>
-   <view class="zbmask" catchtouchmove="preventTouchMove" ></view>
+      <view class="zbmask" catchtouchmove="preventTouchMove" ></view>
 
-    <cover class="broadcasting">
-      <cover class="shu1"></cover>
-      <cover class="shu2"></cover>
-      <cover class="shu3"></cover>
-      <cover class="zbz" >直播中</cover>
-    </cover>
+    <view class="broadcasting">
+      <view class="shu1"></view>
+      <view class="shu2"></view>
+      <view class="shu3"></view>
+      <view class="zbz" >直播中</view>
+    </view>
 
-      <!-- <cover-view class="cs"> -->
+      <!-- <view-view class="cs"> -->
         <!-- <cover-view class="title">{{item.video_title}}</cover-view> -->
-      <!-- </cover-view> -->
+      <!-- </view-view> -->
 
-    <cover class="speak">
-      <cover class="touxiang" src="{{item.live_info.zhubo.p_40}}"></cover>
-      <cover class="speaker">{{item.live_info.zhubo.nickname}}</cover>
-      <cover class="shu4"></cover>
-      <cover class="num">{{item.buy_count}}人</cover>
-      <cover class="joining">正在参与 </cover>
-    </cover>
+    <view class="speak">
+      <view class="touxiang" src="{{item.live_info.zhubo.p_40}}"></view>
+      <view class="speaker">{{item.live_info.zhubo.nickname}}</view>
+      <view class="shu4"></view>
+      <view class="num">{{item.buy_count}}人</view>
+      <view class="joining">正在参与 </view>
+    </view>
 
-    <cover class="enter_zb" bindtap="showModalZb" data-xb='{{xb}}'>
+    <view class="enter_zb" bindtap="showModalZb" data-xb='{{xb}}'>
       <cover-image class="play_zb" src='../../images/多边形 10@2x.png'></cover-image>
-      <cover class="enter" >进入直播间</cover>
-    </cover> 
+      <view class="enter" >进入直播间</view>
+    </view> 
 
     
     <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_zb}}"></view>

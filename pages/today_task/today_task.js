@@ -706,7 +706,7 @@ Page(filter.loginCheck({
     context.fillText(wancheng_total, 182 * rpx, 500 * rpx)
     context.setFontSize(18 * rpx)
     context.setFillStyle('#666666')
-    context.fillText('题', 218 * rpx, 500 * rpx)
+    context.fillText('期', 218 * rpx, 500 * rpx)
     context.setTextBaseline('bottom')
     context.fillText('刷题完成', 194 * rpx, 536 * rpx)
 
@@ -715,7 +715,7 @@ Page(filter.loginCheck({
     context.fillText(look_count, 298 * rpx, 500 * rpx)
     context.setFontSize(18 * rpx)
     context.setFillStyle('#666666')
-    context.fillText('个', 327 * rpx, 500 * rpx)
+    context.fillText('期', 327 * rpx, 500 * rpx)
     context.setTextBaseline('bottom')
     context.fillText('看专题课', 320 * rpx, 536 * rpx)
 

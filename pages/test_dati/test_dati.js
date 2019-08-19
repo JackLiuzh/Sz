@@ -609,41 +609,41 @@ Page({
 
 
     //获取试题
-    if (main_id.length > 0) {
-      wx.showLoading({
-        title: '加载中',
-      })
-      var user_task_id = this.data.user_task_id
-      var uid = app.globalData.uid
-      var params = {
-        "uid": uid,
-        "user_task_id": user_task_id,
-        "main_id": main_id.join(",")
-      }
-      app.sz.xcxgetTaskTiOne(params).then(d => {
-        if (d.data.status == 0) {
-          for (let i = 0; i < d.data.data.length; i++) {
-            d.data.data[i].a_an = 2
-            d.data.data[i].b_an = 2
-            d.data.data[i].c_an = 2
-            d.data.data[i].d_an = 2
-            d.data.data[i].isfull = 1
-            if (d.data.data[i].user_answer) {
-              var xuanxiang = d.data.data[i].user_answer
-              var answer = d.data.data[i].answer
-              that.isshowzuotido(xuanxiang, i, answer, d.data.data[i])
-            }
-            if (current < currentTab) {
-              var key = "questions[" + (current - i) + "]";
-            } else {
-              var key = "questions[" + (current + i) + "]";
-            }
-            that.setData({ [key]: d.data.data[i] })
-          }
-        }
-        wx.hideLoading();
-      })
-    }
+    // if (main_id.length > 0) {
+    //   wx.showLoading({
+    //     title: '加载中',
+    //   })
+    //   var user_task_id = this.data.user_task_id
+    //   var uid = app.globalData.uid
+    //   var params = {
+    //     "uid": uid,
+    //     "user_task_id": user_task_id,
+    //     "main_id": main_id.join(",")
+    //   }
+    //   app.sz.xcxgetProjectevaluationTi(params).then(d => {
+    //     if (d.data.status == 0) {
+    //       for (let i = 0; i < d.data.data.length; i++) {
+    //         d.data.data[i].a_an = 2
+    //         d.data.data[i].b_an = 2
+    //         d.data.data[i].c_an = 2
+    //         d.data.data[i].d_an = 2
+    //         d.data.data[i].isfull = 1
+    //         if (d.data.data[i].user_answer) {
+    //           var xuanxiang = d.data.data[i].user_answer
+    //           var answer = d.data.data[i].answer
+    //           that.isshowzuotido(xuanxiang, i, answer, d.data.data[i])
+    //         }
+    //         if (current < currentTab) {
+    //           var key = "questions[" + (current - i) + "]";
+    //         } else {
+    //           var key = "questions[" + (current + i) + "]";
+    //         }
+    //         that.setData({ [key]: d.data.data[i] })
+    //       }
+    //     }
+    //     wx.hideLoading();
+    //   })
+    // }
   },
 
 

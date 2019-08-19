@@ -322,6 +322,20 @@ Page({
       project_id: this.data.courselive[id].project_id,
       kemu_id: this.data.courselive[id].kemu_id,
     })
+    if (this.data.finish == 0) {
+      this.setData({
+        showModal_zb: true
+      })
+    } else {
+      let url = encodeURIComponent(this.data.bpurl);
+      console.log(url);
+      wx.navigateTo({
+        url: '../live/live?url=' + url,
+      });
+      this.setData({
+        showModal_zb: false
+      })
+    }
     console.log(this.data.finish);
     console.log(this.data.bpurl);
     console.log(this.data.project_id);
@@ -339,13 +353,25 @@ Page({
       project_id: this.data.courselive[id].project_id,
       kemu_id: this.data.courselive[id].kemu_id,
     })
+    if(this.data.finish == 0){
+      this.setData({
+        showModal_pb: true
+      })
+    }else{
+      let url = encodeURIComponent(this.data.bpurl);
+      console.log(url);
+      wx.navigateTo({
+        url: '../live/live?url=' + url,
+      });
+      this.setData({
+        showModal_pb: false
+      })
+    }
     console.log(this.data.finish);
     console.log(this.data.bpurl);
     console.log(this.data.project_id);
     console.log(this.data.kemu_id);
-    this.setData({
-      showModal_pb: true
-    })
+    
   },
   close_zb: function () {
     this.setData({

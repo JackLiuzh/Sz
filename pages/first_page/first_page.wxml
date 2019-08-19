@@ -41,7 +41,7 @@
           <text class="tishi">专题课视频有对应的<text class="jiacu">专题测试</text>呦~</text>
         </view>
         <view class="button">
-          <view class="{{finish==0?'test':'TipHide'}}" bindtap="zb_dati">前去测试</view>
+          <view class="test" bindtap="zb_dati">前去测试</view>
           <view class="watch_zb" bindtap="zblive">执意看直播</view>
           <!-- <navigator class="watch_zb" url="{{item.live_info.zhubo.playbackUrl}}" open-type="navigate" >执意看直播</navigator> -->
         </view>
@@ -91,6 +91,7 @@
           </view>
           <text class="join_pb">{{item.buy_count}}人参与</text>
         </view>
+        <!-- <view class="watch_pb" bindtap="{{finish==0?'showModalPb':'pblive'}}" data-xb='{{xb}}'>看回放</view> -->
         <view class="watch_pb" bindtap="showModalPb" data-xb='{{xb}}'>看回放</view>
 
        
@@ -109,7 +110,7 @@
             <text class="tishi">专题课视频有对应的<text class="jiacu">专题测试</text>呦~</text>
           </view>
           <view class="button">
-          <view class="{{finish==0?'test':'TipHide'}}" bindtap="pb_dati">前去测试</view>
+          <view class="test" bindtap="pb_dati">前去测试</view>
             <!-- <view class="test" bindtap="gotest_dati">前去测试</view> -->
             <view class="watch_zb" bindtap="pblive">执意看回放</view>
           </view>

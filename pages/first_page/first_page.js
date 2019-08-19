@@ -358,10 +358,16 @@ Page({
     wx.navigateTo({
       url: '../live/live?url=' + url,
     });
+    this.setData({
+      showModal_pb: false
+    })
   },
   gotest_dati: function () {
     wx.navigateTo({
       url: '../test_dati/test_dati?id=' + this.data.project_id + '&kemu_id=' + this.data.kemu_id
     });
+    this.setData({
+      showModal_pb: false
+    })
   },
 })

@@ -7,7 +7,7 @@
         <image  class="zbfm" src="{{item.avatar}}"/>
         <!-- <cover-view class="zbmask" catchtouchmove="preventTouchMove" ></cover-view> -->
         <view class='zbfm' style='background-color:rgba(0,0,0,.15);'></view>
-        <image wx:if="{{item.liveStatus ==2}}" class="daibroadcast" src="../../images/task_zhibozhong.png"></image>
+        <image wx:if="{{item.liveStatus ==2}}" class="daibroadcast" src="../../images/task_zhibozhong.png" style="background:none;"></image>
         <image wx:if="{{item.liveStatus ==1}}" class="daibroadcast" src="../../images/daizhibo.png"></image>
 
         <view style='display:none;' class="title">{{item.video_title}}</view>

@@ -2,6 +2,12 @@
 page {
   background-color: #fff;
 }
+.idbut{
+  position: absolute;
+  width:270rpx;
+  height:72rpx;
+  background: transparent;
+}
 .so{
   display: flex;
   justify-content: space-between;

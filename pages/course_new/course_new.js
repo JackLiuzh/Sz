@@ -9,7 +9,9 @@ Page(filter.loginCheck({
    */
   data: {
       list:[],
-      sys: ''
+      sys: '',
+      iswxuser:false,
+      avatar: 'http://shangzheng.oss-cn-beijing.aliyuncs.com/img/member/Header-profile-photo.png',
   },
   /**
    * 生命周期函数--监听页面加载
@@ -17,6 +19,53 @@ Page(filter.loginCheck({
   onLoad: function (options) {
     
       this.initdata()
+      this.iswxuser()
+  },
+  bindGetUserInfo(e){
+      var that = this
+      wx.getSetting({
+        success: res => {
+          if (res.authSetting['scope.userInfo']) {
+            var bendiuserinfo = wx.getStorageSync("userInfo")
+            bendiuserinfo.name = e.detail.userInfo.nickName
+            bendiuserinfo.avatar = e.detail.userInfo.avatarUrl
+            wx.setStorageSync('userInfo', bendiuserinfo)
+            that.saveuserinfo()
+          }else{
+             console.log("用户拒绝授权")
+          }
+        }
+      })
+  },
+  iswxuser:function(){
+      var that = this
+      var avatar = that.data.avatar
+      var bendiava = wx.getStorageSync("userInfo").avatar
+      if(bendiava == avatar){
+        that.setData({ iswxuser:false})
+      }
+  },
+  //保存授权信息信息
+  saveuserinfo: function () {
+    var that = this
+    var uid = wx.getStorageSync("uid")
+    var token = wx.getStorageSync("token")
+    var wxname = wx.getStorageSync("userInfo").name
+    var wxava = wx.getStorageSync("userInfo").avatar
+    var params = {
+      uid: uid,
+      name: wxname,
+      avatar: wxava
+    }
+    app.sz.xcxuserInfo(params).then(d => {
+      console.log(d)
+      if (d.data.status == 0) {
+        console.log("保存成功")
+      } else {
+        console.log("保存失败")
+      }
+    })
+
   },
   //全部专题课跳转
   gokanvideo:function(){

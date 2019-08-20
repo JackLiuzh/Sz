@@ -1,12 +1,13 @@
+const app = getApp()
 Component({
   data: {
     selected: 1,
-    color: "#7A7E83",
+    color: "#999999",
     avatar:'http://shangzheng.oss-cn-beijing.aliyuncs.com/img/member/Header-profile-photo.png',
     iswxuser:true,
     wxname:'',
     wxava:'',
-    selectedColor: "#3cc51f",
+    selectedColor: "#EA5959",
     list: [
       {
         text: "刷题",
@@ -57,6 +58,7 @@ Component({
                bendiuserinfo.name = e.detail.userInfo.nickName
                bendiuserinfo.avatar = e.detail.userInfo.avatarUrl
                wx.setStorageSync('userInfo', bendiuserinfo)
+               that.saveuserinfo()
            }else{
               console.log("用户拒绝授权")
            }
@@ -70,14 +72,36 @@ Component({
       const url = data.path
       wx.switchTab({ url })
       if(data.index == 2){
-           
            console.log("点击了我的")
       }
       that.setData({
         selected: data.index
       })
     },
-    //保存信息
 
-  }
+    //保存授权信息信息
+    saveuserinfo: function () {
+      var that = this
+      var uid = wx.getStorageSync("uid")
+      var token = wx.getStorageSync("token")
+      var wxname = that.data.wxname
+      var wxava = that.data.wxava
+      var params = {
+        uid: uid,
+        name: wxname,
+        avatar: wxava
+      }
+      app.sz.xcxuserInfo(params).then(d => {
+        console.log(d)
+        if(d.data.status == 0){
+          console.log("保存成功")
+        }else{
+          console.log("保存失败")
+        }
+      })
+
+    }
+   
+  },
+  
 })

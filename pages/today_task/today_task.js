@@ -40,6 +40,8 @@ Page(filter.loginCheck({
    */
   onLoad: function (options) {
 
+    
+
     wx.showLoading({title:'加载中'});
     var that = this
     app.globalData.uid = wx.getStorageSync('uid');
@@ -94,6 +96,14 @@ Page(filter.loginCheck({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    if (typeof this.getTabBar === 'function' &&
+      this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 0
+      })
+    }
+
+
       var that = this
     //本地缓存
     wx.getStorage({

@@ -26,7 +26,7 @@
     </view>
 
     <view class="enter_zb" bindtap="showModalZb" data-xb='{{xb}}'>
-      <cover-image class="play_zb" src='../../images/多边形 10@2x.png'></cover-image>
+      <cover-image class="play_zb" src='../../images/zbbof.png'></cover-image>
       <view class="enter" >进入直播间</view>
     </view> 
 
@@ -35,9 +35,9 @@
       <view class="modalDlg" wx:if="{{showModal_zb}}">
         <view class="modal">
           <view class="dj_close" bindtap="close_zb">
-              <image class="close"  src="../../images/组 2065@2x.png"/>
+              <image class="close"  src="../../images/cha.png"/>
           </view>
-          <image class="img_dlg"  src="../../images/组 2409@2x.png"/>
+          <image class="img_dlg"  src="../../images/tkjs.png"/>
           <text class="tishi">专题课视频有对应的<text class="jiacu">专题测试</text>呦~</text>
         </view>
         <view class="button">

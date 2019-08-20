@@ -8,7 +8,7 @@
         <!-- <cover-view class="zbmask" catchtouchmove="preventTouchMove" ></cover-view> -->
         <view class='zbfm' style='background-color:rgba(0,0,0,.15);'></view>
         
-        <image wx:if="{{item.liveStatus ==2}}" class="daibroadcast" src="../../images/组 2509@2x.png"></image>
+        <image wx:if="{{item.liveStatus ==2}}" class="daibroadcast" src="../../images/zbz.png"></image>
         <image wx:if="{{item.liveStatus ==1}}" class="daibroadcast" src="../../images/daizhibo.png"></image>
 
         <view style='display:none;' class="title">{{item.video_title}}</view>
@@ -28,15 +28,15 @@
         </view>
 
         <view bindtap='golive' data-playbackUrl="{{item.playurl}}" wx:if="{{item.liveStatus ==2}}" class="enter_zb" >
-          <image class="play_zb" src='../../images/多边形 10@2x.png'></image>
+          <image class="play_zb" src='../../images/zbbof.png'></image>
           <view  class="enter" >进入直播间</view>
         </view>
         <view bindtap='godaibo' wx:if="{{item.liveStatus ==1}}" class="look_detail" >
-          <image style='display:none;' class="play_zb" src='../../images/多边形 10@2x.png'></image>
+          <image style='display:none;' class="play_zb" src='../../images/zbbof.png'></image>
           <view style='margin-left:75rpx;' class="enter" >查看详情</view>
         </view>
         <view bindtap='gohuifang' data-playbackUrl="{{item.playurl}}" wx:if="{{item.liveStatus ==4}}" class="look_bp" >
-            <image class="play_zb" src='../../images/组 2444@2x.png' ></image>
+            <image class="play_zb" src='../../images/huifang.png' ></image>
             <view class="enter" >看回放</view>
         </view>    
   </view>

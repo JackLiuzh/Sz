@@ -24,7 +24,7 @@
             <view class="num">303人</view>
             <view class="joining">已参与 </view>
           </block>
-          <block wx:else>
+          <block wx:if="{{item.liveStatus ==2}}">
             <view class="num">{{item.total_people}}人</view>
             <view class="joining">正在参与 </view>
           </block>

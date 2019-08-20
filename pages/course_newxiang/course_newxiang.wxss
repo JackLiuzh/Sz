@@ -1,1 +1,4 @@
 /* pages/course_newxiang/course_newxiang.wxss */
+.dd{
+  height: 100%;
+}

@@ -1,6 +1,7 @@
 // pages/course_new/course_new.js
+const filter = require('../../utils/filter.js');
 const app = getApp()
-Page({
+Page(filter.loginCheck({
 
   /**
    * 页面的初始数据
@@ -118,4 +119,4 @@ Page({
   onShareAppMessage: function () {
 
   }
-})
+}))

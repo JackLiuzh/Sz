@@ -1,2 +1,8 @@
 <!--pages/course_newxiang/course_newxiang.wxml-->
-<image style='width:100%;' src="{{url}}"></image>
+<view class='container'>
+<view class='dd'>
+   <image style='width:100%;' mode="widthFix" src="{{url}}"></image>
+</view>
+</view>
+
+

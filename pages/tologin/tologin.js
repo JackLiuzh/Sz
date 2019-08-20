@@ -1,5 +1,6 @@
 // pages/tologin/tologin.js
 const app = getApp();
+
 Page({
   /**
    * 页面的初始数据
@@ -36,7 +37,8 @@ Page({
               app.globalData.uid = d.data.uid;
               app.wechat.setStorage('userInfo',d.data.userInfo)
               if (d.data.isfirstlogin == 1) {
-                wx.switchTab({ url: '../today_task/today_task' })
+                // wx.switchTab({ url: '../today_task/today_task' })
+                wx.switchTab({ url: '../course_new/course_new' })
               }else{
                 wx.redirectTo({ url: '../first_comming/first_comming' })
               }

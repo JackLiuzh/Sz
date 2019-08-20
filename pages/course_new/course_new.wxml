@@ -7,8 +7,7 @@
         <image  class="zbfm" src="{{item.avatar}}"/>
         <!-- <cover-view class="zbmask" catchtouchmove="preventTouchMove" ></cover-view> -->
         <view class='zbfm' style='background-color:rgba(0,0,0,.15);'></view>
-        
-        <image wx:if="{{item.liveStatus ==2}}" class="daibroadcast" src="../../images/zbz.png"></image>
+        <image wx:if="{{item.liveStatus ==2}}" class="daibroadcast" src="../../images/task_zhibozhong.png"></image>
         <image wx:if="{{item.liveStatus ==1}}" class="daibroadcast" src="../../images/daizhibo.png"></image>
 
         <view style='display:none;' class="title">{{item.video_title}}</view>
@@ -21,6 +20,10 @@
             <!-- <cover-view class="num">{{item.total_people}}人</cover-view> -->
             <view class="joining" style='margin-left:389rpx;'>{{item.video_time}} </view>
           </block>
+          <block wx:if="{{item.liveStatus ==4}}">
+            <view class="num">303人</view>
+            <view class="joining">已参与 </view>
+          </block>
           <block wx:else>
             <view class="num">{{item.total_people}}人</view>
             <view class="joining">正在参与 </view>
@@ -28,7 +31,7 @@
         </view>
 
         <view bindtap='golive' data-playbackUrl="{{item.playurl}}" wx:if="{{item.liveStatus ==2}}" class="enter_zb" >
-          <image class="play_zb" src='../../images/zbbof.png'></image>
+          <image class="play_zb" src='../../images/bofang.png'></image>
           <view  class="enter" >进入直播间</view>
         </view>
         <view bindtap='godaibo' wx:if="{{item.liveStatus ==1}}" class="look_detail" >

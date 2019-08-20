@@ -59,13 +59,17 @@ Page({
          })
      }else{
           if(addr_id > 0){
+            var copid = ''
+            if(coupon_id){
+               copid = coupon_id
+            }
             var params = {
               token: token,
               uid: uid,
               order_sn: order_sn,
               type: 3,
               addr_id: addr_id,
-              coupon_id: coupon_id
+              coupon_id: copid
             }
             app.sz.coursePay(params).then(d => {
               // console.log(d.data.data.paystr)

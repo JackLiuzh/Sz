@@ -1,6 +1,7 @@
 // pages/course_new/course_new.js
 const filter = require('../../utils/filter.js');
 const app = getApp()
+
 Page(filter.loginCheck({
 
   /**
@@ -10,11 +11,11 @@ Page(filter.loginCheck({
       list:[],
       sys: ''
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
       this.initdata()
   },
   //全部专题课跳转
@@ -82,6 +83,13 @@ Page(filter.loginCheck({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    if (typeof this.getTabBar === 'function' &&
+      this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 1
+      })
+    }
+
     this.initdata()
   },
 
@@ -120,3 +128,4 @@ Page(filter.loginCheck({
 
   }
 }))
+

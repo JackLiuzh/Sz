@@ -45,7 +45,7 @@
             <view class="zhuanti-laoshi">
                  <image src="/images/ass_tearch@2x.png" class="img-laoshi"></image>
                  <image src="{{pinggu.teacher_avatar}}" class="avatar-laoshi"></image>
-                 <text class="avatar-name">{{pinggu.teacher}}</text>
+                 <text class="avatar-name" wx:if="{{pinggu.teacher != null}}">{{pinggu.teacher}}</text>
             </view>
             <view class='gozhibo' wx:if="{{pinggu.zhiboone.liveStatus == 2}}" data-url="{{pinggu.zhiboone.playurl}}"  catchtap='gozhibo'>
              前往直播间 <view class="sanjiao"></view>

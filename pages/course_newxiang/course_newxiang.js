@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-     url:''
+     url:'',
+     isflag:false
   },
 
   /**
@@ -14,17 +15,28 @@ Page({
    */
   onLoad: function (options) {
     var that = this
+    wx.showLoading({
+      title: '加载中',
+    })
     var params = {course_id:5}
     app.sz.xcxNewCourseDetail(params).then(d=>{
         console.log(d)
         if(d.data.status == 0){
            console.log("")
-           that.setData({url:d.data.data})
+          setTimeout(function () {
+            that.setData({ url: d.data.data })
+            that.setData({isflag: true})
+            wx.hideLoading()
+          }, 3000)
         }else{
           console.log("接口失败")
         }
         console.log(d.data.data)
         // that.setData({url:d.data.data.url})
+          // setTimeout(function () {
+          //   wx.hideLoading()
+          // }, 2000)
+        // wx.hideLoading()
     })
   },
 

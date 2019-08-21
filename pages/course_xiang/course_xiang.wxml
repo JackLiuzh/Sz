@@ -21,16 +21,16 @@
             <view class='tab  {{currentData == 1 ? "tabBorer" : ""}}'  data-current = "1" bindtap='checkCurrent'>目录</view>
          </view>
          <view class='main_con'>
-            <swiper style="height: {{clientHeight?clientHeight+'px':'auto'}}" current="{{currentData}}" class='swiper'  duration="300" bindchange="bindchange">
+            <swiper  scroll-y="{{true}}" style="height: {{clientHeight?clientHeight-228 +'px':'auto'}};margin-bottom:140rpx;" current="{{currentData}}" class='swiper'  duration="300" bindchange="bindchange">
               <swiper-item>
-                  <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+                  <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight-228+'px':'auto'}}">
                   <view class='swiper_con'>
                        <rich-text nodes="{{info.jieshao}}"></rich-text>
                   </view>
                   </scroll-view>
               </swiper-item> 
               <swiper-item>
-                  <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+                  <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight-228+'px':'auto'}}">
                   <view class='swiper_con'>
                         <view wx:for="{{info.info}}" wx:key="this" class='item'>
                             <view class='item_cell'>

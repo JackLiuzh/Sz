@@ -169,7 +169,11 @@ opacity:1;
 margin-bottom: 12rpx;
 }
 .text_ri{
-  margin-left: 30rpx;
+  /* margin-left: 30rpx; */
+  margin-left: 12rpx;
+}
+.text-_le{
+  padding-right: 16rpx;
 }
 .ri_text{
   width:84rpx;

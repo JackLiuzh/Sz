@@ -21,21 +21,20 @@ Page({
     let url = decodeURIComponent(options.url)
     console.log(url)
     this.setData({ url: url})
-    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-      wx.hideLoading()
-      this.setData({ flag: true })
+      
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.hideLoading()
+    this.setData({ flag: true })
   },
 
   /**

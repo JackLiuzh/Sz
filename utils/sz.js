@@ -1,7 +1,7 @@
 const URI = 'http://cs.szgk.cn/api.php'
-// const URI = 'http://192.168.1.219/api.php' 
-//const URI = 'http://li.szgk.cn/api.php' 
-// const URI = 'https://www.szgk.cn/api.php' 
+ // const URI = 'http://192.168.1.219/api.php' 
+ //const URI = 'http://li.szgk.cn/api.php' 
+ //const URI = 'https://www.szgk.cn/api.php' 
 
 const fetch = require('./fetch')
 
@@ -30,7 +30,7 @@ function xcxsuggest(params) {
 }
 //添加/修改收货地址 
 function xcxaddUserAddress(params) {
-  return fetch.szfetch(URI, 'addUserAddress', params)
+  return fetch.szfetch(URI, 'xcxaddUserAddress', params)
 }
 //看视频kan_video 
 function xcxkanVideo(params) {
@@ -357,7 +357,7 @@ function createCourseOrder(params) {
 
 //下单接口 
 function coursePay(params) {
-  return fetch.szfetch(URI, 'coursePay', params)
+  return fetch.szfetch(URI, 'xcxcoursePay', params)
 }
 
 //专项测评评估报告 

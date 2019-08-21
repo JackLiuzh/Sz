@@ -118,10 +118,11 @@ Page({
     console.log(this.data.region)
   },
   saveAddr: function () {
-    // var uid = wx.getStorageSync('uid');
+    var uid = wx.getStorageSync('uid');
     var token = wx.getStorageSync('token');
+    console.log("toke:",token);
     var params = {
-      // "uid": uid,
+      "uid": uid,
       "token": token,
       "name": this.data.name,
       "phone": this.data.phone,

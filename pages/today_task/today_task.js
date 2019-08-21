@@ -476,6 +476,7 @@ Page(filter.loginCheck({
           wx.getImageInfo({
             src: that.data.touxiang,
             success: function(res) {
+              console.log(res);
               resolve(res);
             }
           })
@@ -485,12 +486,13 @@ Page(filter.loginCheck({
           wx.getImageInfo({
             src: that.data.daka_bg,
             success: function(res) {
+              console.log(res);
               resolve(res);
             }
           })
       })
 
-      
+     
       //获取背景网络图片
       Promise.all([promise1,promise2]).then(res=>{
            wx.showLoading({
@@ -510,6 +512,7 @@ Page(filter.loginCheck({
            if (that.data.already_num >= that.data.count){
              finish = 1
            } 
+        console.log("每日刷题");
         that.shengchenghaibao(res[0].path, nickName, erweima, daka_bg, daka_text, list, daka_days, zongshu_total, lookvideos, finish)
       })
   },
@@ -550,6 +553,8 @@ Page(filter.loginCheck({
 
   //生成专题测海报
   createZhuantiImg: function (e){
+
+    console.log(1111);
     var that = this
     //1获取微信头像 
     let promise1 = new Promise(function (resolve, reject) {
@@ -570,7 +575,6 @@ Page(filter.loginCheck({
       })
     })
 
-
     //获取背景网络图片
     Promise.all([promise1, promise2]).then(res => {
       wx.showLoading({
@@ -589,7 +593,7 @@ Page(filter.loginCheck({
       var project_count = project.project_count
       var wancheng_total = project.userproject_count
       var look_count = project.isover_project
-
+      
       that.shengchenghuantihaibao(touxiang, nickName, erweima, daka_bg, daka_text, project_count, wancheng_total, look_count)
     })
        

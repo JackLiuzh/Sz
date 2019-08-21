@@ -1,5 +1,5 @@
 // pages/dati/dati.js
-//var WxParse = require('../../components/wxParse/wxParse.js');
+var WxParse = require('../../components/wxParse/wxParse.js');
 const app = getApp()
 Page({
   /**
@@ -118,6 +118,15 @@ emojiChar:"☺-😋-😌-😍-😏-😜-😝-😞-😔-😪-😭-😁-😂-😃-
             d.data.data.data[i].b_an = 2
             d.data.data.data[i].c_an = 2
             d.data.data.data[i].d_an = 2    
+
+            WxParse.wxParse('reply' + i, 'html', d.data.data.data[i].title, that,5)
+            WxParse.wxParse('replynote' + i, 'html', d.data.data.data[i].note, that,5)
+            if (i === d.data.data.data.length - 1) {
+              WxParse.wxParseTemArray("replyTemArray", 'reply', d.data.data.data.length, that)
+              WxParse.wxParseTemArray("replyTemArrayNote", 'replynote', d.data.data.data.length, that)
+            }
+
+
            if ((d.data.data.data[i].user_answer) && (d.data.data.data[i].user_answer).length > 0){
                 var xuanxiang = d.data.data.data[i].user_answer
                 var pindex = i
@@ -666,9 +675,19 @@ emojiChar:"☺-😋-😌-😍-😏-😜-😝-😞-😔-😪-😭-😁-😂-😃-
               } 
               if (current < currentTab) {
                 var key = "questions[" + (current-i) + "]";
+                var ki = current - i;
               }else{
                 var key = "questions[" + (current+i) + "]";
+                var ki = current + i;
               }
+              
+              WxParse.wxParse('reply' + ki, 'html', d.data.data[i].title, that)
+              WxParse.wxParse('replynote' + ki, 'html', d.data.data[i].note, that)
+              if (i === d.data.data.length - 1) {
+                WxParse.wxParseTemArray("replyTemArray", 'reply', d.data.data.length, that)
+                WxParse.wxParseTemArray("replyTemArrayNote", 'replynote', d.data.data.length, that)
+              }
+
               that.setData({ [key]: d.data.data[i]})
             }
           }

@@ -15,7 +15,7 @@
                  <image style="width:36rpx;height:36rpx;" src='../../images/rili@2x.png'></image>
              </view>
              </navigator>
-             <view data-id="dd" bindtap='createNewImg' class="box1">
+             <view data-id="dd" catchtap='createNewImg' class="box1">
                  <image style="width:36rpx;height:36rpx;" src='../../images/fenxiang@2x.png'></image>
              </view>
         </view>
@@ -71,7 +71,7 @@
                          <text class="butask" wx:if="{{ item.already_total < item.today_tot }}">补任务</text>
                          </view>
                     </navigator>
-                    <view class="sder" bindtap='createNewImg'>
+                    <view class="sder" catchtap='createNewImg'>
                     <image style="width:36rpx;height:36rpx;" src='../../images/task_fxiang.png' ></image>
                      </view>
                     <navigator  url="/pages/make_plan/make_plan?user_task_id={{item.id}}&name={{item.tname}}" style="display:inline">
@@ -132,12 +132,12 @@
     <!-- 海报开始 -->
     <view class='imagePathBox' hidden="{{maskHidden == false}}">
       <image src="{{imagePath}}" class='shengcheng'  style="" ></image>
-      <button class='guanbi' bindtap='closedaka' style="">关闭</button>
-      <button class='baocun' bindtap='baocun'>保存图片</button>
+      <button class='guanbi' bindtap='closedaka' >关闭</button>
+      <button class='baocun' bindtap='baocun' >保存图片</button>
     </view>
     <view hidden="{{maskHidden == false}}" class="mask"></view> 
     <view hidden="{{ maskHidden == false }}" class="canvas-box">
-        <canvas style='width:{{ width  }}px;height: {{isIPX? height+64:height + 64}}px;position:fixed;top:9999px;' canvas-id="mycanvas"/>
+        <canvas style='width:{{ width  }}px;height: {{isIPX? height-64:height + 64}}px;position:fixed;top:9999px;' canvas-id="mycanvas"/>
     </view>
     <!-- 海报结束 -->
 </view>

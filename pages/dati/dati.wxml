@@ -1,4 +1,4 @@
-<!-- <import src="../../components/wxParse/wxParse.wxml"/> -->
+<import src="../../components/wxParse/wxParse.wxml"/>
 <view class="container" >
     <view class="box-swiper">
         <swiper style="height: {{clientHeight?clientHeight+'px':'auto'}}"  current="{{currentTab}}"  duration="500" bindchange="swiperchangefinish" bindanimationfinish ="swiperchange" >
@@ -24,7 +24,7 @@
                       </view>
                       <view class="box-title">
                           <view class="title-content">
-                              <!-- <template is="wxParse" data="{{wxParseData: replyTemArray[index] }}"/> -->
+                              <!-- <template is="wxParse" data="{{wxParseData: replyTemArray[index]}}"/> -->
                               <rich-text nodes="{{ item.title }}" class='rich-text'></rich-text>
                           </view>
                           <view class='cai_material_class' wx:if="{{item.material}}">

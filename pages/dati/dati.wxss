@@ -1,3 +1,4 @@
+@import "../../components/wxParse/wxParse.wxss";
 /* pages/dati/dati.wxss */
 page{
   background-color:white;

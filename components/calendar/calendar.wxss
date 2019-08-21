@@ -199,8 +199,9 @@
 .calender-body-date-week {
   display: flex;
   width: 100%;
-  border-bottom: 1px #f5f5f5 solid;
+  /* border-bottom: 1px #f5f5f5 solid; */
 }
+
 
 .date {
   position: relative;
@@ -210,6 +211,7 @@
   background: #fff;
   line-height: 106rpx;
 }
+
 
 .date.active {
   background: red;
@@ -230,10 +232,10 @@
   left: 0;
   right: 0;
   margin: auto;
-  width: 10rpx;
-  height: 10rpx;
-  border-radius: 50%;
-  background: #E65557;
+  width: 25rpx;
+  height: 30rpx;
+  /* border-radius: 50%;
+  background: #E65557; */
   z-index: 2;
 }
 .data-buka {
@@ -283,6 +285,16 @@
   background-color: #fff;
   color:#1c1c1c;
   box-sizing:border-box;
+}
+.date-current{
+  border-radius: 50%;
+  border:1rpx solid #E65557;
+  background-color: #E65557;
+  color:#fff;
+  box-sizing:border-box;
+}
+view.date-current .data-circle{
+  display: none;
 }
 .calendar-header view{
   color: #888888;

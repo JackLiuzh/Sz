@@ -73,7 +73,7 @@ Component({
       console.log(e)
       const data = e.currentTarget.dataset
       const url = data.path
-      // wx.switchTab({ url })
+      wx.switchTab({ url })
       if(data.index == 2){
            console.log("点击了我的")
       }else{

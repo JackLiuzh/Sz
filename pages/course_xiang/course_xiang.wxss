@@ -100,7 +100,8 @@ opacity:1;
     border-radius:4rpx;
 }
 .main_con{
-  margin-top:2rpx; 
+  margin-top:2rpx;
+  /* margin-bottom: 69rpx;  */
 }
 .item{
   padding: 0 32rpx;
@@ -267,4 +268,5 @@ color: white;
   padding: 30rpx;
   background: white;
   min-height: 600rpx;
+  padding-bottom: 70rpx;
 }

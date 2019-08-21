@@ -5,23 +5,30 @@ Page({
    * 页面的初始数据
    */
   data: {
-    url: ''
+    url: '',
+    flag:false
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+    })
     console.log(options)
     let url = decodeURIComponent(options.url)
     console.log(url)
     this.setData({ url: url})
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-      
+      wx.hideLoading()
+      this.setData({ flag: true })
   },
 
   /**

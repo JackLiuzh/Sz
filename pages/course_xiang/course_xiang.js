@@ -11,7 +11,8 @@ Page({
       currentData: 0,
       info:'',
       system_id:'',
-      system_id:''
+      system_id:'',
+      clientHeight:500
   },
 
   /**
@@ -22,6 +23,7 @@ Page({
     this.data.system_id = options.system_id
     this.setData({system_id:options.system_id})
     this.initData(options.system_id)
+    this.initscreen()
     
   },
   onShow:function(){
@@ -30,7 +32,15 @@ Page({
      }
      this.onLoad(options)
   },
-
+  // 初始化屏幕高度
+  initscreen: function () {
+    var that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({ clientHeight: res.windowHeight })
+      },
+    })
+  },
   bindchange:function(e){
      const that = this;
      that.setData({

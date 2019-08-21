@@ -8,6 +8,7 @@ Page(filter.loginCheck({
    * 页面的初始数据
    */
   data: {
+      livesrc:'',
       list:[],
       sys: '',
       iswxuser:false,
@@ -60,6 +61,9 @@ Page(filter.loginCheck({
     app.sz.xcxuserInfo(params).then(d => {
       console.log(d)
       if (d.data.status == 0) {
+        wx.navigateTo({
+          url: '/pages/live/live?url=' + that.data.livesrc,
+        })
         console.log("保存成功")
       } else {
         console.log("保存失败")
@@ -80,6 +84,9 @@ Page(filter.loginCheck({
     wx.navigateTo({
       url: '/pages/live/live?url=' + url,
     })
+  },
+  zangolive: function(e){
+     this.data.livesrc = encodeURIComponent(e.currentTarget.dataset.playbackurl)
   },
   //跳转待播
   godaibo: function(){

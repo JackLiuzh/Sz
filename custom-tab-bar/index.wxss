@@ -9,9 +9,9 @@
   padding-bottom: env(safe-area-inset-bottom);
 }
 .c_b{
-  position: absolute;
+  /* position: absolute;
   top: 0rpx;
-  right: 0rpx;
+  right: 0rpx; */
   height: 100%;
   width: 33%;
   border: none !important;
@@ -35,7 +35,7 @@
   flex: 1;
   text-align: center;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   flex-direction: column;
 }
@@ -44,7 +44,18 @@
   width: 27px;
   height: 27px;
 }
+.tab-bar-item image {
+  position:absolute;
+top:0rpx;
+width:27px;
+height:27px;
+left:-2rpx;
 
+}
 .tab-bar-item cover-view {
   font-size: 10px;
+}
+.tab-bar-item view{
+  position: absolute;
+  bottom: 0rpx;
 }

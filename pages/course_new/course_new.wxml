@@ -32,10 +32,10 @@
 
         <view  wx:if="{{item.liveStatus ==2}}" class="enter_zb" >
           <view bindtap='golive' data-playbackUrl="{{item.playurl}}" wx:if="{{iswxuser}}">
-              <image class="play_zb" src='../../images/bofang.png'></image>
+              <image class="play_zb"  src='../../images/bofang.png'></image>
               <view  class="enter" >进入直播间</view>
           </view>
-          <view wx:else="{{iswxuser}}">
+          <view bindtap='zangolive' data-playbackUrl="{{item.playurl}}" wx:else="{{iswxuser}}">
           <image class="play_zb" src='../../images/bofang.png'></image>
           <view  class="enter" >进直播间</view>
           <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class='idbut'></button>

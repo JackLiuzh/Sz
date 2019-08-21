@@ -36,17 +36,20 @@ Component({
       var that = this
       var bendiuserinfo = wx.getStorageSync("userInfo")
       var bendiava = bendiuserinfo.avatar
+      console.log("这是开始"+ that.data.iswxuser)
       if (bendiava == that.data.avatar) {
         that.setData({ iswxuser: false })
       } else {
         that.setData({ iswxuser: true })
       }
+      console.log("这是结束" + that.data.iswxuser)
     },
   },
   attached() {
   },
   methods: {
     bindGetUserInfo:function(e){
+      console.log("点击了授权按钮")
       var that = this
       console.log(e)
       wx.getSetting({
@@ -70,9 +73,11 @@ Component({
       console.log(e)
       const data = e.currentTarget.dataset
       const url = data.path
-      wx.switchTab({ url })
+      // wx.switchTab({ url })
       if(data.index == 2){
            console.log("点击了我的")
+      }else{
+        wx.switchTab({ url })
       }
       that.setData({
         selected: data.index

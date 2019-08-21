@@ -11,7 +11,7 @@ function xcxMyAddr(params) {
 }
 //我的_  
 function xcxMy(params) {
-  return fetch.szfetch(URI, 'userInfo', params)
+  return fetch.szfetch(URI, 'xcxuserInfo', params)
 }
 //我的_获取验证码  
 function xcxMyGetyzm(params) {

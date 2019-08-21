@@ -138,11 +138,10 @@ Page({
 
   //跳转首页
   backindex: function(){
-    wx.switchTab({
+    wx.navigateBack({
+      delta: 2
+    })
 
-      url: '/pages/today_task/today_task'
-
-    });  
   }
 
 

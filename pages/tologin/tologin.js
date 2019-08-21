@@ -40,7 +40,8 @@ Page({
                 // wx.switchTab({ url: '../today_task/today_task' })
                 wx.switchTab({ url: '../course_new/course_new' })
               }else{
-                wx.redirectTo({ url: '../first_comming/first_comming' })
+                // wx.redirectTo({ url: '../first_comming/first_comming' })
+                wx.switchTab({ url: '../course_new/course_new' })
               }
             } else {
               app.wechat.setStorage('isauth', false);

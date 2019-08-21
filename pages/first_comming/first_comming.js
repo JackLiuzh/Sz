@@ -72,7 +72,7 @@ Page({
               //console.log(d)
               if (d.data.status == 0) {
                 wx.switchTab({
-                  url: '../today_task/today_task',
+                  url: '../course_new/course_new',
                 })
               }else{
                 that.setData({

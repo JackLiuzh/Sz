@@ -13,21 +13,29 @@
         <view style='display:none;' class="title">{{item.video_title}}</view>
               
         <view class="speak">
-          <image class="touxiang" src="{{item.teacher.avatar}}"></image>
-          <view class="speaker">{{item.teacher.name}}</view>
-          <view class="shu4"></view>
+          <block wx:if="{{item.liveStatus ==2}}">
+              <image style='margin-left:314rpx;' class="touxiang" src="{{item.teacher.avatar}}"></image>
+              <view style='margin-left:358rpx;' class="speaker">{{item.teacher.name}}</view>
+             
+          </block>
+          <block wx:else>
+             <image class="touxiang" src="{{item.teacher.avatar}}"></image>
+             <view class="speaker">{{item.teacher.name}}</view>
+             <view class="shu4"></view>
+          </block>
+          
           <block wx:if="{{item.liveStatus ==1}}">
             <!-- <cover-view class="num">{{item.total_people}}人</cover-view> -->
             <view class="joining" style='margin-left:389rpx;'>{{item.video_time}} </view>
           </block>
           <block wx:if="{{item.liveStatus ==4}}">
-            <view class="num">303人</view>
+            <view class="num">{{ (index+1)*69}}人</view>
             <view class="joining">已参与 </view>
           </block>
-          <block wx:if="{{item.liveStatus ==2}}">
+          <!-- <block wx:if="{{item.liveStatus ==2}}">
             <view class="num">{{item.total_people}}人</view>
             <view class="joining">正在参与 </view>
-          </block>
+          </block> -->
         </view>
 
         <view  wx:if="{{item.liveStatus ==2}}" class="enter_zb" >
@@ -107,7 +115,7 @@
       <!-- <image style='width:149rpx;height:111rpx;' src='../../images/kefu@2x.png'></image>
       <button class='kefu' open-type='contact' bindcontact="handleContact">ff</button> -->
       <view class='course_title'>{{sys.title}}</view>
-      <view class='course_detail'>{{sys.explains}}</view>
+      <view class='course_detail'>{{sys.subject}}</view>
       <view wx:for="{{sys.teacher_list}}" wx:key="this" style='left:{{index * 60 + 50}}rpx;' class='teach-ico'>
         <image class="teach-ico-img" src="{{item.avatar}}" mode="aspectFill" ></image>
         <text class='teach-name'>{{item.name}}</text>

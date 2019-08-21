@@ -94,6 +94,7 @@ Page({
         selected: 2
       })
     }
+    this.onLoad();
 
     this.setData({
       user_area: wx.getStorageSync('address')

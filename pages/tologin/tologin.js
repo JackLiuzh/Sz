@@ -40,12 +40,13 @@ Page({
               if (d.data.isfirstlogin == 1) {
                 // wx.switchTab({ url: '../today_task/today_task' })
                 wx.switchTab({ url: '../course_new/course_new' })
+                that.xcxSubmitTask(d.data.uid)
               }else{
                 // wx.redirectTo({ url: '../first_comming/first_comming' })
                 wx.switchTab({ url: '../course_new/course_new' })
               }
               //自动创建任务
-              that.xcxSubmitTask(d.data.uid)
+              
             } else {
               app.wechat.setStorage('isauth', false);
             }

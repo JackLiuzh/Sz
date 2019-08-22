@@ -9,6 +9,7 @@ Page(filter.loginCheck({
    */
   data: {
       livesrc:'',
+      video_id:'',
       list:[],
       sys: '',
       iswxuser:false,
@@ -68,7 +69,7 @@ Page(filter.loginCheck({
       console.log(d)
       if (d.data.status == 0) {
         wx.navigateTo({
-          url: '/pages/live/live?url=' + that.data.livesrc,
+          url: '/pages/live/live?video_id=' + that.data.video_id,
         })
         console.log("保存成功")
       } else {
@@ -93,7 +94,9 @@ Page(filter.loginCheck({
     })
   },
   zangolive: function(e){
-     this.data.livesrc = encodeURIComponent(e.currentTarget.dataset.playbackurl)
+    //  this.data.livesrc = encodeURIComponent(e.currentTarget.dataset.playbackurl)
+    var video_id = e.currentTarget.dataset.video_id
+    this.setData({ video_id: video_id})
   },
   //跳转待播
   godaibo: function(){

@@ -43,7 +43,7 @@
               <image class="play_zb"  src='../../images/bofang.png'></image>
               <view  class="enter" >进入直播间</view>
           </view>
-          <view bindtap='zangolive' data-playbackUrl="{{item.playurl}}" wx:else="{{iswxuser}}">
+          <view bindtap='zangolive' data-video_id="{{item.video_id}}" data-playbackUrl="{{item.playurl}}" wx:else="{{iswxuser}}">
           <image class="play_zb" src='../../images/bofang.png'></image>
           <view  class="enter" >进直播间</view>
           <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class='idbut'></button>

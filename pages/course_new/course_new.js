@@ -43,11 +43,14 @@ Page(filter.loginCheck({
       var avatar = that.data.avatar
       var bendiava = wx.getStorageSync("userInfo").avatar
       var bendname = wx.getStorageSync("userInfo").name
-      if(bendname.indexOf('szgk')!=-1){
-        that.setData({ iswxuser:false})
-      }else{
-        that.setData({iswxuser:true})
+      if(bendname){
+        if (bendname.indexOf('szgk') != -1) {
+          that.setData({ iswxuser: false })
+        } else {
+          that.setData({ iswxuser: true })
+        }
       }
+      
   },
   //保存授权信息信息
   saveuserinfo: function () {
@@ -82,10 +85,11 @@ Page(filter.loginCheck({
   },
   //跳转直播
   golive: function(e){
-    var url = encodeURIComponent(e.currentTarget.dataset.playbackurl)
+    // var url = encodeURIComponent(e.currentTarget.dataset.playbackurl)
+    var video_id = e.currentTarget.dataset.video_id
     // console.log(e)
     wx.navigateTo({
-      url: '/pages/live/live?url=' + url,
+      url: '/pages/live/live?video_id=' + video_id,
     })
   },
   zangolive: function(e){
@@ -99,10 +103,11 @@ Page(filter.loginCheck({
   },
   //看回放
   gohuifang:function(e){
-    var url = encodeURIComponent(e.currentTarget.dataset.playbackurl)
+    // var url = encodeURIComponent(e.currentTarget.dataset.playbackurl)
     // console.log(e)
+    var video_id = e.currentTarget.dataset.video_id
     wx.navigateTo({
-      url: '/pages/live/live?url='+url,
+      url: '/pages/live/live?video_id='+video_id,
     })
   },
   //购买详情页

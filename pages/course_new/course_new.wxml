@@ -39,7 +39,7 @@
         </view>
 
         <view  wx:if="{{item.liveStatus ==2}}" class="enter_zb" >
-          <view bindtap='golive' data-playbackUrl="{{item.playurl}}" wx:if="{{iswxuser}}">
+          <view bindtap='golive' data-video_id="{{item.video_id}}" data-playbackUrl="{{item.playurl}}" wx:if="{{iswxuser}}">
               <image class="play_zb"  src='../../images/bofang.png'></image>
               <view  class="enter" >进入直播间</view>
           </view>
@@ -53,7 +53,7 @@
           <image style='display:none;' class="play_zb" src='../../images/zbbof.png'></image>
           <view style='margin-left:75rpx;' class="enter" >查看详情</view>
         </view>
-        <view bindtap='gohuifang' data-playbackUrl="{{item.playurl}}" wx:if="{{item.liveStatus ==4}}" class="look_bp" >
+        <view bindtap='gohuifang' data-video_id="{{item.video_id}}" data-playbackUrl="{{item.playurl}}" wx:if="{{item.liveStatus ==4}}" class="look_bp" >
             <image class="play_zb" src='../../images/huifang.png' ></image>
             <view class="enter" >看回放</view>
         </view>    

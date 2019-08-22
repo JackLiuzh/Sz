@@ -15,6 +15,7 @@ Page({
     bpurl: '',
     project_id: '',
     kemu_id: '',
+    video_id:'',
     finish: 0,
 
   },
@@ -321,6 +322,7 @@ Page({
       bpurl: this.data.courselive[id].live_info.playbackUrl,
       project_id: this.data.courselive[id].project_id,
       kemu_id: this.data.courselive[id].kemu_id,
+      video_id: this.data.courselive[id].video_id,
     })
     if (this.data.finish == 0) {
       this.setData({
@@ -330,7 +332,7 @@ Page({
       let url = encodeURIComponent(this.data.bpurl);
       console.log(url);
       wx.navigateTo({
-        url: '../live/live?url=' + url,
+        url: '../live/live?video_id=' + this.data.video_id,
       });
       this.setData({
         showModal_zb: false
@@ -352,6 +354,7 @@ Page({
       bpurl: this.data.courselive[id].live_info.playbackUrl,
       project_id: this.data.courselive[id].project_id,
       kemu_id: this.data.courselive[id].kemu_id,
+      video_id: this.data.courselive[id].video_id,
     })
     if(this.data.finish == 0){
       this.setData({
@@ -361,7 +364,7 @@ Page({
       let url = encodeURIComponent(this.data.bpurl);
       console.log(url);
       wx.navigateTo({
-        url: '../live/live?url=' + url,
+        url: '../live/live?video_id=' + this.data.video_id,
       });
       this.setData({
         showModal_pb: false
@@ -387,7 +390,7 @@ Page({
     let url = encodeURIComponent(this.data.bpurl);
     console.log(url);
     wx.navigateTo({
-      url: '../live/live?url=' + url,
+      url: '../live/live?video_id=' + this.data.video_id,
     });
     this.setData({
       showModal_pb: false
@@ -397,7 +400,7 @@ Page({
     let url = encodeURIComponent(this.data.bpurl);
     console.log(url);
     wx.navigateTo({
-      url: '../live/live?url=' + url,
+      url: '../live/live?video_id=' + this.data.video_id,
     });
     this.setData({
       showModal_zb: false

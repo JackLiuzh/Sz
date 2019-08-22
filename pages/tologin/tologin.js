@@ -12,6 +12,7 @@ Page({
   },
   //获取手机号登陆微信小程序
   getPhoneNumber: function(e){
+    var that = this
     wx.showLoading({
       title: '登录中...',
     })
@@ -43,6 +44,8 @@ Page({
                 // wx.redirectTo({ url: '../first_comming/first_comming' })
                 wx.switchTab({ url: '../course_new/course_new' })
               }
+              //自动创建任务
+              that.xcxSubmitTask(d.data.uid)
             } else {
               app.wechat.setStorage('isauth', false);
             }
@@ -87,6 +90,7 @@ Page({
                           wx.switchTab({ url: '../today_task/today_task' })
                           wx.setStorageSync("token", d.data.token)
                           app.globalData.token = d.data.token
+                          
                         }else{
                           wx.redirectTo({ url: '../first_comming/first_comming'})
                         }
@@ -107,6 +111,19 @@ Page({
        wx.hideLoading()
     }
     
+  },
+
+  //登录成功自动创建任务
+  xcxSubmitTask: function (uid) {
+    var that = this
+    var params = {
+      uid: uid
+    }
+    app.sz.xcxSubmitTask(params).then(d=>{
+        if(d.data.status== 0){
+           console.log("创建任务城东")
+        }
+    })
   },
 
   /**

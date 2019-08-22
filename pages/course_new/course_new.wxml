@@ -116,7 +116,7 @@
       <button class='kefu' open-type='contact' bindcontact="handleContact">ff</button> -->
       <view class='course_title'>{{sys.title}}</view>
       <view class='course_detail'>{{sys.subject}}</view>
-      <view wx:for="{{sys.teacher_list}}" wx:key="this" style='left:{{index * 60 + 50}}rpx;' class='teach-ico'>
+      <view wx:for="{{sys.teacher_list}}" wx:key="this" style='left:{{index * 70 + 30}}rpx;' class='teach-ico'>
         <image class="teach-ico-img" src="{{item.avatar}}" mode="aspectFill" ></image>
         <text class='teach-name'>{{item.name}}</text>
       </view>

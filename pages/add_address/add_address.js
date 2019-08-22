@@ -135,8 +135,12 @@ Page({
     app.sz.xcxaddUserAddress(params).then(d => {
       if (d.data.status == 1) {
         console.log(d.data.msg)
+        wx.navigateBack({
+          delta: 1
+        })
       } else {
         console.log(d.data.msg)
+        console.log("保存接口错误")
       }
     })
 
@@ -150,9 +154,7 @@ Page({
 
     // console.log(hh)
 
-    wx.navigateBack({
-      delta: 1
-    })
+    
   },
 
   

@@ -19,7 +19,7 @@ Page(filter.loginCheck({
    */
   onLoad: function (options) {
     
-      this.initdata()
+      // this.initdata()
       this.iswxuser()
   },
   bindGetUserInfo(e){
@@ -42,8 +42,11 @@ Page(filter.loginCheck({
       var that = this
       var avatar = that.data.avatar
       var bendiava = wx.getStorageSync("userInfo").avatar
-      if(bendiava == avatar){
+      var bendname = wx.getStorageSync("userInfo").name
+      if(bendname.indexOf('szgk')!=-1){
         that.setData({ iswxuser:false})
+      }else{
+        that.setData({iswxuser:true})
       }
   },
   //保存授权信息信息
@@ -147,6 +150,7 @@ Page(filter.loginCheck({
     }
 
     this.initdata()
+    this.iswxuser()
   },
 
   /**

@@ -1,7 +1,8 @@
 <!--pages/course_newxiang/course_newxiang.wxml-->
 <view class='container'>
 <view class='dd'>
-   <image wx:if="{{isflag}}" style='width:100%;' mode="widthFix" src="{{url}}"></image>
+   <!-- <image wx:if="{{isflag}}" style='width:100%;' mode="widthFix" src="{{url}}"></image> -->
+   <rich-text nodes="{{url}}"></rich-text>
 </view>
 </view>
 

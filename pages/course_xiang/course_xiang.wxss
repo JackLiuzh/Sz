@@ -274,3 +274,6 @@ color: white;
   min-height: 600rpx;
   padding-bottom: 70rpx;
 }
+.text_le{
+  padding-right: 10rpx !important;
+}

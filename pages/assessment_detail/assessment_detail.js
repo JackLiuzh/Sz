@@ -99,10 +99,10 @@ Page({
   //直播
   gozhibo: function(e) {
        let that = this
-       var url = encodeURIComponent(e.currentTarget.dataset.url)
-       if (url){
+       var video_id = that.data.pinggu.video_id
+       if (video_id){
          wx.navigateTo({
-           url: '../live/live?url=' + url
+           url: '../live/live?video_id=' + video_id
          });
        }
 

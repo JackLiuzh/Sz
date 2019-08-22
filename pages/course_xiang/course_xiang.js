@@ -22,15 +22,14 @@ Page({
     console.log(options.system_id)
     this.data.system_id = options.system_id
     this.setData({system_id:options.system_id})
-    this.initData(options.system_id)
     this.initscreen()
-    
   },
   onShow:function(){
      var options ={
        system_id: this.data.system_id
      }
-     this.onLoad(options)
+    console.log(options);
+    this.initData(options.system_id)
   },
   // 初始化屏幕高度
   initscreen: function () {

@@ -86,10 +86,11 @@
         <view class="content_pb_brief">
           <view class="brief_title">{{item.video_title}}</view>
           <view class="speak_pb">
-            <image class="touxiang_spk" src="{{item.live_info.zhubo.p_40}}"></image>
+            <image wx:if="{{item.teacher_avatar}}" class="touxiang_spk" src="{{item.teacher_avatar}}"></image>
+            <image wx:elif="{{item.teacher_avatar == null}}" class="touxiang_spk" src="{{item.live_info.zhubo.p_40}}"></image>  
             <text class="speaker_pb">{{item.live_info.zhubo.nickname}}</text>
           </view>
-          <text class="join_pb">{{(item.kemu_id)*63}}人参与</text>
+          <text class="join_pb">{{(xb+1)*57}}人参与</text>
         </view>
         <!-- <view class="watch_pb" bindtap="{{finish==0?'showModalPb':'pblive'}}" data-xb='{{xb}}'>看回放</view> -->
         <view class="watch_pb" bindtap="showModalPb" data-xb='{{xb}}'>看回放</view>

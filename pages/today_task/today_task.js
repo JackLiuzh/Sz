@@ -2,7 +2,7 @@ const app = getApp()
 const filter = require('../../utils/filter.js');
 Page(filter.loginCheck({
   /**
-   * 页面的初始数据
+   * 页面的初始数 据
    */
   data: {
     accomplish_days: 0 ,  

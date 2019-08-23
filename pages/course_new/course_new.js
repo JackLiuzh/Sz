@@ -21,7 +21,7 @@ Page(filter.loginCheck({
   onLoad: function (options) {
     
       // this.initdata()
-      this.iswxuser()
+      // this.iswxuser()
   },
   bindGetUserInfo(e){
       var that = this

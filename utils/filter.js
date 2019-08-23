@@ -17,7 +17,10 @@ function loginCheck(pageObj) {
              //console.log(d);
              if(d.data.status==0){
                 if(d.data.isfirstlogin==0){
-                   wx.redirectTo({
+                  //  wx.redirectTo({
+                  //    url: '../first_comming/first_comming',
+                  //  })
+                  wx.switchTab({
                      url: '../first_comming/first_comming',
                    })
                 }else {

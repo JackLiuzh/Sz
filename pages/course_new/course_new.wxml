@@ -114,6 +114,7 @@
     <view class='layout1'>
       <!-- <image style='width:149rpx;height:111rpx;' src='../../images/kefu@2x.png'></image>
       <button class='kefu' open-type='contact' bindcontact="handleContact">ff</button> -->
+      <!-- <view class='course_title'>哈哈哈哈哈哈哈哈哈哈或或或或或或或</view> -->
       <view class='course_title'>{{sys.title}}</view>
       <view class='course_detail'>{{sys.subject}}</view>
       <view wx:for="{{sys.teacher_list}}" wx:key="this" style='left:{{index * 70 + 30}}rpx;' class='teach-ico'>
@@ -122,7 +123,9 @@
       </view>
     </view>
 
+
     <view class="layout2">
+    <!-- <view class="course_price">￥499.00</view> -->
       <view class="course_price">￥{{sys.price}}</view>
       <view bindtap='gocourse_xiang' data-system_id="{{sys.system_id}}" class="bt_buy"><text wx:if="{{sys.pay_state == 0}}" class="go_buy">去购买</text><text class="go_buy" wx:if="{{sys.pay_state == 1}}">已购买</text></view>
     </view>

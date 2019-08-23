@@ -127,6 +127,7 @@ opacity:1;
   color:rgba(255,255,255,1);
   opacity:1;
 }
+
 .title{
   position: absolute;
   text-align: center;
@@ -286,18 +287,11 @@ opacity:1;
   height: 300rpx;
   overflow: hidden;
 }
-/* .kefu{
-   position: absolute;
-   top: 0;
-   right: 0;
-   width: 100%;
-   opacity: 0;
-} */
 .course_title{
   /* position: absolute; */
   margin-left:50rpx;
   margin-top:40rpx;
-  width:360rpx;
+  width:450rpx;
   height:56rpx;
   font-size:40rpx;
   font-family:PingFang SC;
@@ -311,7 +305,7 @@ white-space: nowrap;
 }
 .course_detail{
   position: absolute;
-  margin-left:50rpx;
+  margin-left:55rpx;
   margin-top:100rpx;
   width:360rpx;
   height:42rpx;
@@ -324,7 +318,7 @@ white-space: nowrap;
 }
 .teach-ico{
   position: absolute;
-  left: 50rpx;
+  margin-left:20rpx;
   margin-top:150rpx;
   text-align: center;
 }
@@ -352,11 +346,12 @@ white-space: nowrap;
   overflow: hidden;
 }
 .course_price{
-  margin-left:140rpx;
+  /* margin-right:rpx; */
+  /* margin-left:30rpx; */
   margin-top:90rpx;
   /* width:101rpx; */
   height:50rpx;
-  font-size:36rpx;
+  font-size:35rpx;
   font-family:PingFang SC;
   font-weight:bold;
   line-height:50rpx;
@@ -364,7 +359,8 @@ white-space: nowrap;
   opacity:1;
 }
 .bt_buy{
-  margin-left:120rpx;
+  /* margin-right:rpx; */
+  /* margin-left:15rpx; */
   margin-top:15rpx;
   width:165rpx;
   height:60rpx;

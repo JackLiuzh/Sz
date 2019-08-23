@@ -31,7 +31,7 @@ Page(filter.loginCheck({
       "project_list":[],
       "project_count":0,
       "userproject_count":0,
-      "isover_project":1,
+      "isover_project":0,
     }
   },
 
@@ -42,42 +42,6 @@ Page(filter.loginCheck({
 
     
 
-    wx.showLoading({title:'加载中'});
-    var that = this
-    app.globalData.uid = wx.getStorageSync('uid');
-    let uid = app.globalData.uid; 
-    if(uid){
-       var params = {
-         "uid":uid
-       }
-      app.sz.xcxTodayTask(params).then(d=>{
-         if(d.data.status==0){
-           wx.downloadFile({
-             url: d.data.data.poster.img_url,
-             success: function (r) {
-               that.setData({ daka_bg: r.tempFilePath })
-             }
-           })
-            that.setData({
-              already_num:d.data.data.already_num,
-              count: d.data.data.count,
-              unnews: d.data.data.unnews,
-              list : d.data.data.list,
-              complete_list: d.data.data.complete_list,
-              daka_days:d.data.data.daka_days,
-              zongshu_total: d.data.data.zongshu_total,
-              lookvideos: d.data.data.lookvideos,
-              daka_bg: d.data.data.poster.img_url,
-              daka_text: d.data.data.poster.title,
-              zhibo_data: d.data.data.zhibo_data,
-              project: d.data.data.project,
-            })
-            wx.hideLoading()
-         }else{
-           console.log("接口错误")
-         }
-      })
-    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -104,7 +68,7 @@ Page(filter.loginCheck({
     }
 
 
-      var that = this
+   var that = this
     //本地缓存
     wx.getStorage({
       key:"accomplish_days",
@@ -130,7 +94,45 @@ Page(filter.loginCheck({
             })
         }
       })
-      that.onLoad()
+     
+
+
+    wx.showLoading({ title: '加载中' });
+    app.globalData.uid = wx.getStorageSync('uid');
+    let uid = app.globalData.uid;
+    if (uid) {
+      var params = {
+        "uid": uid
+      }
+      app.sz.xcxTodayTask(params).then(d => {
+        if (d.data.status == 0) {
+          wx.downloadFile({
+            url: d.data.data.poster.img_url,
+            success: function (r) {
+              that.setData({ daka_bg: r.tempFilePath })
+            }
+          })
+          that.setData({
+            already_num: d.data.data.already_num,
+            count: d.data.data.count,
+            unnews: d.data.data.unnews,
+            list: d.data.data.list,
+            complete_list: d.data.data.complete_list,
+            daka_days: d.data.data.daka_days,
+            zongshu_total: d.data.data.zongshu_total,
+            lookvideos: d.data.data.lookvideos,
+            daka_bg: d.data.data.poster.img_url,
+            daka_text: d.data.data.poster.title,
+            zhibo_data: d.data.data.zhibo_data,
+            project: d.data.data.project,
+          })
+          wx.hideLoading()
+        } else {
+          console.log("接口错误")
+        }
+      })
+    }
+
   },
 
   //根据任务不同跳转不同

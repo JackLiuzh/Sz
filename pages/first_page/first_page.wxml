@@ -81,7 +81,7 @@
     <text class="playbacking">回放中</text>
 
     <view class="list_pb" wx:for='{{courselive}}' wx:key="index4" wx:for-index="xb" >
-      <view class="content_pb" wx:if="{{item.liveStatus == 3}}">
+      <view class="content_pb" wx:if="{{item.liveStatus == 4}}">
         <image class="img_bp" src="{{item.avatar}}"></image>
         <view class="content_pb_brief">
           <view class="brief_title">{{item.video_title}}</view>
@@ -89,7 +89,7 @@
             <image class="touxiang_spk" src="{{item.live_info.zhubo.p_40}}"></image>
             <text class="speaker_pb">{{item.live_info.zhubo.nickname}}</text>
           </view>
-          <text class="join_pb">{{item.buy_count}}人参与</text>
+          <text class="join_pb">{{(xb+1)*63}}人参与</text>
         </view>
         <!-- <view class="watch_pb" bindtap="{{finish==0?'showModalPb':'pblive'}}" data-xb='{{xb}}'>看回放</view> -->
         <view class="watch_pb" bindtap="showModalPb" data-xb='{{xb}}'>看回放</view>

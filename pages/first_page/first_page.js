@@ -17,6 +17,7 @@ Page({
     kemu_id: '',
     video_id:'',
     finish: 0,
+    romand:0,
 
   },
   onLoad: function () {
@@ -118,7 +119,12 @@ Page({
   },
 
   onShow: function () {
-   
+    
+  //   let romand = Math.floor(Math.random() * 200 + 200)
+  //   this.setData({
+  //     romand: romand
+  //   })
+  //   console.log(this.data.romand)
   },
 
   dateInit: function () {

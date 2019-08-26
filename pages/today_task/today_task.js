@@ -768,10 +768,16 @@ Page(filter.loginCheck({
 
   //看直播
   golookzhibo: function (e) {
-    var url = encodeURIComponent(e.currentTarget.dataset.url)
-    if (url) {
+    // var url = encodeURIComponent(e.currentTarget.dataset.url)
+    // if (url) {
+    //   wx.navigateTo({
+    //     url: '../live/live?url=' + url
+    //   });
+    // }
+    var video_id = e.currentTarget.dataset.video_id
+    if (video_id) {
       wx.navigateTo({
-        url: '../live/live?url=' + url
+        url: '../live/live?video_id=' + video_id
       });
     }
   }  

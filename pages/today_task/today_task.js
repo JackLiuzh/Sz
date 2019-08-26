@@ -135,7 +135,7 @@ Page(filter.loginCheck({
 
   },
 
-  //根据任务不同跳转不同
+  //根据任务不同跳转不 同
   today_goto: function(e) {
      var user_task_id = e.currentTarget.dataset.user_task_id
      var type = e.currentTarget.dataset.type

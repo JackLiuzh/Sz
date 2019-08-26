@@ -49,6 +49,7 @@
               {{day.date}}
               <view wx:if="{{day.have}}">
                  <view wx:if="{{day.isfinish == 0}}" class="data-buka">补任务</view>
+                 <view wx:elif="{{day.isfinish == 2}}" class="data-dian"></view>
                  <view wx:else class="data-circle" ><image src="/images/dianzan.png" style="position:relative;width:26rpx;top:-35rpx;height:26rpx;"></image></view>
                  
               </view>

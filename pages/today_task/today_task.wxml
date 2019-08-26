@@ -52,8 +52,25 @@
             <view class='b_top'>
                 <view  style='flex:1;' class="b_t_left" >
                     <view class='te1' style="color:#AAAAAA">{{item.tname}}</view>
-                    <view class='te2' style="color:#AAAAAA">{{item.task_days}}天任务已结束, 重新添加任务可激活</view>
+                    <view class='te2' style="color:#AAAAAA">{{item.task_days}}天任务已结束, 重新设置任务可激活</view>
                 </view>
+                <!-- 补任务 分享 设置 3个小图标-->
+                <view  class='b_t_zhong' >
+                    <navigator url='../../pages/rili/rili' style="display:inline;">
+                    <view class="sder" >
+                         <image style="width:36rpx;height:36rpx;" src='../../images/task_rili.png'></image>
+                    </view>
+                    </navigator>
+                    <view class="sder" catchtap='createNewImg'>
+                    <image style="width:36rpx;height:36rpx;" src='../../images/task_fxiang.png' ></image>
+                     </view>
+                    <navigator  url="/pages/make_plan/make_plan?user_task_id={{item.id}}&name={{item.tname}}&type=1" style="display:inline">
+                        <view class="sder" style="" >
+                         <image style="width:36rpx;height:36rpx;" src='../../images/task_set.png'></image>
+                         </view>
+                     </navigator>
+                </view>
+                <!-- 补任务 分享 设置 结束-->
             </view>
             <view class='taskzhouqi' style="color:#AAAAAA;margin-top:10rpx;">任务周期：{{item.tastzhouqi}}</view>
         </view>
@@ -74,7 +91,7 @@
                     <view class="sder" catchtap='createNewImg'>
                     <image style="width:36rpx;height:36rpx;" src='../../images/task_fxiang.png' ></image>
                      </view>
-                    <navigator  url="/pages/make_plan/make_plan?user_task_id={{item.id}}&name={{item.tname}}" style="display:inline">
+                    <navigator  url="/pages/make_plan/make_plan?user_task_id={{item.id}}&name={{item.tname}}&type=1" style="display:inline">
                         <view class="sder" style="" >
                          <image style="width:36rpx;height:36rpx;" src='../../images/task_set.png'></image>
                          </view>

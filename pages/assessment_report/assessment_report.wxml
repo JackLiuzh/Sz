@@ -19,7 +19,7 @@
         <!-- 雷达图结束 -->
         <view class="catgory">
             <view class="catgory-in" wx:for="{{category}}" >
-              <text class="catgory-l">{{ item.cate_name }}</text>
+              <text class="catgory-l">{{ item.cate_name }}({{item.total}})</text>
               <view class="catgory-z">正确率<text class="catgory-number">{{ item.lv }}</text>%</view>
               <text class="catgory-r" wx:if="{{ item.lv < item.rank_B }}" >{{ item.rank_text_C }}</text>
               <text class="catgory-r" wx:if="{{ item.lv < item.rank_A && item.lv >= item.rank_B }}" >{{ item.rank_text_B }}</text>

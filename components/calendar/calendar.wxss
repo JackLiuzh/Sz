@@ -238,6 +238,20 @@
   background: #E65557; */
   z-index: 2;
 }
+
+.data-dian{
+  position: absolute;
+  bottom: 18rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 50%;
+  background: #E65557;
+  z-index: 2;
+}
+
 .data-buka {
   position: absolute;
   bottom: 7rpx;

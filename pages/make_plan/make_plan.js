@@ -35,7 +35,8 @@ Page({
     pinlvnum:'',//可选的打卡频率数组
     pushnum:'',//推送数量
     weekday:'',//坚持周期
-    category:''//推送类别
+    category:'',//推送类别
+    type:0     //0任务未完成 1 已完成 
   },
 
   /**
@@ -47,6 +48,11 @@ Page({
       wx.setNavigationBarTitle({ title: options.name })
     }
      console.log(options)
+    if(options.type){
+      that.setData({
+        type: options.type
+      })
+     }
      var uid = app.globalData.uid
      var params = {
        "uid":uid,
@@ -236,6 +242,7 @@ Page({
   submitrange: function() {
     var that = this
     var uid = app.globalData.uid
+    var type = that.data.type
     var user_task_id = that.data.user_task_id
     var category = JSON.stringify(that.data.category)
     // var data = new Array()
@@ -256,7 +263,8 @@ Page({
     var params = {
       "uid":uid,
       "user_task_id": user_task_id,
-      "data": category
+      "data": category,
+      "type": type
     }
     //console.log(params)
     app.sz.xcxUpdateRangepost(params).then(d=>{
@@ -268,6 +276,11 @@ Page({
     })
     
   },
+ 
+  /**
+   *  生成新的任务
+   */
+   
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作

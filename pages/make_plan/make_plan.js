@@ -183,11 +183,9 @@ Page({
     // setTimeout(function () {
     //   wx.hideLoading()
     // }, 2000)
-    wx.showToast({
-      title: '保存成功',
-      icon: 'success',
-      duration: 2000
-    })
+
+    this.submitrange();
+  
   },
 
   /**
@@ -233,7 +231,7 @@ Page({
     //    }
     // }
     // console.log(category)
-    this.submitrange()
+   
   },
 
   /**
@@ -270,6 +268,11 @@ Page({
     app.sz.xcxUpdateRangepost(params).then(d=>{
        if(d.data.status==0){
           console.log("修改范围成功")
+         wx.showToast({
+           title: '保存成功',
+           icon: 'success',
+           duration: 2000
+         })
        }else {
           console.log("接口错误")
        }

@@ -340,17 +340,17 @@ Page({
       wx.navigateTo({
         url: '../live/live?video_id=' + this.data.video_id,
       });
-      this.setData({
-        showModal_zb: false
-      })
+      // this.setData({
+      //   showModal_zb: false
+      // })
     }
     console.log(this.data.finish);
     console.log(this.data.bpurl);
     console.log(this.data.project_id);
     console.log(this.data.kemu_id);
-    this.setData({
-      showModal_zb: true
-    })
+    // this.setData({
+    //   showModal_zb: true
+    // })
   },
   showModalPb: function (e) {
     var id = e.currentTarget.dataset.xb;

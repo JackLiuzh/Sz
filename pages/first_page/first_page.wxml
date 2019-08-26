@@ -26,7 +26,7 @@
     </view>
 
     <view class="enter_zb" bindtap="showModalZb" data-xb='{{xb}}'>
-      <cover-image class="play_zb" src='../../images/zbbof.png'></cover-image>
+      <image class="play_zb" src='../../images/zbbof.png'></image>
       <view class="enter" >进入直播间</view>
     </view> 
 

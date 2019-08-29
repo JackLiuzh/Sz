@@ -238,6 +238,11 @@ Page({
    * 提交推送范围
    */
   submitrange: function() {
+
+    wx.showLoading({
+      title: '加载中...',
+    })
+
     var that = this
     var uid = app.globalData.uid
     var type = that.data.type
@@ -273,6 +278,7 @@ Page({
            icon: 'success',
            duration: 2000
          })
+         wx.hideLoading()
        }else {
           console.log("接口错误")
        }

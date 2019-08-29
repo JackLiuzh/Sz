@@ -91,7 +91,7 @@
                     <view class="sder" catchtap='createNewImg'>
                     <image style="width:36rpx;height:36rpx;" src='../../images/task_fxiang.png' ></image>
                      </view>
-                    <navigator  url="/pages/make_plan/make_plan?user_task_id={{item.id}}&name={{item.tname}}&type=1" style="display:inline">
+                    <navigator  url="/pages/make_plan/make_plan?user_task_id={{item.id}}&name={{item.tname}}&type=0" style="display:inline">
                         <view class="sder" style="" >
                          <image style="width:36rpx;height:36rpx;" src='../../images/task_set.png'></image>
                          </view>

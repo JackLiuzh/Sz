@@ -319,7 +319,7 @@ font-weight:400;
   position: absolute;
   bottom: 0;
   width: 100%;
-  /* max-height: 700rpx; */
+  max-height: 800rpx;
 }
 .close{
   position: absolute;

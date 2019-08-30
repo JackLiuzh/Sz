@@ -1,7 +1,7 @@
-const URI = 'http://cs.szgk.cn/api.php'
+  const URI = 'http://cs.szgk.cn/api.php'
  // const URI = 'http://192.168.1.219/api.php' 
  //const URI = 'http://li.szgk.cn/api.php' 
-// const URI = 'https://www.szgk.cn/api.php' 
+ //const URI = 'https://www.szgk.cn/api.php' 
 
 const fetch = require('./fetch')
 
@@ -386,9 +386,12 @@ function xcxuserInfo(params) {
 function xcxliveUrl(params) {
   return fetch.szfetch(URI, 'xcxliveUrl', params)
 }
+//专项刷题记录观看视频
+function xcxaddvideoProject(params) {
+  return fetch.szfetch(URI, 'xcxaddvideoProject', params)
+}
 
-
-module.exports = { loginregister, xcxindex, xcxfirstLogin, xcxSubmitTask, xcxTodayTask, xcxUserTasklist, xcxAddUserTask, xcxDelUserTask, xcxUpdateTaskSet, xcxUpdateCycle, xcxUpdatePushNum, xcxUpdatePinlv, xcxCommentThumbsList, xcxEliminateCommentThumbs, xcxUpdateRange, xcxUpdateRangepost, xcxDakaTask, xcxRiliInfo, xcxgetTaskTi, xcxVideoDetail, xcxAnswerInsert, xcxAddComment, xcxAddThum, xcxAddVideoJilu, xcxgetTaskTiOne, courseList, courseLive, category, courseDetail, xcxMyAddr, xcxMy, xcxMyGetyzm, xcxMySendyzm, xcxfeedbackyzm, xcxsuggest, xcxaddUserAddress, createCourseOrder, xcxgetSpecialList, xcxgetProjectevaluationTi, coursePay, xcxshutiteport, xcxkanVideo, xcxphone, photouploads, xcxcourseLive, xcxNewCourse, pigobaogao, xcxanswersave, xcxNewCourseDetail, xcxorderaddress, xcxuserInfo,xcxliveUrl}
+module.exports = { loginregister, xcxindex, xcxfirstLogin, xcxSubmitTask, xcxTodayTask, xcxUserTasklist, xcxAddUserTask, xcxDelUserTask, xcxUpdateTaskSet, xcxUpdateCycle, xcxUpdatePushNum, xcxUpdatePinlv, xcxCommentThumbsList, xcxEliminateCommentThumbs, xcxUpdateRange, xcxUpdateRangepost, xcxDakaTask, xcxRiliInfo, xcxgetTaskTi, xcxVideoDetail, xcxAnswerInsert, xcxAddComment, xcxAddThum, xcxAddVideoJilu, xcxgetTaskTiOne, courseList, courseLive, category, courseDetail, xcxMyAddr, xcxMy, xcxMyGetyzm, xcxMySendyzm, xcxfeedbackyzm, xcxsuggest, xcxaddUserAddress, createCourseOrder, xcxgetSpecialList, xcxgetProjectevaluationTi, coursePay, xcxshutiteport, xcxkanVideo, xcxphone, photouploads, xcxcourseLive, xcxNewCourse, pigobaogao, xcxanswersave, xcxNewCourseDetail, xcxorderaddress, xcxuserInfo, xcxliveUrl, xcxaddvideoProject}
 
 
 

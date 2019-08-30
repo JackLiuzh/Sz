@@ -1,5 +1,6 @@
 // pages/live/live.js
 const app = getApp()
+var num = 0; //记录时长
 Page({
 
   /**
@@ -7,6 +8,8 @@ Page({
    */
   data: {
     url: '',
+    setInter: '',//定时器名
+    lesson_id:0,
     flag:false
   },
 
@@ -20,14 +23,17 @@ Page({
     console.log(options)
     // let url = decodeURIComponent(options.url)
     let video_id = options.video_id
-    // this.setData({ url: url})
+    if (options.lesson_id){
+      this.setData({ lesson_id: options.lesson_id})
+    }
+  
     this.geturl(video_id)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-      
+    
   },
 
   /**
@@ -50,6 +56,14 @@ Page({
           if(d.data.status ==0){
             // that.setData({url: })
             that.setData({url: d.data.data.url})
+            if (d.data.data.url){
+              that.setData({
+                setInter: setInterval(function () {
+                  num++;
+                  console.log('setInterval==' + num);
+                }, 1000)
+              })
+            }
           }else {
              console.log("接口错误")
           }
@@ -60,14 +74,32 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    clearInterval(this.data.setInter)
+    if (num > 1800 && this.data.lesson_id){
+        var that = this
+        var uid = wx.getStorageSync('uid')
+        var params = {
+          uid: uid,
+          lesson_id: that.data.lesson_id,
+          duration: num
+        }
+      app.sz.xcxaddvideoProject(params).then(d => {
+          console.log(d)
+          if (d.data.status == 0) {
+            // that.setData({url: })
+            console.log(num)
+          } else {
+            console.log("接口错误")
+          }
+        })
+    }
   },
 
   /**
@@ -90,4 +122,5 @@ Page({
   onShareAppMessage: function () {
 
   }
+
 })

@@ -32,6 +32,7 @@ Page(filter.loginCheck({
       "project_count":0,
       "userproject_count":0,
       "isover_project":0,
+      "projectvideo_count":0
     }
   },
 
@@ -594,7 +595,7 @@ Page(filter.loginCheck({
       
       var project_count = project.project_count
       var wancheng_total = project.userproject_count
-      var look_count = project.isover_project
+      var look_count = project.projectvideo_count
       
       that.shengchenghuantihaibao(touxiang, nickName, erweima, daka_bg, daka_text, project_count, wancheng_total, look_count)
     })
@@ -775,9 +776,11 @@ Page(filter.loginCheck({
     //   });
     // }
     var video_id = e.currentTarget.dataset.video_id
+    var lesson_id = e.currentTarget.dataset.lesson_id
+    console.log(lesson_id);
     if (video_id) {
       wx.navigateTo({
-        url: '../live/live?video_id=' + video_id
+        url: '../live/live?video_id=' + video_id + '&lesson_id=' + lesson_id
       });
     }
   }  

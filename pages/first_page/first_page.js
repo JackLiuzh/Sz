@@ -16,6 +16,7 @@ Page({
     project_id: '',
     kemu_id: '',
     video_id:'',
+    lesson_id:'',
     finish: 0,
     romand:0,
 
@@ -329,6 +330,7 @@ Page({
       project_id: this.data.courselive[id].project_id,
       kemu_id: this.data.courselive[id].kemu_id,
       video_id: this.data.courselive[id].video_id,
+      lesson_id: this.data.courselive[id].lesson_id,
     })
     if (this.data.finish == 0) {
       this.setData({
@@ -337,8 +339,9 @@ Page({
     } else {
       let url = encodeURIComponent(this.data.bpurl);
       console.log(url);
+      let lesson_id = this.data.courselive[id].lesson_id
       wx.navigateTo({
-        url: '../live/live?video_id=' + this.data.video_id,
+        url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + lesson_id,
       });
       // this.setData({
       //   showModal_zb: false
@@ -361,6 +364,7 @@ Page({
       project_id: this.data.courselive[id].project_id,
       kemu_id: this.data.courselive[id].kemu_id,
       video_id: this.data.courselive[id].video_id,
+      lesson_id: this.data.courselive[id].lesson_id,
     })
     if(this.data.finish == 0){
       this.setData({
@@ -369,8 +373,9 @@ Page({
     }else{
       let url = encodeURIComponent(this.data.bpurl);
       console.log(url);
+      var lesson_id = e.currentTarget.dataset.lesson_id;
       wx.navigateTo({
-        url: '../live/live?video_id=' + this.data.video_id,
+        url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + lesson_id,
       });
       this.setData({
         showModal_pb: false
@@ -396,7 +401,7 @@ Page({
     let url = encodeURIComponent(this.data.bpurl);
     console.log(url);
     wx.navigateTo({
-      url: '../live/live?video_id=' + this.data.video_id,
+      url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
     });
     this.setData({
       showModal_pb: false
@@ -406,7 +411,7 @@ Page({
     let url = encodeURIComponent(this.data.bpurl);
     console.log(url);
     wx.navigateTo({
-      url: '../live/live?video_id=' + this.data.video_id,
+      url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
     });
     this.setData({
       showModal_zb: false

@@ -273,12 +273,12 @@ Page({
     app.sz.xcxUpdateRangepost(params).then(d=>{
        if(d.data.status==0){
           console.log("修改范围成功")
+         wx.hideLoading();
          wx.showToast({
            title: '保存成功',
            icon: 'success',
            duration: 2000
          })
-         wx.hideLoading()
        }else {
           console.log("接口错误")
        }

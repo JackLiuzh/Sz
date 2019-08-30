@@ -116,6 +116,15 @@ Page({
         if(d.data.status == 0){
           console.log("频率修改成功")
           that.hideModal()
+          //修改上一个页面的pinlvnum
+          let fname = that.data.pinlvnum[index].name
+          var pages = getCurrentPages();
+          var prevPage = pages[pages.length - 2];
+          var frequency_name = "info.frequency_name"
+          prevPage.setData({
+            pinlvnum: that.data.pinlvnum,
+            [frequency_name]: fname
+          })
         }else {
           console.log("接口错误")
         }
@@ -138,6 +147,15 @@ Page({
     app.sz.xcxUpdatePinlv(params).then(d=>{
        if(d.data.status == 0){
          console.log("提交成功")
+         //修改上一个页面的pinlvnum
+         let fname = that.data.pinlvnum[index].name
+         var pages = getCurrentPages();
+         var prevPage = pages[pages.length - 2];
+         var frequency_name = "info.frequency_name"
+         prevPage.setData({ 
+           pinlvnum: that.data.pinlvnum, 
+           [frequency_name]: fname 
+         })
        }else {
          console.log("接口错误")
        }

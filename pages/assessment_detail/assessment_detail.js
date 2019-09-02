@@ -100,12 +100,12 @@ Page({
   gozhibo: function(e) {
        let that = this
        var video_id = that.data.pinggu.video_id
+       var lesson_id = that.data.pinggu.lesson_id
        if (video_id){
          wx.navigateTo({
-           url: '../live/live?video_id=' + video_id
+           url: '../live/live?video_id=' + video_id + '&lesson_id=' + lesson_id
          });
        }
-
   },
 
   close: function(){

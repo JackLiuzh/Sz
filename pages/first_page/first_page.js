@@ -373,9 +373,8 @@ Page({
     }else{
       let url = encodeURIComponent(this.data.bpurl);
       console.log(url);
-      var lesson_id = e.currentTarget.dataset.lesson_id;
       wx.navigateTo({
-        url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + lesson_id,
+        url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
       });
       this.setData({
         showModal_pb: false

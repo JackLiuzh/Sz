@@ -345,7 +345,7 @@ page {
 }
 .brief_title{
   margin-left:29rpx;
-  margin-top:33rpx;
+  margin-top:45rpx;
   width:270rpx;
   height:38rpx;
   font-size:27rpx;
@@ -360,19 +360,19 @@ page {
 }
 .touxiang_spk{
   margin-left:29rpx;
-  margin-top:20rpx;
-  width:29rpx;
-  height:29rpx;
+  margin-top:25rpx;
+  width:32rpx;
+  height:32rpx;
   /* background:rgba(0,0,0,0); */
   border-radius:50%;
   opacity:1;
 }
 .speaker_pb{
   margin-left:11rpx;
-  margin-top:18rpx;
-  width:105rpx;
+  margin-top:28rpx;
+  width:100rpx;
   height:29rpx;
-  font-size:21rpx;
+  font-size:23rpx;
   font-family:PingFang SC;
   font-weight:400;
   line-height:32rpx;

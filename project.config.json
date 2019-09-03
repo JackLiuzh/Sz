@@ -40,12 +40,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/my_feedback/my_feedback",
-					"pathName": "pages/my_feedback/my_feedback",
+					"name": "pages/kan_video/kan_video",
+					"pathName": "pages/kan_video/kan_video",
 					"query": "",
 					"scene": null
 				},

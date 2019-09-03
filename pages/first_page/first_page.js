@@ -19,7 +19,7 @@ Page({
     lesson_id:'',
     finish: 0,
     romand:0,
-
+    sys: '',
   },
   onLoad: function () {
     // let that = this;
@@ -43,7 +43,7 @@ Page({
 
     app.sz.xcxcourseLive(params).then(d => {
       if (d.data.status == 1) {
-        this.setData({ courselive: d.data.data })
+        this.setData({ courselive: d.data.data, sys: d.data.sys })
         var that = this;
         let dateArr = [];
         let comDateTime = [];
@@ -291,11 +291,16 @@ Page({
       // })
       this.nowmonth();
     } else {
-      this.setData({
-        year: year,
-        month: (month + 1)
-      })
-      this.jumpmonth(year, month);
+
+      do {
+        this.setData({
+          year: year,
+          month: (month + 1)
+        })
+        this.jumpmonth(year, month);
+      } while (month == nowmonth) {
+        this.nowmonth();
+      }
     }
   }, 
   
@@ -430,6 +435,13 @@ Page({
     });
     this.setData({
       showModal_zb: false
+    })
+  },
+  gocourse_xiang: function (e) {
+    console.log(e.currentTarget.dataset.system_id)
+    var system_id = e.currentTarget.dataset.system_id
+    wx.navigateTo({
+      url: '/pages/course_xiang/course_xiang?system_id=' + system_id,
     })
   },
 })

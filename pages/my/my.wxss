@@ -59,7 +59,7 @@
   opacity:1;
 }
 .tj{
-  margin-left:200rpx;
+  margin-left:275rpx;
   margin-top:32rpx;
 }
 .phone{

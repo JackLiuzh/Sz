@@ -1,4 +1,4 @@
-<view class="container">
+<view class="container" style='padding-bottom:400rpx;'>
 
   <view wx:for='{{courselive}}' wx:key="index1" wx:for-index="xb" >
     <view class="{{item.liveStatus == 2?'zhibo':'TipHide'}}" >

@@ -81,7 +81,8 @@ Page({
           } else {
             dateArr[s] = '';
           }
-          comDateTime.push([year + '-' + '0' + (month + 1) + '-' + num, num])
+
+          comDateTime.push([year + '-' + '0' + (month + 1) + '-' + '0' + num, num])
         }
 
         this.setData({
@@ -97,9 +98,12 @@ Page({
         }
         // this.showModalPb(e)
         for(let l=0;l<this.data.courselive.length;l++){
+          // console.log(this.data.courselive[l].liveStatus)
           if (this.data.courselive[l].liveStatus == 1){
             for (let m = 0; m < this.data.comDateTime.length;m++){
+              // console.log('cs')
               if (this.data.courselive[l].dateTime == this.data.comDateTime[m][0]){
+                // console.log('cs')
                 for (let n = 0; n < this.data.calPanduan.length;n++){
                   if (this.data.comDateTime[m][1] == this.data.calPanduan[n][0]){
                     this.data.calPanduan[n][1]=true
@@ -116,7 +120,6 @@ Page({
         }
       } 
     })
-
   },
 
   onShow: function () {

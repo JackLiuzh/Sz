@@ -66,15 +66,13 @@
    </view>
    
    <view class="bot">
-    <block wx:if="{{pinggu.zhiboone.liveStatus == 4}}">
+    <block wx:if="{{timestamp > pinggu.endTime }}">
            <view class="bot-l" catchtap="look">查看名师点评</view>
            <view class="bot-r" catchtap="gojiexi" >查看解析</view>
     </block>
    <block wx:else>
            <view class="bot-l" catchtap="look" style="width:100%">查看名师点评</view>
     </block>
-
-
    </view>
 </view>
 

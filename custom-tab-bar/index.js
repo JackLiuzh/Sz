@@ -17,7 +17,7 @@ Component({
       },
       {
         text: "课程",
-        pagePath: "/pages/course_new/course_new",
+        pagePath: "/pages/first_page/first_page",
         iconPath: "/images/kecheng@2x.png",
         selectedIconPath: "/images/kecheng_active@2x.png"
       },

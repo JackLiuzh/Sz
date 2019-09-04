@@ -541,7 +541,7 @@ page {
   /* right: 0rpx; */
   /* top: 800rpx; */
   /* bottom: 10rpx; */
-  bottom: 112rpx;
+  bottom: 10rpx;
   z-index: 1000000;
 }
 .layout1 {

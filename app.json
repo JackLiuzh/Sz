@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/first_page/first_page",
     "pages/course_new/course_new",
     "pages/today_task/today_task",
     "pages/course/course",
@@ -29,7 +30,6 @@
     "pages/my/my",
     "pages/my_feedback/my_feedback",
     "pages/download_app/download_app",
-    "pages/first_page/first_page",
     "pages/my_set/my_set",
     "pages/my_addr/my_addr",
     "pages/test_dati/test_dati",
@@ -43,7 +43,7 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "custom": true,
+    "custom": false,
     "color": "#999999",
     "selectedColor": "#EA5959",
     "borderStyle": "white",
@@ -57,7 +57,7 @@
       },
       {
         "text": "课程",
-        "pagePath": "pages/course_new/course_new",
+        "pagePath": "pages/first_page/first_page",
         "iconPath": "images/kecheng@2x.png",
         "selectedIconPath": "images/kecheng_active@2x.png"
       },

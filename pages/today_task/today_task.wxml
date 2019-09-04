@@ -1,4 +1,5 @@
 <view class="container">
+    <!-- 不显示  -->
     <view class='top_set' hidden="false">
         <view class='text_left'>
             <view class='text1'>今日任务</view>
@@ -34,8 +35,8 @@
             <view class='but1'>进入直播</view>
         </view>
     </view>
-
     <view wx:else class='tishixinxi' hidden="false">坚持每天做任务，一个周期结束后可获取课程资料包呦</view>
+     <!-- 不显示 结束 -->
     <!-- 专项测评列表 -->
     <view class="ceping"  wx:for="{{project.project_list}}" wx:key="this" style=" overflow: hidden;position: relative;">
         <image   src='../../images/task_zhibozhong.png' catchtap='golookzhibo' data-video_id='{{item.video_id}}' data-lesson_id='{{item.videoId}}' wx:if="{{item.iflive== 1}}" mode="widthFix" class='zbz' ></image>
@@ -48,6 +49,7 @@
     </view>
     <!-- 专项测评列表结束 -->
     <view class='bottom_content'>
+         <!-- 已完成的任务 -->
         <view wx:for="{{complete_list}}" wx:key="this" class="box1" >
             <view class='b_top'>
                 <view  style='flex:1;' class="b_t_left" >
@@ -74,6 +76,7 @@
             </view>
             <view class='taskzhouqi' style="color:#AAAAAA;margin-top:10rpx;">任务周期：{{item.tastzhouqi}}</view>
         </view>
+        <!-- 已完成的任务 结束 -->
         <view wx:for="{{list}}" wx:key="this" class="box1" >
             <view class='b_top'>
                 <view  style='flex:1;' class="b_t_left" data-user_task_id="{{ item.id }}"  data-task_name="{{ item.tname }}" data-type="{{item.type}}" catchtap='today_goto'>

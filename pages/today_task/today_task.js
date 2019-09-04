@@ -698,9 +698,9 @@ Page(filter.loginCheck({
         context.setFontSize(40 * rpx)
         context.setFillStyle('#E65557')
         if(that.data.project.first_pro == 1){
-          context.fillText("已完成", 171 * rpx, 420 * rpx)
+          context.fillText("已完成", 182 * rpx, 420 * rpx)
         }else{
-          context.fillText("未完成", 171 * rpx, 420 * rpx)
+          context.fillText("未完成", 182 * rpx, 420 * rpx)
         }
         
 

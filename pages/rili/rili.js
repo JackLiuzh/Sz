@@ -23,34 +23,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-     var that = this
-     var uid = app.globalData.uid
 
-     var params = {
-       "uid": uid
-     }
-     var xitongtime = new Date() //当前系统日期
 
-     app.sz.xcxDakaTask(params).then(d=>{
-         if(d.data.status == 0){
-             var rili = d.data.data.selected
-             var selectedArray = that.data.selected
-             rili.forEach(function(item){
-               var strTime = item.date;    //字符串日期格式  2011-11-09           
-               var date1 = new Date(Date.parse(strTime.replace(/-/g, "/"))); 
-               if (date1 < new Date().getTime()) {
-                     var obj = {}
-                     obj.date = item.date
-                     obj.isfinish = item.isfinish
-                     selectedArray.push(obj)
-                }
-             })
-           that.setData({ todaytask: d.data.data.todaytask, selected : selectedArray})
-         }
-     })
-
-   //  var xitongtime = that.getcurrentriqi()
-    // that.initdataobj(uid, xitongtime)
   },
   //日期和任务的接口(页面初始化接口)
   initdataobj: function (uid,time) {
@@ -93,7 +67,31 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    var that = this
+    var uid = app.globalData.uid
+
+    var params = {
+      "uid": uid
+    }
+    var xitongtime = new Date() //当前系统日期
+
+    app.sz.xcxDakaTask(params).then(d => {
+      if (d.data.status == 0) {
+        var rili = d.data.data.selected
+        var selectedArray = that.data.selected
+        rili.forEach(function (item) {
+          var strTime = item.date;    //字符串日期格式  2011-11-09           
+          var date1 = new Date(Date.parse(strTime.replace(/-/g, "/")));
+          if (date1 < new Date().getTime()) {
+            var obj = {}
+            obj.date = item.date
+            obj.isfinish = item.isfinish
+            selectedArray.push(obj)
+          }
+        })
+        that.setData({ todaytask: d.data.data.todaytask, selected: selectedArray })
+      }
+    })
   },
 
   /**

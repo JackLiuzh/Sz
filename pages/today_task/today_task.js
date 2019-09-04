@@ -544,7 +544,7 @@ Page(filter.loginCheck({
     var finish = e.currentTarget.dataset.finish
     if (finish == 1){
       wx.navigateTo({
-        url: '../assessment_detail/assessment_detail?h_id=' + id + '&kemu_id=' + kemu_id
+        url: '../assessment_detail/assessment_detail?h_id=' + id + '&kemu_id=' + kemu_id +'&back=0'
       });
     }else{
       wx.navigateTo({

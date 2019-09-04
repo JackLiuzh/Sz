@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    back:1,
     h_id: 0, //任务id
     kemu_id:0,
     id:0,
@@ -21,11 +22,15 @@ Page({
    */
   onLoad: function (options) {
     var timestamp = (Date.parse(new Date()))/1000;
-    console.log(timestamp)
     let that = this;
     var h_id = options.h_id
     var kemu_id = options.kemu_id
     var uid = app.globalData.uid
+    if (options.back == 0){
+      that.setData({
+        back: options.back
+      })
+    }
     var params = {
       "uid": uid,
       "h_id": h_id,
@@ -73,9 +78,11 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    wx.redirectTo({
-      url: '../special_subject/special_subject'
-    });
+    if(this.data.back != 0){
+      wx.navigateBack({
+        delta: 1
+      })
+    }
   },
 
   /**

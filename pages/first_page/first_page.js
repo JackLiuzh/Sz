@@ -187,16 +187,16 @@ Page({
       month: month,
       // isToday: '' + year + month + day 
     })
-
+    var uid = wx.getStorageSync('uid');
     var token = wx.getStorageSync('token');
     var params = {
-      // "uid": uid,
+      "uid": uid,
       "token": token,
     }
 
     app.sz.xcxcourseLive(params).then(d => {
       if (d.data.status == 1) {
-        this.setData({ courselive: d.data.data })
+        this.setData({ courselive: d.data.data, sys: d.data.sys })
         var that = this;
         let dateArr = [];
         let comDateTime = [];
@@ -234,7 +234,8 @@ Page({
           } else {
             dateArr[s] = '';
           }
-          comDateTime.push([year + '-' + '0' + (month + 1) + '-' +'0' + num, num])
+
+          comDateTime.push([year + '-' + '0' + (month + 1) + '-' + '0' + num, num])
         }
 
         this.setData({
@@ -250,9 +251,12 @@ Page({
         }
         // this.showModalPb(e)
         for (let l = 0; l < this.data.courselive.length; l++) {
+          // console.log(this.data.courselive[l].liveStatus)
           if (this.data.courselive[l].liveStatus == 1) {
             for (let m = 0; m < this.data.comDateTime.length; m++) {
+              // console.log('cs')
               if (this.data.courselive[l].dateTime == this.data.comDateTime[m][0]) {
+                // console.log('cs')
                 for (let n = 0; n < this.data.calPanduan.length; n++) {
                   if (this.data.comDateTime[m][1] == this.data.calPanduan[n][0]) {
                     this.data.calPanduan[n][1] = true
@@ -288,7 +292,7 @@ Page({
       this.jumpmonth(year, month);
       console.log(this.data.showcal)
     } else if (year == nowYear) {
-      this.onLoad()
+      this.nowmonth()
       console.log(this.data.showcal)
     }else {
       this.setData({
@@ -324,7 +328,6 @@ Page({
     }
   },
 
-  
   showModalZb: function (e) {
     var id = e.currentTarget.dataset.xb;
     console.log(id);

@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/cs/cs",
     "pages/first_page/first_page",
     "pages/course_new/course_new",
     "pages/today_task/today_task",

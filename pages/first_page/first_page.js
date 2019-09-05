@@ -286,14 +286,17 @@ Page({
         month: (month + 1)
       })
       this.jumpmonth(year, month);
+      console.log(this.data.showcal)
     } else if (year == nowYear) {
       this.onLoad()
+      console.log(this.data.showcal)
     }else {
       this.setData({
         year: year,
         month: (month + 1)
       })
       this.jumpmonth(year, month);
+      console.log(this.data.showcal)
     }
   }, 
   
@@ -309,13 +312,15 @@ Page({
     console.log(month)
     console.log(nowmonth)
     if (month == nowmonth && year == nowYear) {
-      this.nowmonth();
+      this.nowmonth()
+      console.log(this.data.showcal)
     } else {
       this.setData({
         year: year,
         month: (month + 1)
       })
       this.jumpmonth(year, month);
+      console.log(this.data.showcal)
     }
   },
 

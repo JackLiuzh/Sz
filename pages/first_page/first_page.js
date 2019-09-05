@@ -152,7 +152,6 @@ Page(filter.loginCheck({
         that.setData({ iswxuser: true })
       }
     }
-
   },
   saveuserinfo: function (e) {
     var that = this

@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/cs/cs",
     "pages/first_page/first_page",
     "pages/course_new/course_new",
     "pages/today_task/today_task",
@@ -34,7 +35,6 @@
     "pages/my_addr/my_addr",
     "pages/test_dati/test_dati",
     "pages/my_youhuiquan/my_youhuiquan",
-    "pages/cs/cs",
     "pages/course_newxiang/course_newxiang"
   ],
   "window": {

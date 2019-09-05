@@ -20,6 +20,7 @@ Page(filter.loginCheck({
     lesson_id:'',
     finish: 0,
     romand:0,
+    iswxuser: false,
     sys: '',
   },
   onLoad: function () {
@@ -122,7 +123,117 @@ Page(filter.loginCheck({
       } 
     })
   },
-
+  bindGetUserInfo(e) {
+    var that = this
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          var bendiuserinfo = wx.getStorageSync("userInfo")
+          bendiuserinfo.name = e.detail.userInfo.nickName
+          bendiuserinfo.avatar = e.detail.userInfo.avatarUrl
+          wx.setStorageSync('userInfo', bendiuserinfo)
+          that.saveuserinfo()
+          
+          // this.showModalZb()
+        } else {
+          console.log("用户拒绝授权")
+        }
+      }
+    })
+  },
+  saveuserinfo: function (e) {
+    var that = this
+    var uid = wx.getStorageSync("uid")
+    var token = wx.getStorageSync("token")
+    var wxname = wx.getStorageSync("userInfo").name
+    var wxava = wx.getStorageSync("userInfo").avatar
+    var params = {
+      uid: uid,
+      name: wxname,
+      avatar: wxava
+    }
+    app.sz.xcxuserInfo(params).then(d => {
+      console.log(d)
+      if (d.data.status == 0) {
+        console.log("保存成功")
+        this.setData({
+          iswxuser: true
+        })
+        console.log(that.data.iswxuser)
+      } else {
+        console.log("保存失败")
+        console.log(that.data.iswxuser)
+      }
+    })
+    if (this.data.finish == 0) {
+      this.setData({
+        showModal_zb: true
+      })
+    } else {
+      let url = encodeURIComponent(this.data.bpurl);
+      console.log(url);
+      let lesson_id = this.data.courselive[id].lesson_id
+      wx.navigateTo({
+        url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + lesson_id,
+      });
+      // this.setData({
+      //   showModal_zb: false
+      // })
+    } 
+  },
+  showModal: function (e) {
+    var id = e.currentTarget.dataset.xb;
+    console.log(id);
+    this.setData({
+      finish: this.data.courselive[id].finish,
+      bpurl: this.data.courselive[id].live_info.playbackUrl,
+      project_id: this.data.courselive[id].project_id,
+      kemu_id: this.data.courselive[id].kemu_id,
+      video_id: this.data.courselive[id].video_id,
+      lesson_id: this.data.courselive[id].lesson_id,
+    })
+    console.log(this.data.finish);
+    console.log(this.data.bpurl);
+    console.log(this.data.project_id);
+    console.log(this.data.kemu_id);
+    // this.setData({
+    //   showModal_zb: true
+    // })
+  },
+  showModalZb: function (e) {
+    var id = e.currentTarget.dataset.xb;
+    console.log(id);
+    this.setData({
+      finish: this.data.courselive[id].finish,
+      bpurl: this.data.courselive[id].live_info.playbackUrl,
+      project_id: this.data.courselive[id].project_id,
+      kemu_id: this.data.courselive[id].kemu_id,
+      video_id: this.data.courselive[id].video_id,
+      lesson_id: this.data.courselive[id].lesson_id,
+    })
+    if (this.data.finish == 0) {
+      this.setData({
+        showModal_zb: true
+      })
+    } else {
+      let url = encodeURIComponent(this.data.bpurl);
+      console.log(url);
+      let lesson_id = this.data.courselive[id].lesson_id
+      wx.navigateTo({
+        url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + lesson_id,
+      });
+      // this.setData({
+      //   showModal_zb: false
+      // })
+    }
+    console.log(this.data.finish);
+    console.log(this.data.bpurl);
+    console.log(this.data.project_id);
+    console.log(this.data.kemu_id);
+    // this.setData({
+    //   showModal_zb: true
+    // })
+  },
   onShow: function () {
     this.onLoad()
   },
@@ -282,87 +393,102 @@ Page(filter.loginCheck({
     let month = this.data.month - 2 < 0 ? 11 : this.data.month - 2;
     let now = new Date();
     let nowmonth = now.getMonth();
-    let nowYear = now.getFullYear();
     console.log(month)
     console.log(nowmonth)
-    if (month > nowmonth && year == nowYear) {
-      this.setData({
-        year: year,
-        month: (month + 1)
-      })
-      this.jumpmonth(year, month);
-      console.log(this.data.showcal)
-    } else if (year == nowYear) {
-      this.nowmonth()
-      console.log(this.data.showcal)
-    }else {
-      this.setData({
-        year: year,
-        month: (month + 1)
-      })
-      this.jumpmonth(year, month);
-      console.log(this.data.showcal)
+    if (month == nowmonth) {
+      // this.setData({
+      //   year: year,
+      //   month: (month + 1)
+      // })
+      this.nowmonth();
+    } else {
+      do {
+        this.setData({
+          year: year,
+          month: (month + 1)
+        })
+        this.jumpmonth(year, month);
+      } while (month == nowmonth) {
+        this.nowmonth();
+      } 
     }
   }, 
+  // lastMonth: function () {
+  //   //全部时间的月份都是按0~11基准，显示月份才+1 
+  //   let year = this.data.month - 2 < 0 ? this.data.year - 1 : this.data.year;
+  //   let month = this.data.month - 2 < 0 ? 11 : this.data.month - 2;
+  //   let now = new Date();
+  //   let nowmonth = now.getMonth();
+  //   let nowYear = now.getFullYear();
+  //   console.log(month)
+  //   console.log(nowmonth)
+  //   if (month > nowmonth && year == nowYear) {
+  //     this.setData({
+  //       year: year,
+  //       month: (month + 1)
+  //     })
+  //     this.jumpmonth(year, month);
+  //     console.log(this.data.showcal)
+  //   } else if (year == nowYear) {
+  //     this.nowmonth()
+  //     console.log(this.data.showcal)
+  //   }else {
+  //     this.setData({
+  //       year: year,
+  //       month: (month + 1)
+  //     })
+  //     this.jumpmonth(year, month);
+  //     console.log(this.data.showcal)
+  //   }
+  // }, 
   
+
   nextMonth: function () {
     //全部时间的月份都是按0~11基准，显示月份才+1 
     let year = this.data.month > 11 ? this.data.year + 1 : this.data.year;
     let month = this.data.month > 11 ? 0 : this.data.month;
     let now = new Date();
     let nowmonth = now.getMonth();
-    let nowYear = now.getFullYear();
-    console.log(year)
-    console.log(nowYear)
-    console.log(month)
-    console.log(nowmonth)
-    if (month == nowmonth && year == nowYear) {
-      this.nowmonth()
-      console.log(this.data.showcal)
+    if (month == nowmonth) {
+      // this.setData({
+      //   year: year,
+      //   month: (month + 1)
+      // })
+      this.nowmonth();
     } else {
       this.setData({
         year: year,
         month: (month + 1)
       })
       this.jumpmonth(year, month);
-      console.log(this.data.showcal)
     }
   },
 
-  showModalZb: function (e) {
-    var id = e.currentTarget.dataset.xb;
-    console.log(id);
-    this.setData({
-      finish: this.data.courselive[id].finish,
-      bpurl: this.data.courselive[id].live_info.playbackUrl,
-      project_id: this.data.courselive[id].project_id,
-      kemu_id: this.data.courselive[id].kemu_id,
-      video_id: this.data.courselive[id].video_id,
-      lesson_id: this.data.courselive[id].lesson_id,
-    })
-    if (this.data.finish == 0) {
-      this.setData({
-        showModal_zb: true
-      })
-    } else {
-      let url = encodeURIComponent(this.data.bpurl);
-      console.log(url);
-      let lesson_id = this.data.courselive[id].lesson_id
-      wx.navigateTo({
-        url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + lesson_id,
-      });
-      // this.setData({
-      //   showModal_zb: false
-      // })
-    }
-    console.log(this.data.finish);
-    console.log(this.data.bpurl);
-    console.log(this.data.project_id);
-    console.log(this.data.kemu_id);
-    // this.setData({
-    //   showModal_zb: true
-    // })
-  },
+  // nextMonth: function () {
+  //   //全部时间的月份都是按0~11基准，显示月份才+1 
+  //   let year = this.data.month > 11 ? this.data.year + 1 : this.data.year;
+  //   let month = this.data.month > 11 ? 0 : this.data.month;
+  //   let now = new Date();
+  //   let nowmonth = now.getMonth();
+  //   let nowYear = now.getFullYear();
+  //   console.log(year)
+  //   console.log(nowYear)
+  //   console.log(month)
+  //   console.log(nowmonth)
+  //   if (month == nowmonth && year == nowYear) {
+  //     this.nowmonth()
+  //     console.log(this.data.showcal)
+  //   } else {
+  //     this.setData({
+  //       year: year,
+  //       month: (month + 1)
+  //     })
+  //     this.jumpmonth(year, month);
+  //     console.log(this.data.showcal)
+  //   }
+  // },
+
+  
   showModalPb: function (e) {
     var id = e.currentTarget.dataset.xb;
     console.log(id);

@@ -4,6 +4,12 @@ page {
 .TipHide{
   display: none;
 }
+.idbut{
+  position: absolute;
+  width:270rpx;
+  height:72rpx;
+  background: transparent;
+}
 .zhibo{
   position: relative;
   width:750rpx;

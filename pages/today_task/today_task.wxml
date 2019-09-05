@@ -151,7 +151,7 @@
     </view>
     <!-- 海报开始 -->
     <view class='imagePathBox' hidden="{{maskHidden == false}}">
-      <image src="{{imagePath}}" class='shengcheng'  style="{{ isIPX? 'top:8%':'' }}" ></image>
+      <image src="{{imagePath}}" class='shengcheng'  style="{{ isIPX? 'top:5%':'' }}" ></image>
       <button class='guanbi' bindtap='closedaka' >关闭</button>
       <button class='baocun' bindtap='baocun' >保存图片</button>
     </view>

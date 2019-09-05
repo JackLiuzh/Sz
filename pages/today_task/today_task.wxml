@@ -88,7 +88,7 @@
                     <navigator url='../../pages/rili/rili' style="display:inline;">
                     <view class="sder" >
                          <image style="width:36rpx;height:36rpx;" src='../../images/task_rili.png'></image>
-                         <text class="butask" wx:if="{{ item.already_total < item.today_tot }}">补任务</text>
+                         <text class="butask" wx:if="{{ ifburenwu == 0 }}">补任务</text>
                          </view>
                     </navigator>
                     <view class="sder" catchtap='createNewImg'>
@@ -151,13 +151,13 @@
     </view>
     <!-- 海报开始 -->
     <view class='imagePathBox' hidden="{{maskHidden == false}}">
-      <image src="{{imagePath}}" class='shengcheng'  style="" ></image>
+      <image src="{{imagePath}}" class='shengcheng'  style="{{ isIPX? 'top:8%':'' }}" ></image>
       <button class='guanbi' bindtap='closedaka' >关闭</button>
       <button class='baocun' bindtap='baocun' >保存图片</button>
     </view>
     <view hidden="{{maskHidden == false}}" class="mask"></view> 
     <view hidden="{{ maskHidden == false }}" class="canvas-box">
-        <canvas style='width:{{ width  }}px;height: {{isIPX? height-64:height + 64}}px;position:fixed;top:9999px;' canvas-id="mycanvas"/>
+        <canvas style='width:{{ width  }}px;height: {{isIPX? height:height + 64}}px;position:fixed;top:9999px;' canvas-id="mycanvas"/>
     </view>
     <!-- 海报结束 -->
 </view>

@@ -5,6 +5,7 @@ Page(filter.loginCheck({
    * 页面的初始数 据
    */
   data: {
+    ifburenwu:0,    //每日刷题显示补任务
     accomplish_days: 0 ,  
     already_num : '', //今日完成的任务数量
     count: '',
@@ -126,6 +127,7 @@ Page(filter.loginCheck({
             daka_text: d.data.data.poster.title,
             zhibo_data: d.data.data.zhibo_data,
             project: d.data.data.project,
+            ifburenwu: d.data.data.ifburenwu
           })
           wx.hideLoading()
         } else {
@@ -618,46 +620,7 @@ Page(filter.loginCheck({
     //画背景
     context.setFillStyle("white")
     context.drawImage(daka_bg, 0, 0, 432 * rpx, 223 * rpx)
-    //画背景文字
-    var text = daka_text
-    var chr = text.split("");
-    var temp = "";
-    var row = [];
-    context.setFontSize(20 * rpx);
-    context.setFillStyle("#fff");
-    context.setTextAlign('center');
-    for (var a = 0; a < chr.length; a++) {
-      if (context.measureText(temp).width < 250) {
-        temp += chr[a];
-      } else {
-        a--;
-        row.push(temp);
-        temp = "";
-      }
-    }
-    row.push(temp);
-    //如果数组长度大于2 则截取前两个
-    if (row.length > 2) {
-      var rowCut = row.slice(0, 2);
-      var rowPart = rowCut[1];
-      var test = "";
-      var empty = [];
-      for (var a = 0; a < rowPart.length; a++) {
-        if (context.measureText(test).width < 220) {
-          test += rowPart[a];
-        }
-        else {
-          break;
-        }
-      }
-      empty.push(test);
-      var group = empty[0] + "..."//这里只显示两行，超出的用...表示
-      rowCut.splice(1, 1, group);
-      row = rowCut;
-    }
-    for (var b = 0; b < row.length; b++) {
-      context.fillText(row[b], 185 * rpx, (96 + b * 30) * rpx, 300 * rpx);
-    }
+
 
     //画下半部的白底
     context.setFillStyle('white')
@@ -666,19 +629,19 @@ Page(filter.loginCheck({
     //画头像
     context.save();
     context.beginPath();
-    context.arc(180 * rpx, (222 * rpx), 40 * rpx, 0, 2 * Math.PI);
+    context.arc(180 * rpx, (100 * rpx), 40 * rpx, 0, 2 * Math.PI);
     context.setStrokeStyle('white')
     context.stroke()
     context.clip()
-    context.drawImage(touxiang, 132 * rpx, 177 * rpx, 100 * rpx, 100 * rpx)
+    context.drawImage(touxiang, 130 * rpx, 60 * rpx, 100 * rpx, 100 * rpx)
 
     //画昵称
     context.restore()
     context.beginPath()
     context.setFontSize(20 * rpx)
-    context.setFillStyle('black')
+    context.setFillStyle('white')
     context.setTextAlign('center')
-    context.fillText(nickName, 180 * rpx, 290 * rpx)
+    context.fillText(nickName, 180 * rpx, 180 * rpx)
     context.stroke()
 
     //画专项刷题
@@ -687,14 +650,14 @@ Page(filter.loginCheck({
     context.setFillStyle('black')
     context.setTextAlign('center')
     context.setTextBaseline('bottom')
-    context.fillText('专项刷题', 186 * rpx, 335 * rpx)
+    context.fillText('专项刷题', 186 * rpx, 295 * rpx)
     context.stroke()
 
   
      
-        context.setFontSize(16 * rpx)
-        context.setFillStyle('black')
-        context.fillText("本期专题任务", 183 * rpx, 369 * rpx)
+        context.setFontSize(18 * rpx)
+        context.setFillStyle('#A5A3A3')
+        context.fillText("本期专题任务", 183 * rpx, 350 * rpx)
         context.setFontSize(40 * rpx)
         context.setFillStyle('#E65557')
         if(that.data.project.first_pro == 1){

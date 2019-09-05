@@ -592,12 +592,14 @@ emojiChar:"☺-😋-😌-😍-😏-😜-😝-😞-😔-😪-😭-😁-😂-😃-
     var current = Number(e.detail.current)  // 当前的
     var currentTab = Number(this.data.currentTab); //显示的做题序号
     var questions = this.data.questions;
-    console.log(current);
-    console.log(questions[current].isfull);
     if (questions[current] == undefined || questions[current].isfull == 0) {
       that.setData({
         currentTab: currentTab
       })
+    } 
+    //最后一题滑动， 跳到评估页面
+    if ((current) == (this.data.datika.length)) {
+      that.gopingguClick();
     }
 
   },
@@ -622,7 +624,7 @@ emojiChar:"☺-😋-😌-😍-😏-😜-😝-😞-😔-😪-😭-😁-😂-😃-
     }) 
      //右滑
     if (current > currentTab){
-
+      console.log(current, "pppppppppppp");
       current = current + 1  
        //下一个不存在 则
       if (questions[current+1] == undefined){
@@ -633,7 +635,7 @@ emojiChar:"☺-😋-😌-😍-😏-😜-😝-😞-😔-😪-😭-😁-😂-😃-
         }  
       }
     }
-
+   
     //左滑
     if (current < currentTab) {
       current = current - 1

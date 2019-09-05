@@ -45,7 +45,7 @@ font-weight:300;
 line-height:34rpx;
 color:rgba(136,136,136,1);
 opacity:1;
-width: 68rpx;
+/* width: 68rpx; */
 text-align: center;
 }
 .con_text{
@@ -254,7 +254,7 @@ text-decoration: line-through;
 padding-left:12rpx;
 }
 .le_img{
-  padding-top:13rpx;
+  padding-top:2rpx;
   padding-right:16rpx;
 }
 .ri_now{

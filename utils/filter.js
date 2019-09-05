@@ -7,6 +7,7 @@ function loginCheck(pageObj) {
     // 使用onLoad的话需要传递options
     pageObj.onLoad = function (options) {
       if (wx.getStorageSync('isauth')) {
+        console.log("hh")
         //var uid = wx.getStorageSync('uid');
         let uid = wx.getStorageSync('uid');
         // if(uid){
@@ -24,6 +25,7 @@ function loginCheck(pageObj) {
                      url: '../first_comming/first_comming',
                    })
                 }else {
+                 
                       let currentInstance = getPageInstance();
                      _onLoad.call(currentInstance, options);
                   
@@ -31,6 +33,7 @@ function loginCheck(pageObj) {
              }
              
           })
+        
       } else {
         //跳转到登录页
         wx.redirectTo({

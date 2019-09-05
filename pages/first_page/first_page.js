@@ -1,6 +1,7 @@
 // pages/first_page/first_page.js 
 const app = getApp()
-Page({
+const filter = require('../../utils/filter.js');
+Page(filter.loginCheck({
   data: {
     year: 0,
     month: 0,
@@ -446,4 +447,4 @@ Page({
       url: '/pages/course_xiang/course_xiang?system_id=' + system_id,
     })
   },
-})
+}))

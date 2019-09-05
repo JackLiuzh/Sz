@@ -83,7 +83,7 @@
     </view>
 </view>
 <block wx:if="{{info.is_xcxpay == 0}}">
-<view wx:if="{{discount_end_time}}" class='timefixed'>距离结束还剩 <text style='margin-left:10rpx;margin-right:10rpx;' class='fang'>{{clock.day}}</text>天<text style='margin: 0 10rpx;' class='fang'>{{clock.hou}}</text>:<text style='margin: 0 10rpx;' class='fang' style='margin: 0 10rpx;'>{{clock.min}}</text>:<text style='margin: 0 10rpx;' class='fang'>{{clock.sec}}</text></view>
+<view wx:if="{{info.discount_end_time}}" class='timefixed'>距离结束还剩 <text style='margin-left:10rpx;margin-right:10rpx;' class='fang'>{{clock.day}}</text>天<text style='margin: 0 10rpx;' class='fang'>{{clock.hou}}</text>:<text style='margin: 0 10rpx;' class='fang' style='margin: 0 10rpx;'>{{clock.min}}</text>:<text style='margin: 0 10rpx;' class='fang'>{{clock.sec}}</text></view>
 <view class='fixbut'>
     <view class='box_but'>
         <view wx:if="{{info.discount_price}}" class='but_le'>

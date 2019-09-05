@@ -34,6 +34,7 @@
     "pages/my_addr/my_addr",
     "pages/test_dati/test_dati",
     "pages/my_youhuiquan/my_youhuiquan",
+    "pages/cs/cs",
     "pages/course_newxiang/course_newxiang"
   ],
   "window": {

@@ -2,6 +2,46 @@
 page { 
   background-color: #fff; 
 } 
+
+.top_set{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* height: 609rpx; */
+  background-color: #ffffff;
+  /* padding: 0 40rpx; */
+  /* margin-top: 182rpx; */
+  overflow: auto;
+}
+.top_set .set_right{
+  display: flex;
+  width: 320rpx;
+  justify-content: space-between;
+}
+.top_set .set_right .box1{
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 50%;
+  border: 1rpx solid #CCCCCC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.top_set .text_left .text1{
+   font-size: 40rpx;
+   font-weight: bold;
+   color: #444444;
+}
+.top_set .text_left .text2{
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: #888888;
+}
+.top_set .text_left .text2 .te_color{
+  color: #E65557;
+}
+
+
 .v1{ 
   margin-left:32rpx; 
   margin-top:40rpx; 

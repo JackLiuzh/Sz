@@ -211,25 +211,27 @@ page {
   opacity:1;
 }
 .date-show{
-  margin-left:20rpx;
+  margin-left:10rpx;
   margin-top:35rpx;
   width:70rpx;
   /* position: relative; */
   font-size:28rpx;
   font-family:PingFang SC;
   font-weight:bold;
+  text-align: center;
+  vertical-align: middle;
   line-height:40rpx;
   color:rgba(230,85,87,1);
   opacity:1;
 }
 .shangyue{
-  margin-left:440rpx;
+  margin-left:430rpx;
   margin-top:35rpx;
   width: 40rpx;
   height: 40rpx;
 }
 .img{
-  /* margin-left:10rpx; */
+  margin-left:10rpx;
   margin-top:37rpx;
   width: 40rpx;
   height: 40rpx;

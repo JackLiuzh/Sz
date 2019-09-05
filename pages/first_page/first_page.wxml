@@ -20,8 +20,6 @@
     <view class="speak">
       <image class="touxiang" src="{{item.live_info.zhubo.p_40}}"></image>
       <view class="speaker">{{item.live_info.zhubo.nickname}}</view>
-      
-      <!-- <view class="speaker">哈哈哈</view> -->
       <!-- <view class="shu4"></view>
       <view class="num">{{item.buy_count}}人</view>
       <view class="joining">正在参与 </view> -->

@@ -100,11 +100,14 @@ page {
 }
 .speak{
   display: flex;
-  /* s */
+  margin-left:307rpx;
 }
+
 .touxiang{
   position: absolute;
-  margin-left:178rpx;
+  /* text-align: center; */
+  /* vertical-align: middle; */
+  
   margin-top:180rpx;
   width:34rpx;
   height:34rpx;
@@ -114,7 +117,7 @@ page {
 }
 .speaker{
   position: absolute;
-  margin-left:230rpx;
+  margin-left:60rpx;
   margin-top:180rpx;
   width:120rpx;
   height:33rpx;

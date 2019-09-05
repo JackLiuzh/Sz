@@ -21,6 +21,7 @@ Page(filter.loginCheck({
     finish: 0,
     romand:0,
     iswxuser: false,
+    avatar: 'http://shangzheng.oss-cn-beijing.aliyuncs.com/img/member/Header-profile-photo.png',
     sys: '',
   },
   onLoad: function () {
@@ -133,13 +134,25 @@ Page(filter.loginCheck({
           bendiuserinfo.avatar = e.detail.userInfo.avatarUrl
           wx.setStorageSync('userInfo', bendiuserinfo)
           that.saveuserinfo()
-          
-          // this.showModalZb()
         } else {
           console.log("用户拒绝授权")
         }
       }
     })
+  },
+  iswxuser: function () {
+    var that = this
+    var avatar = that.data.avatar
+    var bendiava = wx.getStorageSync("userInfo").avatar
+    var bendname = wx.getStorageSync("userInfo").name
+    if (bendname) {
+      if (bendname.indexOf('szgk') != -1) {
+        that.setData({ iswxuser: false })
+      } else {
+        that.setData({ iswxuser: true })
+      }
+    }
+
   },
   saveuserinfo: function (e) {
     var that = this
@@ -156,13 +169,8 @@ Page(filter.loginCheck({
       console.log(d)
       if (d.data.status == 0) {
         console.log("保存成功")
-        this.setData({
-          iswxuser: true
-        })
-        console.log(that.data.iswxuser)
       } else {
         console.log("保存失败")
-        console.log(that.data.iswxuser)
       }
     })
     if (this.data.finish == 0) {

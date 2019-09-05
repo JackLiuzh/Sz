@@ -38,7 +38,7 @@
   opacity:1;
 }
 .img1{
-  margin-left:15rpx;
+  margin-left:27rpx;
   margin-top:39rpx;
   width:36rpx;
   height:36rpx;
@@ -47,8 +47,7 @@
 .v1{
   margin-left:29rpx;
   margin-top:35rpx;
-  width:200rpx;
-  
+  width:200rpx; 
 }
 .num{
   font-size:32rpx;
@@ -59,7 +58,7 @@
   opacity:1;
 }
 .tj{
-  margin-left:275rpx;
+  margin-left:276rpx;
   margin-top:32rpx;
 }
 .phone{

@@ -61,27 +61,42 @@
 
 <view class="canlendarBgView">
   <view class="canlendarView">
-    <view class="canlendarTopView">
+    
+    <view class="to_zb">
+      <view class="dzb">待直播</view>
+      
+      <image class="shangyue" src='../../images/shangyiye@2x.png' bindtap="handleCalendar" data-handle="prev" mode='aspectFit'></image>
+      <view class='date-show'>
+        {{cur_month}}月
+      </view>
+      <image class="img" src='../../images/xiayiye@2x.png' bindtap="handleCalendar" data-handle="next" mode='aspectFit'></image>
+    </view>
+    
+    
+    <!-- <view class="canlendarTopView">
       <view class="leftBgView" bindtap="handleCalendar" data-handle="prev">
-        <view class="leftView">《</view>
+        <image class="leftView" src='../../images/shangyiye@2x.png'></image>
       </view>
-      <view class="centerView">{{cur_year || "--"}} 年 {{cur_month || "--"}} 月</view>
+      <view class="centerView">{{cur_year}} 年 {{cur_month}} 月</view>
       <view class="rightBgView" bindtap="handleCalendar" data-handle="next">
-        <view class="rightView">》</view>
+        <image class="rightView" src='../../images/xiayiye@2x.png'></image>
       </view>
-    </view>
+    </view> -->
+
     <view class="weekBgView">
-      <view class="weekView" wx:for="{{weeks_ch}}" wx:key="{{index}}" data-idx="{{index}}">{{item}}</view>
+      <view class="weekView" wx:for="{{date}}" wx:key="{{index}}" data-idx="{{index}}">{{item}}</view>
     </view>
+
+    <!-- <view class="dateBgView">
+      <view wx:if="{{hasEmptyGrid}}" class="dateEmptyView" wx:for="{{empytGrids}}" wx:key="{{index1}}" >
+    </view> -->
     <view class="dateBgView">
-      <view wx:if="{{hasEmptyGrid}}" class="dateEmptyView" wx:for="{{empytGrids}}" wx:key="{{index}}" data-idx="{{index}}">
-      </view>
-      <view class="dateView" wx:for="{{days}}" wx:key="{{index}}" data-idx="{{index}}" bindtap="dateSelectAction">
-        <view class="datesView {{index == todayIndex ? 'dateSelectView' : ''}}">{{item}}</view>
+      <view class="dateView" wx:for="{{days}}" wx:key="{{index}}" >
+        <view class="datesView {{days[index][1]?'dateSelectView':''}}">{{item[0]}}</view>
       </view>
     </view>
+    <!-- </view> -->
   </view>
-  <view>点击日期选择</view>
 </view>
 
 

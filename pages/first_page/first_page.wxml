@@ -26,7 +26,7 @@
       <view class="joining">正在参与 </view> -->
     </view>
 
-    <view class="enter_zb" wx:if="{{iswxuser}}" bindtap="showModalZb" data-xb='{{xb}}'  >
+    <view class="enter_zb" wx:if="{{iswxuser}}" bindtap="showModalZb" data-xb='{{xb}}'>
       <image class="play_zb" src='../../images/zbbof.png'></image>
       <text class="enter" >进入直播间</text>
     </view>

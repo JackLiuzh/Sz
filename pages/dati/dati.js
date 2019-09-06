@@ -587,7 +587,99 @@ emojiChar:"☺-😋-😌-😍-😏-😜-😝-😞-😔-😪-😭-😁-😂-😃-
       //   }
       // }
   },
+  //current 改变时执行
   swiperchangefinish:function(e){
+    var that = this
+    var current = Number(e.detail.current)  // 当前的
+    var currentTab = Number(this.data.currentTab); //上一个
+    //获取试题
+    var questions = this.data.questions;
+    var length = questions.length;
+    //答题卡 
+    var datika = this.data.datika;
+    //获取几个试题
+    let lang = 10;
+    //增加的试题id
+    var main_id = [];
+
+    that.setData({
+      currentTab: current
+    })
+    //右滑
+    if (current > currentTab) {
+      //下一个不存在 则
+      if (questions[current + 1] == undefined) {
+        for (let i = current; i < datika.length; i++) {
+          if (i < current + lang) {
+            main_id.push(datika[i].id);
+          }
+        }
+      }
+    }
+
+    //左滑
+    if (current < currentTab) {
+      current = current - 1
+      //上一个不存在
+      if (current >= 0 && questions[current].isfull == 0) {
+        for (let i = current; i >= 0; i--) {
+          if (i > current - lang) {
+            main_id.push(datika[i].id);
+          }
+        }
+      }
+    }
+
+
+    //获取试题
+    if (main_id.length > 0) {
+      wx.showLoading({
+        title: '加载中',
+      })
+      var user_task_id = this.data.user_task_id
+      var uid = app.globalData.uid
+      var params = {
+        "uid": uid,
+        "user_task_id": user_task_id,
+        "main_id": main_id.join(",")
+      }
+      app.sz.xcxgetTaskTiOne(params).then(d => {
+        if (d.data.status == 0) {
+          for (let i = 0; i < d.data.data.length; i++) {
+            d.data.data[i].a_an = 2
+            d.data.data[i].b_an = 2
+            d.data.data[i].c_an = 2
+            d.data.data[i].d_an = 2
+            d.data.data[i].isfull = 1
+            if (d.data.data[i].user_answer) {
+              var xuanxiang = d.data.data[i].user_answer
+              var answer = d.data.data[i].answer
+              that.isshowzuotido(xuanxiang, i, answer, d.data.data[i])
+            }
+            if (current < currentTab) {
+              var key = "questions[" + (current - i) + "]";
+              var ki = current - i;
+            } else {
+              var key = "questions[" + (current + i) + "]";
+              var ki = current + i;
+            }
+
+            WxParse.wxParse('reply' + ki, 'html', d.data.data[i].title, that)
+            WxParse.wxParse('replynote' + ki, 'html', d.data.data[i].note, that)
+            if (i === d.data.data.length - 1) {
+              WxParse.wxParseTemArray("replyTemArray", 'reply', d.data.data.length, that)
+              WxParse.wxParseTemArray("replyTemArrayNote", 'replynote', d.data.data.length, that)
+            }
+
+            that.setData({ [key]: d.data.data[i] })
+          }
+        }
+        wx.hideLoading();
+      })
+    }
+  },
+  //手动滑页
+  swiperchange: function(e) {
     var that = this
     var current = Number(e.detail.current)  // 当前的
     var currentTab = Number(this.data.currentTab); //显示的做题序号
@@ -596,105 +688,11 @@ emojiChar:"☺-😋-😌-😍-😏-😜-😝-😞-😔-😪-😭-😁-😂-😃-
       that.setData({
         currentTab: currentTab
       })
-    } 
+    }
+    console.log(current, "===============", currentTab);
     //最后一题滑动， 跳到评估页面
     if ((current) == (this.data.datika.length)) {
       that.gopingguClick();
-    }
-
-  },
-  //手动滑页
-  swiperchange: function(e) {
-    var that = this
-    var current = Number(e.detail.current)  // 当前的
-    var currentTab = Number(this.data.currentTab); //上一个
-    //var index = Number(this.data.questions[current].i); //当前题的序号
-    //获取试题
-    var questions = this.data.questions;
-    var length = questions.length;
-    //答题卡 
-    var datika = this.data.datika;
-    //获取试题长度
-    let lang = 10;
-    //增加的试题id
-    var main_id = [];
-
-    that.setData({
-      currentTab: current
-    }) 
-     //右滑
-    if (current > currentTab){
-      console.log(current, "pppppppppppp");
-      current = current + 1  
-       //下一个不存在 则
-      if (questions[current+1] == undefined){
-        for (let i = current; i < datika.length; i++){
-          if (i < current + lang){ 
-             main_id.push(datika[i].id); 
-          }  
-        }  
-      }
-    }
-   
-    //左滑
-    if (current < currentTab) {
-      current = current - 1
-      //上一个不存在
-      if (current >= 0 && questions[current].isfull == 0) {
-        for (let i = current; i >= 0 ; i--) {
-          if (i > current - lang) {
-            main_id.push(datika[i].id);
-          }
-        }
-      }
-    }
-
-   
-    //获取试题
-    if (main_id.length > 0){
-        wx.showLoading({
-          title: '加载中',
-        })
-        var user_task_id = this.data.user_task_id
-        var uid = app.globalData.uid
-        var params = {
-          "uid": uid,
-          "user_task_id": user_task_id,
-          "main_id": main_id.join(",")
-        }
-        app.sz.xcxgetTaskTiOne(params).then(d => {
-          if(d.data.status == 0){
-            for (let i = 0; i < d.data.data.length; i++){
-              d.data.data[i].a_an = 2
-              d.data.data[i].b_an = 2
-              d.data.data[i].c_an = 2
-              d.data.data[i].d_an = 2
-              d.data.data[i].isfull = 1   
-              if (d.data.data[i].user_answer) {
-                var xuanxiang = d.data.data[i].user_answer
-                var answer = d.data.data[i].answer
-                that.isshowzuotido(xuanxiang, i, answer, d.data.data[i])
-              } 
-              if (current < currentTab) {
-                var key = "questions[" + (current-i) + "]";
-                var ki = current - i;
-              }else{
-                var key = "questions[" + (current+i) + "]";
-                var ki = current + i;
-              }
-              
-              WxParse.wxParse('reply' + ki, 'html', d.data.data[i].title, that)
-              WxParse.wxParse('replynote' + ki, 'html', d.data.data[i].note, that)
-              if (i === d.data.data.length - 1) {
-                WxParse.wxParseTemArray("replyTemArray", 'reply', d.data.data.length, that)
-                WxParse.wxParseTemArray("replyTemArrayNote", 'replynote', d.data.data.length, that)
-              }
-
-              that.setData({ [key]: d.data.data[i]})
-            }
-          }
-          wx.hideLoading();
-        })
     }
   },
 

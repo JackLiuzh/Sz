@@ -46,9 +46,9 @@ Page(filter.loginCheck({
   //   })
   // },
 
-  getFirstDayOfWeek(year, month) {
-    return new Date(Date.UTC(year, month - 1, 1)).getDay();
-  },
+  // getFirstDayOfWeek(year, month) {
+  //   return new Date(Date.UTC(year, month - 1, 1)).getDay();
+  // },
 
   nowmonth(year, month) {
     const date = new Date();
@@ -58,7 +58,7 @@ Page(filter.loginCheck({
     let comDateTime = [];
     let cal_add_false = [];
     let dayNums = new Date(year, month, 0).getDate();
-    let startWeek = new Date(year + ',' + month + ',' + 1).getDay();
+    let startWeek = new Date(Date.UTC(year, month - 1, 1)).getDay();
     var uid = wx.getStorageSync('uid');
     var token = wx.getStorageSync('token');
     var params = {
@@ -229,7 +229,7 @@ Page(filter.loginCheck({
 
 
   onLoad: function () {
-
+    // const firstDayOfWeek = this.getFirstDayOfWeek(year, month);
     // this.setNowDate();
     const date = new Date();
     const cur_year = date.getFullYear();
@@ -244,7 +244,7 @@ Page(filter.loginCheck({
     let comDateTime = [];
     let cal_add_false = [];
     let dayNums = new Date(cur_year, cur_month, 0).getDate();
-    let startWeek = new Date(cur_year + ',' + cur_month + ',' + 1).getDay();
+    let startWeek = new Date(Date.UTC(cur_year, cur_month - 1, 1)).getDay();
     var uid = wx.getStorageSync('uid');
     var token = wx.getStorageSync('token');
     var params = {

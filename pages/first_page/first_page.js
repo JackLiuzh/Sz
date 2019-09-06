@@ -303,30 +303,52 @@ Page(filter.loginCheck({
   },
   bindGetUserInfo(e) {
     var that = this
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          var bendiuserinfo = wx.getStorageSync("userInfo")
-          bendiuserinfo.name = e.detail.userInfo.nickName
-          bendiuserinfo.avatar = e.detail.userInfo.avatarUrl
-          wx.setStorageSync('userInfo', bendiuserinfo)
-          that.saveuserinfo()
-        } else {
-          console.log("用户拒绝授权")
+    that.iswxuser()
+    if(that.data.iswxuser){
+      if (this.data.finish == 0) {
+        this.setData({
+          showModal_zb: true
+        })
+      } else {
+        let url = encodeURIComponent(this.data.bpurl);
+        console.log(url);
+        let lesson_id = this.data.courselive[id].lesson_id
+        wx.navigateTo({
+          url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + lesson_id,
+        });
+      } 
+    }
+    else{
+      wx.getSetting({
+        success: res => {
+          if (res.authSetting['scope.userInfo']) {
+            var bendiuserinfo = wx.getStorageSync("userInfo")
+            bendiuserinfo.name = e.detail.userInfo.nickName
+            bendiuserinfo.avatar = e.detail.userInfo.avatarUrl
+            wx.setStorageSync('userInfo', bendiuserinfo)
+            that.saveuserinfo()
+          } else {
+            console.log("用户拒绝授权")
+          }
         }
-      }
-    })
+      })
+     
+    }
+   
   },
   iswxuser: function () {
     var that = this
     var avatar = that.data.avatar
     var bendiava = wx.getStorageSync("userInfo").avatar
     var bendname = wx.getStorageSync("userInfo").name
+    // console.log(bendname)
     if (bendname) {
       if (bendname.indexOf('szgk') != -1) {
         that.setData({ iswxuser: false })
+        console.log(this.data.iswxuser)
       } else {
         that.setData({ iswxuser: true })
+        console.log(this.data.iswxuser)
       }
     }
   },
@@ -360,9 +382,6 @@ Page(filter.loginCheck({
       wx.navigateTo({
         url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + lesson_id,
       });
-      // this.setData({
-      //   showModal_zb: false
-      // })
     } 
   },
   showModal: function (e) {

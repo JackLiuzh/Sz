@@ -6,7 +6,7 @@ page {
 }
 .idbut{
   position: absolute;
-  width:270rpx;
+  width:170rpx;
   height:72rpx;
   background: transparent;
 }

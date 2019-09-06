@@ -82,15 +82,8 @@ Page(filter.loginCheck({
     this.setData({
           comDateTime: comDateTime
         })
-      //   for (let n = 0; n < this.data.days.length; n++) {
-      //     cal_add_false.push([this.data.comDateTime[n][0], this.data.days[n], false])
-
-      // this.setData({
-      //   calPanduan: cal_add_false,
-      // })
-    // }
+      
         console.log(this.data.comDateTime)
-        // console.log(this.data.calPanduan)
 
     for (let l = 0; l < this.data.courselive.length; l++) {
           // console.log(this.data.courselive[l].liveStatus)
@@ -171,13 +164,7 @@ Page(filter.loginCheck({
         this.setData({
           comDateTime: comDateTime
         })
-        // for (let n = 0; n < this.data.days.length; n++) {
-        //   cal_add_false.push([this.data.comDateTime[n][0],this.data.days[n], false])
-
-        //   this.setData({
-        //     calPanduan: cal_add_false,
-        //   })
-        // }
+       
         console.log(this.data.comDateTime)
         // console.log(this.data.calPanduan)
 
@@ -229,7 +216,7 @@ Page(filter.loginCheck({
           cur_year: nowyear,
           cur_month: nowmonth
         })
-        that.nowmonth()
+        // that.nowmonth()
     } else {
       let newMonth = cur_month - 1;
       let newYear = cur_year;
@@ -417,26 +404,27 @@ Page(filter.loginCheck({
     app.sz.xcxuserInfo(params).then(d => {
       console.log(d)
       if (d.data.status == 0) {
-        wx.navigateTo({
-          url: '/pages/live/live?video_id=' + that.data.video_id,
-        })
+        // wx.navigateTo({
+        //   url: '/pages/live/live?video_id=' + that.data.video_id,
+        // })
         console.log("保存成功")
+        if (this.data.finish == 0) {
+          this.setData({
+            showModal_zb: true
+          })
+        } else {
+          let url = encodeURIComponent(this.data.bpurl);
+          console.log(url);
+          let lesson_id = this.data.courselive[id].lesson_id
+          wx.navigateTo({
+            url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + lesson_id,
+          });
+        } 
       } else {
         console.log("保存失败")
       }
     })
-    if (this.data.finish == 0) {
-      this.setData({
-        showModal_zb: true
-      })
-    } else {
-      let url = encodeURIComponent(this.data.bpurl);
-      console.log(url);
-      let lesson_id = this.data.courselive[id].lesson_id
-      wx.navigateTo({
-        url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + lesson_id,
-      });
-    } 
+    
   },
 
   // bindGetUserInfo(e) {

@@ -3,14 +3,11 @@ page {
   background-color: #fff; 
 } 
 
-.top_set{
+/* .top_set{
   display: flex;
   justify-content: space-around;
   align-items: center;
-  /* height: 609rpx; */
   background-color: #ffffff;
-  /* padding: 0 40rpx; */
-  /* margin-top: 182rpx; */
   overflow: auto;
 }
 .top_set .set_right{
@@ -39,12 +36,13 @@ page {
 }
 .top_set .text_left .text2 .te_color{
   color: #E65557;
-}
+} */
 
 
 .v1{ 
   margin-left:32rpx; 
   margin-top:40rpx; 
+  width:690rpx; 
   height:40rpx; 
   font-size:28rpx; 
   font-family:PingFang SC; 
@@ -56,7 +54,7 @@ page {
 .text1{ 
   margin-left:32rpx; 
   margin-top:24rpx; 
-  width:828rpx; 
+  width:690rpx; 
   height:320rpx; 
   font-size:32rpx; 
   font-family:PingFang SC; 
@@ -67,7 +65,7 @@ page {
   opacity:1; 
 } 
 .tjtp{ 
-  width:828rpx; 
+  width:690rpx; 
   height:240rpx; 
   background:rgba(255,255,255,1); 
   opacity:1; 

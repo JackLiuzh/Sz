@@ -25,156 +25,247 @@ Page(filter.loginCheck({
     sys: '',
 
 
-    // hasEmptyGrid: false,
+    hasEmptyGrid: false,
     cur_year: '',
     cur_month: '',
 
 
   },
 
-  
 
-  // setNowDate: function () {
+  // nowmonth(year, month) {
   //   const date = new Date();
-  //   const cur_year = date.getFullYear();
-  //   const cur_month = date.getMonth() + 1;
-    
-  //   this.nowmonth(cur_year, cur_month)
-  //   this.setData({
-  //     cur_year: cur_year,
-  //     cur_month: cur_month,
-  //   })
-  // },
-
-  // getFirstDayOfWeek(year, month) {
-  //   return new Date(Date.UTC(year, month - 1, 1)).getDay();
-  // },
-
-  nowmonth(year, month) {
-    const date = new Date();
-    let i = 1
-    let num = 0
-    let days = [];
-    let comDateTime = [];
-    let cal_add_false = [];
-    let dayNums = new Date(year, month, 0).getDate();
-    let startWeek = new Date(Date.UTC(year, month - 1, 1)).getDay();
-    var uid = wx.getStorageSync('uid');
-    var token = wx.getStorageSync('token');
-    var params = {
-      "uid": uid,
-      "token": token,
-    }
-    app.sz.xcxcourseLive(params).then(d => {
-      if (d.data.status == 1) {
-        this.setData({ courselive: d.data.data, sys: d.data.sys })
-        // console.log(dayNums + firstDayOfWeek)
-        for (i; i <= dayNums + startWeek ; i++) {
-          if (i > startWeek) {
-        
-            
-            days.push(i - startWeek)
-            
-          } else {
-            days.push('')
-          }
-        }
-    
-    this.setData({
-      days
-    })
-       
-    console.log(this.data.days)
-    for(let j=0 ;j < this.data.days.length ; j++){
-      if (month < 10 && this.data.days[j] < 10){
-        comDateTime.push([year + '-' + '0' + month + '-' + '0' + this.data.days[j], j])
-      } else if (month < 10 && this.data.days[j] >= 10){
-        comDateTime.push([year + '-' + '0' + month + '-' +  this.data.days[j], j])
-      } else if (month >= 10 && this.data.days[j] < 10){
-        comDateTime.push([year + '-' +  month + '-' + '0' + this.data.days[j], j])
-      } else if (month >= 10 && this.data.days[j] >= 10){
-        comDateTime.push([year + '-' +  month + '-' + this.data.days[j], j])
-      }
-    }
-    this.setData({
-          comDateTime: comDateTime
-        })
-    for (let n = 0; n < this.data.days.length; n++) {
-      cal_add_false.push([this.data.days[n], false])
-
-      this.setData({
-        calPanduan: cal_add_false,
-      })
-    }
-        console.log(this.data.comDateTime)
-        console.log(this.data.calPanduan)
-
-    for (let l = 0; l < this.data.courselive.length; l++) {
-          // console.log(this.data.courselive[l].liveStatus)
-          if (this.data.courselive[l].liveStatus == 1){
-            // console.log('cs')
-            for (let m = 0; m < this.data.comDateTime.length;m++){
-              // console.log('cs')
-              if (this.data.courselive[l].dateTime == this.data.comDateTime[m][0]){
-                // console.log(m)
-                for (let n = 0; n < this.data.calPanduan.length;n++){
-                  // console.log('cs')
-                  if (this.data.comDateTime[m+1][1] == this.data.calPanduan[n][0]){
-                    // console.log('cs')
-                    this.data.calPanduan[n][1]=true
-                    console.log(this.data.calPanduan[n][1])
-                    // this.setData({ days: this.data.calPanduan })
-                    
-                  }
-                }
-              }
-            }
-          }
-          else {
-            this.setData({ days: this.data.calPanduan })
-            console.log(this.data.days)
-          }
-        }
-      }
-    })
-  },
-
-  // calculateDays(year, month) {
+  //   let i = 1
+  //   let num = 0
   //   let days = [];
   //   let comDateTime = [];
   //   let cal_add_false = [];
-  //   // const date = new Date();
-  //   // const cur_year = date.getFullYear();
-  //   // const cur_month = date.getMonth() + 1;
   //   let dayNums = new Date(year, month, 0).getDate();
-  //   for (let i = 1; i <= dayNums; i++) {
-  //     days.push(i);
+  //   let startWeek = new Date(Date.UTC(year, month - 1, 1)).getDay();
+  //   var uid = wx.getStorageSync('uid');
+  //   var token = wx.getStorageSync('token');
+  //   var params = {
+  //     "uid": uid,
+  //     "token": token,
   //   }
+  //   app.sz.xcxcourseLive(params).then(d => {
+  //     if (d.data.status == 1) {
+  //       this.setData({ courselive: d.data.data, sys: d.data.sys })
+  //       // console.log(dayNums + firstDayOfWeek)
+  //       for (i; i <= dayNums + startWeek ; i++) {
+  //         if (i > startWeek) {
+        
+            
+  //           days.push(i - startWeek)
+            
+  //         } else {
+  //           days.push('')
+  //         }
+  //       }
+    
   //   this.setData({
   //     days
-  //   });
-  //   // for (let j = 0; j < this.data.days.length; j++) {
-  //   //   comDateTime.push([year + '-' + '0' + month + '-' + '0' + this.data.days[j], j])
+  //   })
+       
+  //   // console.log(this.data.days)
+  //   // for(let j=0 ;j < this.data.days.length ; j++){
+  //   //   if (month < 10 && this.data.days[j] < 10){
+  //   //     comDateTime.push([year + '-' + '0' + month + '-' + '0' + this.data.days[j], this.data.days[j]])
+  //   //   } else if (month < 10 && this.data.days[j] >= 10){
+  //   //     comDateTime.push([year + '-' + '0' + month + '-' + this.data.days[j], this.data.days[j]])
+  //   //   } else if (month >= 10 && this.data.days[j] < 10){
+  //   //     comDateTime.push([year + '-' + month + '-' + '0' + this.data.days[j], this.data.days[j]])
+  //   //   } else if (month >= 10 && this.data.days[j] >= 10){
+  //   //     comDateTime.push([year + '-' + month + '-' + this.data.days[j], this.data.days[j]])
+  //   //   }
   //   // }
   //   // this.setData({
-  //   //   comDateTime: comDateTime
-  //   // })
-
+  //   //       comDateTime: comDateTime
+  //   //     })
   //   // for (let n = 0; n < this.data.days.length; n++) {
   //   //   cal_add_false.push([this.data.days[n], false])
 
   //   //   this.setData({
   //   //     calPanduan: cal_add_false,
   //   //   })
-
-  //   //   this.setData({ days: this.data.calPanduan })
   //   // }
-  //   // console.log(this.data.comDateTime)
-  //   // console.log(this.data.calPanduan)
+  //   //     console.log(this.data.comDateTime)
+  //   //     console.log(this.data.calPanduan)
 
-  //   console.log(this.data.days)
+  //   // for (let l = 0; l < this.data.courselive.length; l++) {
+  //   //       // console.log(this.data.courselive[l].liveStatus)
+  //   //       if (this.data.courselive[l].liveStatus == 1){
+  //   //         // console.log('cs')
+  //   //         for (let m = 0; m < this.data.comDateTime.length;m++){
+  //   //           // console.log('cs')
+  //   //           if (this.data.courselive[l].dateTime == this.data.comDateTime[m][0]){
+  //   //             // console.log(m)
+  //   //             for (let n = 0; n < this.data.calPanduan.length;n++){
+  //   //               // console.log('cs')
+  //   //               if (this.data.comDateTime[m][1] == this.data.calPanduan[n][0]){
+  //   //                 // console.log('cs')
+  //   //                 this.data.calPanduan[n][1]=true
+  //   //                 console.log(this.data.calPanduan[n][1])
+  //   //                 // this.setData({ days: this.data.calPanduan })
+                    
+  //   //               }
+  //   //             }
+  //   //           }
+  //   //         }
+  //   //       }
+  //   //       else {
+  //   //         this.setData({ days: this.data.calPanduan })
+  //   //         console.log(this.data.days)
+  //   //       }
+  //   //     }
+  //     }
+  //   })
   // },
 
+  // // calculateDays(year, month) {
+  // //   let days = [];
+  // //   let comDateTime = [];
+  // //   let cal_add_false = [];
+  // //   // const date = new Date();
+  // //   // const cur_year = date.getFullYear();
+  // //   // const cur_month = date.getMonth() + 1;
+  // //   let dayNums = new Date(year, month, 0).getDate();
+  // //   for (let i = 1; i <= dayNums; i++) {
+  // //     days.push(i);
+  // //   }
+  // //   this.setData({
+  // //     days
+  // //   });
+  // //   // for (let j = 0; j < this.data.days.length; j++) {
+  // //   //   comDateTime.push([year + '-' + '0' + month + '-' + '0' + this.data.days[j], j])
+  // //   // }
+  // //   // this.setData({
+  // //   //   comDateTime: comDateTime
+  // //   // })
+
+  // //   // for (let n = 0; n < this.data.days.length; n++) {
+  // //   //   cal_add_false.push([this.data.days[n], false])
+
+  // //   //   this.setData({
+  // //   //     calPanduan: cal_add_false,
+  // //   //   })
+
+  // //   //   this.setData({ days: this.data.calPanduan })
+  // //   // }
+  // //   // console.log(this.data.comDateTime)
+  // //   // console.log(this.data.calPanduan)
+
+  // //   console.log(this.data.days)
+  // // },
+
+  // handleCalendar(e) {
+  //   const handle = e.currentTarget.dataset.handle;
+  //   const cur_year = this.data.cur_year;
+  //   const cur_month = this.data.cur_month;
+  //   if (handle === 'prev') {
+  //     let newMonth = cur_month - 1;
+  //     let newYear = cur_year;
+  //     if (newMonth < 1) {
+  //       newYear = cur_year - 1;
+  //       newMonth = 12;
+  //     }
+  //     this.nowmonth(newYear, newMonth);
+  //     // this.calculateEmptyGrids(newYear, newMonth);
+
+  //     this.setData({
+  //       cur_year: newYear,
+  //       cur_month: newMonth
+  //     })
+
+  //   } else {
+  //     let newMonth = cur_month + 1;
+  //     let newYear = cur_year;
+  //     if (newMonth > 12) {
+  //       newYear = cur_year + 1;
+  //       newMonth = 1;
+  //     }
+
+  //     this.nowmonth(newYear, newMonth);
+  //     // this.calculateEmptyGrids(newYear, newMonth);
+
+  //     this.setData({
+  //       cur_year: newYear,
+  //       cur_month: newMonth
+  //     })
+  //   }
+  // },
+
+
+  // //返回当前日期
+  // // getcurrentriqi: function () {
+  // //   var timestamp = Date.parse(new Date());
+  // //   var date = new Date(timestamp);
+  // //   //获取年份  
+  // //   var Y = date.getFullYear();
+  // //   //获取月份  
+  // //   var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+  // //   //获取当日日期 
+  // //   var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+  // //   return Y + '-' + M + '-' + D
+
+  // // },
+
+
+  getThisMonthDays(year, month) {
+    return new Date(year, month, 0).getDate();
+  },
+  getFirstDayOfWeek(year, month) {
+    return new Date(Date.UTC(year, month - 1, 1)).getDay();
+  },
+  calculateEmptyGrids(year, month) {
+    const firstDayOfWeek = this.getFirstDayOfWeek(year, month);
+    let empytGrids = [];
+    if (firstDayOfWeek > 0) {
+      for (let i = 0; i < firstDayOfWeek; i++) {
+        empytGrids.push(i);
+      }
+      this.setData({
+        hasEmptyGrid: true,
+        empytGrids
+      });
+    } else {
+      this.setData({
+        hasEmptyGrid: false,
+        empytGrids: []
+      });
+    }
+  },
+  calculateDays(year, month) {
+    let days = [];
+
+    const thisMonthDays = this.getThisMonthDays(year, month);
+
+    for (let i = 1; i <= thisMonthDays; i++) {
+      days.push(i);
+    }
+
+    this.setData({
+      days
+    });
+  },
+  setNowDate: function () {
+    const date = new Date();
+    const cur_year = date.getFullYear();
+    const cur_month = date.getMonth() + 1;
+    const todayIndex = date.getDate() - 1;
+    console.log(`日期：${todayIndex}`)
+    const weeks_ch = ['日', '一', '二', '三', '四', '五', '六'];
+    this.calculateEmptyGrids(cur_year, cur_month);
+    this.calculateDays(cur_year, cur_month);
+    this.setData({
+      cur_year: cur_year,
+      cur_month: cur_month,
+      weeks_ch,
+      todayIndex,
+    })
+  },
+
+ 
   handleCalendar(e) {
     const handle = e.currentTarget.dataset.handle;
     const cur_year = this.data.cur_year;
@@ -186,8 +277,9 @@ Page(filter.loginCheck({
         newYear = cur_year - 1;
         newMonth = 12;
       }
-      this.nowmonth(newYear, newMonth);
-      // this.calculateEmptyGrids(newYear, newMonth);
+
+      this.calculateDays(newYear, newMonth);
+      this.calculateEmptyGrids(newYear, newMonth);
 
       this.setData({
         cur_year: newYear,
@@ -202,8 +294,8 @@ Page(filter.loginCheck({
         newMonth = 1;
       }
 
-      this.nowmonth(newYear, newMonth);
-      // this.calculateEmptyGrids(newYear, newMonth);
+      this.calculateDays(newYear, newMonth);
+      this.calculateEmptyGrids(newYear, newMonth);
 
       this.setData({
         cur_year: newYear,
@@ -213,38 +305,9 @@ Page(filter.loginCheck({
   },
 
 
-  //返回当前日期
-  // getcurrentriqi: function () {
-  //   var timestamp = Date.parse(new Date());
-  //   var date = new Date(timestamp);
-  //   //获取年份  
-  //   var Y = date.getFullYear();
-  //   //获取月份  
-  //   var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
-  //   //获取当日日期 
-  //   var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
-  //   return Y + '-' + M + '-' + D
-
-  // },
-
 
   onLoad: function () {
-    // const firstDayOfWeek = this.getFirstDayOfWeek(year, month);
-    // this.setNowDate();
-    const date = new Date();
-    const cur_year = date.getFullYear();
-    const cur_month = date.getMonth() + 1;
-      this.setData({
-      cur_year: cur_year,
-      cur_month: cur_month,
-    })
-    let i = 1
-    let num = 0
-    let days = [];
-    let comDateTime = [];
-    let cal_add_false = [];
-    let dayNums = new Date(cur_year, cur_month, 0).getDate();
-    let startWeek = new Date(Date.UTC(cur_year, cur_month - 1, 1)).getDay();
+    this.setNowDate();
     var uid = wx.getStorageSync('uid');
     var token = wx.getStorageSync('token');
     var params = {
@@ -254,75 +317,107 @@ Page(filter.loginCheck({
     app.sz.xcxcourseLive(params).then(d => {
       if (d.data.status == 1) {
         this.setData({ courselive: d.data.data, sys: d.data.sys })
-        // console.log(dayNums + firstDayOfWeek)
-        for (i; i <= dayNums + startWeek; i++) {
-          if (i > startWeek) {
-
-
-            days.push(i - startWeek)
-
-          } else {
-            days.push('')
-          }
-        }
-
-        this.setData({
-          days
-        })
-
-        console.log(this.data.days)
-        for (let j = 0; j < this.data.days.length; j++) {
-          if (cur_month < 10 && this.data.days[j] < 10) {
-            comDateTime.push([cur_year + '-' + '0' + cur_month + '-' + '0' + this.data.days[j], j])
-          } else if (cur_month < 10 && this.data.days[j] >= 10) {
-            comDateTime.push([cur_year + '-' + '0' + cur_month + '-' + this.data.days[j], j])
-          } else if (cur_month >= 10 && this.data.days[j] < 10) {
-            comDateTime.push([cur_year + '-' + cur_month + '-' + '0' + this.data.days[j], j])
-          } else if (cur_month >= 10 && this.data.days[j] >= 10) {
-            comDateTime.push([cur_year + '-' + cur_month + '-' + this.data.days[j], j])
-          }
-        }
-        this.setData({
-          comDateTime: comDateTime
-        })
-        for (let n = 0; n < this.data.days.length; n++) {
-          cal_add_false.push([this.data.days[n], false])
-
-          this.setData({
-            calPanduan: cal_add_false,
-          })
-        }
-        console.log(this.data.comDateTime)
-        console.log(this.data.calPanduan)
-
-        for (let l = 0; l < this.data.courselive.length; l++) {
-          // console.log(this.data.courselive[l].liveStatus)
-          if (this.data.courselive[l].liveStatus == 1) {
-            // console.log('cs')
-            for (let m = 0; m < this.data.comDateTime.length; m++) {
-              // console.log('cs')
-              if (this.data.courselive[l].dateTime == this.data.comDateTime[m][0]) {
-                // console.log(m)
-                for (let n = 0; n < this.data.calPanduan.length; n++) {
-                  // console.log('cs')
-                  if (this.data.comDateTime[m + 1][1] == this.data.calPanduan[n][0]) {
-                    // console.log('cs')
-                    this.data.calPanduan[n][1] = true
-                    console.log(this.data.calPanduan[n][1])
-                    // this.setData({ days: this.data.calPanduan })
-
-                  }
-                }
-              }
-            }
-          }
-          else {
-            this.setData({ days: this.data.calPanduan })
-            console.log(this.data.days)
-          }
-        }
       }
     })
+
+
+
+
+
+  //   // const firstDayOfWeek = this.getFirstDayOfWeek(year, month);
+  //   // this.setNowDate();
+  //   const date = new Date();
+  //   const cur_year = date.getFullYear();
+  //   const cur_month = date.getMonth() + 1;
+  //     this.setData({
+  //     cur_year: cur_year,
+  //     cur_month: cur_month,
+  //   })
+  //   let i = 1
+  //   let num = 0
+  //   let days = [];
+  //   let comDateTime = [];
+  //   let cal_add_false = [];
+  //   let dayNums = new Date(cur_year, cur_month, 0).getDate();
+  //   let startWeek = new Date(Date.UTC(cur_year, cur_month - 1, 1)).getDay();
+  //   var uid = wx.getStorageSync('uid');
+  //   var token = wx.getStorageSync('token');
+  //   var params = {
+  //     "uid": uid,
+  //     "token": token,
+  //   }
+  //   app.sz.xcxcourseLive(params).then(d => {
+  //     if (d.data.status == 1) {
+  //       this.setData({ courselive: d.data.data, sys: d.data.sys })
+  //       // console.log(dayNums + firstDayOfWeek)
+  //       for (i; i <= dayNums + startWeek; i++) {
+  //         if (i > startWeek) {
+
+
+  //           days.push(i - startWeek)
+
+  //         } else {
+  //           days.push('')
+  //         }
+  //       }
+
+  //       this.setData({
+  //         days
+  //       })
+
+  //       // console.log(this.data.days)
+  //       // for (let j = 0; j < this.data.days.length; j++) {
+  //       //   if (cur_month < 10 && this.data.days[j] < 10) {
+  //       //     comDateTime.push([cur_year + '-' + '0' + cur_month + '-' + '0' + this.data.days[j], j])
+  //       //   } else if (cur_month < 10 && this.data.days[j] >= 10) {
+  //       //     comDateTime.push([cur_year + '-' + '0' + cur_month + '-' + this.data.days[j], j])
+  //       //   } else if (cur_month >= 10 && this.data.days[j] < 10) {
+  //       //     comDateTime.push([cur_year + '-' + cur_month + '-' + '0' + this.data.days[j], j])
+  //       //   } else if (cur_month >= 10 && this.data.days[j] >= 10) {
+  //       //     comDateTime.push([cur_year + '-' + cur_month + '-' + this.data.days[j], j])
+  //       //   }
+  //       // }
+  //       // this.setData({
+  //       //   comDateTime: comDateTime
+  //       // })
+  //       // for (let n = 0; n < this.data.days.length; n++) {
+  //       //   cal_add_false.push([this.data.days[n], false])
+
+  //       //   this.setData({
+  //       //     calPanduan: cal_add_false,
+  //       //   })
+  //       // }
+  //       // console.log(this.data.comDateTime)
+  //       // console.log(this.data.calPanduan)
+
+  //       // for (let l = 0; l < this.data.courselive.length; l++) {
+  //       //   // console.log(this.data.courselive[l].liveStatus)
+  //       //   if (this.data.courselive[l].liveStatus == 1) {
+  //       //     // console.log('cs')
+  //       //     for (let m = 0; m < this.data.comDateTime.length; m++) {
+  //       //       // console.log('cs')
+  //       //       if (this.data.courselive[l].dateTime == this.data.comDateTime[m][0]) {
+  //       //         // console.log(m)
+  //       //         for (let n = 0; n < this.data.calPanduan.length; n++) {
+  //       //           // console.log('cs')
+  //       //           if (this.data.comDateTime[m + 1][1] == this.data.calPanduan[n][0]) {
+  //       //             // console.log('cs')
+  //       //             this.data.calPanduan[n][1] = true
+  //       //             console.log(this.data.calPanduan[n][1])
+  //       //             // this.setData({ days: this.data.calPanduan })
+
+  //       //           }
+  //       //         }
+  //       //       }
+  //       //     }
+  //       //   }
+  //       //   else {
+  //       //     this.setData({ days: this.data.calPanduan })
+  //       //     console.log(this.data.days)
+  //       //   }
+  //       // }
+  //     }
+  //   })
 
   },
   bindGetUserInfo(e) {

@@ -92,7 +92,8 @@
     </view> -->
     <view class="dateBgView">
       <view class="dateView" wx:for="{{days}}" wx:key="{{index}}" >
-        <view class="datesView {{days[index][1]?'dateSelectView':''}}">{{item[0]}}</view>
+        <!-- <view class="datesView {{days[index][1]?'dateSelectView':''}}">{{item[0]}}</view> -->
+        <view class="datesView {{days[index]?'dateSelectView':''}}">{{item}}</view>
       </view>
     </view>
     <!-- </view> -->

@@ -264,7 +264,7 @@ Page(filter.loginCheck({
     
     //画下半部的白底
     context.setFillStyle('white')
-    context.fillRect(0, 223 * rpx, 432 * rpx, 450* rpx)
+    context.fillRect(0, 223 * rpx, 432 * rpx, 410* rpx)
 
     //画头像
     context.save();
@@ -290,7 +290,7 @@ Page(filter.loginCheck({
     context.setFillStyle('black')
     context.setTextAlign('center')
     context.setTextBaseline('bottom')
-    context.fillText('每日刷题', 186 * rpx, 295 * rpx)
+    context.fillText('每日刷题', 186 * rpx, 275 * rpx)
     context.stroke()
 
   //任务完成
@@ -317,7 +317,7 @@ Page(filter.loginCheck({
       list.forEach(function (item) {
         context.setFontSize(16 * rpx)
         context.setFillStyle('black')
-        context.fillText(item.tname, i11, 369 * rpx)
+        context.fillText(item.tname, i11, 350 * rpx)
         context.fillText('题', i12, 415 * rpx)
         context.setFontSize(40 * rpx)
         context.setFillStyle('#E65557')
@@ -330,12 +330,12 @@ Page(filter.loginCheck({
       list.forEach(function (item) {
         context.setFontSize(16 * rpx)
         context.setFillStyle('#A5A3A3')
-        context.fillText(item.tname, 183 * rpx, 350 * rpx)
+        context.fillText("今日任务", 183 * rpx, 320 * rpx)
         context.setFillStyle('#333333')
-        context.fillText('题', 204 * rpx, 415 * rpx)
+        context.fillText('题', 204 * rpx, 380 * rpx)
         context.setFontSize(40 * rpx)
         context.setFillStyle('#E65557')
-        context.fillText(item.already_total, 171 * rpx, 420 * rpx)
+        context.fillText(item.already_total, 171 * rpx, 385 * rpx)
       })
     } else if (task_num == 3) {
       var i11 = 82 * rpx, i12 = 109 * rpx, i13 = 75 * rpx
@@ -354,47 +354,47 @@ Page(filter.loginCheck({
     }
     //总的统计
     context.setFillStyle('#F3F4F5')
-    context.fillRect(0, 450 * rpx, 432 * rpx, 100 * rpx)
+    context.fillRect(0, 410 * rpx, 432 * rpx, 100 * rpx)
 
     context.setFontSize(27 * rpx)
     context.setFillStyle('#303030')
-    context.fillText(daka_days, 56 * rpx, 500 * rpx)
+    context.fillText(daka_days, 56 * rpx, 460 * rpx)
     context.setFontSize(18 * rpx)
     context.setFillStyle('#666666')
-    context.fillText('天', 85 * rpx, 500 * rpx)
+    context.fillText('天', 85 * rpx, 460 * rpx)
     context.setTextBaseline('bottom')
-    context.fillText('坚持打卡', 75 * rpx, 536 * rpx)
+    context.fillText('坚持打卡', 75 * rpx, 496 * rpx)
 
     context.setFontSize(27 * rpx)
     context.setFillStyle('#303030')
-    context.fillText(zongshu_total, 182 * rpx, 500 * rpx)
+    context.fillText(zongshu_total, 182 * rpx, 460 * rpx)
     context.setFontSize(18 * rpx)
     context.setFillStyle('#666666')
-    context.fillText('题', 218 * rpx, 500 * rpx)
+    context.fillText('题', 218 * rpx, 460 * rpx)
     context.setTextBaseline('bottom')
-    context.fillText('累计做题', 194 * rpx, 536 * rpx)
+    context.fillText('累计做题', 194 * rpx, 496 * rpx)
 
     context.setFontSize(27 * rpx)
     context.setFillStyle('#303030')
-    context.fillText(lookvideos, 298 * rpx, 500 * rpx)
+    context.fillText(lookvideos, 298 * rpx, 460 * rpx)
     context.setFontSize(18 * rpx)
     context.setFillStyle('#666666')
-    context.fillText('个', 327 * rpx, 500 * rpx)
+    context.fillText('个', 327 * rpx, 460 * rpx)
     context.setTextBaseline('bottom')
-    context.fillText('累计看视频', 320 * rpx, 536 * rpx)
+    context.fillText('累计看视频', 320 * rpx, 496 * rpx)
 
     // 底部标语和二维码
     context.setFontSize(20 * rpx)
     context.setFillStyle('#333333')
     context.setTextBaseline('bottom')
-    context.fillText('尚政公考', 74 * rpx, 600 * rpx)
+    context.fillText('尚政公考', 74 * rpx, 560 * rpx)
     context.setFontSize(18 * rpx)
     context.setFillStyle('#999999')
     context.setTextBaseline('bottom')
-    context.fillText('公务员考试提分利器', 114 * rpx, 630 * rpx)
+    context.fillText('公务员考试提分利器', 114 * rpx, 590 * rpx)
 
     //底部扫码
-    context.drawImage(erweima, 256 * rpx, 560 * rpx, 90 * rpx, 103 * rpx)
+    context.drawImage(erweima, 256 * rpx, 520 * rpx, 90 * rpx, 103 * rpx)
 
 
     context.draw()
@@ -586,7 +586,7 @@ Page(filter.loginCheck({
 
     //画下半部的白底
     context.setFillStyle('white')
-    context.fillRect(0, 223 * rpx, 432 * rpx, 450 * rpx)
+    context.fillRect(0, 223 * rpx, 432 * rpx, 410 * rpx)
 
     //画头像
     context.save();
@@ -612,67 +612,67 @@ Page(filter.loginCheck({
     context.setFillStyle('black')
     context.setTextAlign('center')
     context.setTextBaseline('bottom')
-    context.fillText('专项刷题', 186 * rpx, 295 * rpx)
+    context.fillText('专项刷题', 186 * rpx, 275 * rpx)
     context.stroke()
 
   
      
         context.setFontSize(18 * rpx)
         context.setFillStyle('#A5A3A3')
-        context.fillText("本期专题任务", 183 * rpx, 350 * rpx)
+        context.fillText("本期专题任务", 183 * rpx, 320 * rpx)
         context.setFontSize(40 * rpx)
         context.setFillStyle('#E65557')
         if(that.data.project.first_pro == 1){
-          context.fillText("已完成", 182 * rpx, 420 * rpx)
+          context.fillText("已完成", 182 * rpx, 385 * rpx)
         }else{
-          context.fillText("未完成", 182 * rpx, 420 * rpx)
+          context.fillText("未完成", 182 * rpx, 385 * rpx)
         }
         
 
     
     //总的统计
     context.setFillStyle('#F3F4F5')
-    context.fillRect(0, 450 * rpx, 432 * rpx, 100 * rpx)
+    context.fillRect(0, 410 * rpx, 432 * rpx, 100 * rpx)
 
     context.setFontSize(27 * rpx)
     context.setFillStyle('#303030')
-    context.fillText(project_count, 56 * rpx, 500 * rpx)
+    context.fillText(project_count, 56 * rpx, 460 * rpx)
     context.setFontSize(18 * rpx)
     context.setFillStyle('#666666')
-    context.fillText('期', 85 * rpx, 500 * rpx)
+    context.fillText('期', 85 * rpx, 460 * rpx)
     context.setTextBaseline('bottom')
-    context.fillText('专项刷题共', 75 * rpx, 536 * rpx)
+    context.fillText('专项刷题共', 75 * rpx, 496 * rpx)
 
     context.setFontSize(27 * rpx)
     context.setFillStyle('#303030')
-    context.fillText(wancheng_total, 182 * rpx, 500 * rpx)
+    context.fillText(wancheng_total, 182 * rpx, 460 * rpx)
     context.setFontSize(18 * rpx)
     context.setFillStyle('#666666')
-    context.fillText('期', 218 * rpx, 500 * rpx)
+    context.fillText('期', 218 * rpx, 460 * rpx)
     context.setTextBaseline('bottom')
-    context.fillText('刷题完成', 194 * rpx, 536 * rpx)
+    context.fillText('刷题完成', 194 * rpx, 496 * rpx)
 
     context.setFontSize(27 * rpx)
     context.setFillStyle('#303030')
-    context.fillText(look_count, 298 * rpx, 500 * rpx)
+    context.fillText(look_count, 298 * rpx, 460 * rpx)
     context.setFontSize(18 * rpx)
     context.setFillStyle('#666666')
-    context.fillText('期', 327 * rpx, 500 * rpx)
+    context.fillText('期', 327 * rpx, 460 * rpx)
     context.setTextBaseline('bottom')
-    context.fillText('看专题课', 320 * rpx, 536 * rpx)
+    context.fillText('看专题课', 320 * rpx, 496 * rpx)
 
     // 底部标语和二维码
     context.setFontSize(20 * rpx)
     context.setFillStyle('#333333')
     context.setTextBaseline('bottom')
-    context.fillText('尚政公考', 74 * rpx, 600 * rpx)
+    context.fillText('尚政公考', 74 * rpx, 560 * rpx)
     context.setFontSize(18 * rpx)
     context.setFillStyle('#999999')
     context.setTextBaseline('bottom')
-    context.fillText('公务员考试提分利器', 114 * rpx, 630 * rpx)
+    context.fillText('公务员考试提分利器', 114 * rpx, 590 * rpx)
 
     //底部扫码
-    context.drawImage(erweima, 256 * rpx, 560 * rpx, 90 * rpx, 103 * rpx)
+    context.drawImage(erweima, 256 * rpx, 520 * rpx, 90 * rpx, 103 * rpx)
 
 
     context.draw()

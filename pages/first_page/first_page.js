@@ -33,7 +33,7 @@ Page(filter.loginCheck({
   },
 
 
-  nowmonth(year, month) {
+  nextmonth(year, month) {
     const date = new Date();
     let i = 1
     let num = 0
@@ -159,62 +159,17 @@ Page(filter.loginCheck({
 
   //   console.log(this.data.days)
   // },
-
-  handleCalendar(e) {
-    const handle = e.currentTarget.dataset.handle;
-    const date = new Date();
-    const nowyear = date.getFullYear();
-    const nowmonth = date.getMonth() + 1;
-    const cur_year = this.data.cur_year;
-    const cur_month = this.data.cur_month;
-    if (handle === 'prev') {
-      if (cur_month <= nowmonth && cur_year == nowyear) {
-        this.onLoad()
-        this.setData({
-          cur_year: newYear,
-          cur_month: newMonth
-        })
-    } else {
-       let newMonth = cur_month - 1;
-      let newYear = cur_year;
-      if (newMonth < 1) {
-        newYear = cur_year - 1;
-        newMonth = 12;
-      }
-      this.nowmonth(newYear, newMonth);
-        this.setData({
-          cur_year: newYear,
-          cur_month: newMonth
-        })
-    }
-
-    } else {
-      let newMonth = cur_month + 1;
-      let newYear = cur_year;
-      if (newMonth > 12) {
-        newYear = cur_year + 1;
-        newMonth = 1;
-      }
-
-      this.nowmonth(newYear, newMonth);
-      // this.calculateEmptyGrids(newYear, newMonth);
-
-      this.setData({
-        cur_year: newYear,
-        cur_month: newMonth
-      })
-    }
-  },
-
-  onLoad: function () {
+  nowmonth(){
     const date = new Date();
     const cur_year = date.getFullYear();
     const cur_month = date.getMonth() + 1;
-      this.setData({
+    this.setData({
       cur_year: cur_year,
       cur_month: cur_month,
     })
-    let i = 1
+    let xq = new Date().getDay();
+    let day = date.getDate();
+    let i = 0
     let num = 0
     let days = [];
     let comDateTime = [];
@@ -230,13 +185,201 @@ Page(filter.loginCheck({
     app.sz.xcxcourseLive(params).then(d => {
       if (d.data.status == 1) {
         this.setData({ courselive: d.data.data, sys: d.data.sys })
-        // console.log(dayNums + firstDayOfWeek)
-        for (i; i <= dayNums + startWeek; i++) {
-          if (i > startWeek) {
+
+        console.log(xq)
+        console.log(day)
+        console.log(dayNums)
+        let syday = dayNums - day + 1;
+        for (i; i < syday + xq; i++) {
+          if (i >= xq) {
+            num = i - xq + day;
+            days.push(num)
+          } else {
+            days.push('')
+          }
+        }
+        this.setData({
+          days
+        })
+        console.log(this.data.days)
+        for (let j = 0; j < this.data.days.length; j++) {
+          if (cur_month < 10 && this.data.days[j] < 10) {
+            comDateTime.push([cur_year + '/' + '0' + cur_month + '/' + '0' + this.data.days[j], this.data.days[j], false])
+          } else if (cur_month < 10 && this.data.days[j] >= 10) {
+            comDateTime.push([cur_year + '/' + '0' + cur_month + '/' + this.data.days[j], this.data.days[j], false])
+          } else if (cur_month >= 10 && this.data.days[j] < 10) {
+            comDateTime.push([cur_year + '/' + cur_month + '/' + '0' + this.data.days[j], this.data.days[j], false])
+          } else if (cur_month >= 10 && this.data.days[j] >= 10) {
+            comDateTime.push([cur_year + '/' + cur_month + '/' + this.data.days[j], this.data.days[j], false])
+          }
+        }
+        this.setData({
+          comDateTime: comDateTime
+        })
+        // for (let n = 0; n < this.data.days.length; n++) {
+        //   cal_add_false.push([this.data.comDateTime[n][0],this.data.days[n], false])
+
+        //   this.setData({
+        //     calPanduan: cal_add_false,
+        //   })
+        // }
+        console.log(this.data.comDateTime)
+        // console.log(this.data.calPanduan)
+
+        for (let l = 0; l < this.data.courselive.length; l++) {
+          // console.log(this.data.courselive[l].liveStatus)
+          if (this.data.courselive[l].liveStatus == 1) {
+            // console.log('cs')
+            for (let m = 0; m < this.data.comDateTime.length; m++) {
+              // console.log('cs')
+              if (this.data.courselive[l].dateTime == this.data.comDateTime[m][0]) {
+                // console.log(m)
+                this.data.comDateTime[m][2] = true
+                console.log(this.data.comDateTime[m][2])
+                // for (let n = 0; n < this.data.calPanduan.length; n++) {
+                //   // console.log('cs')
+                //   if (this.data.comDateTime[m][0] == this.data.calPanduan[n][0]) {
+                //     // console.log('cs')
+                //     this.data.calPanduan[n][2] = true
+                //     console.log(this.data.calPanduan[n][2])
+                //     this.setData({ days: this.data.calPanduan })
+
+                //   }
+                // }
+              }
+            }
+          }
+          else {
+            this.setData({ days: this.data.comDateTime })
+            console.log(this.data.days)
+          }
+        }
+      }
+    })
+
+  },
+  handleCalendar(e) {
+    let that = this
+    const handle = e.currentTarget.dataset.handle;
+    const date = new Date();
+    const nowyear = date.getFullYear();
+    const nowmonth = date.getMonth() + 1;
+    const cur_year = this.data.cur_year;
+    const cur_month = this.data.cur_month;
+    if (handle === 'prev') {
+    //   if (cur_month > nowmonth && cur_year == nowYear) {
+    //     this.setData({
+    //       newYear: cur_year,
+    //       newMonth: cur_month + 1
+    //     })
+    //     that.nextmonth(newYear, newMonth);
+    //     this.setData({
+    //       cur_year: newYear,
+    //       cur_month: newMonth
+    //     })
+    //   } else if (cur_year == nowYear) {
+    //   this.nowmonth()
+    //     that.setData({
+    //       cur_year: nowyear,
+    //       cur_month: nowmonth
+    //     })
+    // }else {
+    //   this.setData({
+    //     newYear: cur_year -1,
+    //     newMonth: 12
+    //   })
+    //     that.nextmonth(newYear, newMonth);
+    //     this.setData({
+    //       cur_year: newYear,
+    //       cur_month: newMonth
+    //     })
+    // }
 
 
-            days.push(i - startWeek)
+      if (cur_month <= nowmonth && cur_year == nowyear) {
+        // this.onLoad()
+        that.setData({
+          cur_year: nowyear,
+          cur_month: nowmonth
+        })
+        that.nowmonth()
+    } else {
+      let newMonth = cur_month - 1;
+      let newYear = cur_year;
+        if (newMonth == nowmonth){
+          that.nowmonth()
+          that.setData({
+            cur_year: nowyear,
+            cur_month: nowmonth
+          })
+        }
+        else{
+          if (newMonth < 1) {
+            newYear = cur_year - 1;
+            newMonth = 12;
+          }
+          that.nextmonth(newYear, newMonth);
+          this.setData({
+            cur_year: newYear,
+            cur_month: newMonth
+          })
+        }
+      }
+      
+    } else {
+      let newMonth = cur_month + 1;
+      let newYear = cur_year;
+      if (newMonth > 12) {
+        newYear = cur_year + 1;
+        newMonth = 1;
+      }
 
+      this.nextmonth(newYear, newMonth);
+      // this.calculateEmptyGrids(newYear, newMonth);
+
+      this.setData({
+        cur_year: newYear,
+        cur_month: newMonth
+      })
+    }
+  },
+
+  onLoad: function () {
+    // this.iswxuser();
+    const date = new Date();
+    const cur_year = date.getFullYear();
+    const cur_month = date.getMonth() + 1;
+      this.setData({
+      cur_year: cur_year,
+      cur_month: cur_month,
+    })
+    let xq = new Date().getDay();
+    let day = date.getDate();
+    let i = 0
+    let num = 0
+    let days = [];
+    let comDateTime = [];
+    let cal_add_false = [];
+    let dayNums = new Date(cur_year, cur_month, 0).getDate();
+    let startWeek = new Date(Date.UTC(cur_year, cur_month - 1, 1)).getDay();
+    var uid = wx.getStorageSync('uid');
+    var token = wx.getStorageSync('token');
+    var params = {
+      "uid": uid,
+      "token": token,
+    }
+    app.sz.xcxcourseLive(params).then(d => {
+      if (d.data.status == 1) {
+        this.setData({ courselive: d.data.data, sys: d.data.sys })
+
+        console.log(xq)
+        console.log(day)
+        console.log(dayNums)
+        let syday = dayNums - day + 1 ;
+        for (i; i < syday + xq; i++) {
+          if (i >= xq) {
+            num = i - xq + day ;
+            days.push(num)
           } else {
             days.push('')
           }
@@ -303,38 +446,19 @@ Page(filter.loginCheck({
   },
   bindGetUserInfo(e) {
     var that = this
-    that.iswxuser()
-    if(that.data.iswxuser){
-      if (this.data.finish == 0) {
-        this.setData({
-          showModal_zb: true
-        })
-      } else {
-        let url = encodeURIComponent(this.data.bpurl);
-        console.log(url);
-        let lesson_id = this.data.courselive[id].lesson_id
-        wx.navigateTo({
-          url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + lesson_id,
-        });
-      } 
-    }
-    else{
-      wx.getSetting({
-        success: res => {
-          if (res.authSetting['scope.userInfo']) {
-            var bendiuserinfo = wx.getStorageSync("userInfo")
-            bendiuserinfo.name = e.detail.userInfo.nickName
-            bendiuserinfo.avatar = e.detail.userInfo.avatarUrl
-            wx.setStorageSync('userInfo', bendiuserinfo)
-            that.saveuserinfo()
-          } else {
-            console.log("用户拒绝授权")
-          }
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          var bendiuserinfo = wx.getStorageSync("userInfo")
+          bendiuserinfo.name = e.detail.userInfo.nickName
+          bendiuserinfo.avatar = e.detail.userInfo.avatarUrl
+          wx.setStorageSync('userInfo', bendiuserinfo)
+          that.saveuserinfo()
+        } else {
+          console.log("用户拒绝授权")
         }
-      })
-     
-    }
-   
+      }
+    })
   },
   iswxuser: function () {
     var that = this
@@ -348,7 +472,7 @@ Page(filter.loginCheck({
         console.log(this.data.iswxuser)
       } else {
         that.setData({ iswxuser: true })
-        console.log(this.data.iswxuser)
+        console.log(iswxuser)
       }
     }
   },
@@ -382,6 +506,9 @@ Page(filter.loginCheck({
       wx.navigateTo({
         url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + lesson_id,
       });
+      // this.setData({
+      //   showModal_zb: false
+      // })
     } 
   },
   showModal: function (e) {

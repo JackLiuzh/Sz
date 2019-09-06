@@ -6,8 +6,8 @@ page {
 }
 .idbut{
   position: absolute;
-  width:170rpx;
-  height:72rpx;
+  width:295rpx;
+  height:75rpx;
   background: transparent;
 }
 idbut::after {

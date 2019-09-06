@@ -177,18 +177,18 @@
 
 }
 .shengcheng{
-  width: 79%;
-  height: 85%;
+  width: 70%;
+  height: 72%;
   position: fixed;
   /* top: 50rpx; */
-  top:2%;
+  top:14%;
   left: 50%;
-  margin-left: -39%;
+  margin-left: -33%;
   z-index: 10;
 }
 .baocun{
   display: block;
-  width:39%;
+  width:33%;
   height: 80rpx;
   padding: 0;
   line-height: 80rpx;
@@ -198,7 +198,7 @@
   /* margin-top: 146%; */
   /* margin-top: 132%; */
   top: 89%;
-  left: 52%;
+  left: 51%;
   background: #E65557;
   color: #ffffff;
   font-size: 32rpx;
@@ -207,7 +207,8 @@
 }
 .guanbi{
   display: block;
-  width: 39%;
+  
+  width: 33%;
   height: 80rpx;
   padding: 0;
   line-height: 80rpx;
@@ -217,7 +218,7 @@
   /* margin-top: 146%; */
   /* margin-top: 132%; */
   top: 89%;
-  left: 10%;
+  left: 14%;
   background: #ffffff;
   color: #888888;
   font-size: 32rpx;

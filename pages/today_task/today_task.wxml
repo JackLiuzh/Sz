@@ -151,13 +151,13 @@
     </view>
     <!-- 海报开始 -->
     <view class='imagePathBox' hidden="{{maskHidden == false}}">
-      <image src="{{imagePath}}" class='shengcheng'  style="{{ isIPX? 'top:5%':'' }}" ></image>
-      <button class='guanbi' bindtap='closedaka' >关闭</button>
-      <button class='baocun' bindtap='baocun' >保存图片</button>
+      <image src="{{imagePath}}" class='shengcheng'  style="{{ isIPX? 'top:15%;':'' }}width:480rpx;height:800rpx;" ></image>
+      <button class='guanbi' bindtap='closedaka' style="{{ isIPX? 'top:79%;':'' }}" >关闭</button>
+      <button class='baocun' bindtap='baocun'  style="{{ isIPX? 'top:79%;':'' }}">保存图片</button>
     </view>
     <view hidden="{{maskHidden == false}}" class="mask"></view> 
     <view hidden="{{ maskHidden == false }}" class="canvas-box">
-        <canvas style='width:{{ width  }}px;height: {{isIPX? height:height + 64}}px;position:fixed;top:9999px;' canvas-id="mycanvas"/>
+        <canvas style='width:{{ width }}px;height: {{isIPX? height:height + 64}}px;position:fixed;top:9999px;' canvas-id="mycanvas"/>
     </view>
     <!-- 海报结束 -->
 </view>

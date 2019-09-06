@@ -102,16 +102,6 @@ Page(filter.loginCheck({
                 // console.log(m)
                 this.data.comDateTime[m][2] = true
                 console.log(this.data.comDateTime[m][2])
-                // for (let n = 0; n < this.data.calPanduan.length;n++){
-                //   // console.log('cs')
-                //   if (this.data.comDateTime[m][0] == this.data.calPanduan[n][0]){
-                //     // console.log('cs')
-                //     this.data.calPanduan[n][2]=true
-                //     console.log(this.data.calPanduan[n][1])
-                //     this.setData({ days: this.data.calPanduan })
-                    
-                //   }
-                // }
               }
             }
           }
@@ -124,41 +114,6 @@ Page(filter.loginCheck({
     })
   },
 
-  // calculateDays(year, month) {
-  //   let days = [];
-  //   let comDateTime = [];
-  //   let cal_add_false = [];
-  //   // const date = new Date();
-  //   // const cur_year = date.getFullYear();
-  //   // const cur_month = date.getMonth() + 1;
-  //   let dayNums = new Date(year, month, 0).getDate();
-  //   for (let i = 1; i <= dayNums; i++) {
-  //     days.push(i);
-  //   }
-  //   this.setData({
-  //     days
-  //   });
-  //   for (let j = 0; j < this.data.days.length; j++) {
-  //     comDateTime.push([year + '-' + '0' + month + '-' + '0' + this.data.days[j], j])
-  //   }
-  //   this.setData({
-  //     comDateTime: comDateTime
-  //   })
-
-  //   for (let n = 0; n < this.data.days.length; n++) {
-  //     cal_add_false.push([this.data.days[n], false])
-
-  //     this.setData({
-  //       calPanduan: cal_add_false,
-  //     })
-
-  //     this.setData({ days: this.data.calPanduan })
-  //   }
-  //   console.log(this.data.comDateTime)
-  //   console.log(this.data.calPanduan)
-
-  //   console.log(this.data.days)
-  // },
   nowmonth(){
     const date = new Date();
     const cur_year = date.getFullYear();
@@ -267,34 +222,6 @@ Page(filter.loginCheck({
     const cur_year = this.data.cur_year;
     const cur_month = this.data.cur_month;
     if (handle === 'prev') {
-    //   if (cur_month > nowmonth && cur_year == nowYear) {
-    //     this.setData({
-    //       newYear: cur_year,
-    //       newMonth: cur_month + 1
-    //     })
-    //     that.nextmonth(newYear, newMonth);
-    //     this.setData({
-    //       cur_year: newYear,
-    //       cur_month: newMonth
-    //     })
-    //   } else if (cur_year == nowYear) {
-    //   this.nowmonth()
-    //     that.setData({
-    //       cur_year: nowyear,
-    //       cur_month: nowmonth
-    //     })
-    // }else {
-    //   this.setData({
-    //     newYear: cur_year -1,
-    //     newMonth: 12
-    //   })
-    //     that.nextmonth(newYear, newMonth);
-    //     this.setData({
-    //       cur_year: newYear,
-    //       cur_month: newMonth
-    //     })
-    // }
-
 
       if (cur_month <= nowmonth && cur_year == nowyear) {
         // this.onLoad()
@@ -345,7 +272,7 @@ Page(filter.loginCheck({
   },
 
   onLoad: function () {
-    // this.iswxuser();
+    this.iswxuser();
     const date = new Date();
     const cur_year = date.getFullYear();
     const cur_month = date.getMonth() + 1;
@@ -444,6 +371,7 @@ Page(filter.loginCheck({
     })
 
   },
+
   bindGetUserInfo(e) {
     var that = this
     wx.getSetting({
@@ -465,18 +393,17 @@ Page(filter.loginCheck({
     var avatar = that.data.avatar
     var bendiava = wx.getStorageSync("userInfo").avatar
     var bendname = wx.getStorageSync("userInfo").name
-    // console.log(bendname)
     if (bendname) {
       if (bendname.indexOf('szgk') != -1) {
         that.setData({ iswxuser: false })
-        console.log(this.data.iswxuser)
       } else {
         that.setData({ iswxuser: true })
-        console.log(iswxuser)
       }
     }
+
   },
-  saveuserinfo: function (e) {
+  //保存授权信息信息
+  saveuserinfo: function () {
     var that = this
     var uid = wx.getStorageSync("uid")
     var token = wx.getStorageSync("token")
@@ -490,6 +417,9 @@ Page(filter.loginCheck({
     app.sz.xcxuserInfo(params).then(d => {
       console.log(d)
       if (d.data.status == 0) {
+        wx.navigateTo({
+          url: '/pages/live/live?video_id=' + that.data.video_id,
+        })
         console.log("保存成功")
       } else {
         console.log("保存失败")
@@ -506,11 +436,76 @@ Page(filter.loginCheck({
       wx.navigateTo({
         url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + lesson_id,
       });
-      // this.setData({
-      //   showModal_zb: false
-      // })
     } 
   },
+
+  // bindGetUserInfo(e) {
+  //   var that = this
+  //   wx.getSetting({
+  //     success: res => {
+  //       if (res.authSetting['scope.userInfo']) {
+  //         var bendiuserinfo = wx.getStorageSync("userInfo")
+  //         bendiuserinfo.name = e.detail.userInfo.nickName
+  //         bendiuserinfo.avatar = e.detail.userInfo.avatarUrl
+  //         wx.setStorageSync('userInfo', bendiuserinfo)
+  //         that.saveuserinfo()
+  //       } else {
+  //         console.log("用户拒绝授权")
+  //       }
+  //     }
+  //   })
+  // },
+  // iswxuser: function () {
+  //   var that = this
+  //   var avatar = that.data.avatar
+  //   var bendiava = wx.getStorageSync("userInfo").avatar
+  //   var bendname = wx.getStorageSync("userInfo").name
+  //   // console.log(bendname)
+  //   if (bendname) {
+  //     if (bendname.indexOf('szgk') != -1) {
+  //       that.setData({ iswxuser: false })
+  //       console.log(this.data.iswxuser)
+  //     } else {
+  //       that.setData({ iswxuser: true })
+  //       console.log(iswxuser)
+  //     }
+  //   }
+  // },
+  // saveuserinfo: function (e) {
+  //   var that = this
+  //   var uid = wx.getStorageSync("uid")
+  //   var token = wx.getStorageSync("token")
+  //   var wxname = wx.getStorageSync("userInfo").name
+  //   var wxava = wx.getStorageSync("userInfo").avatar
+  //   var params = {
+  //     uid: uid,
+  //     name: wxname,
+  //     avatar: wxava
+  //   }
+  //   app.sz.xcxuserInfo(params).then(d => {
+  //     console.log(d)
+  //     if (d.data.status == 0) {
+  //       console.log("保存成功")
+  //     } else {
+  //       console.log("保存失败")
+  //     }
+  //   })
+  //   if (this.data.finish == 0) {
+  //     this.setData({
+  //       showModal_zb: true
+  //     })
+  //   } else {
+  //     let url = encodeURIComponent(this.data.bpurl);
+  //     console.log(url);
+  //     let lesson_id = this.data.courselive[id].lesson_id
+  //     wx.navigateTo({
+  //       url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + lesson_id,
+  //     });
+  //     // this.setData({
+  //     //   showModal_zb: false
+  //     // })
+  //   } 
+  // },
   showModal: function (e) {
     var id = e.currentTarget.dataset.xb;
     console.log(id);

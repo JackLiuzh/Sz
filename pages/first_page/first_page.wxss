@@ -116,7 +116,7 @@ idbut::after {
   /* text-align: center; */
   /* vertical-align: middle; */
   
-  margin-top:180rpx;
+  margin-top:190rpx;
   width:34rpx;
   height:34rpx;
   background:rgba(0,0,0,0);
@@ -126,7 +126,7 @@ idbut::after {
 .speaker{
   position: absolute;
   margin-left:60rpx;
-  margin-top:180rpx;
+  margin-top:190rpx;
   width:120rpx;
   height:33rpx;
   font-size:24rpx;
@@ -242,7 +242,7 @@ idbut::after {
 }
 .img{
   margin-left:10rpx;
-  margin-top:37rpx;
+  margin-top:35rpx;
   width: 40rpx;
   height: 40rpx;
 }
@@ -734,19 +734,19 @@ white-space: nowrap;
 }
  
 .dateBgView {
-  height: 500rpx;
+  height: 400rpx;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
  
-.dateEmptyView {
+/* .dateEmptyView {
   width: 107.1428571429rpx;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
  
 .dateView {
   width: 107.1428571429rpx;

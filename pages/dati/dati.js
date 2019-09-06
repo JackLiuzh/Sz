@@ -591,6 +591,24 @@ emojiChar:"☺-😋-😌-😍-😏-😜-😝-😞-😔-😪-😭-😁-😂-😃-
   swiperchangefinish:function(e){
     var that = this
     var current = Number(e.detail.current)  // 当前的
+    var currentTab = Number(this.data.currentTab); //显示的做题序号
+    var questions = this.data.questions;
+    if (questions[current] == undefined || questions[current].isfull == 0) {
+      that.setData({
+        currentTab: currentTab
+      })
+    }
+    console.log(current, "===============", currentTab);
+    //最后一题滑动， 跳到评估页面
+    if ((current) == (this.data.datika.length)) {
+      that.gopingguClick();
+    }
+
+  },
+  //手动滑页
+  swiperchange: function(e) {
+    var that = this
+    var current = Number(e.detail.current)  // 当前的
     var currentTab = Number(this.data.currentTab); //上一个
     //获取试题
     var questions = this.data.questions;
@@ -676,23 +694,6 @@ emojiChar:"☺-😋-😌-😍-😏-😜-😝-😞-😔-😪-😭-😁-😂-😃-
         }
         wx.hideLoading();
       })
-    }
-  },
-  //手动滑页
-  swiperchange: function(e) {
-    var that = this
-    var current = Number(e.detail.current)  // 当前的
-    var currentTab = Number(this.data.currentTab); //显示的做题序号
-    var questions = this.data.questions;
-    if (questions[current] == undefined || questions[current].isfull == 0) {
-      that.setData({
-        currentTab: currentTab
-      })
-    }
-    console.log(current, "===============", currentTab);
-    //最后一题滑动， 跳到评估页面
-    if ((current) == (this.data.datika.length)) {
-      that.gopingguClick();
     }
   },
 

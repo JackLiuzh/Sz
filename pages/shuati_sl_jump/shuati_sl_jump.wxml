@@ -1,0 +1,54 @@
+<view class="container">
+  <image class="img1" src="../../images/wancheng.png" mode="aspectFill"></image>
+  <text class="text1">交卷成功</text>
+  <text class="text2">请在下方直播视频观看申论解析</text>
+
+  <view class="layout1">
+    <image class="img2" src="../../images/zhibok.png" mode="aspectFill"></image>
+
+    <view class="layout11">
+      <view class="bottom1"></view>
+      <view class="bottom2"></view>
+
+      <view class="layout111">
+        <image class="img3" src="../../images/shijian.png" mode="aspectFill"></image>
+        <view class="date">2018-06-03</view>
+        <view class="time">16:00-17:00</view>
+      </view>
+    
+      <view class="layout112">
+        <image class="img4" src="../../images/laoshi.png" mode="aspectFill"></image>
+        <image class="img5" src="../../images/biaoqing@2x.png" mode="aspectFill"></image>
+        <view class="time">韩磊</view>
+      </view>
+    </view>
+    
+  
+  
+  
+  
+  
+  
+  </view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</view>

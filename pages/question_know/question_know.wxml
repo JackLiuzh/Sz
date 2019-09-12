@@ -1,0 +1,68 @@
+<view class="container">
+  <image class="img1" src="../../images/mianfeipigai.png" mode="aspectFill"></image>
+  <view class="layout1">
+    <image class="img2" src="../../images/shangchuantupian.png" mode="aspectFill"></image>
+    <image class="img3" src="../../images/wwenzishuru.png" mode="aspectFill"></image>
+  </view>
+  <view class="layout1">
+    <image class="img4" src="../../images/chuantu.png" mode="aspectFill"></image>
+    <image class="img5" src="../../images/shuru.png" mode="aspectFill"></image>
+  </view>
+  <view class="layout1">
+    <text class='text1'>在答题页面选择上传图片。</text>
+    <text class='text2'>直接键盘输入答案，也可复制答案到答题框。</text>
+  </view>
+
+    <view class="btn">我知道了</view>
+    <view class="layout1">
+      <image class="img6" src="../../images/weixuanzhong.png" mode="aspectFill"></image>
+      <!-- <image class="img7" src="../../images/xuanzhong.png" mode="aspectFill"></image> -->
+      <text class="nevertip">不再提示</text>
+    </view>
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</view>

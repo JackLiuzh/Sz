@@ -1,0 +1,104 @@
+/* pages/shuati_sl_jump/shuati_sl_jump.wxss */
+.img1{
+  margin-left: 247rpx;
+  margin-top: 65rpx;
+  width: 256rpx;
+  height: 161rpx;
+}
+.text1{
+  /* margin-left: 285rpx; */
+  margin-top: 25rpx;
+  width:750rpx;
+  height:63rpx;
+  font-size:45rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  text-align: center;
+  line-height:60rpx;
+  color:rgba(45,45,45,1);
+  opacity:1;
+}
+.text2{
+  margin-top: 11rpx;
+  width:750rpx;
+  height:60rpx;
+  font-size:30rpx;
+  font-family:PingFang SC;
+  text-align: center;
+  font-weight:400;
+  line-height:60rpx;
+  color:rgba(167,167,167,1);
+  opacity:1;
+}
+.layout1{
+  width:750px;
+  margin-top: 60rpx;
+/* height:781px; */
+  background:rgba(255,255,255,1);
+  opacity:1;
+}
+.img2{
+  margin-left: 90rpx;
+  margin-top: 41rpx;
+  
+  width: 580rpx;
+  height: 265rpx;
+}
+.layout11{
+  position: relative;
+  /* padding-top: 60rpx; */
+}
+.bottom1{
+  position: absolute;
+  margin-left: 61rpx;
+  margin-top: 50rpx;
+  width:655rpx;
+  height:380rpx;
+  background:linear-gradient(45deg,rgba(255,252,252,1) 0%,rgba(255,205,199,1) 67%,rgba(255,228,225,1) 100%);
+  opacity:1;
+  border-radius:13rpx;
+}
+.bottom2{
+  position: absolute;
+  margin-left: 48rpx;
+  margin-top: 36rpx;
+  width:655rpx;
+  height:380rpx;
+  background:linear-gradient(45deg,rgba(255,252,252,1) 0%,rgba(255,232,229,1) 67%,rgba(255,228,225,1) 100%);
+  opacity:1;
+  border-radius:13rpx;
+}
+.layout111{
+  display:flex; 
+  position: absolute;
+}
+.img3{
+  margin-left: 134rpx;
+  margin-top: 89rpx;
+  width: 72rpx;
+  height: 46rpx;
+}
+.date{
+  margin-left: 15rpx;
+  margin-top: 82rpx;
+  width:192rpx;
+  height:45rpx;
+  font-size:32rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  line-height:56rpx;
+  color:rgba(230,85,87,1);
+  opacity:1;
+}
+.time{
+  margin-left: 15rpx;
+  margin-top: 82rpx;
+  width:190rpx;
+  height:45rpx;
+  font-size:32rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  line-height:56rpx;
+  color:rgba(230,85,87,1);
+  opacity:1;
+}

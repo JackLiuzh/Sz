@@ -1,0 +1,91 @@
+/* pages/question_know/question_know.wxss */
+page {
+  background-color: #fff;
+}
+.img1{
+  width: 750rpx;
+  height: 448rpx;
+}
+.layout1{
+  display: flex;
+}
+.img2{
+  margin-left: 93rpx;
+  margin-top: 85rpx;
+  width: 181rpx;
+  height: 104rpx;
+}
+.img3{
+  margin-left: 182rpx;
+  margin-top: 85rpx;
+  width: 183rpx;
+  height: 104rpx;
+}
+.img4{
+  margin-left: 75rpx;
+  margin-top: 18rpx;
+  width:220rpx;
+  height:220rpx;
+}
+.img5{
+  margin-left: 145rpx;
+  margin-top: 18rpx;
+  width: 220rpx;
+  height: 220rpx;
+}
+.text1{
+  margin-left: 61rpx;
+  margin-top: 25rpx;
+  width:244rpx;
+  height:88rpx;
+  font-size:26rpx;
+  font-family:Source Han Sans CN;
+  text-align: center;
+  font-weight:400;
+  color:rgba(79,79,79,1);
+  line-height:44rpx;
+}
+.text2{
+  margin-left: 92rpx;
+  margin-top: 25rpx;
+  width:284rpx;
+  height:88rpx;
+  font-size:26rpx;
+  font-family:Source Han Sans CN;
+  text-align: center;
+  font-weight:400;
+  color:rgba(79,79,79,1);
+  line-height:44rpx;
+}
+.btn{
+  margin-left: 64rpx;
+  margin-top: 130rpx;
+  width:622rpx;
+  height:105rpx;
+  font-size:32rpx;
+  font-family:Source Han Sans CN;
+  text-align: center;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+  line-height:105rpx;
+  background:rgba(230,85,87,1);
+  border-radius:53rpx;
+}
+.img6{
+  margin-left: 300rpx;
+  margin-top: 27rpx;
+  width:29rpx;
+  height:29rpx;
+}
+.nevertip{
+  margin-left: 15rpx;
+  margin-top: 19rpx;
+  width:107rpx;
+  height:44rpx;
+  font-size:26rpx;
+  font-family:Source Han Sans CN;
+  font-weight:400;
+  color:rgba(197,197,197,1);
+  line-height:44rpx;
+}
+

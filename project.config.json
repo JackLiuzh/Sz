@@ -40,54 +40,19 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 1,
 			"list": [
 				{
-					"id": 0,
-					"name": "pages/kan_video/kan_video",
-					"pathName": "pages/kan_video/kan_video",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 1,
-					"name": "pages/course_new/course_new",
-					"pathName": "pages/course_new/course_new",
+					"id": -1,
+					"name": "pages/question_know/question_know",
+					"pathName": "pages/question_know/question_know",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "pages/my/my",
-					"pathName": "pages/my/my",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 3,
-					"name": "pages/first_page/first_page",
-					"pathName": "pages/first_page/first_page",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 4,
-					"name": "pages/course_new/course_new",
-					"pathName": "pages/course_new/course_new",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 5,
-					"name": "pages/cs/cs",
-					"pathName": "pages/cs/cs",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 6,
-					"name": "pages/rili/rili",
-					"pathName": "pages/rili/rili",
+					"name": "pages/shuati_sl_jump/shuati_sl_jump",
+					"pathName": "pages/shuati_sl_jump/shuati_sl_jump",
 					"query": "",
 					"scene": null
 				}

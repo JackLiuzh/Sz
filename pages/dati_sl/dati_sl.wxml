@@ -1,0 +1,46 @@
+<import src="../../components/wxParse/wxParse.wxml"/>
+<view class="container" >
+    <view class="box-swiper">
+        <swiper  current="{{currentTab}}" duration="500" bindchange="swiperchangefinish" bindanimationfinish ="swiperchange" >
+            <view class="swiper-box">
+                <swiper-item   style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+                   <scroll-view scroll-y="true" style="height:{{clientHeight?clientHeight+'px':'auto'}}">
+                      <view class="box-top">
+                          <view class="top-type">
+                             <view class="type-qname">
+                                  <text>hhhh</text>
+                             </view>
+                          </view>
+                          <view class="top-type">
+                             <view class="type-nu">
+                                 <text class=".nu-red">1</text>
+                                 <text >/</text>
+                                 <text>10</text>
+                             </view>
+
+                          </view>
+                      </view>
+                      <view class="box-title" wx:if='{{isquestion}}'>
+                          <view class="title-content">
+                              <!-- <template is="wxParse" data="{{wxParseData: replyTemArray[index]}}"/> -->
+                              <rich-text nodes="gghfghfgh" class='rich-text'></rich-text>
+                          </view>
+                      </view>
+                </scroll-view>
+            </swiper-item>
+          </view>
+        </swiper>
+    </view>
+</view>
+
+<!-- 滑动查看下一题 -->
+<!-- <view class="huadong" hidden="{{huadong}}" catchtap="huadongClick" >
+  <view class='huadong-zi'>滑动查看下一题</view>
+  <image src="/images/task_huadong@2x.png" class="huadong-img"></image>
+</view> -->
+
+<view class="layout">
+  <view class="cailiao">材料</view>
+  <view class="wenti">问题</view>
+  <view class="jiaojuan"><text class="text">√交卷</text></view>
+</view>

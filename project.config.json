@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
@@ -53,6 +53,27 @@
 					"id": -1,
 					"name": "pages/shuati_sl_jump/shuati_sl_jump",
 					"pathName": "pages/shuati_sl_jump/shuati_sl_jump",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/my",
+					"pathName": "pages/my/my",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/first_page/first_page",
+					"pathName": "pages/first_page/first_page",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "pages/dati_sl/dati_sl",
+					"pathName": "pages/dati_sl/dati_sl",
 					"query": "",
 					"scene": null
 				}

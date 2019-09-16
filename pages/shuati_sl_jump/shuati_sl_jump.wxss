@@ -1,13 +1,13 @@
 /* pages/shuati_sl_jump/shuati_sl_jump.wxss */
 .img1{
   margin-left: 247rpx;
-  margin-top: 65rpx;
+  margin-top: 100rpx;
   width: 256rpx;
   height: 161rpx;
 }
 .text1{
   /* margin-left: 285rpx; */
-  margin-top: 25rpx;
+  margin-top: 30rpx;
   width:750rpx;
   height:63rpx;
   font-size:45rpx;
@@ -19,7 +19,7 @@
   opacity:1;
 }
 .text2{
-  margin-top: 11rpx;
+  margin-top: 20rpx;
   width:750rpx;
   height:60rpx;
   font-size:30rpx;
@@ -31,8 +31,8 @@
   opacity:1;
 }
 .layout1{
-  width:750px;
-  margin-top: 60rpx;
+  width:750rpx;
+  margin-top: 80rpx;
 /* height:781px; */
   background:rgba(255,255,255,1);
   opacity:1;
@@ -40,18 +40,18 @@
 .img2{
   margin-left: 90rpx;
   margin-top: 41rpx;
-  
   width: 580rpx;
   height: 265rpx;
 }
 .layout11{
   position: relative;
+  height: 650rpx;
   /* padding-top: 60rpx; */
 }
 .bottom1{
   position: absolute;
   margin-left: 61rpx;
-  margin-top: 50rpx;
+  margin-top: 70rpx;
   width:655rpx;
   height:380rpx;
   background:linear-gradient(45deg,rgba(255,252,252,1) 0%,rgba(255,205,199,1) 67%,rgba(255,228,225,1) 100%);
@@ -61,7 +61,7 @@
 .bottom2{
   position: absolute;
   margin-left: 48rpx;
-  margin-top: 36rpx;
+  margin-top: 56rpx;
   width:655rpx;
   height:380rpx;
   background:linear-gradient(45deg,rgba(255,252,252,1) 0%,rgba(255,232,229,1) 67%,rgba(255,228,225,1) 100%);
@@ -74,31 +74,95 @@
 }
 .img3{
   margin-left: 134rpx;
-  margin-top: 89rpx;
+  margin-top: 109rpx;
   width: 72rpx;
   height: 46rpx;
+ 
 }
 .date{
   margin-left: 15rpx;
-  margin-top: 82rpx;
+  margin-top: 110rpx;
   width:192rpx;
   height:45rpx;
   font-size:32rpx;
   font-family:PingFang SC;
   font-weight:400;
-  line-height:56rpx;
+  line-height:45rpx;
   color:rgba(230,85,87,1);
   opacity:1;
 }
 .time{
   margin-left: 15rpx;
-  margin-top: 82rpx;
+  margin-top: 110rpx;
   width:190rpx;
   height:45rpx;
   font-size:32rpx;
   font-family:PingFang SC;
   font-weight:400;
-  line-height:56rpx;
+  line-height:45rpx;
   color:rgba(230,85,87,1);
   opacity:1;
+
+}
+.layout112{
+  display:flex; 
+
+}
+.img4{
+  margin-left: 215rpx;
+  margin-top: 176rpx;
+  width: 100rpx;
+  height: 60rpx;
+  z-index: 1;
+}
+.img5{
+  margin-left: 30rpx;
+  margin-top: 167rpx;
+  width:81rpx;
+  height:81rpx;
+  z-index: 1;
+}
+.name{
+  margin-left: 10rpx;
+  margin-top: 174rpx;
+  width:90rpx;
+  height:63rpx;
+  font-size:45rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  line-height:63rpx;
+  color:rgba(230,85,87,1);
+  opacity:1;
+  z-index: 1;
+}
+.btn{
+  position: absolute;
+  margin-left: 189rpx;
+  margin-top: 50rpx;
+  width:374rpx;
+  height:92rpx;
+  text-align: center;
+  line-height:90rpx;
+  background:rgba(230,85,87,1);
+  border:2rpx solid rgba(230,85,87,1);
+  box-shadow:0px 5rpx 15rpx rgba(194,19,19,0.3);
+  opacity:1;
+  border-radius:110rpx;
+  /* z-index:2; */
+}
+.text3{
+  width:160rpx;
+  height:45rpx;
+  font-size:32rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  line-height:45rpx;
+  color:rgba(255,255,255,1);
+  opacity:1;
+}
+.img6{
+  margin-left: 17rpx;
+  /* margin-top: 50rpx; */
+  width:19rpx;
+  height:23rpx;
 }

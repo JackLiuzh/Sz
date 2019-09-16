@@ -19,8 +19,15 @@
       <view class="layout112">
         <image class="img4" src="../../images/laoshi.png" mode="aspectFill"></image>
         <image class="img5" src="../../images/biaoqing@2x.png" mode="aspectFill"></image>
-        <view class="time">韩磊</view>
+        <view class="name">韩磊</view>
       </view>
+
+    
+      <view class="btn">
+        <text class="text3">前往直播间</text>
+        <image class="img6" src="../../images/qianwang.png"></image>
+      </view>
+    
     </view>
     
   

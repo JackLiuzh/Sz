@@ -1,7 +1,10 @@
 <view class="container">
   <view class="layout1">
     <image class="touxiang" src='{{avatarUrl}}'></image>
+    <view class="{{ nickName == '去登陆' ?'TipHide':'name'}}">{{nickName}}</view>
+    <button class="{{ nickName == '去登陆' ?'btp':'TipHide'}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
     <view class="name">{{nickName}}</view>
+    </button>
   </view>
 
   <view class="{{isbuy==1?'TipShow':'TipHide'}}">

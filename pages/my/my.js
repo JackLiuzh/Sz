@@ -9,22 +9,110 @@ Page({
     // region: ['广东省', '广州市', '海珠区'],
     // customItem: '全部'
     
-    avatarUrl: "",//用户头像
-    nickName: "",//用户昵称
+    avatarUrl: "../../images/weidenglu.png",//用户头像
+    nickName: "去登陆",//用户昵称
    
     showModal: false,
     user_area: '',
     dphone: '',
     isbuy: 0,
     code: '',
-    userphone: '请填写手机号',
+    userphone: '',
     code:'',
     iv:'',
     encryptedData:'',
 
   },
 
+  getPhoneNumber: function (e) {
+    var that = this
+    
+    wx.login({
+      success: res => {
+        // that.setData({ code: res.code, iv: e.detail.iv, encryptedData: e.detail.encryptedData })
+        if (e.detail.errMsg == "getPhoneNumber:ok") {
+          wx.showLoading({
+            title: '登录中...',
+          })
+          let iv = encodeURIComponent(e.detail.iv);
+          let encryptedData = encodeURIComponent(e.detail.encryptedData);
+          let code = res.code
+          var params = {
+            "code": code,
+            "iv": iv,
+            "encryptedData": encryptedData
+          }
+          console.log(params)
+          app.sz.loginregister(params).then(d => {
+            // console.log(d)
+            if (d.data.status == 0) {
+              app.wechat.setStorage('isauth', true);
+              app.wechat.setStorage('token', d.data.token);
+              app.wechat.setStorage('uid', d.data.uid);
+              app.globalData.uid = d.data.uid;
+              app.wechat.setStorage('userInfo', d.data.userInfo)
+              if (d.data.isfirstlogin == 1) {
+                // wx.switchTab({ url: '../today_task/today_task' })
+                // wx.switchTab({ url: '../first_page/first_page' })
+                that.xcxSubmitTask(d.data.uid)
+                var uid = wx.getStorageSync('uid');
+                var token = wx.getStorageSync('token');
+                var params = {
+                  "uid": uid,
+                  "token": token,
+                }
 
+                // console.log(params)
+
+                app.sz.xcxMy(params).then(d => {
+                  if (d.data.status == 1) {
+                    // that.setData({ isbuy: d.data.data.isbuy, avatarUrl: d.data.data.avatar, })
+                    that.setData({ isbuy: d.data.data.isbuy, avatarUrl: d.data.data.avatar, nickName: d.data.data.name })
+                    if (d.data.data.phone != '')
+                      that.setData({ userphone: d.data.data.phone })
+                    // console.log(this.data.userphone)
+                  } else {
+                    // console.log(d.data.msg)
+                  }
+                })
+              }
+               else {
+                var uid = wx.getStorageSync('uid');
+                var token = wx.getStorageSync('token');
+                var params = {
+                  "uid": uid,
+                  "token": token,
+                }
+
+                // console.log(params)
+
+                app.sz.xcxMy(params).then(d => {
+                  if (d.data.status == 1) {
+                    // that.setData({ isbuy: d.data.data.isbuy, avatarUrl: d.data.data.avatar, })
+                    that.setData({ isbuy: d.data.data.isbuy, avatarUrl: d.data.data.avatar, nickName: d.data.data.name })
+                    if (d.data.data.phone != '')
+                      that.setData({ userphone: d.data.data.phone })
+                    // console.log(this.data.userphone)
+                  } else {
+                    // console.log(d.data.msg)
+                  }
+                })
+              }
+              //自动创建任务
+
+            } else {
+              app.wechat.setStorage('isauth', false);
+            }
+            wx.hideLoading()
+          })
+        } else {
+          // that.setData({
+          //   showModal: true
+          // })
+        }
+      }
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -50,31 +138,35 @@ Page({
     // console.log(this.data.avatarUrl)
     // console.log(this.data.userphone)
 
-    var uid = wx.getStorageSync('uid');
-    var token = wx.getStorageSync('token');
-    var params = {
-      "uid": uid,
-      "token": token,
+    let islogin = wx.getStorageSync('isauth');
+    if (islogin){
+      var uid = wx.getStorageSync('uid');
+      var token = wx.getStorageSync('token');
+      var params = {
+        "uid": uid,
+        "token": token,
+      }
+
+      // console.log(params)
+
+      app.sz.xcxMy(params).then(d => {
+        if (d.data.status == 1) {
+          that.setData({ isbuy: d.data.data.isbuy, avatarUrl: d.data.data.avatar, nickName: d.data.data.name })
+          if (d.data.data.phone != '')
+            that.setData({ userphone: d.data.data.phone })
+          // console.log(this.data.userphone)
+        } else {
+          // console.log(d.data.msg)
+        }
+      })
     }
-
-    // console.log(params)
-
-    app.sz.xcxMy(params).then(d => {
-      if (d.data.status == 1) {
-        that.setData({ isbuy: d.data.data.isbuy, avatarUrl: d.data.data.avatar, nickName: d.data.data.name})
-        if (d.data.data.phone != '')
-          that.setData({ userphone: d.data.data.phone })
-        // console.log(this.data.userphone)
-      } else {
-        // console.log(d.data.msg)
-      }
-    })
     
-    wx.login({
-      success: res => {
-        that.setData({ code: res.code})
-      }
-    })    
+    
+    // wx.login({
+    //   success: res => {
+    //     that.setData({ code: res.code})
+    //   }
+    // })    
   },
 
   /**
@@ -239,72 +331,72 @@ Page({
   },
   
 
-  getPhoneNumber: function (e) {
-    var that = this
-    wx.checkSession({
-      success: function () {
-        if (e.detail.errMsg == "getPhoneNumber:ok") {
-          let iv = encodeURIComponent(e.detail.iv);
-          let encryptedData = encodeURIComponent(e.detail.encryptedData);
-          let uid = app.globalData.uid;
-          var params = {
-            "code": that.data.code,
-            "iv": iv,
-            "encryptedData": encryptedData,
-            "uid": uid,
-            "XDEBUG_SESSION_START": 141454
-          }
-          app.sz.xcxphone(params).then(d => {
-            if (d.data.status == 0) {
-              that.setData({ userphone: d.data.data.phoneNumber })
-              console.log(d.data.msg)
-            } else {
-              console.log(d.data.msg)
-            }
-          })
+  // getPhoneNumber: function (e) {
+  //   var that = this
+  //   wx.checkSession({
+  //     success: function () {
+  //       if (e.detail.errMsg == "getPhoneNumber:ok") {
+  //         let iv = encodeURIComponent(e.detail.iv);
+  //         let encryptedData = encodeURIComponent(e.detail.encryptedData);
+  //         let uid = app.globalData.uid;
+  //         var params = {
+  //           "code": that.data.code,
+  //           "iv": iv,
+  //           "encryptedData": encryptedData,
+  //           "uid": uid,
+  //           "XDEBUG_SESSION_START": 141454
+  //         }
+  //         app.sz.xcxphone(params).then(d => {
+  //           if (d.data.status == 0) {
+  //             that.setData({ userphone: d.data.data.phoneNumber })
+  //             console.log(d.data.msg)
+  //           } else {
+  //             console.log(d.data.msg)
+  //           }
+  //         })
 
-        } else {
-          // that.setData({
-          //   showModal: true
-          // })
-        }                    
-      },
-      fail: function () {
-        console.log("code失效");
-        wx.login({
-          success: res => {
-            that.setData({ code: res.code, iv: e.detail.iv, encryptedData: e.detail.encryptedData })
-            if (e.detail.errMsg == "getPhoneNumber:ok") {
+  //       } else {
+  //         // that.setData({
+  //         //   showModal: true
+  //         // })
+  //       }                    
+  //     },
+  //     fail: function () {
+  //       console.log("code失效");
+  //       wx.login({
+  //         success: res => {
+  //           that.setData({ code: res.code, iv: e.detail.iv, encryptedData: e.detail.encryptedData })
+  //           if (e.detail.errMsg == "getPhoneNumber:ok") {
 
-              let iv = encodeURIComponent(that.data.iv);
-              let encryptedData = encodeURIComponent(that.data.encryptedData);
-              let uid = app.globalData.uid;
-              var params = {
-                "code": that.data.code,
-                "iv": iv,
-                "encryptedData": encryptedData,
-                "uid": uid,
-                "XDEBUG_SESSION_START": 141454
-                // "code": this.data.code,
-              }
-              console.log(params)
-              app.sz.xcxphone(params).then(d => {
-                if (d.data.status == 0) {
-                  console.log(d.data.msg)
-                } else {
-                  console.log(d.data.msg)
-                }
-              })
-            } else {
-              // that.setData({
-              //   showModal: true
-              // })
-            }
-          }
-        })
-      }
-    })
-  },
+  //             let iv = encodeURIComponent(that.data.iv);
+  //             let encryptedData = encodeURIComponent(that.data.encryptedData);
+  //             let uid = app.globalData.uid;
+  //             var params = {
+  //               "code": that.data.code,
+  //               "iv": iv,
+  //               "encryptedData": encryptedData,
+  //               "uid": uid,
+  //               "XDEBUG_SESSION_START": 141454
+  //               // "code": this.data.code,
+  //             }
+  //             console.log(params)
+  //             app.sz.xcxphone(params).then(d => {
+  //               if (d.data.status == 0) {
+  //                 console.log(d.data.msg)
+  //               } else {
+  //                 console.log(d.data.msg)
+  //               }
+  //             })
+  //           } else {
+  //             // that.setData({
+  //             //   showModal: true
+  //             // })
+  //           }
+  //         }
+  //       })
+  //     }
+  //   })
+  // },
 
   go_youhuiquan: function () {
     wx.navigateTo({

@@ -1,7 +1,7 @@
 // pages/first_page/first_page.js 
 const app = getApp()
 const filter = require('../../utils/filter.js');
-Page(filter.loginCheck({
+Page({
   data: {
     year: 0,
     month: 0,
@@ -940,4 +940,4 @@ Page(filter.loginCheck({
 
 
   
-}))
+})

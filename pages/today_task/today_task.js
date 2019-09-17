@@ -1,6 +1,6 @@
 const app = getApp()
 const filter = require('../../utils/filter.js');
-Page(filter.loginCheck({
+Page({
   /**
    * 页面的初始数 据
    */
@@ -712,4 +712,4 @@ Page(filter.loginCheck({
 
 
 
-}))
+})

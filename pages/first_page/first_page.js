@@ -854,16 +854,16 @@ Page({
     })
   },
   pblive: function (e) {
-    var id = e.currentTarget.dataset.xb;
-    console.log(id);
-    this.setData({
-      finish: this.data.courselive[id].finish,
-      // bpurl: this.data.courselive[id].live_info.playbackUrl,
-      project_id: this.data.courselive[id].project_id,
-      kemu_id: this.data.courselive[id].kemu_id,
-      video_id: this.data.courselive[id].video_id,
-      lesson_id: this.data.courselive[id].lesson_id,
-    })
+    // var id = e.currentTarget.dataset.xb;
+    // console.log(id);
+    // this.setData({
+    //   finish: this.data.courselive[id].finish,
+    //   // bpurl: this.data.courselive[id].live_info.playbackUrl,
+    //   project_id: this.data.courselive[id].project_id,
+    //   kemu_id: this.data.courselive[id].kemu_id,
+    //   video_id: this.data.courselive[id].video_id,
+    //   lesson_id: this.data.courselive[id].lesson_id,
+    // })
       // let url = encodeURIComponent(this.data.bpurl);
       // console.log(url);
       wx.navigateTo({
@@ -872,7 +872,7 @@ Page({
       this.setData({
         showModal_pb: false
       })
-    console.log(this.data.finish);
+    // console.log(this.data.finish);
     // console.log(this.data.bpurl);
     // console.log(this.data.project_id);
     // console.log(this.data.kemu_id);

@@ -1,3 +1,12 @@
+.impor_but{
+  padding: 0 !important;
+  text-align: left !important;
+  background-color:white !important;
+  overflow: visible !important;
+}
+.impor_but::after{
+  border:0;
+}
 .top_set{
   display: flex;
   justify-content: space-around;

@@ -60,6 +60,7 @@ Page({
       }
     })
   },
+  //获取用户微信数据
   bindGetUserInfo: function(e) {
     wx.showLoading({
       title: '登录中...',

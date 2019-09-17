@@ -5,6 +5,8 @@ Page({
    * 页面的初始数 据
    */
   data: {
+    uid:0,//是否手机号登陆
+    isauth:false,//是否微信号授权
     ifburenwu:0,    //每日刷题显示补任务
     accomplish_days: 0 ,  
     already_num : '', //今日完成的任务数量
@@ -36,13 +38,121 @@ Page({
       "projectvideo_count":0
     }
   },
+  //获取手机号登陆微信小程序
+  getPhoneNumber: function (e) {
+    var that = this
+    wx.showLoading({
+      title: '登录中...',
+    })
+    wx.login({
+      success: res => {
+        // that.setData({ code: res.code, iv: e.detail.iv, encryptedData: e.detail.encryptedData })
+        if (e.detail.errMsg == "getPhoneNumber:ok") {
+          let iv = encodeURIComponent(e.detail.iv);
+          let encryptedData = encodeURIComponent(e.detail.encryptedData);
+          let code = res.code
+          var params = {
+            "code": code,
+            "iv": iv,
+            "encryptedData": encryptedData
+          }
+          console.log(params)
+          app.sz.loginregister(params).then(d => {
+            // console.log(d)
+            if (d.data.status == 0) {
+              // app.wechat.setStorage('isauth', true);
+              app.wechat.setStorage('token', d.data.token);
+              app.wechat.setStorage('uid', d.data.uid);
+              app.globalData.uid = d.data.uid;
+              app.wechat.setStorage('userInfo', d.data.userInfo)
+              if (d.data.isfirstlogin == 1) {
+                // wx.switchTab({ url: '../today_task/today_task' })
+                // wx.switchTab({ url: '../first_page/first_page' })
+                that.xcxSubmitTask(d.data.uid)
+              } else {
+                // wx.redirectTo({ url: '../first_comming/first_comming' })
+                // wx.switchTab({ url: '../first_page/first_page' })
+              }
+              //自动创建任务
+
+            } else {
+              // app.wechat.setStorage('isauth', false);
+            }
+            wx.hideLoading()
+          })
+        } else {
+          // that.setData({
+          //   showModal: true
+          // })
+          wx.hideLoading()
+        }
+      }
+    })
+  },
+
+  //获取用户微信数据
+  bindGetUserInfo: function (e) {
+    wx.showLoading({
+      title: '登录中...',
+    })
+    var that = this;
+    // 获取用户信息
+    if (e.detail.userInfo) {
+      console.log(e);
+      app.wechat.setStorage('userInfo', e.detail.userInfo);
+      var userInfo = e.detail.userInfo;
+      var encryptedData = e.detail.encryptedData;
+      var iv = e.detail.iv;
+      wx.getSetting({
+        success: res => {
+          if (res.authSetting['scope.userInfo']) {
+            app.wechat.setStorage('isauth', true);
+            app.wechat.login().then(d => {
+              console.log(d)
+              var params = {
+                "code": d.code,
+                "encryptedData": encryptedData,
+                "iv": iv,
+                "userinfo": userInfo
+              }
+              app.sz.loginregister(params).then(d => {
+                app.wechat.setStorage("uid", d.data.uid).then(s => {
+                  wx.hideLoading()
+                  if (d.data.isfirstlogin == 1) {
+                    // wx.switchTab({ url: '../today_task/today_task' })
+                    wx.setStorageSync("token", d.data.token)
+                    app.globalData.token = d.data.token
+
+                  } else {
+                    // wx.redirectTo({ url: '../first_comming/first_comming' })
+                  }
+                })
+              })
+
+            })
+
+          } else {
+            app.wechat.setStorage('isauth', false);
+          }
+
+        }
+      })
+
+    } else {
+      console.log("用户拒绝授权用户信息")
+      wx.hideLoading()
+    }
+
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
 
-    
+    var isauth =  wx.getStorageSync('isauth')
+    var uid = wx.getStorageSync('uid')
+    this.setData({uid:uid,isauth:isauth})
 
   },
   /**
@@ -102,7 +212,7 @@ Page({
     wx.showLoading({ title: '加载中' });
     app.globalData.uid = wx.getStorageSync('uid');
     let uid = app.globalData.uid;
-    if (uid) {
+    
       var params = {
         "uid": uid
       }
@@ -134,7 +244,6 @@ Page({
           console.log("接口错误")
         }
       })
-    }
 
   },
 

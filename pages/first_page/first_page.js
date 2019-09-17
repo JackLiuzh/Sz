@@ -24,7 +24,7 @@ Page({
     iswxuser: false,
     avatar: 'http://shangzheng.oss-cn-beijing.aliyuncs.com/img/member/Header-profile-photo.png',
     sys: '',
-
+    isauth:false,
 
     hasEmptyGrid: false,
     cur_year: '',
@@ -261,7 +261,7 @@ Page({
   onLoad: function () {
     // let islogin = wx.getStorageSync('isauth');
     // this.setData({ islogin: islogin})
-
+    wx.setStorageSync('isauth', this.data.isauth)
     this.iswxuser();
     const date = new Date();
     const cur_year = date.getFullYear();

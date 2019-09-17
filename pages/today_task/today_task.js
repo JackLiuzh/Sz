@@ -63,8 +63,10 @@ Page({
               // app.wechat.setStorage('isauth', true);
               app.wechat.setStorage('token', d.data.token);
               app.wechat.setStorage('uid', d.data.uid);
+              that.setData({ uid: d.data.uid })
               app.globalData.uid = d.data.uid;
               app.wechat.setStorage('userInfo', d.data.userInfo)
+              that.onShow()
               if (d.data.isfirstlogin == 1) {
                 // wx.switchTab({ url: '../today_task/today_task' })
                 // wx.switchTab({ url: '../first_page/first_page' })
@@ -107,6 +109,7 @@ Page({
         success: res => {
           if (res.authSetting['scope.userInfo']) {
             app.wechat.setStorage('isauth', true);
+            that.setData({isauth: true})
             app.wechat.login().then(d => {
               console.log(d)
               var params = {
@@ -115,19 +118,23 @@ Page({
                 "iv": iv,
                 "userinfo": userInfo
               }
-              app.sz.loginregister(params).then(d => {
-                app.wechat.setStorage("uid", d.data.uid).then(s => {
-                  wx.hideLoading()
-                  if (d.data.isfirstlogin == 1) {
-                    // wx.switchTab({ url: '../today_task/today_task' })
-                    wx.setStorageSync("token", d.data.token)
-                    app.globalData.token = d.data.token
+              // app.sz.loginregister(params).then(d => {
+              //   that.setData({ isauth: true })
+              //   app.wechat.setStorage("uid", d.data.uid).then(s => {
+                  
+              //     wx.hideLoading()
+              //     if (d.data.isfirstlogin == 1) {
+              //       // wx.switchTab({ url: '../today_task/today_task' })
+              //       wx.setStorageSync("token", d.data.token)
+              //       app.globalData.token = d.data.token
 
-                  } else {
-                    // wx.redirectTo({ url: '../first_comming/first_comming' })
-                  }
-                })
-              })
+              //     } else {
+              //       // wx.redirectTo({ url: '../first_comming/first_comming' })
+              //     }
+                  
+              //   })
+              // })
+              that.onShow()
 
             })
 

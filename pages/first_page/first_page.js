@@ -3,6 +3,7 @@ const app = getApp()
 const filter = require('../../utils/filter.js');
 Page({
   data: {
+    uid: 0,
     year: 0,
     month: 0,
     date: ['日', '一', '二', '三', '四', '五', '六'],
@@ -258,8 +259,8 @@ Page({
   },
 
   onLoad: function () {
-    let islogin = wx.getStorageSync('isauth');
-    this.setData({ islogin: islogin})
+    // let islogin = wx.getStorageSync('isauth');
+    // this.setData({ islogin: islogin})
 
     this.iswxuser();
     const date = new Date();
@@ -279,6 +280,7 @@ Page({
     let dayNums = new Date(cur_year, cur_month, 0).getDate();
     let startWeek = new Date(Date.UTC(cur_year, cur_month - 1, 1)).getDay();
     var uid = wx.getStorageSync('uid');
+    this.setData({uid : uid})
     var token = wx.getStorageSync('token');
     var params = {
       "uid": uid,
@@ -452,7 +454,7 @@ Page({
           app.sz.loginregister(params).then(d => {
             // console.log(d)
             if (d.data.status == 0) {
-              app.wechat.setStorage('isauth', true);
+              // app.wechat.setStorage('isauth', true);
               app.wechat.setStorage('token', d.data.token);
               app.wechat.setStorage('uid', d.data.uid);
               app.globalData.uid = d.data.uid;
@@ -469,7 +471,7 @@ Page({
               //自动创建任务
 
             } else {
-              app.wechat.setStorage('isauth', false);
+              // app.wechat.setStorage('isauth', false);
             }
             wx.hideLoading()
           })
@@ -807,8 +809,8 @@ Page({
         showModal_pb: true
       })
     }else{
-      let url = encodeURIComponent(this.data.bpurl);
-      console.log(url);
+      // let url = encodeURIComponent(this.data.bpurl);
+      // console.log(url);
       wx.navigateTo({
         url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
       });
@@ -816,10 +818,10 @@ Page({
         showModal_pb: false
       })
     }
-    console.log(this.data.finish);
-    console.log(this.data.bpurl);
-    console.log(this.data.project_id);
-    console.log(this.data.kemu_id);
+    // console.log(this.data.finish);
+    // console.log(this.data.bpurl);
+    // console.log(this.data.project_id);
+    // console.log(this.data.kemu_id);
     
   },
   close_zb: function () {
@@ -832,19 +834,33 @@ Page({
       showModal_pb: false
     })
   },
-  pblive: function () {
-    let url = encodeURIComponent(this.data.bpurl);
-    console.log(url);
-    wx.navigateTo({
-      url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
-    });
+  pblive: function (e) {
+    var id = e.currentTarget.dataset.xb;
+    console.log(id);
     this.setData({
-      showModal_pb: false
+      finish: this.data.courselive[id].finish,
+      // bpurl: this.data.courselive[id].live_info.playbackUrl,
+      project_id: this.data.courselive[id].project_id,
+      kemu_id: this.data.courselive[id].kemu_id,
+      video_id: this.data.courselive[id].video_id,
+      lesson_id: this.data.courselive[id].lesson_id,
     })
+      // let url = encodeURIComponent(this.data.bpurl);
+      // console.log(url);
+      wx.navigateTo({
+        url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
+      });
+      this.setData({
+        showModal_pb: false
+      })
+    console.log(this.data.finish);
+    // console.log(this.data.bpurl);
+    // console.log(this.data.project_id);
+    // console.log(this.data.kemu_id);
   },
   zblive: function () {
-    let url = encodeURIComponent(this.data.bpurl);
-    console.log(url);
+    // let url = encodeURIComponent(this.data.bpurl);
+    // console.log(url);
     wx.navigateTo({
       url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
     });
@@ -890,7 +906,7 @@ Page({
             app.sz.loginregister(params).then(d => {
               // console.log(d)
               if (d.data.status == 0) {
-                app.wechat.setStorage('isauth', true);
+                // app.wechat.setStorage('isauth', true);
                 app.wechat.setStorage('token', d.data.token);
                 app.wechat.setStorage('uid', d.data.uid);
                 app.globalData.uid = d.data.uid;
@@ -907,7 +923,7 @@ Page({
                 //自动创建任务
 
               } else {
-                app.wechat.setStorage('isauth', false);
+                // app.wechat.setStorage('isauth', false);
               }
               wx.hideLoading()
             })

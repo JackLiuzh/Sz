@@ -6,6 +6,7 @@ Page({
    */
   data: {
     isquestion: false,
+    clientHeight: 500,
 
   },
 

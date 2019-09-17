@@ -116,9 +116,10 @@
           </view>
           <!-- <text class="join_pb">{{(xb+1)*57}}人参与</text> -->
         </view>
-        <view wx:if="{{islogin}}" class="watch_pb" bindtap="{{finish==0?'showModalPb':'pblive'}}" data-xb='{{xb}}'>看回放</view>
+        <view wx:if="{{uid > 0}}" class="watch_pb" bindtap="{{finish == 0?'showModalPb':'pblive'}}" data-xb='{{xb}}'>看回放</view>
+        <!-- <view wx:if="{{uid > 0}}" class="watch_pb" bindtap="showModalPb" data-xb='{{xb}}'>看回放</view> -->
         <!-- <view class="watch_pb" bindtap="showModalPb" data-xb='{{xb}}'>看回放</view> -->
-        <button wx:if="{{!islogin}}" class="watch_pb" data-xb='{{xb}}' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+        <button wx:if="{{uid == 0}}" class="watch_pb" data-xb='{{xb}}' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
     看回放
     </button>
 
@@ -163,8 +164,8 @@
     <view class="layout2">
     <!-- <view class="course_price">￥499.00</view> -->
       <view class="course_price">￥{{sys.price}}</view>
-      <view wx:if="{{islogin}}" bindtap='gocourse_xiang' data-system_id="{{sys.system_id}}" class="bt_buy"><text wx:if="{{sys.pay_state == 0}}" class="go_buy">去购买</text><text class="go_buy" wx:if="{{sys.pay_state == 1}}">已购买</text></view>
-      <view wx:if="{{!islogin}}" data-system_id="{{sys.system_id}}" class="bt_buy"><text class="go_buy" wx:if="{{sys.pay_state == 1}}">已购买</text>
+      <view wx:if="{{uid > 0}}" bindtap='gocourse_xiang' data-system_id="{{sys.system_id}}" class="bt_buy"><text wx:if="{{sys.pay_state == 0}}" class="go_buy">去购买</text><text class="go_buy" wx:if="{{sys.pay_state == 1}}">已购买</text></view>
+      <view wx:if="{{uid == 0}}" data-system_id="{{sys.system_id}}" class="bt_buy"><text class="go_buy" wx:if="{{sys.pay_state == 1}}">已购买</text>
         <button class="btn_gobuy" wx:if="{{sys.pay_state == 0}}" open-type="getPhoneNumber" bindgetphonenumber="get_course_xiang">
       去购买
       </button>

@@ -262,6 +262,7 @@ Page({
     // let islogin = wx.getStorageSync('isauth');
     // this.setData({ islogin: islogin})
     wx.setStorageSync('isauth', this.data.isauth)
+    wx.setStorageSync('uid', this.data.uid)
     this.iswxuser();
     const date = new Date();
     const cur_year = date.getFullYear();

@@ -71,7 +71,7 @@ Page({
               if (d.data.isfirstlogin == 1) {
                 // wx.switchTab({ url: '../today_task/today_task' })
                 // wx.switchTab({ url: '../first_page/first_page' })
-                that.xcxSubmitTask(d.data.uid)
+                
               } else {
                 // wx.redirectTo({ url: '../first_comming/first_comming' })
                 // wx.switchTab({ url: '../first_page/first_page' })
@@ -191,7 +191,7 @@ Page({
         selected: 0
       })
     }
-
+   
 
    var that = this
     //本地缓存
@@ -225,7 +225,11 @@ Page({
     wx.showLoading({ title: '加载中' });
     app.globalData.uid = wx.getStorageSync('uid');
     let uid = app.globalData.uid;
-    
+    if (uid){
+      that.xcxSubmitTask(uid)
+    }
+   
+
       var params = {
         "uid": uid
       }
@@ -958,4 +962,16 @@ Page({
       showModal_zb: false
     })
   },
+  //登录成功自动创建任务
+  xcxSubmitTask: function (uid) {
+    var that = this
+    var params = {
+      uid: uid
+    }
+    app.sz.xcxSubmitTask(params).then(d => {
+      if (d.data.status == 0) {
+        console.log("创建任务城东")
+      }
+    })
+  }
 })

@@ -14,22 +14,35 @@
               <text class="text2">10</text>
             </view>
           </view>
-                      
-          <view class="box-title" wx:if='{{isquestion}}'>
-              <!-- <template is="wxParse" data="{{wxParseData: replyTemArray[index]}}"/> -->
-              <rich-text nodes="gghfghfgh" class='rich-text'></rich-text>
+
+          
+          
+
+          
+
+          <view  wx:if='{{!isquestion}}'>
+            <!-- <template is="wxParse" data="{{wxParseData: replyTemArray[index]}}"/> -->
+            <view wx:if='{{ismany}}'>
+              <scroll-view  scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+                <view wx:for="{{youhuiquan}}" wx:key="index" class="tab-item {{current_cailiao==index?'active':''}}" data-current="{{index}}" bindtap="swichNav">{{item}}</view> 
+              </scroll-view> 
+              <view class="box-title" wx:elseif='{{!isquestion}}'>
+                <rich-text nodes="我是材料" class='rich-text'></rich-text>
+              </view>
+            </view>
+
+            <rich-text wx:if="{{!ismany}}" nodes="我是材料" class="box-title"></rich-text>
           </view>
                       
-          <view class="box-title" wx:else='{{!isquestion}}'>
-              <!-- <template is="wxParse" data="{{wxParseData: replyTemArray[index]}}"/> -->
-              <rich-text nodes="根据2012年北京市第十一次党代会提出，北京必须坚持首都城市功能定位，认真履行“四个服务职责提出有效措施。（20分）">
-              </rich-text>
-
-              <view class="yaoqiu">要求：针对性强，措施合理，操作可行，不超过250字。</view>   
-
-              <view class="image">
-                <image class="img" src="../../images/shangchuantp.png"></image>
-              </view>         
+          <view class="box-title" wx:else='{{isquestion}}'>
+            <!-- <template is="wxParse" data="{{wxParseData: replyTemArray[index]}}"/> -->
+            <rich-text class="rich1" nodes="根据2012年北京市第十一次党代会提出，北京必须坚持首都城市功能定位，认真履行“四个服务职责提出有效措施。（20分）">
+            </rich-text>
+            <view class="yaoqiu">要求：针对性强，措施合理，操作可行，不超过250字。</view>   
+            <view class="image">
+              <image class="img" src="../../images/shangchuantp.png" mode="aspectFill"></image>
+            </view>  
+            <textarea class="input_ans" placeholder="点击输入您的答案......"></textarea>       
           </view>
           
         </scroll-view>
@@ -47,5 +60,19 @@
 <view class="layout">
   <view class="cailiao">材料</view>
   <view class="wenti">问题</view>
-  <view class="jiaojuan"><text class="text">√交卷</text></view>
+  <view class="jiaojuan" bindtap="submit"><text class="text">√交卷</text></view>
 </view>
+
+<view class="mask" catchtouchmove="preventTouchMove" wx:if="{{null_jiaojuan}}"></view>
+<view class="modalDlg" wx:if="{{null_jiaojuan}}">
+        <view class="modal">
+          <image class="img_dlg"  src="../../images/tkjs.png"/>
+          <text class="tishi">您还有未做完的题目，确任交卷？</text>
+        </view>
+        <view class="button">
+          <view class="queding" bindtap="zb_dati">确定</view>
+          <view class="quxiao" bindtap="quxiao">取消</view>
+          <!-- <navigator class="watch_zb" url="{{item.live_info.zhubo.playbackUrl}}" open-type="navigate" >执意看直播</navigator> -->
+        </view>
+
+      </view>

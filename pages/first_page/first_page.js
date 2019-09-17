@@ -362,7 +362,27 @@ Page({
     })
 
   },
-
+  new_GetUserInfo(e) {
+    var that = this
+    wx.getSetting({
+      success: res => {
+        if(res.authSetting['scope.userInfo']) {
+          let name = e.detail.userInfo.nickName
+          let avatar = e.detail.userInfo.avatarUrl
+          wx.setStorageSync('wxname', name)
+          wx.setStorageSync('wxavatar', avatar)
+          // let lesson_id = this.data.courselive[id].lesson_id
+          wx.navigateTo({
+            url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
+          });
+          console.log(name)
+          console.log(avatar)
+        } else {
+          console.log("用户拒绝授权")
+        }
+      }
+    })
+  },
   bindGetUserInfo(e) {
     var that = this
     wx.getSetting({
@@ -417,18 +437,17 @@ Page({
             showModal_zb: true
           })
         } else {
-          let url = encodeURIComponent(this.data.bpurl);
-          console.log(url);
+          // let url = encodeURIComponent(this.data.bpurl);
+          // console.log(url);
           let lesson_id = this.data.courselive[id].lesson_id
           wx.navigateTo({
-            url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + lesson_id,
+            url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
           });
         } 
       } else {
         console.log("保存失败")
       }
-    })
-    
+    })  
   },
 
 

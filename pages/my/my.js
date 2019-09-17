@@ -21,6 +21,7 @@ Page({
     code:'',
     iv:'',
     encryptedData:'',
+    uid:0,
 
   },
 
@@ -138,17 +139,14 @@ Page({
     // console.log(this.data.avatarUrl)
     // console.log(this.data.userphone)
 
-    let islogin = wx.getStorageSync('isauth');
-    if (islogin){
-      var uid = wx.getStorageSync('uid');
+    let uid = wx.getStorageSync('uid');
+    if (uid > 0){
       var token = wx.getStorageSync('token');
       var params = {
         "uid": uid,
         "token": token,
       }
-
       // console.log(params)
-
       app.sz.xcxMy(params).then(d => {
         if (d.data.status == 1) {
           that.setData({ isbuy: d.data.data.isbuy, avatarUrl: d.data.data.avatar, nickName: d.data.data.name })

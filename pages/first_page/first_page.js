@@ -439,7 +439,7 @@ Page({
         } else {
           // let url = encodeURIComponent(this.data.bpurl);
           // console.log(url);
-          let lesson_id = this.data.courselive[id].lesson_id
+          
           wx.navigateTo({
             url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
           });

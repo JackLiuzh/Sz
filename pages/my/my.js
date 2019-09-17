@@ -46,7 +46,7 @@ Page({
           app.sz.loginregister(params).then(d => {
             // console.log(d)
             if (d.data.status == 0) {
-              app.wechat.setStorage('isauth', true);
+              // app.wechat.setStorage('isauth', true);
               app.wechat.setStorage('token', d.data.token);
               app.wechat.setStorage('uid', d.data.uid);
               app.globalData.uid = d.data.uid;
@@ -101,7 +101,7 @@ Page({
               //自动创建任务
 
             } else {
-              app.wechat.setStorage('isauth', false);
+              // app.wechat.setStorage('isauth', false);
             }
             wx.hideLoading()
           })

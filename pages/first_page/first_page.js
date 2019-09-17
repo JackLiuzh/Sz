@@ -481,7 +481,7 @@ Page({
               if (d.data.isfirstlogin == 1) {
                 // wx.switchTab({ url: '../today_task/today_task' })
                 // wx.switchTab({ url: '../first_page/first_page' })
-                that.xcxSubmitTask(d.data.uid)
+               
                 that.showModalPb(e)
               }
               else {

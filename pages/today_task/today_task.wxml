@@ -45,25 +45,27 @@
 
 
 
-
-
-
-
-
-
-
      
     <!-- 专项测评列表开始 -->
     <view class="ceping"  wx:for="{{project.project_list}}" wx:key="this" style=" overflow: hidden;position: relative;">
-      <block wx:if="{{uid > 0}}">
-          <block wx:if="{{(isauth === true) && (item.iflive == 1)}}">
-               <image   src='../../images/task_zhibozhong.png' catchtap='golookzhibo' data-video_id='{{item.video_id}}' data-lesson_id='{{item.videoId}}'  mode="widthFix" class='zbz' ></image>
+           <block wx:if="{{(uid == 0) && (item.iflive == 1)}}" >
+             <view class="impor_but"  bindtap="showModal"  data-project_id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}"   data-finish='{{item.finish}}' data-video_id='{{item.video_id}}'  data-lesson_id='{{item.videoId}}'>
+                <button class="impor_but" open-type="getUserInfo"  lang="zh_CN"bindgetuserinfo="new_GetUserInfo">
+                   <image   src='../../images/task_zhibozhong.png'   mode="widthFix" class='zbz' ></image>
+                  </button>
+              </view>  
           </block>
-          <block wx:if="{{(isauth === false) && (item.iflive == 1)}}">
+          <block wx:if="{{(uid > 0) && (item.iflive == 1)}}">
+          <view class="impor_but"  bindtap="showModal"  data-project_id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}"   data-finish='{{item.finish}}' data-video_id='{{item.video_id}}'  data-lesson_id='{{item.videoId}}'>
                <button class="impor_but" open-type="getUserInfo" lang="zh_CN"bindgetuserinfo="bindGetUserInfo">
                    <image   src='../../images/task_zhibozhong.png'  data-video_id='{{item.video_id}}' data-lesson_id='{{item.videoId}}'  mode="widthFix" class='zbz' ></image> 
                </button>
+               </view>  
           </block>
+
+
+      <block wx:if="{{uid > 0}}">
+
 
         <image wx:if="{{ item.kemu_id== 1}}" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}" data-finish="{{ item.finish}}" catchtap='godatiproject'  class='zximg'    src='../../images/changshi.png' mode="widthFix" ></image>        
         <image wx:if="{{ item.kemu_id== 2}}"    class='zximg'  src='../../images/shuliang.png'  mode="widthFix" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}" data-finish="{{ item.finish}}"  catchtap='godatiproject' ></image>
@@ -312,3 +314,20 @@
    </view>
 </view>
 <!-- 客服结束 -->
+
+  <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_zb}}"></view>
+      <view class="modalDlg" wx:if="{{showModal_zb}}">
+        <view class="modal">
+          <view class="dj_close" bindtap="close_zb">
+              <image class="close"  src="../../images/cha.png"/>
+          </view>
+          <image class="img_dlg"  src="../../images/tkjs.png"/>
+          <text class="tishi">专题课视频有对应的<text class="jiacu">专题测试</text>呦~</text>
+        </view>
+        <view class="button">
+          <view class="test" bindtap="zb_dati">前去测试</view>
+          <view class="watch_zb" bindtap="zblive">执意看直播</view>
+          <!-- <navigator class="watch_zb" url="{{item.live_info.zhubo.playbackUrl}}" open-type="navigate" >执意看直播</navigator> -->
+        </view>
+
+     </view>

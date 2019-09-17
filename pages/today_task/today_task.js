@@ -5,6 +5,7 @@ Page({
    * 页面的初始数 据
    */
   data: {
+    showModal_zb:false, //弹框
     uid:0,//是否手机号登陆
     isauth:false,//是否微信号授权
     ifburenwu:0,    //每日刷题显示补任务
@@ -94,6 +95,9 @@ Page({
 
   //获取用户微信数据
   bindGetUserInfo: function (e) {
+   
+    
+
     wx.showLoading({
       title: '登录中...',
     })
@@ -179,6 +183,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.iswxuser();
+
     if (typeof this.getTabBar === 'function' &&
       this.getTabBar()) {
       this.getTabBar().setData({
@@ -244,6 +250,7 @@ Page({
             daka_text: d.data.data.poster.title,
             zhibo_data: d.data.data.zhibo_data,
             project: d.data.data.project,
+            uid: uid,
             ifburenwu: d.data.data.ifburenwu
           })
           wx.hideLoading()
@@ -824,8 +831,131 @@ Page({
         url: '../live/live?video_id=' + video_id + '&lesson_id=' + lesson_id
       });
     }
-  }  
+  },
 
+ //uid==0
+  new_GetUserInfo(e) {
+    var that = this
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          let name = e.detail.userInfo.nickName
+          let avatar = e.detail.userInfo.avatarUrl
+          wx.setStorageSync('wxname', name)
+          wx.setStorageSync('wxavatar', avatar)
+          // let lesson_id = this.data.courselive[id].lesson_id
+          wx.navigateTo({
+            url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
+          });
+          console.log(name)
+          console.log(avatar)
+        } else {
+          console.log("用户拒绝授权")
+        }
+      }
+    })
+  },
+  // uid》0
+  bindGetUserInfo(e) {
+    var that = this
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          var bendiuserinfo = wx.getStorageSync("userInfo")
+          bendiuserinfo.name = e.detail.userInfo.nickName
+          bendiuserinfo.avatar = e.detail.userInfo.avatarUrl
+          wx.setStorageSync('userInfo', bendiuserinfo)
+          that.saveuserinfo()
+        } else {
+          console.log("用户拒绝授权")
+        }
+      }
+    })
+  },
+  iswxuser: function () {
+    var that = this
+    var avatar = that.data.avatar
+    var bendiava = wx.getStorageSync("userInfo").avatar
+    var bendname = wx.getStorageSync("userInfo").name
+    if (bendname) {
+      if (bendname.indexOf('szgk') != -1) {
+        that.setData({ iswxuser: false })
+      } else {
+        that.setData({ iswxuser: true })
+      }
+    }
 
+  },
+  //保存授权信息信息
+  saveuserinfo: function () {
+    var that = this
+    var uid = wx.getStorageSync("uid")
+    var token = wx.getStorageSync("token")
+    var wxname = wx.getStorageSync("userInfo").name
+    var wxava = wx.getStorageSync("userInfo").avatar
+    var params = {
+      uid: uid,
+      name: wxname,
+      avatar: wxava
+    }
+    app.sz.xcxuserInfo(params).then(d => {
+      console.log(d)
+      if (d.data.status == 0) {
+        // wx.navigateTo({
+        //   url: '/pages/live/live?video_id=' + that.data.video_id,
+        // })
+        console.log("保存成功")
+        if (this.data.finish == 0) {
+          this.setData({
+            showModal_zb: true
+          })
+        } else {
+          // let url = encodeURIComponent(this.data.bpurl);
+          // console.log(url);
+          wx.navigateTo({
+            url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
+          });
+        }
+      } else {
+        console.log("保存失败")
+      }
+    })
+  },
+  showModal: function (e) {
+    console.log(e,222222222222222222222)
+    var video_id = e.currentTarget.dataset.video_id;
+    var lesson_id = e.currentTarget.dataset.video_id;
+    var finish = e.currentTarget.dataset.finish;
+    var project_id = e.currentTarget.dataset.project_id;
+    var kemu_id = e.currentTarget.dataset.kemu_id;
+    this.setData({
+      video_id: video_id,
+      lesson_id: lesson_id,
+      finish: finish,
+      project_id: project_id,
+      kemu_id: kemu_id
+    })
+  },  
+  zb_dati: function () {
+    wx.navigateTo({
+      url: '../test_dati/test_dati?id=' + this.data.project_id + '&kemu_id=' + this.data.kemu_id
+    });
+    this.setData({
+      showModal_zb: false
+    })
+  },
+  zblive: function () {
 
+    wx.navigateTo({
+      url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
+    });
+    this.setData({
+      showModal_zb: false
+    })
+  },
+  close_zb: function () {
+    this.setData({
+      showModal_zb: false
+    })
+  },
 })

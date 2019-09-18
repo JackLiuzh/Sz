@@ -72,6 +72,7 @@
         <image wx:if="{{ item.kemu_id== 3}}"    class='zximg'  src='../../images/panduan.png'  mode="widthFix" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}" data-finish="{{ item.finish}}" catchtap='godatiproject' ></image>
         <image wx:if="{{ item.kemu_id== 4}}"   class='zximg'   src='../../images/ziliang.png'  mode="widthFix" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}"  data-finish="{{ item.finish}}" catchtap='godatiproject' ></image>
         <image wx:if="{{ item.kemu_id== 5}}"    class='zximg'  src='../../images/yuyan.png'  mode="widthFix" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}" data-finish="{{ item.finish}}" catchtap='godatiproject' ></image>
+        <image wx:if="{{ item.kemu_id== 5}}"    class='zximg'  src='../../images/shenlun.png'  mode="widthFix" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}" data-finish="{{ item.finish}}" catchtap='godatiproject' ></image>v
       </block>
       <block wx:else>
           <block wx:if="{{isauth == true && item.iflive == 1}}">
@@ -88,6 +89,7 @@
         <image wx:if="{{ item.kemu_id== 3}}"    class='zximg'  src='../../images/panduan.png'  mode="widthFix" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}" data-finish="{{ item.finish}}"  ></image>
         <image wx:if="{{ item.kemu_id== 4}}"   class='zximg'   src='../../images/ziliang.png'  mode="widthFix" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}"  data-finish="{{ item.finish}}"  ></image>
         <image wx:if="{{ item.kemu_id== 5}}"    class='zximg'  src='../../images/yuyan.png'  mode="widthFix" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}" data-finish="{{ item.finish}}" ></image>
+        <image wx:if="{{ item.kemu_id== 7}}"    class='zximg'  src='../../images/shenlun.png'  mode="widthFix" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}" data-finish="{{ item.finish}}" ></image>
         </button>
       </block>
     </view>

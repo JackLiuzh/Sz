@@ -1,3 +1,4 @@
+<!-- 申论交卷跳转页面 -->
 <view class="container">
   <image class="img1" src="../../images/wancheng.png" mode="aspectFill"></image>
   <text class="text1">交卷成功</text>
@@ -6,10 +7,12 @@
   <view class="layout1">
     <image class="img2" src="../../images/zhibok.png" mode="aspectFill"></image>
 
+    <!-- 底层图形 -->
     <view class="layout11">
       <view class="bottom1"></view>
       <view class="bottom2"></view>
 
+      <!-- 直播课时间/老师 -->
       <view class="layout111">
         <image class="img3" src="../../images/shijian.png" mode="aspectFill"></image>
         <view class="date">2018-06-03</view>
@@ -22,9 +25,21 @@
         <view class="name">韩磊</view>
       </view>
 
-    
+    <!-- 前往直播课跳转按钮 -->
       <view class="btn">
         <text class="text3">前往直播间</text>
+        <image class="img6" src="../../images/qianwang.png"></image>
+      </view>
+
+      <!-- 前往直播课跳转按钮 -->
+      <view class="btn">
+        <text class="text3">看回放</text>
+        <image class="img6" src="../../images/qianwang.png"></image>
+      </view>
+
+      <!-- 前往直播课跳转按钮 -->
+      <view class="btn">
+        <text class="text3">返回首页</text>
         <image class="img6" src="../../images/qianwang.png"></image>
       </view>
     

@@ -1,0 +1,84 @@
+<import src="../../components/wxParse/wxParse.wxml"/>
+<!-- <view class="container" > -->
+  <view class="box-swiper">
+    <swiper current="{{currentTab}}" duration="500" bindchange="swiperchangefinish" bindanimationfinish ="swiperchange" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+      <swiper-item style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+        <scroll-view scroll-y="true" style="height:{{clientHeight?clientHeight+'px':'auto'}}">
+          
+          <!-- 题数导航 -->
+          <view class="box-top">
+            <view class="type-qname">
+              <text>归纳总结</text>
+            </view>
+            <view class="type-nu">
+              <text class="text1">1</text>
+              <text class="text2">/</text>
+              <text class="text2">10</text>
+            </view>
+          </view>
+          <!-- 题数导航结束 -->
+
+          <!-- 材料对应问题 -->
+          <view class="box-title">
+            <rich-text class="rich1" nodes="根据2012年北京市第十一次党代会提出，北京必须坚持首都城市功能定位，认真履行“四个服务”职责提出有效措施。（20分）">
+            </rich-text>
+            <view class="yaoqiu">要求：针对性强，措施合理，操作可行，不超过250字。</view>   
+          </view>
+          <!-- 材料对应问题结束 -->
+            
+          <!-- 名师批改 -->
+          <view class="teacher_correct">
+            <image class="img1" src="../../images/teacher_correct.png" mode="aspectFill"></image>
+            <view class="rich2">
+              <rich-text  nodes="根据2012年北京市第十一次党代会提出，北京必须坚持首都城市功能定位，认真履行“四个服务”职责提出有效措施。">
+              </rich-text>
+            </view>
+            
+            <view class="image">
+              <image class="img2" src="../../images/tu1.png" mode="aspectFill"></image>
+              <image class="img2" src="../../images/tu2.png" mode="aspectFill"></image>
+            </view>
+          </view>
+          <!-- 名师批改结束 -->
+
+          <!-- 参考答案 -->
+          <view class="key_ans">
+            <view class="layout_key_ans">
+              <image class="sanjiao" src="../../images/hong_sanjiao.png" mode="aspectFill"></image>
+              <text class="text_key_ans">参考答案</text>
+            </view>
+            <view class="rich3">
+              <rich-text  nodes="根据2012年北京市第十一次党代会提出，北京必须坚持首都城市功能定位，认真履行“四个服务”职责提出有效措施。">
+              </rich-text>
+            </view>
+            <view class="heng"></view>
+          </view>
+          <!-- 参考答案结束 -->
+
+          <!-- 我的答案 -->
+          <view class="key_ans">
+            <view class="layout_key_ans">
+              <image class="sanjiao" src="../../images/hong_sanjiao.png" mode="aspectFill"></image>
+              <text class="text_key_ans">我的答案</text>
+            </view>
+            <view class="rich3">
+              <rich-text  nodes="根据2012年北京市第十一次党代会提出，北京必须坚持首都城市功能定位，认真履行“四个服务”职责提出有效措施。">
+              </rich-text>
+            </view>
+          </view>
+          <!-- 我的答案结束 -->
+ 
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+<!-- </view> -->
+
+
+<!-- 材料/答案按钮 -->
+<view class="layout">
+  <view class="cailiao">材料</view>
+  <view class="ans">答案</view>
+</view>
+<!-- 材料/答案按钮结束 -->
+

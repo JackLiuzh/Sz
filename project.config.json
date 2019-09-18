@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 6,
 			"list": [
 				{
 					"id": -1,
@@ -75,6 +75,19 @@
 					"name": "pages/dati_sl/dati_sl",
 					"pathName": "pages/dati_sl/dati_sl",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/analyse_sl/analyse_sl",
+					"pathName": "pages/analyse_sl/analyse_sl",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/course/course",
+					"pathName": "pages/course/course",
 					"scene": null
 				}
 			]

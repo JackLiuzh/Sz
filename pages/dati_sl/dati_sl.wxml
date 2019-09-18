@@ -1,50 +1,84 @@
 <import src="../../components/wxParse/wxParse.wxml"/>
 <view class="container" >
   <view class="box-swiper">
-    <swiper current="{{currentTab}}" duration="500" bindchange="swiperchangefinish" bindanimationfinish ="swiperchange" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
-      <swiper-item style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+    <swiper current="{{currentTab}}" duration="500" current="{{currentTab}}" bindchange="swiperchangefinish" bindanimationfinish ="swiperchange" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+      <swiper-item wx:for="{{sl_list}}" wx:key="index" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
         <scroll-view scroll-y="true" style="height:{{clientHeight?clientHeight+'px':'auto'}}">
           <view class="box-top">
             <view class="type-qname">
-              <text>hhhh</text>
+              <text>归纳总结</text>
             </view>
             <view class="type-nu">
-              <text class="text1">1</text>
+              <text class="text1">{{ currentTab + 1 }}</text>
               <text class="text2">/</text>
-              <text class="text2">10</text>
+              <text class="text2">{{total}}</text>
             </view>
           </view>
 
           
-          
-
-          
-
           <view  wx:if='{{!isquestion}}'>
-            <!-- <template is="wxParse" data="{{wxParseData: replyTemArray[index]}}"/> -->
-            <view wx:if='{{ismany}}'>
+            
+            <!-- 多材料题 -->
+            <view wx:if='{{item.isdan == 1 }}'>
               <scroll-view  scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
-                <view wx:for="{{youhuiquan}}" wx:key="index" class="tab-item {{current_cailiao==index?'active':''}}" data-current="{{index}}" bindtap="swichNav">{{item}}</view> 
+                <view wx:for="{{item.material}}" wx:key="index" class="tab-item {{current_cailiao==index?'active':''}}" data-current="{{index}}" bindtap="swichNav">材料{{index+1}}</view> 
               </scroll-view> 
-              <view class="box-title" wx:elseif='{{!isquestion}}'>
-                <rich-text nodes="我是材料" class='rich-text'></rich-text>
+              <view class="box-title" >
+                <rich-text nodes="{{item.material[current_cailiao].content}}"></rich-text>
               </view>
             </view>
+            <!-- 多材料题结束 -->
 
-            <rich-text wx:if="{{!ismany}}" nodes="我是材料" class="box-title"></rich-text>
+            <!-- 单一材料题 -->
+            <view wx:if='{{item.isdan == 0 }}'>
+            <view wx:for="{{item.material}}" wx:key="this" wx:for-index="cai_index" wx:for-item="cai_item" class='box-title'>
+              <rich-text nodes="{{cai_item.content}}" ></rich-text>
+            </view>
+            </view>
+
           </view>
                       
-          <view class="box-title" wx:else='{{isquestion}}'>
-            <!-- <template is="wxParse" data="{{wxParseData: replyTemArray[index]}}"/> -->
-            <rich-text class="rich1" nodes="根据2012年北京市第十一次党代会提出，北京必须坚持首都城市功能定位，认真履行“四个服务职责提出有效措施。（20分）">
-            </rich-text>
-            <view class="yaoqiu">要求：针对性强，措施合理，操作可行，不超过250字。</view>   
-            <view class="image">
-              <image class="img" src="../../images/shangchuantp.png" mode="aspectFill"></image>
-            </view>  
-            <textarea class="input_ans" placeholder="点击输入您的答案......"></textarea>       
+          <view wx:else='{{isquestion}}'>
+              <view wx:if='{{item.question.type == 4}}' class='box-title'>
+                <rich-text nodes="{{item.question.title}}"></rich-text>
+                <view class="image">
+                  <image class="img" src="../../images/shangchuantp.png" bindtap="chooseImg" mode="aspectFill"></image>
+                </view>  
+                <textarea class="input_ans" placeholder="点击输入您的答案......"></textarea> 
+              </view>
+              
+            <view wx:if='{{item.question.type == 1}}' class='box-title'>
+              <rich-text nodes="{{item.question.title}}"></rich-text>
+              <view class="title-options">
+                  <view data-xuanxiang="A" data-pindex="{{index}}" class="options-items" bindtap="{{item.isdo ? '' : 'choosed'}}">
+                    <!-- <text wx:if="{{item.a_an == 1}}" class="items-zimu correctclass">A</text>
+                    <text wx:if="{{item.a_an == 0}}" class="items-zimu cuowuclass">A</text> -->
+                    <text wx:if="{{ item.question.a }}" class="items-zimu">A</text> 
+                    <rich-text nodes="{{ item.question.a }}" class='rich-text'></rich-text>
+                  </view>
+                  <view data-xuanxiang="B" data-pindex="{{index}}"  bindtap="{{item.isdo ? '' : 'choosed'}}" class="options-items">
+                    <!-- <text wx:if="{{item.b_an == 1}}" class="items-zimu correctclass">B</text>
+                    <text wx:if="{{item.b_an == 0}}" class="items-zimu cuowuclass">B</text> -->
+                    <text wx:if="{{ item.question.b }}" class="items-zimu">B</text> 
+                    <rich-text nodes="{{ item.question.b }}" class='rich-text'  ></rich-text>
+                  </view>     
+                  <view data-xuanxiang="C" data-pindex="{{index}}" bindtap="{{item.isdo ? '' : 'choosed'}}" class="options-items">
+                    <!-- <text wx:if="{{item.c_an == 1}}" class="items-zimu correctclass">C</text>
+                    <text wx:if="{{item.c_an == 0}}" class="items-zimu cuowuclass">C</text> -->
+                    <text wx:if="{{item.question.c}}" class="items-zimu">C</text>
+                    <rich-text nodes="{{ item.question.c }}" class='rich-text' ></rich-text>
+                  </view>
+                  <view data-xuanxiang="D" data-pindex="{{index}}" bindtap="{{item.isdo ? '' : 'choosed'}}" class="options-items">
+                    <!-- <text wx:if="{{item.d_an == 1}}" class="items-zimu correctclass">D</text>
+                    <text wx:if="{{item.d_an == 0}}" class="items-zimu cuowuclass">D</text> -->
+                    <text wx:if="{{item.question.d}}" class="items-zimu">D</text>
+                    <rich-text nodes="{{ item.question.d }}" class='rich-text' ></rich-text>
+                  </view>
+                </view>
+            </view>
+            
           </view>
-          
+                                             
         </scroll-view>
       </swiper-item>
     </swiper>
@@ -52,27 +86,26 @@
 </view>
 
 <!-- 滑动查看下一题 -->
-<!-- <view class="huadong" hidden="{{huadong}}" catchtap="huadongClick" >
+<view class="huadong" hidden="{{huadong}}" catchtap="huadongClick" >
   <view class='huadong-zi'>滑动查看下一题</view>
   <image src="/images/task_huadong@2x.png" class="huadong-img"></image>
-</view> -->
+</view>
 
 <view class="layout">
-  <view class="cailiao">材料</view>
-  <view class="wenti">问题</view>
+  <view class="cailiao" bindtap="cailiao">材料</view>
+  <view class="wenti" bindtap="wenti">问题</view>
   <view class="jiaojuan" bindtap="submit"><text class="text">√交卷</text></view>
 </view>
 
 <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{null_jiaojuan}}"></view>
 <view class="modalDlg" wx:if="{{null_jiaojuan}}">
         <view class="modal">
-          <image class="img_dlg"  src="../../images/tkjs.png"/>
+          <image class="img_dlg"  src="../../images/tanhao.png"/>
           <text class="tishi">您还有未做完的题目，确任交卷？</text>
         </view>
         <view class="button">
           <view class="queding" bindtap="zb_dati">确定</view>
           <view class="quxiao" bindtap="quxiao">取消</view>
-          <!-- <navigator class="watch_zb" url="{{item.live_info.zhubo.playbackUrl}}" open-type="navigate" >执意看直播</navigator> -->
         </view>
 
       </view>

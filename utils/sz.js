@@ -48,6 +48,13 @@ function photouploads(params) {
 function xcxcourseLive(params) {
   return fetch.szfetch(URI, 'xcxcourseLive', params)
 }
+//获取申论试题
+function xcxShenlunList(params) {
+  return fetch.szfetch(URI, 'xcxShenlunList', params)
+}
+
+
+
 
 //微信登录 
 function loginregister(params) {
@@ -391,7 +398,7 @@ function xcxaddvideoProject(params) {
   return fetch.szfetch(URI, 'xcxaddvideoProject', params)
 }
 
-module.exports = { loginregister, xcxindex, xcxfirstLogin, xcxSubmitTask, xcxTodayTask, xcxUserTasklist, xcxAddUserTask, xcxDelUserTask, xcxUpdateTaskSet, xcxUpdateCycle, xcxUpdatePushNum, xcxUpdatePinlv, xcxCommentThumbsList, xcxEliminateCommentThumbs, xcxUpdateRange, xcxUpdateRangepost, xcxDakaTask, xcxRiliInfo, xcxgetTaskTi, xcxVideoDetail, xcxAnswerInsert, xcxAddComment, xcxAddThum, xcxAddVideoJilu, xcxgetTaskTiOne, courseList, courseLive, category, courseDetail, xcxMyAddr, xcxMy, xcxMyGetyzm, xcxMySendyzm, xcxfeedbackyzm, xcxsuggest, xcxaddUserAddress, createCourseOrder, xcxgetSpecialList, xcxgetProjectevaluationTi, coursePay, xcxshutiteport, xcxkanVideo, xcxphone, photouploads, xcxcourseLive, xcxNewCourse, pigobaogao, xcxanswersave, xcxNewCourseDetail, xcxorderaddress, xcxuserInfo, xcxliveUrl, xcxaddvideoProject}
+module.exports = { loginregister, xcxindex, xcxfirstLogin, xcxSubmitTask, xcxTodayTask, xcxUserTasklist, xcxAddUserTask, xcxDelUserTask, xcxUpdateTaskSet, xcxUpdateCycle, xcxUpdatePushNum, xcxUpdatePinlv, xcxCommentThumbsList, xcxEliminateCommentThumbs, xcxUpdateRange, xcxUpdateRangepost, xcxDakaTask, xcxRiliInfo, xcxgetTaskTi, xcxVideoDetail, xcxAnswerInsert, xcxAddComment, xcxAddThum, xcxAddVideoJilu, xcxgetTaskTiOne, courseList, courseLive, category, courseDetail, xcxMyAddr, xcxMy, xcxMyGetyzm, xcxMySendyzm, xcxfeedbackyzm, xcxsuggest, xcxaddUserAddress, createCourseOrder, xcxgetSpecialList, xcxgetProjectevaluationTi, coursePay, xcxshutiteport, xcxkanVideo, xcxphone, photouploads, xcxcourseLive, xcxNewCourse, pigobaogao, xcxanswersave, xcxNewCourseDetail, xcxorderaddress, xcxuserInfo, xcxliveUrl, xcxaddvideoProject, xcxShenlunList}
 
 
 

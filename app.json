@@ -37,6 +37,7 @@
     "pages/question_know/question_know",
     "pages/shuati_sl_jump/shuati_sl_jump",
     "pages/dati_sl/dati_sl",
+    "pages/analyse_sl/analyse_sl",
     "pages/course_newxiang/course_newxiang"
   ],
   "window": {

@@ -2,9 +2,16 @@
   <view class="layout1">
     <image class="touxiang" src='{{avatarUrl}}'></image>
     <view class="{{ nickName == '去登陆' ?'TipHide':'name'}}">{{nickName}}</view>
-    <button class="{{ nickName == '去登陆' ?'btp':'TipHide'}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
-    <view class="name">{{nickName}}</view>
+    <button class="{{ nickName == '去登陆' ?'btp':'TipHide'}}" bindtap="my_login">
+      <view class="name">{{nickName}}</view>
     </button>
+
+
+
+    
+    <!-- <button class="{{ nickName == '去登陆' ?'btp':'TipHide'}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+    <view class="name">{{nickName}}</view>
+    </button> -->
   </view>
 
   <view class="{{isbuy==1?'TipShow':'TipHide'}}">
@@ -57,10 +64,14 @@
     <image class="img2" bindtap="mySet" src="../../images/xiayiye@2x.png"></image>
   </view>
 
-  <!-- <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+  <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
   <view class="modalDlg" wx:if="{{showModal}}">
-      <image class="close" bindtap="go" src="../../images/组 2065@2x.png"/>
-      <text class="bang">绑定手机号</text>
+      <image class="close" bindtap="go" src="../../images/cha.png"/>
+      <view class="way1">
+        <view class="shu"></view>
+        <text class="bang">绑定手机号登录:</text>
+      </view>
+      
       <input class="srcall" bindinput="inputphone" placeholder="请输入手机号"></input>
       <view class="heng"></view>
       <view class="yz">
@@ -69,9 +80,17 @@
       </view>
       <view class="heng"></view>
       <view class="save" bindtap="Sendyzm">
-        <text class="bc">保存</text>
+        <text class="bc">登录</text>
       </view>
-  </view> -->
+      
+      <text class="wx_tip">—— 或授权微信绑定的手机号登录 ——</text>
+      
+      <button class="wxlogin" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+        <image class="wxlogin_img" src="../../images/wxlogin.png" mode="aspectFill"/>
+        <text class="wxlogin_dl">登录</text>
+      </button>
+      
+  </view>
 
   <view class='kefu_but'>
    <view class='b_img'>

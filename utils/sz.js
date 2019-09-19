@@ -16,11 +16,18 @@ function xcxMy(params) {
 //我的_获取验证码  
 function xcxMyGetyzm(params) {
   return fetch.szfetch(URI, 'loginSendSMS', params)
-}//我的_发送验证码  
-function xcxMySendyzm(params) {
-  return fetch.szfetch(URI, 'loginBindPhone', params)
 }
-//反馈中手机验证验证码 
+// //我的_发送验证码  
+// function xcxMySendyzm(params) {
+//   return fetch.szfetch(URI, 'loginBindPhone', params)
+// }
+
+// 验证码登录
+function loginRegister(params) {
+  return fetch.szfetch(URI, 'loginRegister', params)
+}
+
+//问题反馈中手机验证验证码 
 function xcxfeedbackyzm(params) {
   return fetch.szfetch(URI, 'SendCodeCheck', params)
 }
@@ -398,7 +405,7 @@ function xcxaddvideoProject(params) {
   return fetch.szfetch(URI, 'xcxaddvideoProject', params)
 }
 
-module.exports = { loginregister, xcxindex, xcxfirstLogin, xcxSubmitTask, xcxTodayTask, xcxUserTasklist, xcxAddUserTask, xcxDelUserTask, xcxUpdateTaskSet, xcxUpdateCycle, xcxUpdatePushNum, xcxUpdatePinlv, xcxCommentThumbsList, xcxEliminateCommentThumbs, xcxUpdateRange, xcxUpdateRangepost, xcxDakaTask, xcxRiliInfo, xcxgetTaskTi, xcxVideoDetail, xcxAnswerInsert, xcxAddComment, xcxAddThum, xcxAddVideoJilu, xcxgetTaskTiOne, courseList, courseLive, category, courseDetail, xcxMyAddr, xcxMy, xcxMyGetyzm, xcxMySendyzm, xcxfeedbackyzm, xcxsuggest, xcxaddUserAddress, createCourseOrder, xcxgetSpecialList, xcxgetProjectevaluationTi, coursePay, xcxshutiteport, xcxkanVideo, xcxphone, photouploads, xcxcourseLive, xcxNewCourse, pigobaogao, xcxanswersave, xcxNewCourseDetail, xcxorderaddress, xcxuserInfo, xcxliveUrl, xcxaddvideoProject, xcxShenlunList}
+module.exports = { loginregister, xcxindex, xcxfirstLogin, xcxSubmitTask, xcxTodayTask, xcxUserTasklist, xcxAddUserTask, xcxDelUserTask, xcxUpdateTaskSet, xcxUpdateCycle, xcxUpdatePushNum, xcxUpdatePinlv, xcxCommentThumbsList, xcxEliminateCommentThumbs, xcxUpdateRange, xcxUpdateRangepost, xcxDakaTask, xcxRiliInfo, xcxgetTaskTi, xcxVideoDetail, xcxAnswerInsert, xcxAddComment, xcxAddThum, xcxAddVideoJilu, xcxgetTaskTiOne, courseList, courseLive, category, courseDetail, xcxMyAddr, xcxMy, xcxMyGetyzm, xcxfeedbackyzm, xcxsuggest, xcxaddUserAddress, createCourseOrder, xcxgetSpecialList, xcxgetProjectevaluationTi, coursePay, xcxshutiteport, xcxkanVideo, xcxphone, photouploads, xcxcourseLive, xcxNewCourse, pigobaogao, xcxanswersave, xcxNewCourseDetail, xcxorderaddress, xcxuserInfo, xcxliveUrl, xcxaddvideoProject, xcxShenlunList, loginRegister}
 
 
 

@@ -5,14 +5,44 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    
   },
 
+  nevertip: function(){
+    // let first_sl = wx.getStorageSync("first_sl")
+    if(this.data.first_tip == ''){
+      this.setData({
+        first_tip: !this.data.first_tip
+      }); 
+    }else{
+      this.setData({
+        first_tip: !this.data.first_tip
+      }); 
+    }
+    
+    wx.setStorageSync("first_tip", this.data.first_tip)
+  },
+  iknow: function (options){
+    // if (this.data.first_tip == '') {
+    //   this.setData({
+    //     first_tip: true
+    //   }); 
+    //   wx.setStorageSync("first_tip", this.data.first_tip)
+    // }
+    var id = options.id
+    wx.navigateTo({
+      url: '../dati_sl/dati_sl?id=' + id
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let that = this
+    var id = options.id
+    // let first_tip = wx.getStorageSync('first_tip')
+    that.setData({ first_tip: wx.getStorageSync('first_tip'),id : id })
+    console.log(that.data.id)
   },
 
   /**

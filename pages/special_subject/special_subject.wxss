@@ -84,7 +84,19 @@
   background:linear-gradient(-54deg,rgba(139,217,211,1),rgba(23,157,136,1));
   box-shadow:0rpx 6rpx 18rpx 0rpx rgba(23,157,136,0.68);
 }
-
+.gong_color7{
+  color:#83CCFF;
+}
+.ti_color7{
+  color:#83CCFF;
+}
+.number_color7{
+  color:#83CCFF;
+}
+.btn_test_color7{
+  background:linear-gradient(-54deg,#41ABF5,#41ABF5);
+  box-shadow:0rpx 6rpx 18rpx 0rpx #41ABF5;   
+}
 .gong_color5{
   color:rgba(225,174,179,1);
 }
@@ -195,6 +207,34 @@
 .btn_tested_text_color2{
   color:rgba(111,138,108,1);
 }
-
+.tab-h{ 
+  height: 100rpx; 
+  width: 100%; 
+  box-sizing: border-box; 
+  overflow: hidden; 
+  line-height: 100rpx; 
+  background: #fff; 
+  white-space: nowrap;  
+} 
+.tab-item{ 
+  margin:0 155rpx; 
+  display: inline-block; 
+  font-size: 28rpx; 
+  color: #888888; 
+} 
+.tab-item.active{ 
+  color: #E65557; 
+  position: relative; 
+  font-size: 32rpx; 
+} 
+.tab-item.active:after{ 
+  content: ""; 
+  display: block; 
+  height: 6rpx; 
+  width: 100%; 
+  background: #E65557; 
+  position: absolute;  
+  bottom: 0;left: 5rpx; 
+} 
 
 

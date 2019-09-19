@@ -645,6 +645,22 @@ Page({
     
   },
 
+  godati_sl: function (e) {
+    var id = e.currentTarget.dataset.id
+    var kemu_id = e.currentTarget.dataset.kemu_id
+    var finish = e.currentTarget.dataset.finish
+    if (finish == 1) {
+      wx.navigateTo({
+        url: '../assessment_detail/assessment_detail?h_id=' + id + '&kemu_id=' + kemu_id + '&back=0'
+      });
+    } else {
+      wx.navigateTo({
+        url: '../dati_sl/dati_sl?id=' + id 
+      });
+    }
+
+  },
+
   //生成专题测海报
   createZhuantiImg: function (e){
 

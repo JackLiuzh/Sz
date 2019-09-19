@@ -1,7 +1,12 @@
 <view class="container">
-  <view class="list">
-    <block wx:for="{{ list }}" wx:key="this" class='box1'>
-      <view class = "c_line">
+
+  <scroll-view  class="tab-h" scroll-left="{{scrollLeft}}"> 
+    <view wx:for="{{youhuiquan}}" wx:key="index" class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav">{{item}}</view> 
+  </scroll-view> 
+
+  <view class="list" wx:if='{{currentTab == 0}}' wx:for="{{ list }}" wx:key="this">
+    <block  class='box1' wx:if='{{item.kemu_id != 7}}'>
+      <view class = "c_line" >
         <image class='img'  src='../../images/special/bg{{item.kemu_id}}.png'></image>
         <view class="c_line_text">
           <view class="gong gong_color{{item.kemu_id}}">共</view>
@@ -25,4 +30,33 @@
       </view>
     </block>
   </view>
+
+  <view class="list" wx:if='{{currentTab == 1}}' wx:for="{{ shenlun }}" wx:for-index="xb" >
+    <block  class='box1' wx:if='{{item.kemu_id == 7}}' >
+      <view class = "c_line" >
+        <image class='img'  src='../../images/special/bg{{item.kemu_id}}.png'></image>
+        <view class="c_line_text">
+          <view class="gong gong_color{{item.kemu_id}}">共</view>
+          <view class="number number_color{{item.kemu_id}}">{{item.ti_count}}</view>
+          <view class="ti ti_color{{item.kemu_id}}">题</view>
+        </view>    
+        <block wx:if="{{item.test == 1}}">
+            <view class="btn_tested btn_tested_color{{item.kemu_id}}">
+            <navigator url="/pages/assessment_detail/assessment_detail?h_id={{item.id}}&kemu_id={{item.kemu_id}}&back=0">
+              <view class="btn_tested_text btn_tested_text_color{{item.kemu_id}}">查看评估报告 ></view>
+            </navigator>
+          </view>
+        </block>
+        <block wx:else >
+        <view class="btn_test btn_test_color{{item.kemu_id}}" >
+              <view class="btn_text" bindtap="go_dati_sl" data-id="{{item.id}}">去测试 ></view>
+          </view>            
+        </block>
+      </view>
+    </block>
+  </view>
+
+  
+
+  
 </view>

@@ -13,19 +13,22 @@ Page({
     duocailiao:[],
     imgs:[],  //添加图片
     // null_jiaojuan:true,
-    youhuiquan: ['材料一', '材料二', '材料三', '材料四', '材料一', '材料二', '材料三', '材料四'], 
     current_cailiao: 0, //多材料滚动条预设当前项的值
-    h_id:76,
+    // h_id:76,
     sl_list:[],
     total:0,
-    huadong: false,
-  },
-
-  huadongClick: function () {
     
-    this.setData({ huadong: true })
+    // huadong: false,       //滑动查看下一题是否显示
   },
 
+  //滑动查看下一题 是否显示
+  huadongClick: function () {
+    // let huadong = wx.getStorageSync('huadong')
+    let huadong = this.data.huadong
+    console.log(this.data.huadong)
+    this.setData({ huadong: !huadong })
+    wx.setStorageSync('huadong', this.data.huadong)
+  },
 //多材料滚动条
   switchTab: function (e) {
     this.setData({
@@ -107,9 +110,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let huadong = wx.getStorageSync('huadong')
+    this.setData({
+      huadong: huadong,
+    })
+    console.log(this.data.huadong)
+    var h_id = options.id
+    console.log(h_id)
     let that = this
+    that.setData({
+      h_id: h_id,
+    })
       var params = {
-        "h_id": that.data.h_id,
+        "h_id": h_id,
       }
       console.log(params)
       app.sz.xcxShenlunList(params).then(d => {
@@ -153,6 +166,13 @@ quxiao: function(){
     })
   },
 
+//输入答案
+  input_ans: function(e){
+    this.setData({
+      content: e.detail.value
+    })
+    console.log(this.data.content)
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

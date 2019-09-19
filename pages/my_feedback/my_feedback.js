@@ -230,87 +230,10 @@ Page({
     })
   },
 
-  // getPhoneNumber: function (e) {
-  //   console.log(e.detail.iv);
-  //   console.log(e.detail.encryptedData);
-  //   wx.login({
-  //     success: res => {
-  //       this.setData({ code: res.code, iv: e.detail.iv, encryptedData: e.detail.encryptedData })
-  //       console.log(this.data.code, this.data.iv, this.data.encryptedData);
-  //       if (e.detail.errMsg == "getPhoneNumber:ok") {
+ 
 
-  //         let iv = encodeURIComponent(this.data.iv);
-  //         let encryptedData = encodeURIComponent(this.data.encryptedData);
-  //         let uid = app.globalData.uid;
-  //         var params = {
-  //           "code": this.data.code,
-  //           "iv": iv,
-  //           "encryptedData": encryptedData,
-  //           "uid": uid,
-  //           "XDEBUG_SESSION_START": 141454
-  //           // "code": this.data.code,
-  //         }
-  //         // console.log(params)
-  //         app.sz.xcxphone(params).then(d => {
-  //           if (d.data.status == 0) {
-  //             this.setData({ contact: d.data.data.phoneNumber })
-  //             console.log(d.data.data.phoneNumber)
-  //           } else {
-  //             console.log(d.data.msg)
-  //           }
-  //         })
-  //       }
-  //       else {
-  //         this.setData({
-  //           showModal: true
-  //         })
-  //       }
-  //     }
-  //   })
-  // },
-
-
-  // getPhoneNumber: function (e) {
-  //   console.log(e.detail.iv);
-  //   console.log(e.detail.encryptedData);
-  //   wx.login({
-  //     success: res => {
-  //       this.setData({ code: res.code, iv: e.detail.iv, encryptedData: e.detail.encryptedData })
-  //       console.log(this.data.code, this.data.iv, this.data.encryptedData);
-  //       if (e.detail.errMsg == "getPhoneNumber:ok") {
-
-  //         var params = {
-  //           "code": this.data.code,
-  //           "iv": iv,
-  //           "encryptedData": encryptedData,
-  //           "uid": uid,
-  //           "XDEBUG_SESSION_START": 141454
-  //         }
-  //         console.log(params)
-  //         app.sz.xcxphone(params).then(d => {
-  //           if (d.data.status == 0) {
-  //             this.setData({ userphone: d.data.data.phoneNumber }),
-  //             console.log(this.data.contact)
-  //             console.log(d.data.msg)
-  //           } else {
-  //             console.log(d.data.msg)
-  //           }
-  //         })
-  //       }
-  //       else {
-  //         this.setData({
-  //           showModal: true
-  //         })
-  //       }
-  //     }
-  //   })
-  // },
-
-  // getphone: function () {
-  //   this.setData({
-  //           showModal: true
-  //         })
-  // },
+ 
+  
 
       inputphone: function (e) {
         this.setData({

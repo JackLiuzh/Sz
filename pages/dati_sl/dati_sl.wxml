@@ -44,7 +44,7 @@
                 <view class="image">
                   <image class="img" src="../../images/shangchuantp.png" bindtap="chooseImg" mode="aspectFill"></image>
                 </view>  
-                <textarea class="input_ans" placeholder="点击输入您的答案......"></textarea> 
+                <textarea class="input_ans" placeholder="点击输入您的答案......" bindinput="input_ans"></textarea> 
               </view>
               
             <view wx:if='{{item.question.type == 1}}' class='box-title'>
@@ -86,7 +86,7 @@
 </view>
 
 <!-- 滑动查看下一题 -->
-<view class="huadong" hidden="{{huadong}}" catchtap="huadongClick" >
+<view class="huadong" wx:if='{{!huadong}}' catchtap="huadongClick" >
   <view class='huadong-zi'>滑动查看下一题</view>
   <image src="/images/task_huadong@2x.png" class="huadong-img"></image>
 </view>

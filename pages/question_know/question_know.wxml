@@ -13,10 +13,11 @@
     <text class='text2'>直接键盘输入答案，也可复制答案到答题框。</text>
   </view>
 
-    <view class="btn">我知道了</view>
+    <view class="btn" bindtap="iknow">我知道了</view>
     <view class="layout1">
-      <image class="img6" src="../../images/weixuanzhong.png" mode="aspectFill"></image>
-      <!-- <image class="img7" src="../../images/xuanzhong.png" mode="aspectFill"></image> -->
+      <image wx:if="{{!first_tip}}" class="img6" src="../../images/weixuanzhong.png" mode="aspectFill" bindtap="nevertip"></image>
+      <!-- <image wx:elseif="{{first_tip == ''}}" class="img6" src="../../images/weixuanzhong.png" mode="aspectFill" bindtap="nevertip"></image> -->
+      <image wx:if="{{first_tip}}" class="img6" src="../../images/xuanzhong.png" mode="aspectFill" bindtap="nevertip"></image>
       <text class="nevertip">不再提示</text>
     </view>
 

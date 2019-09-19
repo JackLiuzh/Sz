@@ -100,11 +100,14 @@ Page({
                 })
               }
               //自动创建任务
-
+              
             } else {
               // app.wechat.setStorage('isauth', false);
             }
             wx.hideLoading()
+            this.setData({
+              showModal: false
+            })
           })
         } else {
           // that.setData({
@@ -167,6 +170,11 @@ Page({
     // })    
   },
 
+  my_login: function(){
+    this.setData({
+      showModal: true
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -256,28 +264,32 @@ Page({
     console.log(params)
     app.sz.xcxMyGetyzm(params).then(d => {
       if (d.data.status == 1) {
-        console.log(console.log(d.data.msg))
+        console.log('成功')
       } else {
-        console.log(console.log(d.data.msg))
+        console.log('接口错误')
       }
     })
   },
 
   Sendyzm: function () {
-    var token = wx.getStorageSync('token');
-    var uid = wx.getStorageSync('uid');
+    // var token = wx.getStorageSync('token');
+    // var uid = wx.getStorageSync('uid');
     var phone = this.data.dphone; 
     var params = {
-      "uid": uid,
-      "token": token,
+      // "uid": uid,
+      // "token": token,
       "phone": phone,
       "code": this.data.code,
     }
     // console.log(params)
-    app.sz.xcxMySendyzm(params).then(d => {
+    app.sz.loginRegister(params).then(d => {
       if (d.data.status == 1) {
-        
+        this.setData({ isbuy: d.data.data.isbuy, avatarUrl: d.data.data.avatar, nickName: d.data.data.name })
+        if (d.data.data.phone != '')
+          this.setData({ userphone: d.data.data.phone })
         console.log(d.data.msg)
+        wx.setStorageSync("uid", d.data.data.uid)
+        wx.setStorageSync("token", d.data.data.token)
       } else {
         console.log(d.data.msg)
       }
@@ -285,7 +297,7 @@ Page({
     this.setData({
       showModal: false
     })
-
+    // this.onLoad()
   },
 
   showModal: function () {

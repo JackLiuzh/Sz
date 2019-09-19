@@ -120,15 +120,41 @@
         <view wx:if="{{uid > 0}}" class="watch_pb" bindtap="{{item.finish == 0?'showModalPb':'pblive'}}" data-xb='{{xb}}'>看回放</view>
         <!-- <view wx:if="{{uid > 0}}" class="watch_pb" bindtap="showModalPb" data-xb='{{xb}}'>看回放</view> -->
         <!-- <view class="watch_pb" bindtap="showModalPb" data-xb='{{xb}}'>看回放</view> -->
-        <button wx:if="{{uid == 0}}" class="watch_pb" data-xb='{{xb}}' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+        <view wx:if="{{uid == 0}}" class="watch_pb" data-hh='{{xb}}' bindtap="my_login">
     看回放
-    </button>
+    </view>
 
        
       </view>
     </view>
 
-    
+    <view class="dl_mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+  <view class="dl_modalDlg" wx:if="{{showModal}}">
+      <image class="dl_close" bindtap="go" src="../../images/cha.png"/>
+      <view class="way1">
+        <view class="shu"></view>
+        <text class="bang">绑定手机号登录:</text>
+      </view>
+      
+      <input class="srcall" bindinput="inputphone" placeholder="请输入手机号"></input>
+      <view class="heng"></view>
+      <view class="yz">
+        <input class="sryzm" bindinput="inputcode" placeholder="请输入验证码"></input>
+        <text class="hqyzm" bindtap="getYzm">获取验证码</text>
+      </view>
+      <view class="heng"></view>
+      <view class="save" bindtap="Sendyzm">
+        <text class="bc">登录</text>
+      </view>
+      
+      <text class="wx_tip">—— 或授权微信绑定的手机号登录 ——</text>
+      
+      <button class="wxlogin" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+        <image class="wxlogin_img" src="../../images/wxlogin.png" mode="aspectFill"/>
+        <text class="wxlogin_dl">登录</text>
+      </button>
+      
+  </view>
 
      <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_pb}}"></view>
         <view class="modalDlg" wx:if="{{showModal_pb}}">

@@ -317,6 +317,7 @@ Page({
         console.log(d.data.msg)
         wx.setStorageSync("uid", d.data.data.uid)
         wx.setStorageSync("token", d.data.data.token)
+        wx.setStorageSync("userInfo", d.data.data)
       } else {
         console.log(d.data.msg)
       }

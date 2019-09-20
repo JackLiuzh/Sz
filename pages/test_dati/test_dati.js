@@ -112,7 +112,7 @@ Page({
       h_id: h_id,
       kemu_id: kemu_id
     })
-    var uid = app.globalData.uid
+    var uid = wx.getStorageSync('uid')
     var params = {
       "all":all,
       "uid": uid,

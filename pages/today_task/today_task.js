@@ -1072,6 +1072,7 @@ Page({
         console.log(d.data.msg)
         wx.setStorageSync("uid", d.data.data.uid)
         wx.setStorageSync("token", d.data.data.token)
+        wx.setStorageSync('userInfo', d.data.data)
         that.onShow()
         this.setData({
           showModal: false

@@ -165,23 +165,24 @@ Page({
         console.log(d.data.msg)
         wx.setStorageSync("uid", d.data.data.uid)
         wx.setStorageSync("token", d.data.data.token)
-      if(this.data.finish == 0){
-      this.setData({
-        showModal_pb: true,
-        dl_showModal: false
-      })
-    }else{
-      // let url = encodeURIComponent(this.data.bpurl);
-      // console.log(url);
-      wx.navigateTo({
-        url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
-      });
-      this.setData({
-        showModal_pb: false,
-        dl_showModal: false
+        this.onLoad()
+    //   if(this.data.finish == 0){
+    //   this.setData({
+    //     showModal_pb: true,
+    //     dl_showModal: false
+    //   })
+    // }else{
+    //   // let url = encodeURIComponent(this.data.bpurl);
+    //   // console.log(url);
+    //   wx.navigateTo({
+    //     url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
+    //   });
+    //   this.setData({
+    //     showModal_pb: false,
+    //     dl_showModal: false
         
-      })
-    } 
+    //   })
+    // } 
     } else {
         wx.showToast({
           title: d.data.msg,
@@ -729,25 +730,27 @@ Page({
               that.setData({
                 dl_showModal: false
               })
+              that.onLoad()
+              console.log(this.data.finish)
              // if (d.data.isfirstlogin == 1) {
                 // wx.switchTab({ url: '../today_task/today_task' })
                 // wx.switchTab({ url: '../first_page/first_page' })
-                if (this.data.finish == 0) {
-                  this.setData({
-                    showModal_pb: true,    //看回放蒙层显示
+                // if (this.data.finish == 0) {
+                //   this.setData({
+                //     showModal_pb: true,    //看回放蒙层显示
                    
-                  })
-                } else {
-                  // let url = encodeURIComponent(this.data.bpurl);
-                  // console.log(url);
-                  wx.navigateTo({
-                    url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
-                  });
-                  this.setData({
-                    showModal_pb: false,
-                    dl_showModal: false
-                  })
-                }
+                //   })
+                // } else {
+                //   // let url = encodeURIComponent(this.data.bpurl);
+                //   // console.log(url);
+                //   wx.navigateTo({
+                //     url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
+                //   });
+                //   this.setData({
+                //     showModal_pb: false,
+                //     dl_showModal: false
+                //   })
+                // }
                 
               // }
               // else {

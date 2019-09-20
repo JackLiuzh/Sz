@@ -42,10 +42,6 @@
     <!-- 直播显示结束 -->
     <view wx:else class='tishixinxi' hidden="false">坚持每天做任务，一个周期结束后可获取课程资料包呦</view>
      <!-- 不显示 结束 -->
-
-
-
-     
     <!-- 专项测评列表开始 -->
     <view class="ceping"  wx:for="{{project.project_list}}" wx:key="this" style=" overflow: hidden;position: relative;">
            <block wx:if="{{(uid == 0) && (item.iflive == 1)}}" >
@@ -83,7 +79,7 @@
                    <image   src='../../images/task_zhibozhong.png'  data-video_id='{{item.video_id}}' data-lesson_id='{{item.videoId}}'  mode="widthFix" class='zbz' ></image> 
                </button>
           </block>
-        <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" >
+        <button bindtap="my_login">
         <image wx:if="{{ item.kemu_id== 1}}" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}" data-finish="{{ item.finish}}"   class='zximg'    src='../../images/changshi.png' mode="widthFix" ></image>        
         <image wx:if="{{ item.kemu_id== 2}}"    class='zximg'  src='../../images/shuliang.png'  mode="widthFix" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}" data-finish="{{ item.finish}}"   ></image>
         <image wx:if="{{ item.kemu_id== 3}}"    class='zximg'  src='../../images/panduan.png'  mode="widthFix" data-id="{{ item.id }}"  data-kemu_id="{{ item.kemu_id }}" data-finish="{{ item.finish}}"  ></image>
@@ -178,7 +174,7 @@
         <!-- 每日刷题结束 -->
         <!-- 未登录每日刷题开始 -->
         <view wx:if="{{uid == 0}}"  wx:for="{{list}}" wx:key="this" class="box1" >
-            <button class="impor_but" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+            <button class="impor_but" bindtap="my_login">
             <view class='b_top'>
                 <view  style='flex:1;' class="b_t_left" data-user_task_id="{{ item.id }}"  data-task_name="{{ item.tname }}" data-type="{{item.type}}" catchtap='today_goto'>
                     <view class='te1 {{item.already_total==item.today_tot ? "te_done" : " "}}'>{{item.tname}}</view>
@@ -249,7 +245,7 @@
         </view>
         </block>
         <block wx:if="{{uid == 0}}">
-        <button class="impor_but" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+        <button class="impor_but" bindtap="my_login">
         <view class="box1" wx:if="{{ project.isover_project  > 0 }}"   >
             <view class='b_top' style="margin-bottom:20rpx;">
                 <view  style='flex:1;' class="b_t_left" >
@@ -333,3 +329,33 @@
         </view>
 
      </view>
+
+<!-- 登录 开始 -->
+    <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+    <view class="modalDlg" wx:if="{{showModal}}">
+      <image class="close" bindtap="go" src="../../images/cha.png"/>
+      <view class="way1">
+        <view class="shu"></view>
+        <text class="bang">绑定手机号登录:</text>
+      </view>
+      
+      <input class="srcall" bindinput="inputphone" placeholder="请输入手机号"></input>
+      <view class="heng"></view>
+      <view class="yz">
+        <input class="sryzm" bindinput="inputcode" placeholder="请输入验证码"></input>
+        <text class="hqyzm" bindtap="getYzm">获取验证码</text>
+      </view>
+      <view class="heng"></view>
+      <view class="save" bindtap="Sendyzm">
+        <text class="bc">登录</text>
+      </view>
+      
+      <text class="wx_tip">—— 或授权微信绑定的手机号登录 ——</text>
+      
+      <button class="wxlogin" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+        <image class="wxlogin_img" src="../../images/wxlogin.png" mode="aspectFill"/>
+        <text class="wxlogin_dl">登录</text>
+      </button>
+      
+  </view>
+<!-- 登录 结束-->

@@ -5,6 +5,7 @@ Page({
    * 页面的初始数 据
    */
   data: {
+    showModal:false,//true 登录弹出框显示
     showModal_zb:false, //弹框
     uid:0,//是否手机号登陆
     isauth:false,//是否微信号授权
@@ -942,7 +943,6 @@ Page({
     })
   },
   showModal: function (e) {
-    console.log(e,222222222222222222222)
     var video_id = e.currentTarget.dataset.video_id;
     var lesson_id = e.currentTarget.dataset.video_id;
     var finish = e.currentTarget.dataset.finish;
@@ -988,6 +988,112 @@ Page({
       if (d.data.status == 0) {
         console.log("创建任务城东")
       }
+    })
+  },
+  //发送验证码
+  getYzm: function (e) {
+    var token = wx.getStorageSync('token');
+    var phone = this.data.dphone;
+    // console.log(phone)
+    var params = {
+      "token": token,
+      "phone": phone,
+    }
+    console.log(params)
+    app.sz.xcxMyGetyzm(params).then(d => {
+      if (d.data.status == 1) {
+        console.log('成功')
+      } else {
+        console.log('接口错误')
+      }
+    })
+  },
+  //手机号登录
+  Sendyzm: function () {
+    var phone = this.data.dphone;
+    var params = {
+      "phone": phone,
+      "code": this.data.code,
+    }
+    app.sz.loginRegister(params).then(d => {
+      if (d.data.status == 1) {
+        this.setData({ isbuy: d.data.data.isbuy, avatarUrl: d.data.data.avatar, nickName: d.data.data.name })
+        if (d.data.data.phone != '')
+          this.setData({ userphone: d.data.data.phone })
+        console.log(d.data.msg)
+        wx.setStorageSync("uid", d.data.data.uid)
+        wx.setStorageSync("token", d.data.data.token)
+      } else {
+        console.log(d.data.msg)
+      }
+      that.onShow();
+    })
+    this.setData({
+      showModal: false
+    })
+  },
+  //微信登录
+  getPhoneNumber: function (e) {
+    var that = this
+
+    wx.login({
+      success: res => {
+        if (e.detail.errMsg == "getPhoneNumber:ok") {
+          wx.showLoading({
+            title: '登录中...',
+          })
+          let iv = encodeURIComponent(e.detail.iv);
+          let encryptedData = encodeURIComponent(e.detail.encryptedData);
+          let code = res.code
+          var params = {
+            "code": code,
+            "iv": iv,
+            "encryptedData": encryptedData
+          }
+          console.log(params)
+          app.sz.loginregister(params).then(d => {
+            // console.log(d)
+            if (d.data.status == 0) {
+              // app.wechat.setStorage('isauth', true);
+              app.wechat.setStorage('token', d.data.token);
+              app.wechat.setStorage('uid', d.data.uid);
+              app.globalData.uid = d.data.uid;
+              app.wechat.setStorage('userInfo', d.data.userInfo)
+              if (d.data.isfirstlogin == 1) {
+                var uid = wx.getStorageSync('uid');
+                var token = wx.getStorageSync('token');
+                var params = {
+                  "uid": uid,
+                  "token": token,
+                }
+                app.sz.xcxMy(params).then(d => {
+                })
+              }
+              else {
+                var uid = wx.getStorageSync('uid');
+                var token = wx.getStorageSync('token');
+                var params = {
+                  "uid": uid,
+                  "token": token,
+                }
+                app.sz.xcxMy(params).then(d => {
+                })
+              }
+              that.onShow();
+            }
+            wx.hideLoading()
+            this.setData({
+              showModal: false
+            })
+          })
+        } 
+      }
+    })
+  },
+  //true 弹出登录框
+  my_login: function () {
+    this.setData({
+      showModal: true
     })
   }
 })

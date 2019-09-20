@@ -254,6 +254,7 @@
   line-height:33rpx;
   color:rgba(230,85,87,0.60);
   opacity:1;
+  text-align: right;
 }
 .save{
   margin-left:106rpx;

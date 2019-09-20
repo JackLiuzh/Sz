@@ -573,12 +573,11 @@ button[class="baocun"]::after{
 }
 .yz{
   display:flex;
-  /* margin-left:10rpx; */
-  margin-top:30rpx;
+  justify-content:space-between;
+  margin: 30rpx  50rpx 0;
+  /* margin-top:30rpx; */
 }
 .sryzm{
-  margin-left:55rpx;
-  width:360rpx;
   height:72rpx;
   font-size:26rpx;
   font-family:PingFang SC;
@@ -590,7 +589,6 @@ button[class="baocun"]::after{
 }
 .hqyzm{
   margin-top:20rpx;
-  width:120rpx;
   height:33rpx;
   font-size:24rpx;
   font-family:PingFang SC;

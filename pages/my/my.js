@@ -22,6 +22,8 @@ Page({
     iv:'',
     encryptedData:'',
     uid:0,
+    time: "获取验证码",
+    currentTime: 61,
 
   },
 
@@ -253,7 +255,7 @@ Page({
     //   dphone: e.detail.value
     //  })
     // console.log(this.data.dphone)
-
+    var that = this
     var token = wx.getStorageSync('token');
     var phone = this.data.dphone; 
     // console.log(phone)
@@ -261,10 +263,35 @@ Page({
       "token": token,
       "phone": phone,
     }
+    if (this.data.disabled || !phone) {
+      return;
+    }
     console.log(params)
     app.sz.xcxMyGetyzm(params).then(d => {
       if (d.data.status == 1) {
         console.log('成功')
+
+        that.setData({
+          disabled: true
+        })
+        let interval = null;
+        let currentTime = that.data.currentTime;
+        interval = setInterval(function () {
+          currentTime--;
+          that.setData({
+            time: currentTime,
+            suffix: ' s'
+          })
+          if (currentTime <= 0) {
+            clearInterval(interval)
+            that.setData({
+              time: '重新发送',
+              suffix: '',
+              currentTime: 61,
+              disabled: false
+            })
+          }
+        }, 1000)
       } else {
         console.log('接口错误')
       }

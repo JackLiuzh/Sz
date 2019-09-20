@@ -5,6 +5,8 @@ Page({
    * 页面的初始数 据
    */
   data: {
+    time: "获取验证码",
+    currentTime: 61,
     showModal:false,//true 登录弹出框显示
     showModal_zb:false, //弹框
     uid:0,//是否手机号登陆
@@ -184,6 +186,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log("onshow");
     this.iswxuser();
 
     if (typeof this.getTabBar === 'function' &&
@@ -992,8 +995,12 @@ Page({
   },
   //发送验证码
   getYzm: function (e) {
+    var that = this
     var token = wx.getStorageSync('token');
     var phone = this.data.dphone;
+    if (this.data.disabled || !phone){
+       return;
+    }
     // console.log(phone)
     var params = {
       "token": token,
@@ -1003,17 +1010,59 @@ Page({
     app.sz.xcxMyGetyzm(params).then(d => {
       if (d.data.status == 1) {
         console.log('成功')
+        that.setData({
+          disabled: true
+        })
+        let interval = null;
+        let currentTime = that.data.currentTime;
+        interval = setInterval(function () {
+          currentTime--;
+          that.setData({
+            time: currentTime,
+            suffix: ' s '
+          })
+          if (currentTime <= 0) {
+            clearInterval(interval)
+            that.setData({
+              time: '重新发送',
+              suffix: '',
+              currentTime: 61,
+              disabled: false
+            })
+          }
+        }, 1000)
       } else {
-        console.log('接口错误')
+        wx.showToast({
+          title: d.data.msg,
+          icon: 'none',
+          duration: 1000
+        })
       }
     })
   },
+  inputphone: function (e) {
+    this.setData({
+      dphone: e.detail.value
+    })
+    console.log(this.data.dphone)
+  },
+
+  inputcode: function (e) {
+    this.setData({
+      code: e.detail.value
+    })
+    console.log(this.data.code)
+  },
   //手机号登录
   Sendyzm: function () {
+    var that = this
     var phone = this.data.dphone;
     var params = {
       "phone": phone,
       "code": this.data.code,
+    }
+    if (!phone || !this.data.code){
+      return;
     }
     app.sz.loginRegister(params).then(d => {
       if (d.data.status == 1) {
@@ -1023,14 +1072,23 @@ Page({
         console.log(d.data.msg)
         wx.setStorageSync("uid", d.data.data.uid)
         wx.setStorageSync("token", d.data.data.token)
+        that.onShow()
+        this.setData({
+          showModal: false
+        })
       } else {
+        wx.showToast({
+          title: d.data.msg,
+          icon: 'none',
+          duration: 1000
+        })
         console.log(d.data.msg)
       }
-      that.onShow();
+   
     })
-    this.setData({
-      showModal: false
-    })
+    
+ 
+   
   },
   //微信登录
   getPhoneNumber: function (e) {

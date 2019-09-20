@@ -343,7 +343,7 @@
       <view class="heng"></view>
       <view class="yz">
         <input class="sryzm" bindinput="inputcode" placeholder="请输入验证码"></input>
-        <text class="hqyzm" bindtap="getYzm">获取验证码</text>
+        <text class="hqyzm" bindtap="getYzm">{{time}}{{suffix}}</text>
       </view>
       <view class="heng"></view>
       <view class="save" bindtap="Sendyzm">

@@ -33,6 +33,85 @@ Page({
 
   },
 
+  my_login: function () {
+    this.setData({
+      showModal: true
+    })
+  },
+
+  go: function () {
+    this.setData({
+      showModal: false
+    })
+  },
+
+  inputphone: function (e) {
+    this.setData({
+      dphone: e.detail.value
+    })
+    console.log(this.data.dphone)
+  },
+
+  inputcode: function (e) {
+    this.setData({
+      code: e.detail.value
+    })
+    console.log(this.data.code)
+  },
+
+  getYzm: function (e) {
+    // this.setData({
+    //   dphone: e.detail.value
+    //  })
+    // console.log(this.data.dphone)
+
+    var token = wx.getStorageSync('token');
+    var phone = this.data.dphone;
+    // console.log(phone)
+    var params = {
+      "token": token,
+      "phone": phone,
+    }
+    console.log(params)
+    app.sz.xcxMyGetyzm(params).then(d => {
+      if (d.data.status == 1) {
+        console.log('成功')
+      } else {
+        console.log('接口错误')
+      }
+    })
+  },
+
+  Sendyzm: function (e) {
+    // var token = wx.getStorageSync('token');
+    // var uid = wx.getStorageSync('uid');
+    var phone = this.data.dphone;
+    var params = {
+      // "uid": uid,
+      // "token": token,
+      "phone": phone,
+      "code": this.data.code,
+    }
+    // console.log(params)
+    app.sz.loginRegister(params).then(d => {
+      if (d.data.status == 1) {
+        this.setData({ isbuy: d.data.data.isbuy, avatarUrl: d.data.data.avatar, nickName: d.data.data.name })
+        if (d.data.data.phone != '')
+          this.setData({ userphone: d.data.data.phone })
+        console.log(d.data.msg)
+        wx.setStorageSync("uid", d.data.data.uid)
+        wx.setStorageSync("token", d.data.data.token)
+        this.showModalPb(e)
+      } else {
+        console.log(d.data.msg)
+      }
+    })
+    this.setData({
+      showModal: false
+    })
+    // this.onLoad()
+  },
+
   nextmonth(year, month) {
     const date = new Date();
     let i = 1
@@ -813,7 +892,7 @@ Page({
 
   
   showModalPb: function (e) {
-    var id = e.currentTarget.dataset.xb;
+    var id = e.currentTarget.dataset.hh;
     console.log(id);
     this.setData({
       finish: this.data.courselive[id].finish,

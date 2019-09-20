@@ -14,7 +14,7 @@ Page({
     showcal:[],
     showModal_zb: false,   //看直播判断蒙层
     showModal_pb: false,   //看回放判断蒙层
-    bpurl: '',     //课程视频链接
+    // bpurl: '',     //课程视频链接
     project_id: '',
     kemu_id: '',
     video_id:'',
@@ -829,14 +829,14 @@ Page({
     console.log(id);
     this.setData({
       finish: this.data.courselive[id].finish,
-      bpurl: this.data.courselive[id].live_info.playbackUrl,
+      // bpurl: this.data.courselive[id].live_info.playbackUrl,
       project_id: this.data.courselive[id].project_id,
       kemu_id: this.data.courselive[id].kemu_id,
       video_id: this.data.courselive[id].video_id,
       lesson_id: this.data.courselive[id].lesson_id,
     })
     console.log(this.data.finish);
-    console.log(this.data.bpurl);
+    // console.log(this.data.bpurl);
     console.log(this.data.project_id);
     console.log(this.data.kemu_id);
     // this.setData({
@@ -850,7 +850,7 @@ Page({
     console.log(id);
     this.setData({
       finish: this.data.courselive[id].finish,
-      bpurl: this.data.courselive[id].live_info.playbackUrl,
+      // bpurl: this.data.courselive[id].live_info.playbackUrl,
       project_id: this.data.courselive[id].project_id,
       kemu_id: this.data.courselive[id].kemu_id,
       video_id: this.data.courselive[id].video_id,
@@ -861,8 +861,8 @@ Page({
         showModal_zb: true
       })
     } else {
-      let url = encodeURIComponent(this.data.bpurl);
-      console.log(url);
+      // let url = encodeURIComponent(this.data.bpurl);
+      // console.log(url);
       let lesson_id = this.data.courselive[id].lesson_id
       wx.navigateTo({
         url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + lesson_id,
@@ -872,7 +872,7 @@ Page({
       // })
     }
     console.log(this.data.finish);
-    console.log(this.data.bpurl);
+    // console.log(this.data.bpurl);
     console.log(this.data.project_id);
     console.log(this.data.kemu_id);
     // this.setData({
@@ -1140,7 +1140,7 @@ Page({
     console.log(id);
     this.setData({
       finish: this.data.courselive[id].finish,
-      bpurl: this.data.courselive[id].live_info.playbackUrl,
+      // bpurl: this.data.courselive[id].live_info.playbackUrl,
       project_id: this.data.courselive[id].project_id,
       kemu_id: this.data.courselive[id].kemu_id,
       video_id: this.data.courselive[id].video_id,

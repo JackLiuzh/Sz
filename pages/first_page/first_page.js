@@ -165,6 +165,7 @@ Page({
         console.log(d.data.msg)
         wx.setStorageSync("uid", d.data.data.uid)
         wx.setStorageSync("token", d.data.data.token)
+        app.globalData.uid = d.data.data.uid;
         this.setData({
           // showModal_pb: true,
           dl_showModal: false

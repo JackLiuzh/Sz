@@ -166,6 +166,7 @@ Page({
         wx.setStorageSync("uid", d.data.data.uid)
         wx.setStorageSync("token", d.data.data.token)
         app.globalData.uid = d.data.data.uid;
+        wx.setStorageSync('userInfo', d.data.data)
         this.setData({
           // showModal_pb: true,
           dl_showModal: false
@@ -217,6 +218,7 @@ Page({
         console.log(d.data.msg)
         wx.setStorageSync("uid", d.data.data.uid)
         wx.setStorageSync("token", d.data.data.token)
+        wx.setStorageSync('userInfo', d.data.data)
         console.log(this.data.system_id + 'cscscscs')
         wx.navigateTo({
           url: '/pages/course_xiang/course_xiang?system_id=' + this.data.system_id,

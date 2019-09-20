@@ -316,10 +316,10 @@
 <!-- 客服结束 -->
 
   <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_zb}}"></view>
-      <view class="modalDlg" wx:if="{{showModal_zb}}">
+      <view class="modalDlg_zb" wx:if="{{showModal_zb}}">
         <view class="modal">
           <view class="dj_close" bindtap="close_zb">
-              <image class="close"  src="../../images/cha.png"/>
+              <image class="close_zb"  src="../../images/cha.png"/>
           </view>
           <image class="img_dlg"  src="../../images/tkjs.png"/>
           <text class="tishi">专题课视频有对应的<text class="jiacu">专题测试</text>呦~</text>

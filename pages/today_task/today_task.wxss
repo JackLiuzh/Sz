@@ -406,7 +406,7 @@ button[class="baocun"]::after{
     opacity: 0.7;
 }
 
-.modalDlg{
+.modalDlg_zb{
     /* width: 580rpx;
     height: 620rpx; */
     position: fixed;
@@ -440,7 +440,7 @@ button[class="baocun"]::after{
   width: 70rpx;
   height:50rpx;
 }
-.close{
+.close_zb{
   width: 36rpx;
   height:36rpx;
 }

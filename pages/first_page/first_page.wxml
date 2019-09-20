@@ -1,3 +1,5 @@
+
+
 <view class="container" style='padding-bottom:400rpx;'>
 
 <!-- 直播课显示 -->
@@ -207,7 +209,7 @@
           <view class="button">
           <view class="test" bindtap="pb_dati">前去测试</view>
             <!-- <view class="test" bindtap="gotest_dati">前去测试</view> -->
-            <view class="watch_zb" bindtap="pblive">执意看回放</view>
+            <view class="watch_zb" bindtap="mc_pblive">执意看回放</view>
           </view>
         </view>
   <!-- </view> -->

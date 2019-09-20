@@ -165,12 +165,13 @@ Page({
         console.log(d.data.msg)
         wx.setStorageSync("uid", d.data.data.uid)
         wx.setStorageSync("token", d.data.data.token)
+        this.setData({
+          // showModal_pb: true,
+          dl_showModal: false
+        })
         this.onLoad()
     //   if(this.data.finish == 0){
-    //   this.setData({
-    //     showModal_pb: true,
-    //     dl_showModal: false
-    //   })
+      
     // }else{
     //   // let url = encodeURIComponent(this.data.bpurl);
     //   // console.log(url);

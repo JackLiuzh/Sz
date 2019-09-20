@@ -177,7 +177,8 @@ Page({
         url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
       });
       this.setData({
-        showModal_pb: false
+        showModal_pb: false,
+        dl_showModal: false
         
       })
     } 
@@ -725,13 +726,16 @@ Page({
               app.wechat.setStorage('uid', d.data.uid);
               app.globalData.uid = d.data.uid;
               app.wechat.setStorage('userInfo', d.data.userInfo)
-              if (d.data.isfirstlogin == 1) {
+              that.setData({
+                dl_showModal: false
+              })
+             // if (d.data.isfirstlogin == 1) {
                 // wx.switchTab({ url: '../today_task/today_task' })
                 // wx.switchTab({ url: '../first_page/first_page' })
                 if (this.data.finish == 0) {
                   this.setData({
                     showModal_pb: true,    //看回放蒙层显示
-                    dl_showModal: false
+                   
                   })
                 } else {
                   // let url = encodeURIComponent(this.data.bpurl);
@@ -740,14 +744,15 @@ Page({
                     url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
                   });
                   this.setData({
-                    showModal_pb: false
+                    showModal_pb: false,
+                    dl_showModal: false
                   })
                 }
                 
-              }
-              else {
+              // }
+              // else {
                 
-              }
+              // }
               //自动创建任务
 
             } else {

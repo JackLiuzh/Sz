@@ -652,13 +652,12 @@ white-space: nowrap;
   opacity:1;
 }
 .btn_gobuy{
- 
   width:165rpx;
   height:60rpx;
   font-size:30rpx;
   font-family:PingFang SC;
   font-weight:400;
-  line-height:62rpx;
+  line-height:60rpx;
   color:rgba(255,255,255,1);
   opacity:1;
   text-align: center;

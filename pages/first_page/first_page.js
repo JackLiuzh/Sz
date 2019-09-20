@@ -9,42 +9,79 @@ Page({
     date: ['日', '一', '二', '三', '四', '五', '六'],
     dateArr: [],
     calPanduan:[],
-    courselive: [],
-    comDateTime: [],
+    courselive: [],   //专题测课程
+    comDateTime: [],   //待直播日期判断
     showcal:[],
-    showModal_zb: false,
-    showModal_pb: false,
-    bpurl: '',
+    showModal_zb: false,   //看直播判断蒙层
+    showModal_pb: false,   //看回放判断蒙层
+    bpurl: '',     //课程视频链接
     project_id: '',
     kemu_id: '',
     video_id:'',
     lesson_id:'',
-    finish: 0,
-    romand:0,
-    iswxuser: false,
+    finish: 0,     //是否做题
+    // romand:0,
+    iswxuser: false,   //是否szgk开头
     avatar: 'http://shangzheng.oss-cn-beijing.aliyuncs.com/img/member/Header-profile-photo.png',
-    sys: '',
-    isauth:false,
-
+    sys: '',      //推荐课信息
+    isauth:false,    //是否微信用户
+    system_id: 0,
     hasEmptyGrid: false,
     cur_year: '',
     cur_month: '',
 
-
+    dl_showModal: false,  //登录蒙层
+    time: "获取验证码",
+    currentTime: 61,
   },
 
-  my_login: function () {
+  //未登录看回放登录
+  my_login: function (e) {
     this.setData({
-      showModal: true
+      dl_showModal: true  //登录蒙层显示
     })
+    var id = e.currentTarget.dataset.hh;
+    console.log(id);
+    this.setData({
+      finish: this.data.courselive[id].finish,
+      project_id: this.data.courselive[id].project_id,
+      kemu_id: this.data.courselive[id].kemu_id,
+      video_id: this.data.courselive[id].video_id,
+      lesson_id: this.data.courselive[id].lesson_id,
+    })
+    console.log(this.data.finish);
+    console.log(this.data.project_id);
+    console.log(this.data.kemu_id);
+  },
+
+
+  //未登录买课登录
+  my_login_mk: function (e) {
+    this.setData({
+      mkdl_showModal: true  //买课登录蒙层
+    })
+   
+    var system_id = e.currentTarget.dataset.system_id
+    console.log(system_id + 'cscscs')
+    this.setData({
+      system_id: system_id
+    })
+    console.log(this.data.system_id + 'this.cscscs')
   },
 
   go: function () {
     this.setData({
-      showModal: false
+      dl_showModal: false    //关闭看回放登录蒙层，x图标
     })
   },
 
+  go_mk: function () {
+    this.setData({
+      mkdl_showModal: false     //关闭买课登录蒙层，x图标
+    })
+  },
+
+  //登录输入手机号
   inputphone: function (e) {
     this.setData({
       dphone: e.detail.value
@@ -52,6 +89,7 @@ Page({
     console.log(this.data.dphone)
   },
 
+  //登录输入验证码
   inputcode: function (e) {
     this.setData({
       code: e.detail.value
@@ -59,14 +97,14 @@ Page({
     console.log(this.data.code)
   },
 
+  //获取验证码
   getYzm: function (e) {
-    // this.setData({
-    //   dphone: e.detail.value
-    //  })
-    // console.log(this.data.dphone)
-
+    var that = this
     var token = wx.getStorageSync('token');
     var phone = this.data.dphone;
+    if (this.data.disabled || !phone) {
+      return;
+    }
     // console.log(phone)
     var params = {
       "token": token,
@@ -76,13 +114,124 @@ Page({
     app.sz.xcxMyGetyzm(params).then(d => {
       if (d.data.status == 1) {
         console.log('成功')
+        that.setData({
+          disabled: true
+        })
+        let interval = null;
+        let currentTime = that.data.currentTime;
+        interval = setInterval(function () {
+          currentTime--;
+          that.setData({
+            time: currentTime,
+            suffix: ' s '
+          })
+          if (currentTime <= 0) {
+            clearInterval(interval)
+            that.setData({
+              time: '重新发送',
+              suffix: '',
+              currentTime: 61,
+              disabled: false
+            })
+          }
+        }, 1000)
       } else {
-        console.log('接口错误')
+        wx.showToast({
+          title: d.data.msg,
+          icon: 'none',
+          duration: 1000
+        })
       }
     })
   },
 
+  //看回放输入验证码登录
   Sendyzm: function (e) {
+
+    var that = this
+    var phone = this.data.dphone;
+    var params = {
+      "phone": phone,
+      "code": this.data.code,
+    }
+    if (!phone || !this.data.code) {
+      return;
+    }
+    app.sz.loginRegister(params).then(d => {
+      if (d.data.status == 1) {
+        this.setData({ isbuy: d.data.data.isbuy, avatarUrl: d.data.data.avatar, nickName: d.data.data.name })
+        if (d.data.data.phone != '')
+          this.setData({ userphone: d.data.data.phone })
+        console.log(d.data.msg)
+        wx.setStorageSync("uid", d.data.data.uid)
+        wx.setStorageSync("token", d.data.data.token)
+      if(this.data.finish == 0){
+      this.setData({
+        showModal_pb: true,
+        dl_showModal: false
+      })
+    }else{
+      // let url = encodeURIComponent(this.data.bpurl);
+      // console.log(url);
+      wx.navigateTo({
+        url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
+      });
+      this.setData({
+        showModal_pb: false
+        
+      })
+    } 
+    } else {
+        wx.showToast({
+          title: d.data.msg,
+          icon: 'none',
+          duration: 1000
+        })
+        console.log(d.data.msg)
+      }
+
+    })
+  },
+
+  //买课输入验证码登录
+  Sendyzm_mk: function (e) {
+
+    var that = this
+    var phone = this.data.dphone;
+    var params = {
+      "phone": phone,
+      "code": this.data.code,
+    }
+    if (!phone || !this.data.code) {
+      return;
+    }
+    app.sz.loginRegister(params).then(d => {
+      if (d.data.status == 1) {
+        this.setData({ isbuy: d.data.data.isbuy, avatarUrl: d.data.data.avatar, nickName: d.data.data.name })
+        if (d.data.data.phone != '')
+          this.setData({ userphone: d.data.data.phone })
+        console.log(d.data.msg)
+        wx.setStorageSync("uid", d.data.data.uid)
+        wx.setStorageSync("token", d.data.data.token)
+        console.log(this.data.system_id + 'cscscscs')
+        wx.navigateTo({
+          url: '/pages/course_xiang/course_xiang?system_id=' + this.data.system_id,
+        })
+        this.setData({
+          // showModal_pb: false,
+          mkdl_showModal: false
+        })
+
+      } else {
+        wx.showToast({
+          title: d.data.msg,
+          icon: 'none',
+          duration: 1000
+        })
+        console.log(d.data.msg)
+      }
+
+    })
     // var token = wx.getStorageSync('token');
     // var uid = wx.getStorageSync('uid');
     var phone = this.data.dphone;
@@ -93,25 +242,37 @@ Page({
       "code": this.data.code,
     }
     // console.log(params)
-    app.sz.loginRegister(params).then(d => {
-      if (d.data.status == 1) {
-        this.setData({ isbuy: d.data.data.isbuy, avatarUrl: d.data.data.avatar, nickName: d.data.data.name })
-        if (d.data.data.phone != '')
-          this.setData({ userphone: d.data.data.phone })
-        console.log(d.data.msg)
-        wx.setStorageSync("uid", d.data.data.uid)
-        wx.setStorageSync("token", d.data.data.token)
-        this.showModalPb(e)
-      } else {
-        console.log(d.data.msg)
-      }
-    })
-    this.setData({
-      showModal: false
-    })
-    // this.onLoad()
+
+    //手机号验证码登录接口
+    // app.sz.loginRegister(params).then(d => {
+    //   if (d.data.status == 1) {
+    //     this.setData({ isbuy: d.data.data.isbuy, avatarUrl: d.data.data.avatar, nickName: d.data.data.name })
+    //     if (d.data.data.phone != '')
+    //       this.setData({ userphone: d.data.data.phone })
+    //     console.log(d.data.msg)
+    //     wx.setStorageSync("uid", d.data.data.uid)
+    //     wx.setStorageSync("token", d.data.data.token)
+    //     console.log(this.data.system_id + 'cscscscs')
+    //     wx.navigateTo({
+    //       url: '/pages/course_xiang/course_xiang?system_id=' + this.data.system_id,
+    //     })
+    //     this.setData({
+    //       // showModal_pb: false,
+    //       mkdl_showModal: false
+    //     })
+
+
+    //   } else {
+    //     console.log(d.data.msg)
+    //   }
+    // })
+    // this.setData({
+    //   showModal: false
+    // })
+    // // this.onLoad()
   },
 
+  //下个月日历
   nextmonth(year, month) {
     const date = new Date();
     let i = 1
@@ -186,6 +347,7 @@ Page({
     })
   },
 
+  //回到当月
   nowmonth(){
     const date = new Date();
     const cur_year = date.getFullYear();
@@ -279,6 +441,8 @@ Page({
     })
 
   },
+
+  //上下月跳转
   handleCalendar(e) {
     let that = this
     const handle = e.currentTarget.dataset.handle;
@@ -441,6 +605,8 @@ Page({
     })
 
   },
+
+  //获取微信号看直播
   new_GetUserInfo(e) {
     var that = this
     wx.getSetting({
@@ -478,6 +644,8 @@ Page({
       }
     })
   },
+
+  //昵称是否szgk开头用户
   iswxuser: function () {
     var that = this
     var avatar = that.data.avatar
@@ -529,7 +697,7 @@ Page({
     })  
   },
 
-
+  //看回放获取微信授权手机号登录
   getPhoneNumber: function (e) {
     var that = this
 
@@ -560,11 +728,25 @@ Page({
               if (d.data.isfirstlogin == 1) {
                 // wx.switchTab({ url: '../today_task/today_task' })
                 // wx.switchTab({ url: '../first_page/first_page' })
-               
-                that.showModalPb(e)
+                if (this.data.finish == 0) {
+                  this.setData({
+                    showModal_pb: true,    //看回放蒙层显示
+                    dl_showModal: false
+                  })
+                } else {
+                  // let url = encodeURIComponent(this.data.bpurl);
+                  // console.log(url);
+                  wx.navigateTo({
+                    url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
+                  });
+                  this.setData({
+                    showModal_pb: false
+                  })
+                }
+                
               }
               else {
-                that.showModalPb(e)
+                
               }
               //自动创建任务
 
@@ -582,6 +764,66 @@ Page({
     })
   },
 
+  //买课获取微信绑定手机号登录
+  getPhoneNumber_mk: function (e) {
+    var that = this
+
+    wx.login({
+      success: res => {
+        // that.setData({ code: res.code, iv: e.detail.iv, encryptedData: e.detail.encryptedData })
+        if (e.detail.errMsg == "getPhoneNumber:ok") {
+          wx.showLoading({
+            title: '登录中...',
+          })
+          let iv = encodeURIComponent(e.detail.iv);
+          let encryptedData = encodeURIComponent(e.detail.encryptedData);
+          let code = res.code
+          var params = {
+            "code": code,
+            "iv": iv,
+            "encryptedData": encryptedData
+          }
+          console.log(params)
+          app.sz.loginregister(params).then(d => {
+            // console.log(d)
+            if (d.data.status == 0) {
+              // app.wechat.setStorage('isauth', true);
+              app.wechat.setStorage('token', d.data.token);
+              app.wechat.setStorage('uid', d.data.uid);
+              app.globalData.uid = d.data.uid;
+              app.wechat.setStorage('userInfo', d.data.userInfo)
+              if (d.data.isfirstlogin == 1) {
+                // wx.switchTab({ url: '../today_task/today_task' })
+                // wx.switchTab({ url: '../first_page/first_page' })
+                console.log(this.data.system_id + 'cscscscs')
+                wx.navigateTo({
+                  url: '/pages/course_xiang/course_xiang?system_id=' + this.data.system_id,
+                })
+                this.setData({
+                  // showModal_pb: false,
+                  mkdl_showModal: false
+                })
+              }
+              else {
+
+              }
+              //自动创建任务
+
+            } else {
+              // app.wechat.setStorage('isauth', false);
+            }
+            wx.hideLoading()
+          })
+        } else {
+          // that.setData({
+          //   showModal: true
+          // })
+        }
+      }
+    })
+  },
+
+  //获取课程信息
   showModal: function (e) {
     var id = e.currentTarget.dataset.xb;
     console.log(id);
@@ -601,6 +843,8 @@ Page({
     //   showModal_zb: true
     // })
   },
+
+  //直播蒙层
   showModalZb: function (e) {
     var id = e.currentTarget.dataset.xb;
     console.log(id);
@@ -890,9 +1134,9 @@ Page({
   //   }
   // },
 
-  
+  //看回放蒙层
   showModalPb: function (e) {
-    var id = e.currentTarget.dataset.hh;
+    var id = e.currentTarget.dataset.xb;
     console.log(id);
     this.setData({
       finish: this.data.courselive[id].finish,
@@ -932,6 +1176,8 @@ Page({
       showModal_pb: false
     })
   },
+
+  //看回放视频跳转
   pblive: function (e) {
     // var id = e.currentTarget.dataset.xb;
     // console.log(id);
@@ -956,6 +1202,8 @@ Page({
     // console.log(this.data.project_id);
     // console.log(this.data.kemu_id);
   },
+
+  //看直播视频跳转
   zblive: function () {
     // let url = encodeURIComponent(this.data.bpurl);
     // console.log(url);
@@ -966,6 +1214,8 @@ Page({
       showModal_zb: false
     })
   },
+
+  //看回放做题跳转
   pb_dati: function () {
     wx.navigateTo({
       url: '../test_dati/test_dati?id=' + this.data.project_id + '&kemu_id=' + this.data.kemu_id
@@ -974,6 +1224,8 @@ Page({
       showModal_pb: false
     })
   },
+
+  //看直播做题跳转
   zb_dati: function () {
     wx.navigateTo({
       url: '../test_dati/test_dati?id=' + this.data.project_id + '&kemu_id=' + this.data.kemu_id
@@ -982,6 +1234,8 @@ Page({
       showModal_zb: false
     })
   },
+
+  //登录用户买课获取课程详情
   get_course_xiang: function (e) {
     var that = this
    
@@ -1012,7 +1266,7 @@ Page({
                 if (d.data.isfirstlogin == 1) {
                   // wx.switchTab({ url: '../today_task/today_task' })
                   // wx.switchTab({ url: '../first_page/first_page' })
-                  that.xcxSubmitTask(d.data.uid)
+                  // that.xcxSubmitTask(d.data.uid)
                   that.gocourse_xiang(e)
                 }
                 else {
@@ -1034,6 +1288,8 @@ Page({
       })
     
   },
+
+  //课程详情跳转
   gocourse_xiang: function (e) {
     console.log(e.currentTarget.dataset.system_id)
     var system_id = e.currentTarget.dataset.system_id

@@ -1,5 +1,6 @@
 <view class="container" style='padding-bottom:400rpx;'>
 
+<!-- 直播课显示 -->
   <view wx:for='{{courselive}}' wx:key="index1" wx:for-index="xb" >
     <view class="{{item.liveStatus == 2?'zhibo':'TipHide'}}" >
       <view wx:if="{{item.liveStatus == 2}}">
@@ -26,19 +27,21 @@
       <view class="joining">正在参与 </view> -->
     </view>
 
+    <!-- 未登录 -->
     <view class="enter_zb" wx:if="{{uid == 0}}" bindtap="showModal" data-xb='{{xb}}'>
       <image class="play_zb" src='../../images/zbbof.png'></image>
       <text class="enter" >进入直播间</text>
       <button open-type="getUserInfo"  bindgetuserinfo="new_GetUserInfo" class='idbut'></button>
     </view>
 
+    <!-- 已登录看直播 -->
     <view class="enter_zb" wx:else="{{uid > 0}}" bindtap="showModal" data-xb='{{xb}}' >
       <image class="play_zb" src='../../images/zbbof.png'></image>
       <text class="enter" >进入直播间</text>
       <button open-type="getUserInfo"  bindgetuserinfo="bindGetUserInfo" class='idbut'></button>
     </view> 
 
-    
+    <!-- 看直播做题判断 -->
     <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_zb}}"></view>
       <view class="modalDlg" wx:if="{{showModal_zb}}">
         <view class="modal">
@@ -85,6 +88,7 @@
       </view>
     </view> -->
 
+    <!-- 日历_周显示 -->
     <view class="weekBgView">
       <view class="weekView" wx:for="{{date}}" wx:key="{{index}}" data-idx="{{index}}">{{item}}</view>
     </view>
@@ -92,6 +96,8 @@
     <!-- <view class="dateBgView">
       <view wx:if="{{hasEmptyGrid}}" class="dateEmptyView" wx:for="{{empytGrids}}" wx:key="{{index1}}" >
     </view> -->
+
+    <!-- 日历日期显示 -->
     <view class="dateBgView">
       <view class="dateView" wx:for="{{days}}" wx:key="{{index}}" >
         <!-- <view class="datesView {{days[index][1]?'dateSelectView':''}}">{{item[0]}}</view> -->
@@ -102,7 +108,7 @@
   </view>
 </view>
 
-
+    <!-- 回放课程列表 -->
     <text class="playbacking">回放中</text>
 
     <view class="list_pb" wx:for='{{courselive}}' wx:key="index4" wx:for-index="xb" >
@@ -128,8 +134,9 @@
       </view>
     </view>
 
-    <view class="dl_mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
-  <view class="dl_modalDlg" wx:if="{{showModal}}">
+    <!-- 看回放登录蒙层 -->
+    <view class="dl_mask" catchtouchmove="preventTouchMove" wx:if="{{dl_showModal}}"></view>
+    <view class="dl_modalDlg" wx:if="{{dl_showModal}}">
       <image class="dl_close" bindtap="go" src="../../images/cha.png"/>
       <view class="way1">
         <view class="shu"></view>
@@ -140,7 +147,7 @@
       <view class="heng"></view>
       <view class="yz">
         <input class="sryzm" bindinput="inputcode" placeholder="请输入验证码"></input>
-        <text class="hqyzm" bindtap="getYzm">获取验证码</text>
+        <text class="hqyzm" bindtap="getYzm">{{time}}{{suffix}}</text>
       </view>
       <view class="heng"></view>
       <view class="save" bindtap="Sendyzm">
@@ -156,6 +163,38 @@
       
   </view>
 
+
+  <!-- 买课登录蒙层 -->
+  <view class="dl_mask" catchtouchmove="preventTouchMove" wx:if="{{mkdl_showModal}}"></view>
+    <view class="dl_modalDlg" wx:if="{{mkdl_showModal}}">
+      <image class="dl_close" bindtap="go_mk" src="../../images/cha.png"/>
+      <view class="way1">
+        <view class="shu"></view>
+        <text class="bang">绑定手机号登录:</text>
+      </view>
+      
+      <input class="srcall" bindinput="inputphone" placeholder="请输入手机号"></input>
+      <view class="heng"></view>
+      <view class="yz">
+        <input class="sryzm" bindinput="inputcode" placeholder="请输入验证码"></input>
+        <text class="hqyzm" bindtap="getYzm">{{time}}{{suffix}}</text>
+      </view>
+      <view class="heng"></view>
+      <view class="save" bindtap="Sendyzm_mk">
+        <text class="bc">登录</text>
+      </view>
+      
+      <text class="wx_tip">—— 或授权微信绑定的手机号登录 ——</text>
+      
+      <button class="wxlogin" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber_mk">
+        <image class="wxlogin_img" src="../../images/wxlogin.png" mode="aspectFill"/>
+        <text class="wxlogin_dl">登录</text>
+      </button>
+      
+  </view>
+
+
+    <!-- 看回放蒙层 -->
      <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_pb}}"></view>
         <view class="modalDlg" wx:if="{{showModal_pb}}">
           <view class="modal">
@@ -173,6 +212,8 @@
         </view>
   <!-- </view> -->
 
+
+    <!-- 推荐课悬浮 -->
     <view class='xuanfu'>
 
     <view class='layout1'>
@@ -193,9 +234,14 @@
       <view class="course_price">￥{{sys.price}}</view>
       <view wx:if="{{uid > 0}}" bindtap='gocourse_xiang' data-system_id="{{sys.system_id}}" class="bt_buy"><text wx:if="{{sys.pay_state == 0}}" class="go_buy">去购买</text><text class="go_buy" wx:if="{{sys.pay_state == 1}}">已购买</text></view>
       <view wx:if="{{uid == 0}}" data-system_id="{{sys.system_id}}" class="bt_buy"><text class="go_buy" wx:if="{{sys.pay_state == 1}}">已购买</text>
-        <button class="btn_gobuy" wx:if="{{sys.pay_state == 0}}" open-type="getPhoneNumber" bindgetphonenumber="get_course_xiang">
+        <!-- <button class="btn_gobuy" wx:if="{{sys.pay_state == 0}}" open-type="getPhoneNumber" bindgetphonenumber="get_course_xiang">
       去购买
-      </button>
+      </button> -->
+
+      <view wx:if="{{uid == 0}}" class="btn_gobuy" data-system_id="{{sys.system_id}}" bindtap="my_login_mk">
+      去购买
+    </view>
+
       </view>
       
     </view>

@@ -59,7 +59,10 @@ function xcxcourseLive(params) {
 function xcxShenlunList(params) {
   return fetch.szfetch(URI, 'xcxShenlunList', params)
 }
-
+//申论试题解析
+function xcxShenlunZhibo(params) {
+  return fetch.szfetch(URI, 'xcxShenlunZhibo', params)
+}
 
 
 
@@ -405,7 +408,7 @@ function xcxaddvideoProject(params) {
   return fetch.szfetch(URI, 'xcxaddvideoProject', params)
 }
 
-module.exports = { loginregister, xcxindex, xcxfirstLogin, xcxSubmitTask, xcxTodayTask, xcxUserTasklist, xcxAddUserTask, xcxDelUserTask, xcxUpdateTaskSet, xcxUpdateCycle, xcxUpdatePushNum, xcxUpdatePinlv, xcxCommentThumbsList, xcxEliminateCommentThumbs, xcxUpdateRange, xcxUpdateRangepost, xcxDakaTask, xcxRiliInfo, xcxgetTaskTi, xcxVideoDetail, xcxAnswerInsert, xcxAddComment, xcxAddThum, xcxAddVideoJilu, xcxgetTaskTiOne, courseList, courseLive, category, courseDetail, xcxMyAddr, xcxMy, xcxMyGetyzm, xcxfeedbackyzm, xcxsuggest, xcxaddUserAddress, createCourseOrder, xcxgetSpecialList, xcxgetProjectevaluationTi, coursePay, xcxshutiteport, xcxkanVideo, xcxphone, photouploads, xcxcourseLive, xcxNewCourse, pigobaogao, xcxanswersave, xcxNewCourseDetail, xcxorderaddress, xcxuserInfo, xcxliveUrl, xcxaddvideoProject, xcxShenlunList, loginRegister}
+module.exports = { loginregister, xcxindex, xcxfirstLogin, xcxSubmitTask, xcxTodayTask, xcxUserTasklist, xcxAddUserTask, xcxDelUserTask, xcxUpdateTaskSet, xcxUpdateCycle, xcxUpdatePushNum, xcxUpdatePinlv, xcxCommentThumbsList, xcxEliminateCommentThumbs, xcxUpdateRange, xcxUpdateRangepost, xcxDakaTask, xcxRiliInfo, xcxgetTaskTi, xcxVideoDetail, xcxAnswerInsert, xcxAddComment, xcxAddThum, xcxAddVideoJilu, xcxgetTaskTiOne, courseList, courseLive, category, courseDetail, xcxMyAddr, xcxMy, xcxMyGetyzm, xcxfeedbackyzm, xcxsuggest, xcxaddUserAddress, createCourseOrder, xcxgetSpecialList, xcxgetProjectevaluationTi, coursePay, xcxshutiteport, xcxkanVideo, xcxphone, photouploads, xcxcourseLive, xcxNewCourse, pigobaogao, xcxanswersave, xcxNewCourseDetail, xcxorderaddress, xcxuserInfo, xcxliveUrl, xcxaddvideoProject, xcxShenlunList, loginRegister, xcxShenlunZhibo}
 
 
 

@@ -1095,5 +1095,11 @@ Page({
     this.setData({
       showModal: true
     })
+  },
+  //关闭登录弹框
+  go: function () {
+    this.setData({
+      showModal: false
+    })
   }
 })

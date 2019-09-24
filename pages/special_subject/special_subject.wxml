@@ -1,6 +1,7 @@
 <view class="container">
 
   <scroll-view  class="tab-h" scroll-left="{{scrollLeft}}" hidden='false'> 
+  <!-- <scroll-view  class="tab-h" scroll-left="{{scrollLeft}}" >  -->
     <view wx:for="{{youhuiquan}}" wx:key="index" class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav">{{item}}</view> 
   </scroll-view> 
 

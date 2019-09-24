@@ -41,9 +41,17 @@
           <view wx:else='{{isquestion}}'>
               <view wx:if='{{item.question.type == 4}}' class='box-title'>
                 <rich-text nodes="{{item.question.title}}"></rich-text>
-                <view class="image">
-                  <image class="img" src="../../images/shangchuantp.png" bindtap="chooseImg" mode="aspectFill"></image>
-                </view>  
+                <view class="imglayout">
+                  <view class="image_cha" wx:for='{{img}}' wx:key='index'>
+                    <image class="img_cha" src="../../images/img_cha.png" bindtap="deleteImg" mode="aspectFill" data-index='{{index}}'></image>
+                    <image class="img" src="{{item}}" mode="aspectFill"></image>
+                  </view>  
+                  <view class="image" wx:if='{{img.length<2}}'>
+                    <!-- <image class="img_cha" src="../../images/img_cha.png"  mode="aspectFill"></image> -->
+                    <image class="img" src="../../images/shangchuantp.png" bindtap="chooseImg" mode="aspectFill"></image>
+                  </view>  
+                </view>
+                
                 <textarea class="input_ans" placeholder="点击输入您的答案......" bindinput="input_ans"></textarea> 
               </view>
               

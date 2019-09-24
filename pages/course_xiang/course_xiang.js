@@ -81,10 +81,23 @@ Page({
          if(d.data.status ==1){
              that.setData({info: d.data.data})
              that.count_down(this);
+             that.zhankai()
          }else{
             console.log("详情页数据接口错误")
          }
     })
+  },
+  //默认展开
+  zhankai:function(){
+      var that = this
+      var info = that.data.info.info
+      if(info){
+          info.forEach(function(item,index){
+            var dd = 'info.info[' + index + '].iszhedie'
+            that.setData({ [dd]: true })
+          })
+      }
+
   },
   zhedie: function(e){
     //  console.log(e)

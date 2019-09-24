@@ -804,7 +804,7 @@ Page({
               app.wechat.setStorage('uid', d.data.uid);
               app.globalData.uid = d.data.uid;
               app.wechat.setStorage('userInfo', d.data.userInfo)
-              if (d.data.isfirstlogin == 1) {
+              // if (d.data.isfirstlogin == 1) {
                 // wx.switchTab({ url: '../today_task/today_task' })
                 // wx.switchTab({ url: '../first_page/first_page' })
                 console.log(this.data.system_id + 'cscscscs')
@@ -815,10 +815,10 @@ Page({
                   // showModal_pb: false,
                   mkdl_showModal: false
                 })
-              }
-              else {
+              // }
+              // else {
 
-              }
+              // }
               //自动创建任务
 
             } else {

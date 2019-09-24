@@ -1,7 +1,7 @@
 const URI = 'http://cs.szgk.cn/api.php'
 //const URI = 'http://192.168.1.219/api.php' 
 //const URI = 'http://li.szgk.cn/api.php' 
-//const URI = 'https://www.szgk.cn/api.php' 
+// const URI = 'https://www.szgk.cn/api.php' 
 
 const fetch = require('./fetch')
 

@@ -6,12 +6,14 @@ page {
 }
 .idbut{
   position: absolute;
-  width:295rpx;
-  height:75rpx;
+  width:290rpx;
+  height:72rpx;
   background: transparent;
+  
 }
 idbut::after {
   border: none;
+  /* border-radius:96rpx; */
 }
 .zhibo{
   position: relative;

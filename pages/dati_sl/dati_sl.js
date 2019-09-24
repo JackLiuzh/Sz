@@ -74,7 +74,7 @@ Page({
         sizeType: ['compressed'], //可以指定原图还是压缩图，默认二者都有
         sourceType: ['album', 'camera'],//可以指定来源相册还是相机，默认二者都有
         success: function (res) {
-          var tempFilesSize = res.tempFiles[0].size;  //获取图片的大小，单位B
+          // var tempFilesSize = res.tempFiles[0].size;  //获取图片的大小，单位B
           // if (tempFilesSize <= 2000000) {   //图片小于或者等于2M时 可以执行获取图片
             var tempFilePaths = res.tempFilePaths[0]; //获取图片
             that.data.img.push(tempFilePaths);   //添加到数组
@@ -196,6 +196,7 @@ Page({
           wx.hideLoading();
         }
       })
+    
   },
 
 //材料按钮
@@ -246,7 +247,7 @@ quxiao: function(){
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // console.log('cshhh')
   },
 
   /**
@@ -295,8 +296,9 @@ quxiao: function(){
       })
     }
     console.log(current, "===============", currentTab);
+    // console.log(this.data.sl_list.length)
     //最后一题滑动， 跳到评估页面
-    if ((current) == (this.data.sl_list.length)) {
+    if ((current + 1) == (this.data.sl_list.length)) {
       // that.gopingguClick();
       console.log(this.data.sl_list.length + '试题结束')
     }

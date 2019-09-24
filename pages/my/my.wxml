@@ -1,8 +1,8 @@
 <view class="container">
   <view class="layout1">
     <image class="touxiang" src='{{avatarUrl}}'></image>
-    <view class="{{ nickName == '去登陆' ?'TipHide':'name'}}">{{nickName}}</view>
-    <button class="{{ nickName == '去登陆' ?'btp':'TipHide'}}" bindtap="my_login">
+    <view class="{{ nickName == '去登录' ?'TipHide':'name'}}">{{nickName}}</view>
+    <button class="{{ nickName == '去登录' ?'btp':'TipHide'}}" bindtap="my_login">
       <view class="name">{{nickName}}</view>
     </button>
 

@@ -10,7 +10,7 @@ Page({
     // customItem: '全部'
     
     avatarUrl: "../../images/weidenglu.png",//用户头像
-    nickName: "去登陆",//用户昵称
+    nickName: "去登录",//用户昵称
    
     showModal: false,
     user_area: '',

@@ -746,7 +746,7 @@ white-space: nowrap;
 }
  
 .dateBgView {
-  height: 400rpx;
+  /* height: 400rpx; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

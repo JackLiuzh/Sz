@@ -6,12 +6,14 @@ page {
 }
 .idbut{
   position: absolute;
-  width:295rpx;
-  height:75rpx;
+  width:290rpx;
+  height:72rpx;
   background: transparent;
+  
 }
 idbut::after {
   border: none;
+  /* border-radius:96rpx; */
 }
 .zhibo{
   position: relative;
@@ -769,8 +771,8 @@ white-space: nowrap;
 }
  
 .datesView {
-  width: 60rpx;
-  height: 60rpx;
+  width: 65rpx;
+  height: 65rpx;
   color: rgba(51,51,51,1);
   font-size: 26rpx;
   font-weight: 200;
@@ -787,8 +789,6 @@ white-space: nowrap;
   color: #fff;
   background-color: rgba(31,187,148,1);
 }
-
-
 
 .dl_mask{
   width: 100%;

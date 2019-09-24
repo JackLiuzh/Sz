@@ -125,7 +125,9 @@
           </view>
           <!-- <text class="join_pb">{{(xb+1)*57}}人参与</text> -->
         </view>
-        <view wx:if="{{uid > 0}}" class="watch_pb" bindtap="{{item.finish == 0?'showModalPb':'pblive'}}" data-xb='{{xb}}'>看回放</view>
+        
+        <view wx:if="{{uid > 0 && item.finish == 0}}" class="watch_pb" bindtap="showModalPb" data-xb='{{xb}}'>看回放</view>
+        <view wx:if="{{uid > 0 && item.finish == 1 }}" class="watch_pb" bindtap="pblive" data-xb='{{xb}}'>看回放</view>
         <!-- <view wx:if="{{uid > 0}}" class="watch_pb" bindtap="showModalPb" data-xb='{{xb}}'>看回放</view> -->
         <!-- <view class="watch_pb" bindtap="showModalPb" data-xb='{{xb}}'>看回放</view> -->
         <view wx:if="{{uid == 0}}" class="watch_pb" data-hh='{{xb}}' bindtap="my_login">

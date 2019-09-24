@@ -6,7 +6,7 @@
   </scroll-view> 
 
   <!-- 加申论版 -->
-  <view class="list" wx:if='{{currentTab == 0}}' wx:for="{{ list }}" wx:key="this">
+  <!-- <view class="list" wx:if='{{currentTab == 0}}' wx:for="{{ list }}" wx:key="this"> -->
 
   <!-- 不加申论版 -->
   <view class="list"  wx:for="{{ list }}" wx:key="this">
@@ -61,7 +61,7 @@
     </block>
   </view>
 
- </view>
+ <!-- </view> -->
 
   
 

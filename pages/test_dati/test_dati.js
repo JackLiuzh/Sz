@@ -537,10 +537,13 @@ Page({
         }
        
       }else{
-        //跳转下一题
-        that.setData({
-          currentTab: that.data.currentTab+1
-        })
+        //0.5秒后 跳转下一题
+        setTimeout(function(){
+          that.setData({
+            currentTab: that.data.currentTab + 1
+          })
+        },500)
+       
       }
     
 

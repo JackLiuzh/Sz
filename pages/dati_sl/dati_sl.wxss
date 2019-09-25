@@ -41,7 +41,17 @@ page{
   height: 100rpx;
   line-height: 100rpx;
   background-color: #fff;
-  color: rgba(191,191,191,1);
+  color: rgb(199, 31, 31);
+  font-size:28rpx;
+  font-family:PingFang-SC-Regular;
+  font-weight:400;
+}
+.jiaojuan1{
+  width:40%;
+  height: 100rpx;
+  line-height: 100rpx;
+  background-color: #fff;
+  color: rgb(19, 31, 31);
   font-size:28rpx;
   font-family:PingFang-SC-Regular;
   font-weight:400;

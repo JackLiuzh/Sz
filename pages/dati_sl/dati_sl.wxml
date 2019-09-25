@@ -42,17 +42,22 @@
               <view wx:if='{{item.question.type == 4}}' class='box-title'>
                 <rich-text nodes="{{item.question.title}}"></rich-text>
                 <view class="imglayout" >
-                  <view class="image_cha" wx:for='{{img}}' wx:key='index'>
-                    <image class="img_cha" src="../../images/img_cha.png" bindtap="deleteImg" mode="aspectFill" data-index='{{index}}'></image>
-                    <image class="img" src="{{item}}" mode="aspectFill"></image>
+                  <view class="image_cha" wx:if="{{item.question.img}}" wx:for="{{item.question.img}}" wx:for-index="img_index" wx:for-item="img_item">
+                    <image class="img_cha" src="../../images/img_cha.png" bindtap="deleteImg" mode="aspectFill" data-tpxb='{{img_index}}' data-xb="{{index}}" data-id="{{item.question.id}}"></image>
+                    <image class="img"  src="{{img_item[0]}}" mode="aspectFill"></image>
                   </view>  
-                  <view class="image" wx:if='{{img.length<2}}'>
-                    <!-- <image class="img_cha" src="../../images/img_cha.png"  mode="aspectFill"></image> -->
-                    <image class="img" src="../../images/shangchuantp.png" bindtap="chooseImg" mode="aspectFill"></image>
-                  </view>  
+                  <view class="image" wx:if="{{!item.question.img}}">
+                    <image class="img" src="../../images/shangchuantp.png" data-xb="{{index}}" data-id="{{item.question.id}}" bindtap="chooseImg" mode="aspectFill"></image>
+                  </view>
+                  
+                  <view class="image" wx:elseif="{{item.question.img}}">
+                    <image class="img"wx:if="{{item.question.img.length < 2}}"src="../../images/shangchuantp.png" data-xb="{{index}}" bindtap="chooseImg" mode="aspectFill"></image>
+                    
+                  </view>
+
                 </view>
                 
-                <textarea class="input_ans" placeholder="点击输入您的答案......" bindinput="input_ans" data-cs="{{item.question.id}}"></textarea> 
+                <textarea class="input_ans" data-xb="{{index}}" placeholder="点击输入您的答案......" bindinput="input_ans" ></textarea> 
               </view>
               
             <view wx:if='{{item.question.type == 1}}' class='box-title'>
@@ -102,7 +107,11 @@
 <view class="layout">
   <view class="cailiao" bindtap="cailiao">材料</view>
   <view class="wenti" bindtap="wenti">问题</view>
-  <view class="jiaojuan" bindtap="submit"><text class="text">√交卷</text></view>
+  <view class="jiaojuan" wx:if='{{!sl_list.question.finish}}' bindtap="submit">
+    <text class="text">√交卷</text>
+  </view>
+  <!-- <view class="jiaojuan1" wx:else='{{sl_list.question.finish}}' bindtap="submit"><text class="text">√交卷</text></view> -->
+  
 </view>
 
 <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{null_jiaojuan}}"></view>

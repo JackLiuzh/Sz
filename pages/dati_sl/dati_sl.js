@@ -11,14 +11,21 @@ Page({
     clientHeight: 1000,
     ismany:false,  //多材料判断
     duocailiao:[],
-    imgs:[],  //添加图片
+    // imgs:[],  //添加图片
     // null_jiaojuan:true,
     current_cailiao: 0, //多材料滚动条预设当前项的值
     h_id:85,
     sl_list:[],
     total:0,
 
+    
+
+    hhh: 0,
     img:[],
+    // answer_img: [{
+    //   "question_id" : '',
+    //   "img" : [],
+    // }],
 
     
     // huadong: false,       //滑动查看下一题是否显示
@@ -65,106 +72,206 @@ Page({
     }
   },
 
-  chooseImg: function () {
-    var that = this,
-    img = that.data.img;
-    if (img.length < 2) {  //如果图片数量小于3张，可以直接获取图片
-      wx.chooseImage({
-        count: 1,     //默认9
-        sizeType: ['compressed'], //可以指定原图还是压缩图，默认二者都有
-        sourceType: ['album', 'camera'],//可以指定来源相册还是相机，默认二者都有
-        success: function (res) {
-          // var tempFilesSize = res.tempFiles[0].size;  //获取图片的大小，单位B
-          // if (tempFilesSize <= 2000000) {   //图片小于或者等于2M时 可以执行获取图片
-            var tempFilePaths = res.tempFilePaths[0]; //获取图片
-            that.data.img.push(tempFilePaths);   //添加到数组
-            that.setData({
-              img: that.data.img
-            })
-          // } else {    //图片大于2M，弹出一个提示框
-          //   wx.showToast({
-          //     title: '上传图片不能大于2M!',  //标题
-          //     icon: 'none'       //图标 none不使用图标，详情看官方文档
-          //   })
-          // }
-          console.log(that.data.img)
-        }
-      })
-    } else {  //大于三张时直接弹出一个提示框
-      wx.showToast({
-        title: '上传图片不能大于2张!',
-        icon: 'none'
-      })
+  chooseImg: function (e) {
+    var that = this
+    var xb = e.currentTarget.dataset.xb
+    var id = e.currentTarget.dataset.id
+    console.log(xb)
+    console.log(id)
+    var imgs = []
+    var img2 = []
+   
+        if (imgs.length < 2) {  //如果图片数量小于3张，可以直接获取图片
+          wx.chooseImage({
+            count: 2,     //默认9
+            sizeType: ['compressed'], //可以指定原图还是压缩图，默认二者都有
+            sourceType: ['album'],//可以指定来源相册还是相机，默认二者都有
+            success: function (res) {
+              // var tempFilesSize = res.tempFiles[0].size;  //获取图片的大小，单位B
+              // if (tempFilesSize <= 2000000) {   //图片小于或者等于2M时 可以执行获取图片
+              var tempFilePaths = res.tempFilePaths; //获取图片
+              console.log(tempFilePaths + '--------tempFilePaths')
+              for (let i = 0; i < tempFilePaths.length; i++) {
+                var token = wx.getStorageSync('token');
+                wx.uploadFile({
+                  url: 'http://cs.szgk.cn/api.php?',
+                  filePath: tempFilePaths[i],
+                  name: 'file',
+                  formData: {
+                    'file': tempFilePaths[i],
+                    "token": token,
+                    "action": "uploads", //action=uploads&authhash=445454554
+                  },
+                  success(r) {
+                    let hhh = JSON.parse(r.data);
+                    console.log(hhh + '---------hhh')
+                    if (hhh.status == 1) {
+                      // imgs.push(hhh.data.src)
+                    imgs.push(hhh.data.src)
 
-    }
+                    // that.setData({
+                    //   img : imgs
+                    // })
+                  
+                      var ab = "sl_list[" + xb + "].question.img"//添加键值对
+                      if (!that.data.sl_list[xb].question.img){
+                        var cs = []
+                        cs.push(imgs)
+                        that.setData({
+                          // [ab]: that.data.img
+                          [ab]: cs
+                          // [ab]: []
+                        })
+
+                      }
+                      else{
+                        var cs = that.data.sl_list[xb].question.img
+                        cs.push(imgs)
+                        that.setData({
+                         
+                          [ab]: cs
+                         
+                        })
+                      }
+
+                      var cs = "sl_list[" + xb + "].question.finish"//添加键值对
+                      that.setData({
+                        [cs]: true
+                      })
+
+                      console.log(that.data.sl_list[xb].question.img + '------question.img')
+                      console.log(that.data.sl_list[xb].question.finish + '------question.finish')
+                      
+                
+
+                    } else {
+                      console.log('失败')
+                      console.log(hhh.status)
+                    }
+                  }
+                })
+              }
+
+              // } else {    //图片大于2M，弹出一个提示框
+              //   wx.showToast({
+              //     title: '上传图片不能大于2M!',  //标题
+              //     icon: 'none'       //图标 none不使用图标，详情看官方文档
+              //   })
+              // }
+            }
+          })
+        }
+         else {  //大于三张时直接弹出一个提示框
+          wx.showToast({
+            title: '上传图片不能大于2张!',
+            icon: 'none'
+          })
+        }
+    
+
+
+    // if (imgs.length < 2) {  //如果图片数量小于3张，可以直接获取图片
+    //   wx.chooseImage({
+    //     count: 1,     //默认9
+    //     sizeType: ['compressed'], //可以指定原图还是压缩图，默认二者都有
+    //     sourceType: ['album'],//可以指定来源相册还是相机，默认二者都有
+    //     success: function (res) {
+    //       // var tempFilesSize = res.tempFiles[0].size;  //获取图片的大小，单位B
+    //       // if (tempFilesSize <= 2000000) {   //图片小于或者等于2M时 可以执行获取图片
+    //       var tempFilePaths = res.tempFilePaths; //获取图片
+    //       console.log(tempFilePaths +'--------tempFilePaths')
+    //       for (let i = 0; i < tempFilePaths.length; i++) {
+    //         var token = wx.getStorageSync('token');       
+    //         wx.uploadFile({
+    //           url: 'http://cs.szgk.cn/api.php?',
+    //           filePath: tempFilePaths[i],
+    //           name: 'file',
+    //           formData: {
+    //             'file': tempFilePaths[i],
+    //             "token": token,
+    //             "action": "uploads", //action=uploads&authhash=445454554
+    //           },
+    //           success(r) {
+    //             let hhh = JSON.parse(r.data);
+    //             console.log(hhh   +'---------hhh')
+    //             if (hhh.status == 1) {
+    //               imgs.unshift(hhh.data.src)
+    //               that.setData({
+    //                 img : imgs
+    //               })
+    //               // that.data.sl_list[xb].question.a = imgs
+    //               // that.data.sl_list.unshift(imgs)
+    //               // that.data.img = 
+    //               var ab = "sl_list[" + xb + "].question.img"//添加键值对
+    //               that.setData({
+    //                 [ab]: that.data.img
+    //               })
+    //               // console.log(that.data.img)
+    //               console.log(that.data.sl_list[xb].question.img +'------question.img')
+    //               // that.onLoad()
+                  
+    //               // console.log(qu + '---------qu')
+                  
+    //             } else {               
+    //               console.log('失败')
+    //               console.log(hhh.status)
+    //             }
+                           
+    //           }
+    //         })
+    //       }
+          
+    //       // } else {    //图片大于2M，弹出一个提示框
+    //       //   wx.showToast({
+    //       //     title: '上传图片不能大于2M!',  //标题
+    //       //     icon: 'none'       //图标 none不使用图标，详情看官方文档
+    //       //   })
+    //       // }
+    //     }
+    //   })
+    //   // that.data.answer_img.push([id, that.data.img])
+    //   // console.log(that.data.answer_img + '---------ans') 
+    // } else {  //大于三张时直接弹出一个提示框
+    //   wx.showToast({
+    //     title: '上传图片不能大于2张!',
+    //     icon: 'none'
+    //   })
+    // }
+  
+
 
   },
 
   deleteImg: function(e) {
-    var index = e.currentTarget.dataset.index
-    console.log(index)
-    this.data.img.splice(index, 1)
-    console.log(this.data.img)
-    let csimg = this.data.img
-    this.setData({
-      img : csimg
+    let that = this
+    var tpxb = e.currentTarget.dataset.tpxb
+    var xb = e.currentTarget.dataset.xb
+    console.log(tpxb)
+    console.log(xb)
+    let del_img = that.data.sl_list[xb].question.img
+    console.log(del_img + '========del_img')
+    del_img.splice(tpxb, 1)
+    // console.log(this.data.img)
+    var ab = "sl_list[" + xb + "].question.img"//添加键值对
+    that.setData({
+      [ab]: del_img
     })
-    // this.onShow()
+    // console.log(that.data.img)
+    console.log(that.data.sl_list[xb].question.img + '======that.data.sl_list[xb].question.img')
+
+    if (del_img == ''){
+      var cs = "sl_list[" + xb + "].question.finish"//添加键值对
+      that.setData({
+        [cs]: false
+      })
+    }
+    console.log(that.data.sl_list[xb].question.finish + '------question.finish')
   },
 
   submit_ans: function(){
 
   },
-//添加图片
-  // chooseImg() {
-  //   let that = this;
-  //   // let len = this.data.imgs;
-  //   // if (len >= 9) {
-  //   //   this.setData({
-  //   //     lenMore: 1
-  //   //   })
-  //   //   return;
-  //   // }
-  //   wx.chooseImage({
-  //     success: (res) => {
-  //       let tempFilePaths = res.tempFilePaths;
-  //       let imgs = [];
-  //       imgs.push(tempFilePaths)
-  //       console.log(imgs)
-  //       this.setData({
-  //         img : imgs
-  //       })
-  //       console.log(this.data.img)
-  //       // for (let i = 0; i < tempFilePaths.length; i++) {
-  //       //   var token = wx.getStorageSync('token');       
-  //       //   wx.uploadFile({
-  //       //     url: 'http://cs.szgk.cn/api.php?',
-  //       //     filePath: tempFilePaths[i],
-  //       //     name: 'file',
-  //       //     formData: {
-  //       //       'file': tempFilePaths[i],
-  //       //       "token": token,
-  //       //       "action": "uploads", //action=uploads&authhash=445454554
-  //       //     },
-  //       //     success(r) {
-  //       //       let hhh = JSON.parse(r.data);
-  //       //       if (hhh.status == 1) {
-  //       //         imgs.unshift(hhh.data.src)
-  //       //         // that.data.img = 
-  //       //         that.setData({
-  //       //           img: imgs
-  //       //         })
-  //       //         console.log(that.data.img)
-  //       //       } else {               
-  //       //         console.log('失败')
-  //       //         console.log(hhh.status)
-  //       //       }            
-  //       //     }
-  //       //   })          
-  //       // }
-  //     }
-  //   })
-  // },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -224,17 +331,61 @@ quxiao: function(){
 
 //灰色胶卷按钮
   submit: function () {
-    this.setData({
-      null_jiaojuan: true
-    })
+    let that = this
+    let num = 0
+    for(let i=0;i<that.data.sl_list.length;i++){
+      if (that.data.sl_list[i].question.finish){
+        // if (i == that.data.currentTab){
+          that.setData({
+            hhh: that.data.hhh + i
+          })
+          console.log(that.data.hhh)
+        }
+    }
+    for (let j = 0; j < that.data.sl_list.length; j++) {
+      num = num + j
+    }
+    console.log(num)
+    if (that.data.hhh == num){
+      console.log('已完成')
+    }else{
+      this.setData({
+        null_jiaojuan: true,
+        hhh: 0
+      })
+    }
+
+    
   },
 
 //输入答案
   input_ans: function(e){
-    this.setData({
+    let that = this
+    var xb = e.currentTarget.dataset.xb
+    that.setData({
       content: e.detail.value
     })
-    console.log(this.data.content)
+    console.log(that.data.content)
+    var ab = "sl_list[" + xb + "].question.ans_input"//添加键值对
+    that.setData({
+      [ab]: that.data.content
+    })
+    if (that.data.content == '') {
+      var cs = "sl_list[" + xb + "].question.finish"//添加键值对
+      that.setData({
+        [cs]: false
+      })
+    }
+    else{
+      var cs = "sl_list[" + xb + "].question.finish"//添加键值对
+      that.setData({
+        [cs]: true
+      })
+    }
+    console.log(that.data.sl_list[xb].question.finish + '------question.finish')
+    console.log(that.data.sl_list[xb].question.ans_input + '------question.ans_input')
+
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -299,6 +450,7 @@ quxiao: function(){
     // console.log(this.data.sl_list.length)
     //最后一题滑动， 跳到评估页面
     if ((current + 1) == (this.data.sl_list.length)) {
+      
       // that.gopingguClick();
       console.log(this.data.sl_list.length + '试题结束')
     }
@@ -313,59 +465,60 @@ quxiao: function(){
     var sl_list = this.data.sl_list;
     var length = sl_list.length;
     //获取几个试题
-    let lang = 10;
-    //增加的试题id
-    var main_id = [];
+    // let lang = 10;
+    // //增加的试题id
+    // var main_id = [];
 
     that.setData({
       currentTab: current
     })
+    // if()
     //右滑
-    if (current > currentTab) {
-      //下一个不存在 则
-      if (sl_list[current + 1] == undefined) {
-        for (let i = current; i < sl_list.length; i++) {
-          if (i < current + lang) {
-            main_id.push(sl_list[i].id);
-          }
-        }
-      }
-    }
+    // if (current > currentTab) {
+    //   //下一个不存在 则
+    //   if (sl_list[current + 1] == undefined) {
+    //     for (let i = current; i < sl_list.length; i++) {
+    //       if (i < current + lang) {
+    //         main_id.push(sl_list[i].id);
+    //       }
+    //     }
+    //   }
+    // }
 
     //左滑
     if (current < currentTab) {
       current = current - 1
       //上一个不存在
-      if (current >= 0 && sl_list[current].isfull == 0) {
-        for (let i = current; i >= 0; i--) {
-          if (i > current - lang) {
-            main_id.push(sl_list[i].id);
-          }
-        }
-      }
+      // if (current >= 0 && sl_list[current].isfull == 0) {
+      //   for (let i = current; i >= 0; i--) {
+      //     if (i > current - lang) {
+      //       main_id.push(sl_list[i].id);
+      //     }
+      //   }
+      // }
     }
 
     //获取试题
-    if (main_id.length > 0) {
-      wx.showLoading({
-        title: '加载中',
-      })
-      let that = this
-      var params = {
-        "h_id": that.data.h_id,
-      }
-      console.log(params)
-      app.sz.xcxShenlunList(params).then(d => {
-        if (d.data.status == 0) {
-          this.setData({ sl_list: d.data.data.shenlun_list })
-          console.log(this.data.sl_list)
-          wx.hideLoading();
-        } else {
-          console.log(d.data.msg)
-          wx.hideLoading();
-        }
-      })
-    }
+    // if (main_id.length > 0) {
+    //   wx.showLoading({
+    //     title: '加载中',
+    //   })
+    //   let that = this
+    //   var params = {
+    //     "h_id": that.data.h_id,
+    //   }
+    //   console.log(params)
+    //   app.sz.xcxShenlunList(params).then(d => {
+    //     if (d.data.status == 0) {
+    //       this.setData({ sl_list: d.data.data.shenlun_list })
+    //       console.log(this.data.sl_list)
+    //       wx.hideLoading();
+    //     } else {
+    //       console.log(d.data.msg)
+    //       wx.hideLoading();
+    //     }
+    //   })
+    // }
   },
 
 })

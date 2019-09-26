@@ -82,7 +82,7 @@
 .date{
   margin-left: 15rpx;
   margin-top: 110rpx;
-  width:192rpx;
+  /* width:192rpx; */
   height:45rpx;
   font-size:32rpx;
   font-family:PingFang SC;
@@ -120,10 +120,11 @@
   margin-top: 167rpx;
   width:81rpx;
   height:81rpx;
+  border-radius:50%;
   z-index: 1;
 }
 .name{
-  margin-left: 10rpx;
+  margin-left: 15rpx;
   margin-top: 174rpx;
   width:90rpx;
   height:63rpx;

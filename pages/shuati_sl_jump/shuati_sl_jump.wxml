@@ -15,33 +15,25 @@
       <!-- 直播课时间/老师 -->
       <view class="layout111">
         <image class="img3" src="../../images/shijian.png" mode="aspectFill"></image>
-        <view class="date">2018-06-03</view>
-        <view class="time">16:00-17:00</view>
+        <view class="date">{{zblive.betime}}</view>
+        <!-- <view class="time">16:00-17:00</view> -->
       </view>
     
       <view class="layout112">
         <image class="img4" src="../../images/laoshi.png" mode="aspectFill"></image>
-        <image class="img5" src="../../images/biaoqing@2x.png" mode="aspectFill"></image>
-        <view class="name">韩磊</view>
+        <image class="img5" src="{{zblive.avatar}}" mode="aspectFill"></image>
+        <view class="name">{{zblive.teacher_name}}</view>
       </view>
 
     <!-- 前往直播课跳转按钮 -->
       <view class="btn">
-        <text class="text3">前往直播间</text>
+        <text class="text3" wx:if="{{zblive.liveStatus == 4}}" bindtap="pblive">看回放</text>
+        <text class="text3" wx:if="{{zblive.liveStatus == 2}}" bindtap="zblive">前往直播间</text>
+        <text class="text3" wx:if="{{zblive.liveStatus != 4 && zblive.liveStatus != 2}}" bindtap="back_first">返回首页</text>
         <image class="img6" src="../../images/qianwang.png"></image>
       </view>
 
-      <!-- 前往直播课跳转按钮 -->
-      <view class="btn">
-        <text class="text3">看回放</text>
-        <image class="img6" src="../../images/qianwang.png"></image>
-      </view>
-
-      <!-- 前往直播课跳转按钮 -->
-      <view class="btn">
-        <text class="text3">返回首页</text>
-        <image class="img6" src="../../images/qianwang.png"></image>
-      </view>
+      
     
     </view>
     

@@ -17,6 +17,7 @@ Page({
     h_id:85,
     sl_list:[],
     total:0,
+    ans: [],
 
     
 
@@ -241,7 +242,7 @@ Page({
 
 
   },
-
+//删除插入图片
   deleteImg: function(e) {
     let that = this
     var tpxb = e.currentTarget.dataset.tpxb
@@ -276,31 +277,32 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this
     let huadong = wx.getStorageSync('huadong')
-    this.setData({
+    that.setData({
       huadong: huadong,
     })
-    console.log(this.data.huadong)
-    // var h_id = options.id
-    // console.log(h_id)
-    // let that = this
-    // that.setData({
-    //   h_id: h_id,
-    // })
+    console.log(that.data.huadong)
+    var h_id = options.id
+    console.log(h_id + '==========dati_sl')
+    
+    that.setData({
+      h_id: h_id,
+    })
       // var params = {
       //   "h_id": h_id,
       // }
     var params = {
-      "h_id": this.data.h_id,
+      "h_id": that.data.h_id,
     }
       console.log(params)
       app.sz.xcxShenlunList(params).then(d => {
         if (d.data.status == 0) {
-          this.setData({ sl_list: d.data.data.shenlun_list, total: d.data.data.shenlun_list.length})
-          console.log(this.data.sl_list)
+          that.setData({ sl_list: d.data.data.shenlun_list, total: d.data.data.shenlun_list.length})
+          console.log(that.data.sl_list)
         } else {
           console.log('接口错误')
-          wx.hideLoading();
+          // wx.hideLoading();
         }
       })
     
@@ -327,9 +329,49 @@ quxiao: function(){
   this.setData({
     null_jiaojuan: false
   })
+  
+},
+//蒙层确定按钮
+queding: function () {
+  let that = this
+  let ans = []
+  for(let i = 0;i<that.data.sl_list.length;i++){
+    ans.push([that.data.sl_list[i].question.id, that.data.sl_list[i].question.ans_input, that.data.sl_list[i].question.img])
+  }
+  that.setData({
+    ans : ans
+  })
+  console.log(that.data.ans +'==========ans')
+  var uid = wx.getStorageSync('uid');
+  var params = {
+    "h_id": that.data.h_id,
+    "uid": uid,
+    "data": that.data.ans,
+
+  }
+  console.log(params + '===========submit')
+  app.sz.xcxShenlunTijiao(params).then(d => {
+    if (d.data.status == 0) {
+      wx.navigateTo({
+        url: '../shuati_sl_jump/shuati_sl_jump?h_id=' + that.data.h_id
+      });
+      console.log('提交成功')
+    } else {
+      console.log('接口错误')
+      // wx.hideLoading();
+    }
+  })
+
+  // wx.navigateTo({
+  //   url: '../shuati_sl_jump/shuati_sl_jump?h_id=' + that.data.h_id
+  // });
+  that.setData({
+    null_jiaojuan: false
+  })
+  console.log(that.data.h_id)
 },
 
-//灰色胶卷按钮
+//交卷按钮
   submit: function () {
     let that = this
     let num = 0
@@ -348,14 +390,46 @@ quxiao: function(){
     console.log(num)
     if (that.data.hhh == num){
       console.log('已完成')
+      // that.setData({
+      //   isfinish : true
+      // })
+      let ans = []
+      for (let k = 0; k < that.data.sl_list.length; k++) {
+        ans.push([that.data.sl_list[k].question.id, that.data.sl_list[k].question.ans_input, that.data.sl_list[k].question.img])
+      }
+      that.setData({
+        ans: ans
+      })
+      console.log(that.data.ans + '==========ans')
+      var uid = wx.getStorageSync('uid');
+      var params = {
+        "h_id": that.data.h_id,
+        "uid": uid,
+        "data": that.data.ans,
+
+      }
+      console.log(params + '===========submit')
+      app.sz.xcxShenlunTijiao(params).then(d => {
+        if (d.data.status == 0) {
+          wx.navigateTo({
+            url: '../shuati_sl_jump/shuati_sl_jump?h_id=' + that.data.h_id
+          });
+          console.log('提交成功')
+        } else {
+          console.log('接口错误')
+          // wx.hideLoading();
+        }
+      })
+
+      // wx.navigateTo({
+      //   url: '../shuati_sl_jump/shuati_sl_jump?h_id=' + that.data.h_id
+      // });
     }else{
       this.setData({
         null_jiaojuan: true,
         hhh: 0
       })
     }
-
-    
   },
 
 //输入答案

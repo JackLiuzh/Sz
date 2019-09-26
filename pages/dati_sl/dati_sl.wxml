@@ -107,11 +107,9 @@
 <view class="layout">
   <view class="cailiao" bindtap="cailiao">材料</view>
   <view class="wenti" bindtap="wenti">问题</view>
-  <view class="jiaojuan" wx:if='{{!sl_list.question.finish}}' bindtap="submit">
+  <view class="jiaojuan"  bindtap="submit">
     <text class="text">√交卷</text>
   </view>
-  <!-- <view class="jiaojuan1" wx:else='{{sl_list.question.finish}}' bindtap="submit"><text class="text">√交卷</text></view> -->
-  
 </view>
 
 <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{null_jiaojuan}}"></view>
@@ -121,7 +119,7 @@
           <text class="tishi">您还有未做完的题目，确任交卷？</text>
         </view>
         <view class="button">
-          <view class="queding" bindtap="zb_dati">确定</view>
+          <view class="queding" bindtap="queding">确定</view>
           <view class="quxiao" bindtap="quxiao">取消</view>
         </view>
 

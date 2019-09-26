@@ -1,12 +1,12 @@
 <view class="container">
 
-  <scroll-view  class="tab-h" scroll-left="{{scrollLeft}}" hidden='false'> 
-  <!-- <scroll-view  class="tab-h" scroll-left="{{scrollLeft}}" >  -->
+  <!-- <scroll-view  class="tab-h" scroll-left="{{scrollLeft}}" hidden='false'>  -->
+  <scroll-view  class="tab-h" scroll-left="{{scrollLeft}}" > 
     <view wx:for="{{youhuiquan}}" wx:key="index" class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav">{{item}}</view> 
   </scroll-view> 
 
   <!-- 加申论版 -->
-  <!-- <view class="list" wx:if='{{currentTab == 0}}' wx:for="{{ list }}" wx:key="this"> -->
+  <view class="list" wx:if='{{currentTab == 0}}' wx:for="{{ list }}" wx:key="this">
 
   <!-- 不加申论版 -->
   <view class="list"  wx:for="{{ list }}" wx:key="this">
@@ -35,11 +35,14 @@
       </view>
     </block>
   </view>
+  </view>
 
-  <view class="list" wx:if='{{currentTab == 1}}' wx:for="{{ shenlun }}" wx:for-index="xb" hidden='false'>
+  <!-- <view class="list" wx:if='{{currentTab == 1}}' wx:for="{{ shenlun }}" wx:for-index="xb" hidden='false'> -->
+  <view class="list" wx:if='{{currentTab == 1}}' wx:for="{{ shenlun }}" wx:for-index="xb" >
     <block  class='box1' wx:if='{{item.kemu_id == 7}}' >
       <view class = "c_line" >
         <image class='img'  src='../../images/special/bg{{item.kemu_id}}.png'></image>
+        <image class="pigai" wx:if='{{item.pg_test}}' src="../../images/pigai.png"></image>
         <view class="c_line_text">
           <view class="gong gong_color{{item.kemu_id}}">共</view>
           <view class="number number_color{{item.kemu_id}}">{{item.ti_count}}</view>
@@ -47,7 +50,8 @@
         </view>    
         <block wx:if="{{item.test == 1}}">
             <view class="btn_tested btn_tested_color{{item.kemu_id}}">
-            <navigator url="/pages/assessment_detail/assessment_detail?h_id={{item.id}}&kemu_id={{item.kemu_id}}&back=0">
+            
+            <navigator url="/pages/analyse_sl/analyse_sl?h_id={{item.id}}">
               <view class="btn_tested_text btn_tested_text_color{{item.kemu_id}}">查看评估报告 ></view>
             </navigator>
           </view>
@@ -61,7 +65,7 @@
     </block>
   </view>
 
- <!-- </view> -->
+ 
 
   
 

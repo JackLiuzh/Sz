@@ -25,6 +25,7 @@ page{
   font-weight:400;
   
 }
+/* 问题按钮 */
 .wenti{
   width:30%;
   height: 100rpx;
@@ -36,12 +37,13 @@ page{
   font-family:PingFang-SC-Regular;
   font-weight:400;
 }
+/* 交卷按钮 */
 .jiaojuan{
   width:40%;
   height: 100rpx;
   line-height: 100rpx;
   background-color: #fff;
-  color: rgb(199, 31, 31);
+  color: #E65557;
   font-size:28rpx;
   font-family:PingFang-SC-Regular;
   font-weight:400;

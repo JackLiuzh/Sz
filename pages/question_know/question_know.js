@@ -22,16 +22,18 @@ Page({
     
     wx.setStorageSync("first_tip", this.data.first_tip)
   },
-  iknow: function (options){
+
+  iknow: function (){
     // if (this.data.first_tip == '') {
     //   this.setData({
     //     first_tip: true
     //   }); 
     //   wx.setStorageSync("first_tip", this.data.first_tip)
     // }
-    var id = options.id
+    
+    console.log(this.data.id +'==========question_know')
     wx.navigateTo({
-      url: '../dati_sl/dati_sl?id=' + id
+      url: '../dati_sl/dati_sl?id=' + this.data.id
     })
   },
   /**

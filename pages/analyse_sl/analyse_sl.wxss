@@ -1,11 +1,4 @@
 @import "../../components/wxParse/wxParse.wxss";
-/* pages/dati/dati.wxss */
-/* page{
-  background-color:white;
-} */
-/* .container{
-  margin-bottom: 100rpx;
-} */
 .layout{
   display: flex;
   width:100%;
@@ -39,23 +32,22 @@
 .box-swiper{
   display: flex;
   flex-direction: column;
-  /* height: 700rpx; */
-  /* background:rgba(255,255,255,1); */
+  background-color:rgba(242,243,247,1);
 }
 .box-top{
   display: flex;
   width:750rpx;
-  height:50rpx;
+  height:79rpx;
   background:rgba(242,243,247,1);
   opacity:1;
 }
 .type-qname{
   margin-left: 30rpx;
   width:112rpx;
-  height: 50rpx;
+  height: 79rpx;
   font-size:28rpx;
   font-family:PingFang SC;
-  line-height: 50rpx;
+  line-height: 79rpx;
   text-align: center;
   font-weight:400;
   color:rgba(48,48,48,1);
@@ -63,8 +55,8 @@
 }
 .type-nu{
   margin-left: 520rpx;
-  height: 50rpx;
-  line-height: 50rpx;
+  height: 79rpx;
+  line-height: 79rpx;
   text-align: center;
 }
 .text1{
@@ -83,31 +75,47 @@
 }
 .box-title{
   margin-left: 35rpx;
+  width:680rpx;
+  font-size:32rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  line-height:55rpx;
+  color:rgba(10,10,10,1);
+  opacity:1;
+}
+.cailiao_content{
+  margin-left: 35rpx;
   margin-top: 30rpx;
   width:680rpx;
   font-size:32rpx;
   font-family:PingFang SC;
   font-weight:400;
   line-height:55rpx;
-  background-color: #fff;
   color:rgba(10,10,10,1);
   opacity:1;
 }
-.yaoqiu{
-  margin-top: 10rpx;
-  top: 34rpx;
+.wenti_content{
+  margin-left: 35rpx;
+  margin-top: 30rpx;
   width:680rpx;
   font-size:32rpx;
   font-family:PingFang SC;
-  font-weight:bold;
+  font-weight:400;
   line-height:55rpx;
   color:rgba(10,10,10,1);
   opacity:1;
 }
+.ans_img{
+  margin-right: 20rpx;
+  width: 200rpx;
+  height: 200rpx;
+}
+.ans_image{
+  display: flex;
+}
 .teacher_correct{
-  margin-top: 50rpx;
+  margin-top: 10rpx;
   width:750rpx;
-  /* height:697rpx; */
   background:rgba(255,248,246,1);
   opacity:1;
 }
@@ -141,11 +149,18 @@
   height: 200rpx;
 }
 .key_ans{
-  margin-top: 30rpx;
+  margin-top: 10rpx;
   width: 750rpx;
+  background: rgba(255,255,255,1);
+}
+.my_ans{
+ 
+  width: 750rpx;
+  background: rgba(255,255,255,1);
 }
 .layout_key_ans{
   margin-left: 30rpx;
+  margin-top: 38rpx;
   display: flex;
 }
 .sanjiao{
@@ -167,6 +182,7 @@
 .rich3{
   margin-left: 30rpx;
   margin-top: 20rpx;
+  margin-bottom: 10rpx;
   width:690rpx;
   font-size:32rpx;
   font-family:PingFang SC;
@@ -177,9 +193,66 @@
 }
 .heng{
   margin-left: 30rpx;
-  margin-top: 30rpx;
+  margin-top: 31rpx;
   width:690rpx;
   height:0rpx;
   border:1rpx solid rgba(218,218,218,1);
   opacity:1;
 }
+.text{
+  margin-left: 200rpx;
+}
+.layout1{
+  width:750rpx;
+  background: rgba(255,255,255,1);
+}
+.tab-h{ 
+  width: 100%;
+  height: 75rpx;
+  box-sizing: border-box; 
+  overflow: hidden; 
+  line-height: 50rpx; 
+  background: rgba(255,255,255,1); 
+  white-space: nowrap;  
+} 
+.tab-item{ 
+  padding-left: 10rpx;
+  padding-top: 20rpx;
+  padding-bottom: 10rpx;
+  width:100rpx;
+  height:42rpx;
+  margin:0 20rpx; 
+  display: inline-block; 
+  font-size:30rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  line-height:42rpx;
+  color:rgba(136,136,136,1);
+  opacity:1;
+} 
+.tab-item.active{ 
+  padding-bottom: 10rpx;
+  position: relative; 
+  width:100rpx;
+  height:42rpx;
+  font-size:30rpx;
+  font-family:PingFang SC;
+  line-height:42rpx;
+  color:rgba(230,85,87,1);
+  opacity:1;
+} 
+.tab-item.active:after{
+  content: ""; 
+  display: block; 
+  height: 4rpx; 
+  width: 65%; 
+  background: #E65557; 
+  position: absolute;  
+  bottom: 0;
+  left: 13rpx; 
+} 
+
+
+
+
+

@@ -650,6 +650,7 @@ Page({
   },
 
   godati_sl: function (e) {
+    let that = this
     var id = e.currentTarget.dataset.id
     var kemu_id = e.currentTarget.dataset.kemu_id
     var finish = e.currentTarget.dataset.finish
@@ -658,9 +659,20 @@ Page({
         url: '../assessment_detail/assessment_detail?h_id=' + id + '&kemu_id=' + kemu_id + '&back=0'
       });
     } else {
-      wx.navigateTo({
-        url: '../dati_sl/dati_sl?id=' + id 
-      });
+      that.setData({ first_tip: wx.getStorageSync('first_tip') })
+      console.log(that.data.first_tip)
+      if (that.data.first_tip) {
+        wx.navigateTo({
+          url: '../dati_sl/dati_sl?id=' + id
+        })
+      } else {
+        wx.navigateTo({
+          url: '../question_know/question_know?id=' + id
+        })
+        wx.setStorageSync('first_tip', that.data.first_tip)
+        
+      }
+      
     }
 
   },
@@ -960,18 +972,28 @@ Page({
     })
   },  
   zb_dati: function () {
+    let that = this
+    if (that.data.kemu_id == 7) {
+      that.setData({ first_tip: wx.getStorageSync('first_tip') })
+      console.log(that.data.first_tip)
+      if (that.data.first_tip) {
+        wx.navigateTo({
+          url: '../dati_sl/dati_sl?id=' + that.data.project_id
+        })
+      } else {
+        wx.navigateTo({
+          url: '../question_know/question_know?id=' + that.data.project_id
+        })
+        wx.setStorageSync('first_tip', that.data.first_tip)
 
-    if (this.data.kemu_id == 7) {
-      wx.navigateTo({
-        url: '../dati_sl/dati_sl?id=' + this.data.project_id
-      });
+      }
     }
     else {
       wx.navigateTo({
-        url: '../test_dati/test_dati?id=' + this.data.project_id + '&kemu_id=' + this.data.kemu_id
+        url: '../test_dati/test_dati?id=' + that.data.project_id + '&kemu_id=' + that.data.kemu_id
       });
     }
-    this.setData({
+    that.setData({
       showModal_zb: false
     })
   },

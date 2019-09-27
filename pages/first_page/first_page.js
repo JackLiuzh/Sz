@@ -1270,18 +1270,29 @@ Page({
 
   //看直播做题跳转
   zb_dati: function () {
-    if (this.data.kemu_id == 7){
-      wx.navigateTo({
-        url: '../dati_sl/dati_sl?id=' + this.data.project_id
-      });
+    let that = this
+    if (that.data.kemu_id == 7){
+      that.setData({ first_tip: wx.getStorageSync('first_tip') })
+      console.log(that.data.first_tip)
+      if (that.data.first_tip) {
+        wx.navigateTo({
+          url: '../dati_sl/dati_sl?id=' + that.data.project_id
+        })
+      } else {
+        wx.navigateTo({
+          url: '../question_know/question_know?id=' + that.data.project_id
+        })
+        wx.setStorageSync('first_tip', that.data.first_tip)
+
+      }
     }
     else{
       wx.navigateTo({
-        url: '../test_dati/test_dati?id=' + this.data.project_id + '&kemu_id=' + this.data.kemu_id
+        url: '../test_dati/test_dati?id=' + that.data.project_id + '&kemu_id=' + that.data.kemu_id
       });
     }
     
-    this.setData({
+    that.setData({
       showModal_zb: false
     })
   },

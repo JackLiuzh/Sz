@@ -115,15 +115,17 @@
   </view>
 </view>
 
-<view class="mask" catchtouchmove="preventTouchMove" wx:if="{{null_jiaojuan}}"></view>
-<view class="modalDlg" wx:if="{{null_jiaojuan}}">
-        <view class="modal">
-          <image class="img_dlg"  src="../../images/tanhao.png"/>
-          <text class="tishi">您还有未做完的题目，确任交卷？</text>
-        </view>
-        <view class="button">
-          <view class="queding" bindtap="queding">确定</view>
-          <view class="quxiao" bindtap="quxiao">取消</view>
-        </view>
 
-      </view>
+  <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{null_jiaojuan}}"></view> 
+  <cover-view class="modalDlg"  wx:if="{{null_jiaojuan}}">
+          <cover-view class="modal">
+            <cover-image class="img_dlg"  src="../../images/tanhao.png"/>
+            <cover-view class="tishi">您还有未做完的题目，确任交卷？</cover-view>
+          </cover-view>
+          <cover-view class="button">
+            <cover-view class="queding" catchtap="queding">确定</cover-view>
+            <cover-view class="quxiao" catchtap="quxiao">取消</cover-view>
+          </cover-view>
+
+  </cover-view>
+

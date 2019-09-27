@@ -161,15 +161,15 @@ Page({
                       }
                 
                       if (that.data.hhh) {
-      that.setData({
-        finish: true
-      })
-    }
-    else {
-      that.setData({
-        finish: false
-      })
-    }
+                        that.setData({
+                          finish: true
+                        })
+                      }
+                      else {
+                        that.setData({
+                          finish: false
+                        })
+                      }
                     } else {
                       console.log('失败')
                       console.log(hhh.status)
@@ -197,76 +197,7 @@ Page({
     
 
 
-    // if (imgs.length < 2) {  //如果图片数量小于3张，可以直接获取图片
-    //   wx.chooseImage({
-    //     count: 1,     //默认9
-    //     sizeType: ['compressed'], //可以指定原图还是压缩图，默认二者都有
-    //     sourceType: ['album'],//可以指定来源相册还是相机，默认二者都有
-    //     success: function (res) {
-    //       // var tempFilesSize = res.tempFiles[0].size;  //获取图片的大小，单位B
-    //       // if (tempFilesSize <= 2000000) {   //图片小于或者等于2M时 可以执行获取图片
-    //       var tempFilePaths = res.tempFilePaths; //获取图片
-    //       console.log(tempFilePaths +'--------tempFilePaths')
-    //       for (let i = 0; i < tempFilePaths.length; i++) {
-    //         var token = wx.getStorageSync('token');       
-    //         wx.uploadFile({
-    //           url: 'http://cs.szgk.cn/api.php?',
-    //           filePath: tempFilePaths[i],
-    //           name: 'file',
-    //           formData: {
-    //             'file': tempFilePaths[i],
-    //             "token": token,
-    //             "action": "uploads", //action=uploads&authhash=445454554
-    //           },
-    //           success(r) {
-    //             let hhh = JSON.parse(r.data);
-    //             console.log(hhh   +'---------hhh')
-    //             if (hhh.status == 1) {
-    //               imgs.unshift(hhh.data.src)
-    //               that.setData({
-    //                 img : imgs
-    //               })
-    //               // that.data.sl_list[xb].question.a = imgs
-    //               // that.data.sl_list.unshift(imgs)
-    //               // that.data.img = 
-    //               var ab = "sl_list[" + xb + "].question.img"//添加键值对
-    //               that.setData({
-    //                 [ab]: that.data.img
-    //               })
-    //               // console.log(that.data.img)
-    //               console.log(that.data.sl_list[xb].question.img +'------question.img')
-    //               
-                  
-    //               // console.log(qu + '---------qu')
-                  
-    //             } else {               
-    //               console.log('失败')
-    //               console.log(hhh.status)
-    //             }
-                           
-    //           }
-    //         })
-    //       }
-          
-    //       // } else {    //图片大于2M，弹出一个提示框
-    //       //   wx.showToast({
-    //       //     title: '上传图片不能大于2M!',  //标题
-    //       //     icon: 'none'       //图标 none不使用图标，详情看官方文档
-    //       //   })
-    //       // }
-    //     }
-    //   })
-    //   // that.data.answer_img.push([id, that.data.img])
-    //   // console.log(that.data.answer_img + '---------ans') 
-    // } else {  //大于三张时直接弹出一个提示框
-    //   wx.showToast({
-    //     title: '上传图片不能大于2张!',
-    //     icon: 'none'
-    //   })
-    // }
-  
-
-
+    
   },
 //删除插入图片
   deleteImg: function(e) {
@@ -308,19 +239,19 @@ Page({
       if (that.data.sl_list[i].question.finish) {
         // if (i == that.data.currentTab){
         that.setData({
-          hhh: that.data.hhh
+          hhh: that.data.hhh + 1
         })
         console.log(that.data.hhh + '=================input')
       }
       else {
         that.setData({
-          hhh: 0
+          hhh: -that.data.sl_list.length
         })
         console.log(that.data.hhh + '=================input_else')
       }
     }
 
-    if (that.data.hhh) {
+    if (that.data.hhh > 0) {
       that.setData({
         finish: true
       })
@@ -582,13 +513,13 @@ queding: function () {
       }
       else {
         that.setData({
-          hhh: 0
+          hhh: -that.data.sl_list.length
         })
         console.log(that.data.hhh + '=================input_else')
       }
     }
     
-    if(that.data.hhh){
+    if(that.data.hhh > 0){
       that.setData({
         finish : true
       })

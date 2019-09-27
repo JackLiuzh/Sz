@@ -84,7 +84,7 @@ Page({
    
         if (imgs.length < 2) {  //如果图片数量小于3张，可以直接获取图片
           wx.chooseImage({
-            count: 2,     //默认9
+            count: 1,     //默认9
             sizeType: ['compressed'], //可以指定原图还是压缩图，默认二者都有
             sourceType: ['album'],//可以指定来源相册还是相机，默认二者都有
             success: function (res) {

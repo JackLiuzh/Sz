@@ -1253,9 +1253,16 @@ Page({
 
   //看回放做题跳转
   pb_dati: function () {
-    wx.navigateTo({
-      url: '../test_dati/test_dati?id=' + this.data.project_id + '&kemu_id=' + this.data.kemu_id
-    });
+    if (this.data.kemu_id == 7) {
+      wx.navigateTo({
+        url: '../dati_sl/dati_sl?id=' + this.data.project_id
+      });
+    }
+    else {
+      wx.navigateTo({
+        url: '../test_dati/test_dati?id=' + this.data.project_id + '&kemu_id=' + this.data.kemu_id
+      });
+    }
     this.setData({
       showModal_pb: false
     })
@@ -1263,9 +1270,17 @@ Page({
 
   //看直播做题跳转
   zb_dati: function () {
-    wx.navigateTo({
-      url: '../test_dati/test_dati?id=' + this.data.project_id + '&kemu_id=' + this.data.kemu_id
-    });
+    if (this.data.kemu_id == 7){
+      wx.navigateTo({
+        url: '../dati_sl/dati_sl?id=' + this.data.project_id
+      });
+    }
+    else{
+      wx.navigateTo({
+        url: '../test_dati/test_dati?id=' + this.data.project_id + '&kemu_id=' + this.data.kemu_id
+      });
+    }
+    
     this.setData({
       showModal_zb: false
     })

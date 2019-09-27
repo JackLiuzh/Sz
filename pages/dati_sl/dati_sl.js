@@ -419,13 +419,10 @@ queding: function () {
       console.log('提交成功')
     } else {
       console.log('接口错误')
-      // wx.hideLoading();
+     
     }
   })
 
-  // wx.navigateTo({
-  //   url: '../shuati_sl_jump/shuati_sl_jump?h_id=' + that.data.h_id
-  // });
   that.setData({
     null_jiaojuan: false
   })
@@ -435,25 +432,8 @@ queding: function () {
 //交卷按钮
   submit: function () {
     let that = this
-    let num = 0
-    for(let i=0;i<that.data.sl_list.length;i++){
-      if (that.data.sl_list[i].question.finish){
-        // if (i == that.data.currentTab){
-          that.setData({
-            hhh: that.data.hhh + i
-          })
-          console.log(that.data.hhh)
-        }
-    }
-    for (let j = 0; j < that.data.sl_list.length; j++) {
-      num = num + j
-    }
-    console.log(num)
-    if (that.data.hhh == num){
-      console.log('已完成')
-      // that.setData({
-      //   isfinish : true
-      // })
+
+    if(that.data.finish){
       let ans = []
       for (let k = 0; k < that.data.sl_list.length; k++) {
         ans.push([that.data.sl_list[k].question.id, that.data.sl_list[k].question.ans_input, that.data.sl_list[k].question.img])
@@ -481,16 +461,69 @@ queding: function () {
           // wx.hideLoading();
         }
       })
-
-      // wx.navigateTo({
-      //   url: '../shuati_sl_jump/shuati_sl_jump?h_id=' + that.data.h_id
-      // });
+    
     }else{
       this.setData({
         null_jiaojuan: true,
         hhh: 0
       })
     }
+    // let num = 0
+    // for(let i=0;i<that.data.sl_list.length;i++){
+    //   if (that.data.sl_list[i].question.finish){
+    //     // if (i == that.data.currentTab){
+    //       that.setData({
+    //         hhh: that.data.hhh + i
+    //       })
+    //       console.log(that.data.hhh)
+    //     }
+    // }
+    // for (let j = 0; j < that.data.sl_list.length; j++) {
+    //   num = num + j
+    // }
+    // console.log(num)
+    // if (that.data.hhh == num){
+    //   console.log('已完成')
+    //   // that.setData({
+    //   //   isfinish : true
+    //   // })
+    //   let ans = []
+    //   for (let k = 0; k < that.data.sl_list.length; k++) {
+    //     ans.push([that.data.sl_list[k].question.id, that.data.sl_list[k].question.ans_input, that.data.sl_list[k].question.img])
+    //   }
+    //   that.setData({
+    //     ans: ans
+    //   })
+    //   console.log(that.data.ans + '==========ans')
+    //   var uid = wx.getStorageSync('uid');
+    //   var params = {
+    //     "h_id": that.data.h_id,
+    //     "uid": uid,
+    //     "data": that.data.ans,
+
+    //   }
+    //   console.log(params + '===========submit')
+    //   app.sz.xcxShenlunTijiao(params).then(d => {
+    //     if (d.data.status == 0) {
+    //       wx.navigateTo({
+    //         url: '../shuati_sl_jump/shuati_sl_jump?h_id=' + that.data.h_id
+    //       });
+    //       console.log('提交成功')
+    //     } else {
+    //       console.log('接口错误')
+    //       // wx.hideLoading();
+    //     }
+    //   })
+
+    //   // wx.navigateTo({
+    //   //   url: '../shuati_sl_jump/shuati_sl_jump?h_id=' + that.data.h_id
+    //   // });
+    // }else{
+    //   this.setData({
+    //     null_jiaojuan: true,
+    //     hhh: 0
+    //   })
+    // }
   },
 
 //输入答案
@@ -520,10 +553,19 @@ queding: function () {
       }
     }
     else{
+      if (that.data.sl_list[xb].question.img) {
+        var cs = "sl_list[" + xb + "].question.finish"//添加键值对
+        that.setData({
+          [cs]: true
+        })
+      }
+      else{
         var cs = "sl_list[" + xb + "].question.finish"//添加键值对
         that.setData({
           [cs]: false
         })
+      }
+       
       
       
     }

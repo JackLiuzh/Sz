@@ -53,7 +53,7 @@ page{
   height: 100rpx;
   line-height: 100rpx;
   background-color: #fff;
-  color: rgb(19, 31, 31);
+  color: rgba(0,0,0,0.5);
   font-size:28rpx;
   font-family:PingFang-SC-Regular;
   font-weight:400;

@@ -14,14 +14,14 @@ Page({
     // imgs:[],  //添加图片
     // null_jiaojuan:true,
     current_cailiao: 0, //多材料滚动条预设当前项的值
-    h_id:85,
+    // h_id:87,
     sl_list:[],
     total:0,
     ans: [],
 
-    
-
-    hhh: 0,
+    finish: false,
+    cscs: [],
+    hhh: 1,
     img:[],
     // answer_img: [{
     //   "question_id" : '',
@@ -135,6 +135,7 @@ Page({
                         })
                       }
 
+            
                       var cs = "sl_list[" + xb + "].question.finish"//添加键值对
                       that.setData({
                         [cs]: true
@@ -143,8 +144,32 @@ Page({
                       console.log(that.data.sl_list[xb].question.img + '------question.img')
                       console.log(that.data.sl_list[xb].question.finish + '------question.finish')
                       
+                      for (let i = 0; i < that.data.sl_list.length; i++) {
+                        if (that.data.sl_list[i].question.finish) {
+                          // if (i == that.data.currentTab){
+                          that.setData({
+                            hhh: that.data.hhh + 1
+                          })
+                          console.log(that.data.hhh + '=================input')
+                        }
+                        else {
+                          that.setData({
+                            hhh: 0
+                          })
+                          console.log(that.data.hhh + '=================input_else')
+                        }
+                      }
                 
-
+                      if (that.data.hhh) {
+      that.setData({
+        finish: true
+      })
+    }
+    else {
+      that.setData({
+        finish: false
+      })
+    }
                     } else {
                       console.log('失败')
                       console.log(hhh.status)
@@ -168,6 +193,7 @@ Page({
             icon: 'none'
           })
         }
+    
     
 
 
@@ -209,7 +235,7 @@ Page({
     //               })
     //               // console.log(that.data.img)
     //               console.log(that.data.sl_list[xb].question.img +'------question.img')
-    //               // that.onLoad()
+    //               
                   
     //               // console.log(qu + '---------qu')
                   
@@ -261,12 +287,49 @@ Page({
     console.log(that.data.sl_list[xb].question.img + '======that.data.sl_list[xb].question.img')
 
     if (del_img == ''){
-      var cs = "sl_list[" + xb + "].question.finish"//添加键值对
+      if (!that.data.sl_list[xb].question.ans_input){
+        var cs = "sl_list[" + xb + "].question.finish"//添加键值对
+        that.setData({
+          [cs]: false
+        })
+      }
+      else {
+        var cs = "sl_list[" + xb + "].question.finish"//添加键值对
+        that.setData({
+          [cs]: true
+        })
+      }
+      
+    }
+    
+    console.log(that.data.sl_list[xb].question.finish + '------question.finish')
+
+    for (let i = 0; i < that.data.sl_list.length; i++) {
+      if (that.data.sl_list[i].question.finish) {
+        // if (i == that.data.currentTab){
+        that.setData({
+          hhh: that.data.hhh
+        })
+        console.log(that.data.hhh + '=================input')
+      }
+      else {
+        that.setData({
+          hhh: 0
+        })
+        console.log(that.data.hhh + '=================input_else')
+      }
+    }
+
+    if (that.data.hhh) {
       that.setData({
-        [cs]: false
+        finish: true
       })
     }
-    console.log(that.data.sl_list[xb].question.finish + '------question.finish')
+    else {
+      that.setData({
+        finish: false
+      })
+    }
   },
 
   submit_ans: function(){
@@ -289,9 +352,7 @@ Page({
     that.setData({
       h_id: h_id,
     })
-      // var params = {
-      //   "h_id": h_id,
-      // }
+    
     var params = {
       "h_id": that.data.h_id,
     }
@@ -444,22 +505,57 @@ queding: function () {
     that.setData({
       [ab]: that.data.content
     })
-    if (that.data.content == '') {
-      var cs = "sl_list[" + xb + "].question.finish"//添加键值对
-      that.setData({
-        [cs]: false
-      })
+    if (that.data.sl_list[xb].question.ans_input) {
+      if (that.data.sl_list[xb].question.img) {
+        var cs = "sl_list[" + xb + "].question.finish"//添加键值对
+        that.setData({
+          [cs]: true
+        })
+      }
+      else {
+        var cs = "sl_list[" + xb + "].question.finish"//添加键值对
+        that.setData({
+          [cs]: true
+        })
+      }
     }
     else{
-      var cs = "sl_list[" + xb + "].question.finish"//添加键值对
-      that.setData({
-        [cs]: true
-      })
+        var cs = "sl_list[" + xb + "].question.finish"//添加键值对
+        that.setData({
+          [cs]: false
+        })
+      
+      
     }
     console.log(that.data.sl_list[xb].question.finish + '------question.finish')
     console.log(that.data.sl_list[xb].question.ans_input + '------question.ans_input')
-
     
+    for (let i = 0; i < that.data.sl_list.length; i++) {
+      if (that.data.sl_list[i].question.finish) {
+        // if (i == that.data.currentTab){
+        that.setData({
+          hhh: that.data.hhh + 1
+        })
+        console.log(that.data.hhh + '=================input')
+      }
+      else {
+        that.setData({
+          hhh: 0
+        })
+        console.log(that.data.hhh + '=================input_else')
+      }
+    }
+    
+    if(that.data.hhh){
+      that.setData({
+        finish : true
+      })
+    }
+    else{
+      that.setData({
+        finish: false
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -472,7 +568,7 @@ queding: function () {
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // console.log('cshhh')
+    
   },
 
   /**

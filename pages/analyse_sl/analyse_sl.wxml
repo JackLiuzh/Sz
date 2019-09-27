@@ -98,7 +98,7 @@
               </view>
               <view class="rich3">
                 <rich-text  nodes="{{item.record.answer}}"></rich-text>
-                <view class="ans_image">
+                <view class="ans_image" wx:if="{{item.img != ''}}">
                   <view wx:for="{{item.img}}" wx:key="img" wx:for-index="img_index" wx:for-item="img_item">
                   
                     <image class="ans_img" src="{{img_item}}"></image>

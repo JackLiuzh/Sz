@@ -107,7 +107,10 @@
 <view class="layout">
   <view class="cailiao" bindtap="cailiao">材料</view>
   <view class="wenti" bindtap="wenti">问题</view>
-  <view class="jiaojuan"  bindtap="submit">
+  <view wx:if='{{finish}}' class="jiaojuan"  bindtap="submit">
+    <text class="text">√交卷</text>
+  </view>
+  <view wx:if='{{!finish}}' class="jiaojuan1"  bindtap="submit">
     <text class="text">√交卷</text>
   </view>
 </view>

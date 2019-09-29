@@ -9,7 +9,7 @@
   <view class="list" wx:if='{{currentTab == 0}}' wx:for="{{ list }}" wx:key="this">
 
   <!-- 不加申论版 -->
-  <view class="list"  wx:for="{{ list }}" wx:key="this">
+  <!-- <view class="list"  wx:for="{{ list }}" wx:key="this"> -->
     <block  class='box1' wx:if='{{item.kemu_id != 7}}'>
       <view class = "c_line" >
         <image class='img'  src='../../images/special/bg{{item.kemu_id}}.png'></image>
@@ -35,7 +35,7 @@
       </view>
     </block>
   </view>
-  </view>
+  <!-- </view> -->
 
   <!-- <view class="list" wx:if='{{currentTab == 1}}' wx:for="{{ shenlun }}" wx:for-index="xb" hidden='false'> -->
   <view class="list" wx:if='{{currentTab == 1}}' wx:for="{{ shenlun }}" wx:for-index="xb" >

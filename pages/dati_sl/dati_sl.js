@@ -195,9 +195,6 @@ Page({
         }
     
     
-
-
-    
   },
 //删除插入图片
   deleteImg: function(e) {

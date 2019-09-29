@@ -2,6 +2,19 @@
 
   
     <video wx:if="{{videoUrl}}" class="video" poster="{{avatar}}" src='{{videoUrl}}' autoplay='true' controls='true'></video>
+
+  <view hidden='false'>
+    <video  id="myVideo" class="video" src='{{videoUrl}}' autoplay='true' custom-cache="{{false}}">
+    </video>
+    <cover-view class="controls" style="display:{{tab_image}};">
+    <cover-image src="{{avatar}}" />
+    </cover-view>
+    <cover-view class="play" style="display:{{tab_image}};z-index:200;" >
+    <cover-image bindtap="bindplay" src="../../images/bbbbb.png"/>
+    </cover-view>
+  </view>
+
+    
  
     
   

@@ -13,11 +13,17 @@ Page({
     // videoUrl: '',
     
     
-
+    videoimage: "block"
 
 
   },
 
+  bindplay: function (e) {
+    this.setData({
+      tab_image: "none"
+    }),
+      this.videoCtx.play()
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -54,7 +60,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.videoCtx = wx.createVideoContext('myVideo')
   },
 
   /**

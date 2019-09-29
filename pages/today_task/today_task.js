@@ -98,9 +98,6 @@ Page({
 
   //获取用户微信数据
   bindGetUserInfo: function (e) {
-   
-    
-
     wx.showLoading({
       title: '登录中...',
     })
@@ -231,6 +228,7 @@ Page({
     let uid = app.globalData.uid;
     if (uid){
       that.xcxSubmitTask(uid)
+
     }
    
 
@@ -1020,6 +1018,7 @@ Page({
     app.sz.xcxSubmitTask(params).then(d => {
       if (d.data.status == 0) {
         console.log("创建任务城东")
+        that.onShow()
       }
     })
   },
@@ -1124,7 +1123,6 @@ Page({
   //微信登录
   getPhoneNumber: function (e) {
     var that = this
-
     wx.login({
       success: res => {
         if (e.detail.errMsg == "getPhoneNumber:ok") {
@@ -1149,24 +1147,10 @@ Page({
               app.globalData.uid = d.data.uid;
               app.wechat.setStorage('userInfo', d.data.userInfo)
               if (d.data.isfirstlogin == 1) {
-                var uid = wx.getStorageSync('uid');
-                var token = wx.getStorageSync('token');
-                var params = {
-                  "uid": uid,
-                  "token": token,
-                }
-                app.sz.xcxMy(params).then(d => {
-                })
+          
               }
               else {
-                var uid = wx.getStorageSync('uid');
-                var token = wx.getStorageSync('token');
-                var params = {
-                  "uid": uid,
-                  "token": token,
-                }
-                app.sz.xcxMy(params).then(d => {
-                })
+              
               }
               that.onShow();
             }

@@ -8,7 +8,7 @@ Page({
   data: {
     currentTab: 0,
     isquestion: false, //材料/问题按钮判断
-    clientHeight: 1000,
+    clientHeight: 1500,
     ismany:false,  //多材料判断
     duocailiao:[],
     // imgs:[],  //添加图片

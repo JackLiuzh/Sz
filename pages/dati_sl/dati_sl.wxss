@@ -92,6 +92,7 @@ page{
 .box-swiper{
   display: flex;
   flex-direction: column;
+  margin-bottom: 100rpx;
   background:rgba(255,255,255,1);
 }
 .box-top{

@@ -8,7 +8,7 @@ Page({
   data: {
     currentTab: 0,
     isquestion: false, //材料/问题按钮判断
-    clientHeight: 1000,
+    clientHeight: 1500,
     ismany:false,  //多材料判断
     duocailiao:[],
     // imgs:[],  //添加图片
@@ -342,7 +342,7 @@ queding: function () {
   app.sz.xcxShenlunTijiao(params).then(d => {
     if (d.data.status == 0) {
       wx.navigateTo({
-        url: '../shuati_sl_jump/shuati_sl_jump?h_id=' + that.data.h_id
+        url: '../shuati_sl_jump/shuati_sl_jump?h_id=' + that.data.h_id + '&back=0'
       });
       console.log('提交成功')
     } else {
@@ -381,7 +381,7 @@ queding: function () {
       app.sz.xcxShenlunTijiao(params).then(d => {
         if (d.data.status == 0) {
           wx.navigateTo({
-            url: '../shuati_sl_jump/shuati_sl_jump?h_id=' + that.data.h_id
+            url: '../shuati_sl_jump/shuati_sl_jump?h_id=' + that.data.h_id + '&back=0'
           });
           console.log('提交成功')
         } else {

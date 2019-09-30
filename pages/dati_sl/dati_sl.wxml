@@ -108,10 +108,12 @@
   <view class="cailiao" bindtap="cailiao">材料</view>
   <view class="wenti" bindtap="wenti">问题</view>
   <view wx:if='{{finish}}' class="jiaojuan"  bindtap="submit">
-    <text class="text">√交卷</text>
+    <image class='submit' src="../../images/hongjiaojuan.png"/>
+    <!-- <text class="text">交卷</text> -->
   </view>
-  <view wx:if='{{!finish}}' class="jiaojuan1"  bindtap="submit">
-    <text class="text">√交卷</text>
+  <view wx:if='{{!finish}}' class="jiaojuan"  bindtap="submit">
+    <image class='submit' src="../../images/huijiaojuan.png"/>
+    <!-- <text class="text">√交卷</text> -->
   </view>
 </view>
 

@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    back: 1,
     clientHeight: 1000,
     // h_id:85,
     // hq_id:9328,
@@ -31,6 +32,11 @@ Page({
     })
     var that = this
     //初始化数据
+    if (options.back == 0) {
+      that.setData({
+        back: options.back
+      })
+    }
     // var user_task_id = options.user_task_id
     var h_id = options.h_id
     that.setData({ h_id: h_id })
@@ -110,6 +116,11 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+    // if (this.data.back != 0) {
+    //   wx.navigateBack({
+    //     delta: 1
+    //   })
+    // }
     
   },
 

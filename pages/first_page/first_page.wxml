@@ -16,17 +16,13 @@
       <view class="zbz" >直播中</view>
     </view>
 
-      <!-- <view-view class="cs"> -->
-        <!-- <cover-view class="title">{{item.video_title}}</cover-view> -->
-      <!-- </view-view> -->
+      
 
     <view class="speak">
       <image wx:if="{{item.teacher_avatar}}" class="touxiang" src="{{item.teacher_avatar}}"></image>
             <image wx:elif="{{item.teacher_avatar == null}}" class="touxiang" src="{{item.live_info.zhubo.p_40}}"></image>  
       <view class="speaker">{{item.live_info.zhubo.nickname}}</view>
-      <!-- <view class="shu4"></view>
-      <view class="num">{{item.buy_count}}人</view>
-      <view class="joining">正在参与 </view> -->
+      
     </view>
 
     <!-- 未登录 -->

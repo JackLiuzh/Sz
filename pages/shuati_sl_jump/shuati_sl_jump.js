@@ -8,6 +8,7 @@ Page({
   data: {
     // h_id:85,
     zblive:[],
+    back: 1,
   },
 
   /**
@@ -18,6 +19,13 @@ Page({
       title: '拼命加载中...',
     })
     let that = this
+
+    if (options.back == 0) {
+      that.setData({
+        back: options.back
+      })
+    }
+
     var h_id = options.h_id
     console.log(h_id)
     
@@ -90,11 +98,11 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    if (this.data.back != 0) {
+    // if (this.data.back != 0) {
       wx.navigateBack({
-        delta: 1
+        delta: 2
       })
-    }
+    // }
   },
 
   /**

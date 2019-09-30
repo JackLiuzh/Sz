@@ -31,6 +31,7 @@
 }
 .box-swiper{
   display: flex;
+  margin-bottom: 100rpx;
   flex-direction: column;
   background-color:rgba(242,243,247,1);
 }

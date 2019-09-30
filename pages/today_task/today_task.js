@@ -654,7 +654,7 @@ Page({
     var finish = e.currentTarget.dataset.finish
     if (finish == 1) {
       wx.navigateTo({
-        url: '../assessment_detail/assessment_detail?h_id=' + id + '&kemu_id=' + kemu_id + '&back=0'
+        url: '../analyse_sl/analyse_sl?h_id=' + id
       });
     } else {
       that.setData({ first_tip: wx.getStorageSync('first_tip') })

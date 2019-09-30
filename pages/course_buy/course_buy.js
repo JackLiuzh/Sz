@@ -30,6 +30,9 @@ Page({
   zhifu: function() {
      var that =this
      console.log(222)
+     
+     wx.login({
+        success(res){
      var token = wx.getStorageSync("token")
      var uid = wx.getStorageSync("uid")
      var order_sn = that.data.data.order_sn
@@ -43,7 +46,8 @@ Page({
            uid: uid,
            order_sn: order_sn,
            type: 3,
-           coupon_id:coupon_id
+           coupon_id:coupon_id,
+           code:res.code
          }
          app.sz.coursePay(params).then(d=>{
            if (d.data.data.paystr) {
@@ -69,7 +73,8 @@ Page({
               order_sn: order_sn,
               type: 3,
               addr_id: addr_id,
-              coupon_id: copid
+              coupon_id: copid,
+              code:res.code
             }
             app.sz.coursePay(params).then(d => {
               // console.log(d.data.data.paystr)
@@ -93,7 +98,10 @@ Page({
             })
           }
      }
-   
+
+     
+      }
+    }) 
   },
   //拉起微信支付
   laqizhifu: function (timeStamp, nonceStr, pack, paySign){

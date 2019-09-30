@@ -100,8 +100,8 @@ Page({
                   name: 'file',
                   formData: {
                     'file': tempFilePaths[i],
-                    "token": token,
-                    "action": "uploads", //action=uploads&authhash=445454554
+                    // "token": token,
+                    "action": "xcxuploads", //action=uploads&authhash=445454554
                   },
                   success(r) {
                     let hhh = JSON.parse(r.data);
@@ -154,13 +154,13 @@ Page({
                         }
                         else {
                           that.setData({
-                            hhh: 0
+                            hhh: -that.data.sl_list.length
                           })
                           console.log(that.data.hhh + '=================input_else')
                         }
                       }
                 
-                      if (that.data.hhh) {
+                      if (that.data.hhh >= 0 ) {
                         that.setData({
                           finish: true
                         })

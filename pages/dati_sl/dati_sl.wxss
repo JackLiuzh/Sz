@@ -40,15 +40,15 @@ page{
 /* 交卷按钮 */
 .jiaojuan{
   width:40%;
-  height: 100rpx;
-  line-height: 100rpx;
+  /* height: 100rpx;
+  line-height: 100rpx; */
   background-color: #fff;
-  color: #E65557;
-  font-size:28rpx;
+  /* color: #E65557; */
+  /* font-size:28rpx;
   font-family:PingFang-SC-Regular;
-  font-weight:400;
+  font-weight:400; */
 }
-.jiaojuan1{
+/* .jiaojuan1{
   width:40%;
   height: 100rpx;
   line-height: 100rpx;
@@ -57,6 +57,12 @@ page{
   font-size:28rpx;
   font-family:PingFang-SC-Regular;
   font-weight:400;
+} */
+.submit{
+  margin-top: 30rpx;
+  margin-left: 150rpx;
+  width: 110rpx;
+  height: 45rpx;
 }
 .text{
   margin-left: 200rpx;

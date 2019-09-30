@@ -654,7 +654,7 @@ Page({
     var finish = e.currentTarget.dataset.finish
     if (finish == 1) {
       wx.navigateTo({
-        url: '../analyse_sl/analyse_sl?h_id=' + id
+        url: '../analyse_sl/analyse_sl?h_id=' + id + '&back=0'
       });
     } else {
       that.setData({ first_tip: wx.getStorageSync('first_tip') })

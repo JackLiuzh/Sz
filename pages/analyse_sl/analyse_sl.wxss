@@ -1,4 +1,7 @@
 @import "../../components/wxParse/wxParse.wxss";
+.container{
+  margin-bottom: 100rpx;
+}
 .layout{
   display: flex;
   width:100%;

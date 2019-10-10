@@ -33,6 +33,8 @@ Page({
     dl_showModal: false,  //登录蒙层
     time: "获取验证码",
     currentTime: 61,
+
+    date_now:'',
   },
 
   //未登录看回放登录
@@ -43,6 +45,7 @@ Page({
     var id = e.currentTarget.dataset.hh;
     console.log(id);
     this.setData({
+      prosum: this.data.courselive[id].prosum,
       finish: this.data.courselive[id].finish,
       project_id: this.data.courselive[id].project_id,
       kemu_id: this.data.courselive[id].kemu_id,
@@ -146,6 +149,7 @@ Page({
   },
 
   //看回放输入验证码登录
+
   Sendyzm: function (e) {
 
     var that = this
@@ -172,20 +176,7 @@ Page({
           dl_showModal: false
         })
         this.onLoad()
-    //   if(this.data.finish == 0){
-      
-    // }else{
-    //   // let url = encodeURIComponent(this.data.bpurl);
-    //   // console.log(url);
-    //   wx.navigateTo({
-    //     url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
-    //   });
-    //   this.setData({
-    //     showModal_pb: false,
-    //     dl_showModal: false
-        
-    //   })
-    // } 
+    
     } else {
         wx.showToast({
           title: d.data.msg,
@@ -249,33 +240,7 @@ Page({
     }
     // console.log(params)
 
-    //手机号验证码登录接口
-    // app.sz.loginRegister(params).then(d => {
-    //   if (d.data.status == 1) {
-    //     this.setData({ isbuy: d.data.data.isbuy, avatarUrl: d.data.data.avatar, nickName: d.data.data.name })
-    //     if (d.data.data.phone != '')
-    //       this.setData({ userphone: d.data.data.phone })
-    //     console.log(d.data.msg)
-    //     wx.setStorageSync("uid", d.data.data.uid)
-    //     wx.setStorageSync("token", d.data.data.token)
-    //     console.log(this.data.system_id + 'cscscscs')
-    //     wx.navigateTo({
-    //       url: '/pages/course_xiang/course_xiang?system_id=' + this.data.system_id,
-    //     })
-    //     this.setData({
-    //       // showModal_pb: false,
-    //       mkdl_showModal: false
-    //     })
-
-
-    //   } else {
-    //     console.log(d.data.msg)
-    //   }
-    // })
-    // this.setData({
-    //   showModal: false
-    // })
-    // // this.onLoad()
+    
   },
 
   //下个月日历
@@ -425,16 +390,7 @@ Page({
                 // console.log(m)
                 this.data.comDateTime[m][2] = true
                 console.log(this.data.comDateTime[m][2])
-                // for (let n = 0; n < this.data.calPanduan.length; n++) {
-                //   // console.log('cs')
-                //   if (this.data.comDateTime[m][0] == this.data.calPanduan[n][0]) {
-                //     // console.log('cs')
-                //     this.data.calPanduan[n][2] = true
-                //     console.log(this.data.calPanduan[n][2])
-                //     this.setData({ days: this.data.calPanduan })
-
-                //   }
-                // }
+               
               }
             }
           }
@@ -513,9 +469,23 @@ Page({
     wx.setStorageSync('isauth', this.data.isauth)
     this.iswxuser();
     const date = new Date();
+
     const cur_year = date.getFullYear();
     const cur_month = date.getMonth() + 1;
-      this.setData({
+    var cscsm = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+    var cscsd = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+    console.log(cscsm + "cscs")
+    console.log(cscsd + "cscs")
+
+
+    let date_now = cur_year + '/' + cscsm + '/' + cscsd
+    console.log(date_now + "cscs")
+    this.setData({
+      date_now: date_now,
+    })
+    console.log(this.data.date_now)
+
+    this.setData({
       cur_year: cur_year,
       cur_month: cur_month,
     })
@@ -569,13 +539,7 @@ Page({
         this.setData({
           comDateTime: comDateTime
         })
-        // for (let n = 0; n < this.data.days.length; n++) {
-        //   cal_add_false.push([this.data.comDateTime[n][0],this.data.days[n], false])
-
-        //   this.setData({
-        //     calPanduan: cal_add_false,
-        //   })
-        // }
+       
         console.log(this.data.comDateTime)
         // console.log(this.data.calPanduan)
 
@@ -589,16 +553,7 @@ Page({
                 // console.log(m)
                 this.data.comDateTime[m][2] = true
                 console.log(this.data.comDateTime[m][2])
-                // for (let n = 0; n < this.data.calPanduan.length; n++) {
-                //   // console.log('cs')
-                //   if (this.data.comDateTime[m][0] == this.data.calPanduan[n][0]) {
-                //     // console.log('cs')
-                //     this.data.calPanduan[n][2] = true
-                //     console.log(this.data.calPanduan[n][2])
-                //     this.setData({ days: this.data.calPanduan })
-
-                //   }
-                // }
+               
               }
             }
           }
@@ -685,13 +640,17 @@ Page({
         //   url: '/pages/live/live?video_id=' + that.data.video_id,
         // })
         console.log("保存成功")
-        if (this.data.finish == 0) {
+        if (this.data.prosum == 0){
+          wx.navigateTo({
+            url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
+          });
+        }
+        else if (this.data.finish == 0) {
           this.setData({
             showModal_zb: true
           })
         } else {
-          // let url = encodeURIComponent(this.data.bpurl);
-          // console.log(url);
+          
           
           wx.navigateTo({
             url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
@@ -736,31 +695,7 @@ Page({
               })
               that.onLoad()
               console.log(this.data.finish)
-             // if (d.data.isfirstlogin == 1) {
-                // wx.switchTab({ url: '../today_task/today_task' })
-                // wx.switchTab({ url: '../first_page/first_page' })
-                // if (this.data.finish == 0) {
-                //   this.setData({
-                //     showModal_pb: true,    //看回放蒙层显示
-                   
-                //   })
-                // } else {
-                //   // let url = encodeURIComponent(this.data.bpurl);
-                //   // console.log(url);
-                //   wx.navigateTo({
-                //     url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
-                //   });
-                //   this.setData({
-                //     showModal_pb: false,
-                //     dl_showModal: false
-                //   })
-                // }
-                
-              // }
-              // else {
-                
-              // }
-              //自动创建任务
+             
 
             } else {
               // app.wechat.setStorage('isauth', false);
@@ -840,6 +775,7 @@ Page({
     var id = e.currentTarget.dataset.xb;
     console.log(id);
     this.setData({
+      prosum: this.data.courselive[id].prosum,
       finish: this.data.courselive[id].finish,
       // bpurl: this.data.courselive[id].live_info.playbackUrl,
       project_id: this.data.courselive[id].project_id,
@@ -861,6 +797,7 @@ Page({
     var id = e.currentTarget.dataset.xb;
     console.log(id);
     this.setData({
+      prosum: this.data.courselive[id].prosum,
       finish: this.data.courselive[id].finish,
       // bpurl: this.data.courselive[id].live_info.playbackUrl,
       project_id: this.data.courselive[id].project_id,
@@ -868,7 +805,13 @@ Page({
       video_id: this.data.courselive[id].video_id,
       lesson_id: this.data.courselive[id].lesson_id,
     })
-    if (this.data.finish == 0) {
+    if (this.data.prosum == 0) {
+      wx.navigateTo({
+        url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + lesson_id,
+      });
+    }
+    else if (this.data.finish == 0) {
+    // if (this.data.finish == 0) {
       this.setData({
         showModal_zb: true
       })
@@ -898,259 +841,21 @@ Page({
   dateInit: function () {
   },
 
-  // jumpmonth: function (setYear, setMonth) {
-  //   //全部时间的月份都是按0~11基准，显示月份才+1 
-  //   let dateArr = [];
-  //   let cal_add_false = [];
-  //   let xq = new Date().getDay();         //需要遍历的日历数组数据 
-  //   let arrLen = 0;                            //dateArr的数组长度 
-  //   let now = setYear ? new Date(setYear, setMonth) : new Date();
-  //   let year = setYear || now.getFullYear();
-  //   let nextYear = 0;
-  //   let month = setMonth || now.getMonth();  //没有+1方便后面计算当月总天数 
-  //   let nextMonth = (month + 1) > 11 ? 1 : (month + 1);
-  //   let startWeek = new Date(year + ',' + (month + 1) + ',' + 1).getDay();                            //目标月1号对应的星期 
-  //   let dayNums = new Date(year, nextMonth, 0).getDate();
-  //   //获取目标月有多少天 
-  //   let obj = {};
-  //   let num = 0;
-  //   let day = now.getDate();
-
-  //   if (month + 1 > 11) {
-  //     nextYear = year + 1;
-  //     dayNums = new Date(nextYear, nextMonth, 0).getDate();
-  //   }
-  //   arrLen = startWeek + dayNums;
-  //   let i = 0
-  //   for (i; i < arrLen; i++) {
-  //     if (i >= startWeek) {
-  //       num = i - startWeek + 1;
-  //       dateArr[i] = num;
-  //     } else {
-  //       dateArr[i] = '';
-  //     }
-  //   }
-  //   this.setData({
-  //     dateArr: dateArr
-  //   })
-  //   for (let n = 0; n < this.data.dateArr.length; n++) {
-  //     cal_add_false.push([this.data.dateArr[n], false])
-
-  //     this.setData({
-  //       calPanduan: cal_add_false,
-  //     })           
-  //     this.setData({
-  //       showcal: this.data.calPanduan,
-  //     })
-  //   }
-  // }, 
-
-  // nowmonth: function () {
-  //   let now = new Date();
-  //   let year = now.getFullYear();
-  //   let month = now.getMonth() + 1;
-  //   let day = now.getDate();
-  //   this.dateInit();
-  //   this.setData({
-  //     year: year,
-  //     month: month,
-  //     // isToday: '' + year + month + day 
-  //   })
-  //   var uid = wx.getStorageSync('uid');
-  //   var token = wx.getStorageSync('token');
-  //   var params = {
-  //     "uid": uid,
-  //     "token": token,
-  //   }
-
-  //   app.sz.xcxcourseLive(params).then(d => {
-  //     if (d.data.status == 1) {
-  //       this.setData({ courselive: d.data.data, sys: d.data.sys })
-  //       var that = this;
-  //       let dateArr = [];
-  //       let comDateTime = [];
-  //       let cal_add_false = [];
-  //       let xq = new Date().getDay();      //获取日期所属星期
-  //       //需要遍历的日历数组数据 
-  //       let arrLen = 0;                            //dateArr的数组长度 
-  //       let now = new Date();
-  //       let year = now.getFullYear();
-  //       let nextYear = 0;
-  //       let month = now.getMonth();  //没有+1方便后面计算当月总天数 
-  //       let nextMonth = (month + 1) > 11 ? 1 : (month + 1);
-  //       let startWeek = new Date(year + ',' + (month + 1) + ',' + 1).getDay();         //目标月1号对应的星期 
-  //       let dayNums = new Date(year, nextMonth, 0).getDate();
-  //       //获取目标月有多少天 
-  //       // console.log(new Date(setYear, setMonth))  
-  //       let obj = {};
-  //       let num = 0;
-  //       let day = now.getDate();
-  //       // let hoo = year + '-' + month + '-' +;
-  //       // console.log() 
-
-  //       if (month + 1 > 11) {
-  //         nextYear = year + 1;
-  //         dayNums = new Date(nextYear, nextMonth, 0).getDate();
-  //       }
-  //       let syday = dayNums - day + 1;
-  //       // console.log(syday)
-  //       for (let s = 0; s < syday + xq; s++) {
-  //         if (s >= xq) {
-  //           num = s - xq + day;
-  //           for (let w = 0; w < syday; w++) {
-  //             dateArr[s] = num
-  //           }
-  //         } else {
-  //           dateArr[s] = '';
-  //         }
-
-  //         comDateTime.push([year + '-' + '0' + (month + 1) + '-' + '0' + num, num])
-  //       }
-
-  //       this.setData({
-  //         dateArr: dateArr,
-  //         comDateTime: comDateTime
-  //       })
-  //       for (let n = 0; n < this.data.dateArr.length; n++) {
-  //         cal_add_false.push([this.data.dateArr[n], false])
-
-  //         this.setData({
-  //           calPanduan: cal_add_false,
-  //         })
-  //       }
-  //       // this.showModalPb(e)
-  //       for (let l = 0; l < this.data.courselive.length; l++) {
-  //         // console.log(this.data.courselive[l].liveStatus)
-  //         if (this.data.courselive[l].liveStatus == 1) {
-  //           for (let m = 0; m < this.data.comDateTime.length; m++) {
-  //             // console.log('cs')
-  //             if (this.data.courselive[l].dateTime == this.data.comDateTime[m][0]) {
-  //               // console.log('cs')
-  //               for (let n = 0; n < this.data.calPanduan.length; n++) {
-  //                 if (this.data.comDateTime[m][1] == this.data.calPanduan[n][0]) {
-  //                   this.data.calPanduan[n][1] = true
-  //                   this.setData({ showcal: this.data.calPanduan })
-  //                 }
-  //               }
-  //             }
-  //           }
-  //         }
-  //         else {
-  //           this.setData({ showcal: this.data.calPanduan })
-  //           console.log(this.data.showcal)
-  //         }
-  //       }
-  //     }
-  //   })
-  // },
-
-
-  // lastMonth: function () {
-  //   //全部时间的月份都是按0~11基准，显示月份才+1 
-  //   let year = this.data.month - 2 < 0 ? this.data.year - 1 : this.data.year;
-  //   let month = this.data.month - 2 < 0 ? 11 : this.data.month - 2;
-  //   let now = new Date();
-  //   let nowmonth = now.getMonth();
-  //   console.log(month)
-  //   console.log(nowmonth)
-  //   if (month == nowmonth) {
-  //     // this.setData({
-  //     //   year: year,
-  //     //   month: (month + 1)
-  //     // })
-  //     this.nowmonth();
-  //   } else {
-  //     do {
-  //       this.setData({
-  //         year: year,
-  //         month: (month + 1)
-  //       })
-  //       this.jumpmonth(year, month);
-  //     } while (month == nowmonth) {
-  //       this.nowmonth();
-  //     } 
-  //   }
-  // }, 
-  // // lastMonth: function () {
-  // //   //全部时间的月份都是按0~11基准，显示月份才+1 
-  // //   let year = this.data.month - 2 < 0 ? this.data.year - 1 : this.data.year;
-  // //   let month = this.data.month - 2 < 0 ? 11 : this.data.month - 2;
-  // //   let now = new Date();
-  // //   let nowmonth = now.getMonth();
-  // //   let nowYear = now.getFullYear();
-  // //   console.log(month)
-  // //   console.log(nowmonth)
-  // //   if (month > nowmonth && year == nowYear) {
-  // //     this.setData({
-  // //       year: year,
-  // //       month: (month + 1)
-  // //     })
-  // //     this.jumpmonth(year, month);
-  // //     console.log(this.data.showcal)
-  // //   } else if (year == nowYear) {
-  // //     this.nowmonth()
-  // //     console.log(this.data.showcal)
-  // //   }else {
-  // //     this.setData({
-  // //       year: year,
-  // //       month: (month + 1)
-  // //     })
-  // //     this.jumpmonth(year, month);
-  // //     console.log(this.data.showcal)
-  // //   }
-  // // }, 
   
 
-  // nextMonth: function () {
-  //   //全部时间的月份都是按0~11基准，显示月份才+1 
-  //   let year = this.data.month > 11 ? this.data.year + 1 : this.data.year;
-  //   let month = this.data.month > 11 ? 0 : this.data.month;
-  //   let now = new Date();
-  //   let nowmonth = now.getMonth();
-  //   if (month == nowmonth) {
-  //     // this.setData({
-  //     //   year: year,
-  //     //   month: (month + 1)
-  //     // })
-  //     this.nowmonth();
-  //   } else {
-  //     this.setData({
-  //       year: year,
-  //       month: (month + 1)
-  //     })
-  //     this.jumpmonth(year, month);
-  //   }
-  // },
+  
 
-  // nextMonth: function () {
-  //   //全部时间的月份都是按0~11基准，显示月份才+1 
-  //   let year = this.data.month > 11 ? this.data.year + 1 : this.data.year;
-  //   let month = this.data.month > 11 ? 0 : this.data.month;
-  //   let now = new Date();
-  //   let nowmonth = now.getMonth();
-  //   let nowYear = now.getFullYear();
-  //   console.log(year)
-  //   console.log(nowYear)
-  //   console.log(month)
-  //   console.log(nowmonth)
-  //   if (month == nowmonth && year == nowYear) {
-  //     this.nowmonth()
-  //     console.log(this.data.showcal)
-  //   } else {
-  //     this.setData({
-  //       year: year,
-  //       month: (month + 1)
-  //     })
-  //     this.jumpmonth(year, month);
-  //     console.log(this.data.showcal)
-  //   }
-  // },
+  
+  
+
+  
 
   //看回放蒙层
   showModalPb: function (e) {
     var id = e.currentTarget.dataset.xb;
     console.log(id);
     this.setData({
+      prosum: this.data.courselive[id].prosum,
       finish: this.data.courselive[id].finish,
       // bpurl: this.data.courselive[id].live_info.playbackUrl,
       project_id: this.data.courselive[id].project_id,
@@ -1158,7 +863,13 @@ Page({
       video_id: this.data.courselive[id].video_id,
       lesson_id: this.data.courselive[id].lesson_id,
     })
-    if(this.data.finish == 0){
+    if (this.data.prosum == 0) {
+      wx.navigateTo({
+        url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + lesson_id,
+      });
+    }
+    else if (this.data.finish == 0) {
+    // if(this.data.finish == 0){
       this.setData({
         showModal_pb: true
       })
@@ -1172,10 +883,6 @@ Page({
         showModal_pb: false
       })
     }
-    // console.log(this.data.finish);
-    // console.log(this.data.bpurl);
-    // console.log(this.data.project_id);
-    // console.log(this.data.kemu_id);
     
   },
   close_zb: function () {
@@ -1194,10 +901,8 @@ Page({
     var id = e.currentTarget.dataset.xb;
     console.log(id);
     this.setData({
-    //   finish: this.data.courselive[id].finish,
-    //   // bpurl: this.data.courselive[id].live_info.playbackUrl,
-    //   project_id: this.data.courselive[id].project_id,
-    //   kemu_id: this.data.courselive[id].kemu_id,
+      prosum: this.data.courselive[id].prosum,
+    
       video_id: this.data.courselive[id].video_id,
       lesson_id: this.data.courselive[id].lesson_id,
     })
@@ -1209,34 +914,17 @@ Page({
       this.setData({
         showModal_pb: false
       })
-    // console.log(this.data.finish);
-    // console.log(this.data.bpurl);
-    // console.log(this.data.project_id);
-    // console.log(this.data.kemu_id);
+   
   },
   mc_pblive: function (e) {
-    // var id = e.currentTarget.dataset.xb;
-    // console.log(id);
-    // this.setData({
-    //   //   finish: this.data.courselive[id].finish,
-    //   //   // bpurl: this.data.courselive[id].live_info.playbackUrl,
-    //   //   project_id: this.data.courselive[id].project_id,
-    //   //   kemu_id: this.data.courselive[id].kemu_id,
-    //   video_id: this.data.courselive[id].video_id,
-    //   lesson_id: this.data.courselive[id].lesson_id,
-    // })
-    // let url = encodeURIComponent(this.data.bpurl);
-    // console.log(url);
+    
     wx.navigateTo({
       url: '../live/live?video_id=' + this.data.video_id + '&lesson_id=' + this.data.lesson_id,
     });
     this.setData({
       showModal_pb: false
     })
-    // console.log(this.data.finish);
-    // console.log(this.data.bpurl);
-    // console.log(this.data.project_id);
-    // console.log(this.data.kemu_id);
+   
   },
 
   //看直播视频跳转
@@ -1351,7 +1039,7 @@ Page({
     
   },
 
-  //课程详情跳转
+  //课程详情跳转 
   gocourse_xiang: function (e) {
     console.log(e.currentTarget.dataset.system_id)
     var system_id = e.currentTarget.dataset.system_id
@@ -1364,7 +1052,7 @@ Page({
 
 
 
-
+ 
 
 
 

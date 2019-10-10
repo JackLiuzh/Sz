@@ -97,8 +97,39 @@
              <view style='padding-left:93rpx;' class='le_pri'><text>￥</text>{{info.price}}</view>
         </view>
         <view class='but_ri'>
-            <view bindtap='gobuy_page' class='ri_now'>立即购买</view>
+            <view wx:if="{{uid > 0}}" bindtap='gobuy_page' class='ri_now'>立即购买</view>
+            <view wx:if="{{uid == 0}}" bindtap='my_login_mk' class='ri_now'>立即购买</view>
+
         </view>
     </view>
 </view>
 </block>
+
+<!-- 买课登录蒙层 -->
+  <view class="dl_mask" catchtouchmove="preventTouchMove" wx:if="{{mkdl_showModal}}"></view>
+    <view class="dl_modalDlg" wx:if="{{mkdl_showModal}}">
+      <image class="dl_close" bindtap="go_mk" src="../../images/cha.png"/>
+      <view class="way1">
+        <view class="shu"></view>
+        <text class="bang">绑定手机号登录:</text>
+      </view>
+      
+      <input class="srcall" bindinput="inputphone" placeholder="请输入手机号"></input>
+      <view class="heng"></view>
+      <view class="yz">
+        <input class="sryzm" bindinput="inputcode" placeholder="请输入验证码"></input>
+        <text class="hqyzm" bindtap="getYzm">{{time}}{{suffix}}</text>
+      </view>
+      <view class="heng"></view>
+      <view class="save" bindtap="Sendyzm_mk">
+        <text class="bc">登录</text>
+      </view>
+      
+      <text class="wx_tip">—— 或授权微信绑定的手机号登录 ——</text>
+      
+      <button class="wxlogin" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber_mk">
+        <image class="wxlogin_img" src="../../images/wxlogin.png" mode="aspectFill"/>
+        <text class="wxlogin_dl">登录</text>
+      </button>
+      
+  </view>

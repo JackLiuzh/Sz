@@ -7,12 +7,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-      clock:'',
-      currentData: 0,
-      info:'',
-      system_id:'',
-      system_id:'',
-      clientHeight:500
+    clock:'',
+    currentData: 0,
+    info:'',
+    system_id:'',
+    system_id:'',
+    clientHeight:500,
+
+    uid:0,
+    time: "获取验证码",
+    currentTime: 61,
   },
 
   /**
@@ -23,6 +27,9 @@ Page({
     this.data.system_id = options.system_id
     this.setData({system_id:options.system_id})
     this.initscreen()
+
+    var uid = wx.getStorageSync('uid');
+    this.setData({ uid: uid })
   },
   onShow:function(){
      var options ={
@@ -218,7 +225,187 @@ Page({
 
   fill_zero_prefix: function(num){
      return num < 10 ? '0' + num : num
-  }
+  },
+
+  my_login_mk: function (e) {
+    this.setData({
+      mkdl_showModal: true  //买课登录蒙层
+    })
+  },
+
+  go_mk: function () {
+    this.setData({
+      mkdl_showModal: false     //关闭买课登录蒙层，x图标
+    })
+  },
+
+  inputphone: function (e) {
+    this.setData({
+      dphone: e.detail.value
+    })
+    console.log(this.data.dphone)
+  },
+
+  //登录输入验证码
+  inputcode: function (e) {
+    this.setData({
+      code: e.detail.value
+    })
+    console.log(this.data.code)
+  },
+
+  //获取验证码
+  getYzm: function (e) {
+    var that = this
+    var token = wx.getStorageSync('token');
+    var phone = this.data.dphone;
+    if (this.data.disabled || !phone) {
+      return;
+    }
+    // console.log(phone)
+    var params = {
+      "token": token,
+      "phone": phone,
+    }
+    console.log(params)
+    app.sz.xcxMyGetyzm(params).then(d => {
+      if (d.data.status == 1) {
+        console.log('成功')
+        that.setData({
+          disabled: true
+        })
+        let interval = null;
+        let currentTime = that.data.currentTime;
+        interval = setInterval(function () {
+          currentTime--;
+          that.setData({
+            time: currentTime,
+            suffix: ' s '
+          })
+          if (currentTime <= 0) {
+            clearInterval(interval)
+            that.setData({
+              time: '重新发送',
+              suffix: '',
+              currentTime: 61,
+              disabled: false
+            })
+          }
+        }, 1000)
+      } else {
+        wx.showToast({
+          title: d.data.msg,
+          icon: 'none',
+          duration: 1000
+        })
+      }
+    })
+  },
+
+
+  //买课输入验证码登录
+  Sendyzm_mk: function (e) {
+
+    var that = this
+    var phone = this.data.dphone;
+    var params = {
+      "phone": phone,
+      "code": this.data.code,
+    }
+    if (!phone || !this.data.code) {
+      return;
+    }
+    app.sz.loginRegister(params).then(d => {
+      if (d.data.status == 1) {
+        this.setData({ isbuy: d.data.data.isbuy, avatarUrl: d.data.data.avatar, nickName: d.data.data.name })
+        if (d.data.data.phone != '')
+          this.setData({ userphone: d.data.data.phone })
+        console.log(d.data.msg)
+        wx.setStorageSync("uid", d.data.data.uid)
+        wx.setStorageSync("token", d.data.data.token)
+        wx.setStorageSync('userInfo', d.data.data)
+
+        that.gobuy_page()
+        // console.log(this.data.system_id + 'cscscscs')
+        // wx.navigateTo({
+        //   url: '/pages/course_xiang/course_xiang?system_id=' + this.data.system_id,
+        // })
+        this.setData({
+          // showModal_pb: false,
+          mkdl_showModal: false
+        })
+
+      } else {
+        wx.showToast({
+          title: d.data.msg,
+          icon: 'none',
+          duration: 1000
+        })
+        console.log(d.data.msg)
+      }
+
+    })
+    
+  },
+
+  getPhoneNumber_mk: function (e) {
+    var that = this
+
+    wx.login({
+      success: res => {
+        // that.setData({ code: res.code, iv: e.detail.iv, encryptedData: e.detail.encryptedData })
+        if (e.detail.errMsg == "getPhoneNumber:ok") {
+          wx.showLoading({
+            title: '登录中...',
+          })
+          let iv = encodeURIComponent(e.detail.iv);
+          let encryptedData = encodeURIComponent(e.detail.encryptedData);
+          let code = res.code
+          var params = {
+            "code": code,
+            "iv": iv,
+            "encryptedData": encryptedData
+          }
+          console.log(params)
+          app.sz.loginregister(params).then(d => {
+            // console.log(d)
+            if (d.data.status == 0) {
+              // app.wechat.setStorage('isauth', true);
+              app.wechat.setStorage('token', d.data.token);
+              app.wechat.setStorage('uid', d.data.uid);
+              app.globalData.uid = d.data.uid;
+              app.wechat.setStorage('userInfo', d.data.userInfo)
+              // if (d.data.isfirstlogin == 1) {
+              // wx.switchTab({ url: '../today_task/today_task' })
+              // wx.switchTab({ url: '../first_page/first_page' })
+              // console.log(this.data.system_id + 'cscscscs')
+              // wx.navigateTo({
+              //   url: '/pages/course_xiang/course_xiang?system_id=' + this.data.system_id,
+              // })
+              that.gobuy_page()
+              this.setData({
+                // showModal_pb: false,
+                mkdl_showModal: false
+              })
+              // }
+              // else {
+
+              // }
+              //自动创建任务
+
+            } else {
+              // app.wechat.setStorage('isauth', false);
+            }
+            wx.hideLoading()
+          })
+        } else {
+          // that.setData({
+          //   showModal: true
+          // })
+        }
+      }
+    })
+  },
   
   
 

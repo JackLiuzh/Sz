@@ -551,9 +551,10 @@ Page({
               // console.log('cs')
               if (this.data.courselive[l].dateTime == this.data.comDateTime[m][0]) {
                 // console.log(m)
-                this.data.comDateTime[m][2] = true
-                console.log(this.data.comDateTime[m][2])
-               
+                if (this.data.comDateTime[m][0] != this.data.date_now){
+                  this.data.comDateTime[m][2] = true
+                  console.log(this.data.comDateTime[m][0] + '555555555555')
+                }
               }
             }
           }

@@ -11,7 +11,7 @@
   <!-- 不加申论版 -->
   <!-- <view class="list"  wx:for="{{ list }}" wx:key="this"> -->
     <block  class='box1' wx:if='{{item.kemu_id != 7}}'>
-      <view class = "c_line" >
+      <view class = "c_line" wx:if='{{item.prosum != 0}}'>
         <image class='img'  src='../../images/special/bg{{item.kemu_id}}.png'></image>
         <view class="c_line_text">
           <view class="gong gong_color{{item.kemu_id}}">共</view>
@@ -40,7 +40,7 @@
   <!-- <view class="list" wx:if='{{currentTab == 1}}' wx:for="{{ shenlun }}" wx:for-index="xb" hidden='false'> -->
   <view class="list" wx:if='{{currentTab == 1}}' wx:for="{{ shenlun }}" wx:for-index="xb" >
     <block  class='box1' wx:if='{{item.kemu_id == 7}}' >
-      <view class = "c_line" >
+      <view class = "c_line" wx:if='{{item.prosum != 0}}'>
         <image class='img'  src='../../images/special/bg{{item.kemu_id}}.png'></image>
         <image class="pigai" wx:if='{{item.pg_test}}' src="../../images/pigai.png"></image>
         <view class="c_line_text">
